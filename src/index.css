@@ -41,6 +41,13 @@
 
     --image-grayscale: 0;
     --image-opacity: 100%;
+
+    --color-dark: #445471;
+
+    --dynamic-button-hovered: #091E4224;
+    --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
+
+    --header-button-color: var(--ds-text-subtle, #44546f);
   }
 
   &.dark-mode {
@@ -95,6 +102,7 @@
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
+  
 }
 
 *,
@@ -148,8 +156,6 @@ input:disabled {
   color: var(--color-grey-500);
 }
 
-input:focus,
-button:focus,
 textarea:focus,
 select:focus {
   outline: 2px solid var(--color-brand-600);
@@ -227,3 +233,4 @@ FOR DARK MODE
 --image-grayscale: 10%;
 --image-opacity: 90%;
 */
+
