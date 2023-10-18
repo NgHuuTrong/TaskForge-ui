@@ -65,18 +65,14 @@ function Header() {
             <input
               type="text"
               placeholder="Search"
-              className="flex h-11 rounded-md border-[0.01rem] px-4 py-1 text-lg w-56 [transition:width_.5s_ease-in-out] focus:w-[40rem]"
+              className="flex h-11 w-56 rounded-md border-[0.01rem] px-4 py-1 text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
             />
           </div>
-          <div className='flex items-center justify-center h-11 w-11'>
-            <BellOutlined
-              rotate={45}
-              className=""
-              color="black"
-            />
+          <div className="flex h-11 w-11 items-center justify-center">
+            <BellOutlined rotate={45} className="" color="black" />
           </div>
           <div>
-            <DropdownAnt type={'info'} title={'HP'} items={items}/>
+            <DropdownAnt type={'info'} title={'HP'} items={items} />
           </div>
         </div>
       </nav>

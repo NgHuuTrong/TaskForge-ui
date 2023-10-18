@@ -11,7 +11,7 @@ function ExampleComponent() {
       <h1 className="my-4 text-yellow-500">{ex1}</h1>
       <h1 className="my-4 text-yellow-500">{ex2}</h1>
       <Button
-        color="primary"
+        type="primary"
         classNames="rounded-full"
         onClick={() => {
           dispatch(method1(100, 'EUR'));
@@ -20,7 +20,7 @@ function ExampleComponent() {
         Method 1
       </Button>
       <Button
-        color="danger"
+        type="danger"
         onClick={() => {
           dispatch(method2('100', 1));
         }}

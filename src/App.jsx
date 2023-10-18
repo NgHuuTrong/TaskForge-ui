@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import AppLayout from './ui/AppLayout';
 import Example from './pages/Example';
+import { DarkModeProvider } from './context/DarkModeContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,17 +16,19 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="example" />} />
-            <Route path="example" element={<Example />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <DarkModeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <BrowserRouter>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route index element={<Navigate replace to="example" />} />
+              <Route path="example" element={<Example />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </DarkModeProvider>
   );
 }
 
