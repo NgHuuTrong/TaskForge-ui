@@ -40,6 +40,7 @@
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
   --image-grayscale: 0;
   --image-opacity: 100%;
+<<<<<<< HEAD
   
    --color-dark: #445471;
     --header-button-txt-hovered: #0C66E4;
@@ -47,6 +48,14 @@
     --header-button-bg-hovered: #CFE2FF;
     --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
     --header-button-color: var(--ds-text-subtle, #44546f);
+=======
+
+  --color-dark: #445471;
+  --header-button-txt-hovered: #0C66E4;
+  --header-button-bg-hovered: #CFE2FF;
+  --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
+  --header-button-color: var(--ds-text-subtle, #44546f);
+>>>>>>> 2a212d4 (update Header, DropdownAnt, index.css)
 }
 
 :root.dark-mode {

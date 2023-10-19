@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import DropdownAnt from '../features/DropdonwAnt/DropdownAnt';
+=======
+import { CgMenuGridR } from 'react-icons/cg';
+import DropdownAnt from '../features/DropdonwAnt/DropdownAnt';
+import { BellOutlined } from '@ant-design/icons';
+>>>>>>> 2a212d4 (update Header, DropdownAnt, index.css)
 import logo from '../assets/logo_blue.png';
 import { AiOutlineBell } from 'react-icons/ai';
 import { CgMenuGridR } from "react-icons/cg";
@@ -117,11 +123,11 @@ function Header({ color = 'primary', className = '' }) {
   return (
     <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50] z-10">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
-        <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
+        {/* <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
           <span className="flex  items-center justify-center leading-none">
             <CgMenuGridR size={24} color="color-[#445471]" />
           </span>
-        </button>
+        </button> */}
         <a
           href="/"
           className="relative block rounded px-2 hover:bg-[--color-grey-200] hover:text-[--header-button-txt-hovered]"
@@ -130,6 +136,7 @@ function Header({ color = 'primary', className = '' }) {
         </a>
         <div className="flex items-center basis-full">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
+<<<<<<< HEAD
             <div className="mx-1 flex">
               <DropdownAnt
                 type={'workspaces'}
@@ -145,6 +152,13 @@ function Header({ color = 'primary', className = '' }) {
               <DropdownAnt type={'sample'} title={'Sample'} items={templateData} />
               <DropdownAnt type={'create'} title={'Create new'} />
               {/* <DropdownTest></DropdownTest> */}
+=======
+            <div className="mx-1 flex items-center gap-[1rem]">
+              <DropdownAnt type={'header'} title={'Workspaces'} items={items} />
+              <DropdownAnt type={'header'} title={'Recently'} items={items} />
+              <DropdownAnt type={'header'} title={'Starred'} items={items} />
+              <DropdownAnt type={'header'} title={'Sample'} items={items} />
+>>>>>>> 2a212d4 (update Header, DropdownAnt, index.css)
             </div>
           </div>
         </div>
