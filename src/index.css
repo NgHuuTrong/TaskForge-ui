@@ -44,9 +44,9 @@
 
     --color-dark: #445471;
 
-    --dynamic-button-hovered: #091E4224;
+    --header-button-txt-hovered: #0C66E4;
+    --header-button-bg-hovered: #CFE2FF;
     --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
-
     --header-button-color: var(--ds-text-subtle, #44546f);
   }
 

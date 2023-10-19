@@ -1,54 +1,43 @@
 import { CgMenuGridR } from 'react-icons/cg';
-import DropdownAnt from '../components/DropdownAnt';
+import DropdownAnt from '../components/DropdonwAnt/DropdownAnt';
 import { BellOutlined } from '@ant-design/icons';
+import logo from '../assets/logo_blue.png';
 
-function Header() {
+function Header({ color = 'primary', className = '' }) {
   const items = [
     {
-      key: '1',
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
-      ),
+      id: 1,
+      img: '1',
+      title: 'title 1',
+      des: 'des 1',
     },
     {
-      key: '2',
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item
-        </a>
-      ),
+      id: 2,
+      img: '2',
+      title: 'title 2',
+      des: 'des 2',
+    },
+    {
+      id: 3,
+      img: '3',
+      title: 'title 3',
+      des: 'des 3',
     },
   ];
 
   return (
     <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50]">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
-        <button className="flex h-11 w-11 items-center justify-center rounded hover:bg-[--header-button-hovered] hover:text-[--header-button-color]">
+        <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
           <span className="flex  items-center justify-center leading-none">
             <CgMenuGridR size={24} color="color-[#445471]" />
           </span>
         </button>
         <a
           href="/"
-          className="relative block rounded px-4 hover:bg-[--header-button-hovered] hover:text-[--header-button-color]"
+          className="relative block rounded px-2 hover:bg-[--color-grey-200] hover:text-[--header-button-txt-hovered]"
         >
-          <div
-            className="relative block h-11 w-24 bg-[url(https://trello.com/assets/d947df93bc055849898e.gif)] bg-contain bg-center bg-no-repeat py-2 hover:bg-[url(https://trello.com/assets/87e1af770a49ce8e84e3.gif)] hover:opacity-100"
-            style={{
-              filter:
-                'brightness(0) saturate(100%) invert(30%) sepia(53%) saturate(323%) hue-rotate(179deg) brightness(91%) contrast(88%)',
-            }}
-          />
+          <img src={logo} alt="logo" className="h-12 w-auto object-contain" />
         </a>
         <div className="flex basis-full">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
@@ -60,23 +49,23 @@ function Header() {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-evenly">
+        <div className="absolute right-11 flex items-center justify-evenly">
           <div className="mx-2">
             <input
               type="text"
               placeholder="Search"
-              className="flex h-11 rounded-md border-[0.01rem] px-4 py-1 text-lg w-56 [transition:width_.5s_ease-in-out] focus:w-[40rem]"
+              className="flex h-11 w-56 rounded-md border-[0.01rem] px-4 py-1 text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
             />
           </div>
-          <div className='flex items-center justify-center h-11 w-11'>
+          <div className="flex h-11 w-11 items-center justify-center">
             <BellOutlined
               rotate={45}
-              className=""
+              className="cursor-pointer"
               color="black"
             />
           </div>
           <div>
-            <DropdownAnt type={'info'} title={'HP'} items={items}/>
+            <DropdownAnt type={'info'} title={'HP'} items={items} />
           </div>
         </div>
       </nav>
