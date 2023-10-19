@@ -1,5 +1,5 @@
 import { CgMenuGridR } from 'react-icons/cg';
-import DropdownAnt from '../components/DropdonwAnt/DropdownAnt';
+import DropdownAnt from '../features/DropdonwAnt/DropdownAnt';
 import { BellOutlined } from '@ant-design/icons';
 import logo from '../assets/logo_blue.png';
 
@@ -28,20 +28,20 @@ function Header({ color = 'primary', className = '' }) {
   return (
     <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50]">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
-        <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
+        {/* <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
           <span className="flex  items-center justify-center leading-none">
             <CgMenuGridR size={24} color="color-[#445471]" />
           </span>
-        </button>
+        </button> */}
         <a
           href="/"
           className="relative block rounded px-2 hover:bg-[--color-grey-200] hover:text-[--header-button-txt-hovered]"
         >
           <img src={logo} alt="logo" className="h-12 w-auto object-contain" />
         </a>
-        <div className="flex basis-full">
+        <div className="flex items-center basis-full">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
-            <div className="mx-1 flex">
+            <div className="mx-1 flex items-center gap-[1rem]">
               <DropdownAnt type={'header'} title={'Workspaces'} items={items} />
               <DropdownAnt type={'header'} title={'Recently'} items={items} />
               <DropdownAnt type={'header'} title={'Starred'} items={items} />

@@ -40,12 +40,12 @@
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
   --image-grayscale: 0;
   --image-opacity: 100%;
-  
-   --color-dark: #445471;
-    --header-button-txt-hovered: #0C66E4;
-    --header-button-bg-hovered: #CFE2FF;
-    --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
-    --header-button-color: var(--ds-text-subtle, #44546f);
+
+  --color-dark: #445471;
+  --header-button-txt-hovered: #0C66E4;
+  --header-button-bg-hovered: #CFE2FF;
+  --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
+  --header-button-color: var(--ds-text-subtle, #44546f);
 }
 
 :root.dark-mode {
@@ -81,6 +81,7 @@
   --image-opacity: 90%;
 }
 
+:root {
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
   --color-brand-200: #c7d2fe;
@@ -98,7 +99,7 @@
 *,
 *::before,
 *::after {
-  @apply m-0 box-border p-0 transition-[background-color] delay-[0.05s] duration-[0.3s, border];
+  @apply m-0 box-border p-0 transition-[background-color] delay-[0.05s] duration-[0.3s,border];
 
   /* Creating animations for dark mode */
 }
@@ -108,7 +109,7 @@ html {
 }
 
 body {
-  @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s, background-color];
+  @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s,background-color];
   font-family: 'Poppins', sans-serif;
 }
 
@@ -133,13 +134,13 @@ input:disabled {
   @apply bg-[color:var(--color-grey-200)] text-[color:var(--color-grey-500)];
 }
 
-input:focus,
+/* input:focus,
 button:focus,
 textarea:focus,
 select:focus {
   @apply -outline-offset-1;
   outline: 2px solid var(--color-brand-600);
-}
+} */
 
 /* Parent selector, finally 😃 */
 button:has(svg) {

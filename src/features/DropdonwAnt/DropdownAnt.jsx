@@ -1,12 +1,10 @@
 import { Dropdown, Space } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import DropdownItem from './DropdownItem';
 
-const DropdownAnt = ({ type, title, items }) => {
+function DropdownAnt({ type, title, items }) {
   const header =
     'mr-1 flex h-11 rounded p-2 text-lg font-semibold text-[--color-text] hover:bg-[--color-grey-200]';
   const info =
-    'ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-[--color-dark] p-2 text-sm font-semibold text-white hover:bg-[--color-grey-300] hover:text-[--color-dark]';
+    'h-12 w-12 ml-2 flex items-center justify-center rounded-full bg-[--color-dark] p-2 text-sm font-semibold text-white hover:bg-[--color-grey-300] hover:text-[--color-dark]';
 
   const menuProps = {
     items: items.map((item, id) => {
@@ -33,20 +31,18 @@ const DropdownAnt = ({ type, title, items }) => {
         <button
           className={`${
             type === 'info' ? info : header
-          } focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]`}
+          } px-[1.5rem] py-[0.5rem] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]`}
         >
-          <a onClick={(e) => e.preventDefault()}>
-            <Space size={'small'} className="">
+          <span onClick={(e) => e.preventDefault()}>
+            <Space size='small' className='flex items-center text-[1.2rem]'>
               {title}
-              {type === 'header' ? <DownOutlined /> : <></>}
+              {type === 'header' && <i className="fa fa-angle-down"></i>}
             </Space>
-          </a>
+          </span>
         </button>
       </Dropdown>
     </>
   );
-};
-
-// DropdownAnt.displayName = 'DropdownAnt';
+}
 
 export default DropdownAnt;
