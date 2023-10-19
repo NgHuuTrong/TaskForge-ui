@@ -5,12 +5,12 @@ import Sidebar from './Sidebar';
 
 function AppLayout() {
   return (
-    <div className="grid h-screen grid-rows-[auto_1fr]">
+    <div className="flex h-full flex-col bg-[--color-grey-100]">
       <Header />
-      <div className="grid grid-cols-[26rem_minmax(256px,825px)] justify-center mt-16">
+      <div className="mt-[52px] flex justify-center">
         <Sidebar />
-        <main className="bg-[--color-grey-50] px-[4.8rem] pb-[6.4rem] pt-16">
-          <div className="mx-[auto] my-[0] flex max-w-[120rem] flex-col gap-[3.2rem]">
+        <main className="mx-[16px] mt-[40px] w-full min-w-[288px] max-w-[825px] bg-[--color-grey-50]">
+          <div className="mx-[auto] my-[0] flex h-[2000px] max-w-[120rem] flex-col gap-[3.2rem]">
             <Outlet />
           </div>
         </main>
