@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
+<<<<<<< HEAD
 import SubTemplateTabs from './SubTemplateTabs';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowSubTemplateTabs } from '../features/Sidebar/sidebarSlice';
+=======
+>>>>>>> 14c2e78 (update icons for Header, Sidebar)
 
 function SidebarTab({
     icon = null,
@@ -25,6 +28,7 @@ function SidebarTab({
 
     const allClass = base + selectedStyle + types[type];
 
+<<<<<<< HEAD
     const showSubTemplateTabs = useSelector(state => state.sidebar.showSubTemplateTabs);
     const dispatch = useDispatch();
 
@@ -42,12 +46,20 @@ function SidebarTab({
                 }
             }}
         >
+=======
+    return (
+        <Link to={to} className={allClass}>
+>>>>>>> 14c2e78 (update icons for Header, Sidebar)
             <div className='flex items-center gap-3 text-[1.4rem] leading-[30px]'>
                 {icon}
                 <span>{title}</span>
             </div>
             {
+<<<<<<< HEAD
                 type === 'sub-workspace' && <div className='invisible translate-x-0 group-hover/item:visible group-hover/item:-translate-x-3 transition-all duration-300'>
+=======
+                size === 'small' && <div className='invisible translate-x-0 group-hover/item:visible group-hover/item:-translate-x-3 transition-all duration-300'>
+>>>>>>> 14c2e78 (update icons for Header, Sidebar)
                     <FaAngleRight />
                 </div>
             }
