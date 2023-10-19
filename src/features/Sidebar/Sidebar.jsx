@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SidebarTab from '../../ui/SidebarTab';
 import WorkspaceSection from '../../ui/WorkspaceSection';
 import Row from '../../ui/Row';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveTab } from './sidebarSlice';
+import { HiOutlineViewBoards, HiOutlineTemplate } from 'react-icons/hi';
+import { AiOutlineHome } from 'react-icons/ai';
+
 
 const tabs = [
   {
-    icon: <i className="fa fa-table"></i>,
+    icon: <HiOutlineViewBoards size='1.5rem' />,
     title: 'Boards',
     key: 'boards'
   },
   {
-    icon: <i className="fab fa-buffer"></i>,
+    icon: <HiOutlineTemplate size='1.5rem' />,
     title: 'Templates',
     key: 'templates'
   },
   {
-    icon: <i className="fa fa-home"></i>,
+    icon: <AiOutlineHome size='1.5rem' />,
     title: 'Home',
     key: 'home'
   }
@@ -39,7 +42,7 @@ function Sidebar() {
             <SidebarTab
               to='/'
               icon={tab.icon}
-              title={tab.key}
+              title={tab.title}
               size='medium'
               selected={activeTab === tab.key}
             />

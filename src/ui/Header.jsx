@@ -1,6 +1,4 @@
-import { CgMenuGridR } from 'react-icons/cg';
 import DropdownAnt from '../features/DropdonwAnt/DropdownAnt';
-import { BellOutlined } from '@ant-design/icons';
 import logo from '../assets/logo_blue.png';
 import { AiOutlineBell } from 'react-icons/ai';
 
