@@ -1,7 +1,6 @@
-import { CgMenuGridR } from 'react-icons/cg';
 import DropdownAnt from '../features/DropdonwAnt/DropdownAnt';
-import { BellOutlined } from '@ant-design/icons';
 import logo from '../assets/logo_blue.png';
+import { AiOutlineBell } from 'react-icons/ai';
 
 function Header({ color = 'primary', className = '' }) {
   const items = [
@@ -57,11 +56,10 @@ function Header({ color = 'primary', className = '' }) {
               className="flex h-11 w-56 rounded-md border-[0.01rem] px-4 py-1 text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
             />
           </div>
-          <div className="flex h-11 w-11 items-center justify-center">
-            <BellOutlined
-              rotate={45}
-              className="cursor-pointer"
-              color="black"
+          <div className="h-11 w-11 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-[--color-grey-300]">
+            <AiOutlineBell
+              className='text-[2rem] rotate-45'
+              cursor='pointer'
             />
           </div>
           <div>
