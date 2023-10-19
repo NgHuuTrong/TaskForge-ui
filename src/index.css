@@ -40,6 +40,12 @@
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
   --image-grayscale: 0;
   --image-opacity: 100%;
+  
+   --color-dark: #445471;
+    --header-button-txt-hovered: #0C66E4;
+    --header-button-bg-hovered: #CFE2FF;
+    --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
+    --header-button-color: var(--ds-text-subtle, #44546f);
 }
 
 :root.dark-mode {
@@ -75,7 +81,6 @@
   --image-opacity: 90%;
 }
 
-:root {
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
   --color-brand-200: #c7d2fe;
