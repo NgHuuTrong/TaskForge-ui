@@ -3,13 +3,10 @@ import { Avatar } from 'antd'
 import SidebarTab from './SidebarTab'
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveTab } from '../features/Sidebar/sidebarSlice';
-<<<<<<< HEAD
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { HiOutlineViewBoards, HiOutlineUsers } from 'react-icons/hi';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { PiGearLight } from 'react-icons/pi';
-=======
->>>>>>> 3adba71 (update sidebar)
 
 const tabs = [
     {
@@ -65,11 +62,7 @@ function WorkspaceSection({ name }) {
                     {
                         tabs.map(tab => {
                             const key = name + '-' + tab.title;
-<<<<<<< HEAD
-
-=======
                             
->>>>>>> 3adba71 (update sidebar)
                             return <li
                                 className='mb-[0.25rem]'
                                 key={key}
@@ -79,11 +72,7 @@ function WorkspaceSection({ name }) {
                                     to='/'
                                     icon={tab.icon}
                                     title={tab.title}
-<<<<<<< HEAD
-                                    type='sub-workspace'
-=======
                                     size='small'
->>>>>>> 3adba71 (update sidebar)
                                     selected={activeTab === key}
                                 />
                             </li>

@@ -1,4 +1,5 @@
 import { Dropdown, Space } from 'antd';
+import { FaAngleDown } from 'react-icons/fa';
 
 function DropdownAnt({ type, title, items }) {
   const header =
@@ -34,9 +35,9 @@ function DropdownAnt({ type, title, items }) {
           } px-[1.5rem] py-[0.5rem] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]`}
         >
           <span onClick={(e) => e.preventDefault()}>
-            <Space size='small' className='flex items-center text-[1.2rem]'>
-              {title}
-              {type === 'header' && <i className="fa fa-angle-down"></i>}
+            <Space size='small' className='flex items-center'>
+              <span className='text-[1.2rem]'>{title}</span>
+              {type === 'header' && <FaAngleDown size='1.4rem' />}
             </Space>
           </span>
         </button>
