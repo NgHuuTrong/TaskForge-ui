@@ -3,22 +3,26 @@ import { Avatar } from 'antd'
 import SidebarTab from './SidebarTab'
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveTab } from '../features/Sidebar/sidebarSlice';
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { HiOutlineViewBoards, HiOutlineUsers } from 'react-icons/hi';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { PiGearLight } from 'react-icons/pi';
 
 const tabs = [
     {
-        icon: <i className="fa fa-table"></i>,
+        icon: <HiOutlineViewBoards />,
         title: 'Boards'
     },
     {
-        icon: <i className="fa-regular fa-heart"></i>,
+        icon: <AiOutlineHeart />,
         title: 'Highlights'
     },
     {
-        icon: <i className="fa-solid fa-user-group"></i>,
+        icon: <HiOutlineUsers />,
         title: 'Members'
     },
     {
-        icon: <i className="fa fa-cog"></i>,
+        icon: <PiGearLight />,
         title: 'Settings'
     }
 ];
@@ -42,7 +46,7 @@ function WorkspaceSection({ name }) {
                     className='flex justify-center items-center w-[2.3rem] h-[2.3rem] rounded-md'
                 >
                     {
-                        openDropdown ? <i className="fa fa-angle-up"></i> : <i className="fa fa-angle-down"></i>
+                        openDropdown ? <FaAngleUp size='2rem' /> : <FaAngleDown size='2rem' />
                     }
                 </div>
             </div>

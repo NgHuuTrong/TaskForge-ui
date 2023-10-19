@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaAngleRight } from 'react-icons/fa';
 
 function SidebarTab({
     icon = null,
@@ -21,13 +22,13 @@ function SidebarTab({
 
     return (
         <Link to={to} className={allClass}>
-            <div className='flex items-center gap-5 text-[1.4rem] leading-[30px]'>
+            <div className='flex items-center gap-3 text-[1.4rem] leading-[30px]'>
                 {icon}
                 <span>{title}</span>
             </div>
             {
                 size === 'small' && <div className='invisible translate-x-0 group-hover/item:visible group-hover/item:-translate-x-3 transition-all duration-300'>
-                    <i className="fa fa-angle-right"></i>
+                    <FaAngleRight />
                 </div>
             }
         </Link>
