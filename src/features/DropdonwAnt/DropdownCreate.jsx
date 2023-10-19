@@ -10,6 +10,7 @@ const DropdownCreate = ({ title }) => {
       <div href="/" className="my-2 flex max-w-md flex-col justify-center">
         <div className="flex flex-row items-center font-semibold">
 <<<<<<< HEAD
+<<<<<<< HEAD
           {icon}
 =======
           {icon === 'table' ? (
@@ -23,6 +24,10 @@ const DropdownCreate = ({ title }) => {
           )}
 >>>>>>> b3b5137 (update dropdown components)
           <div className='ml-3'>{title}</div>
+=======
+          {icon}
+          <div className="ml-3">{title}</div>
+>>>>>>> 8e4db92 (update Header, DropdownAnt, index.css)
         </div>
         <div className="text-[0.9em]">{des}</div>
       </div>
@@ -32,30 +37,42 @@ const DropdownCreate = ({ title }) => {
     {
       id: 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
       icon: <TbTable />,
 =======
       icon: 'table',
 >>>>>>> b3b5137 (update dropdown components)
+=======
+      icon: <TbTable />,
+>>>>>>> 8e4db92 (update Header, DropdownAnt, index.css)
       title: 'Create table',
       des: 'A board is made up of cards arranged in a list. Use boards to manage projects, track information or organize just about anything.',
     },
     {
       id: 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
       icon: <TbTemplate />,
 =======
       icon: 'template',
 >>>>>>> b3b5137 (update dropdown components)
+=======
+      icon: <TbTemplate />,
+>>>>>>> 8e4db92 (update Header, DropdownAnt, index.css)
       title: 'Start with a template',
       des: 'Get started faster with table templates.',
     },
     {
       id: 3,
 <<<<<<< HEAD
+<<<<<<< HEAD
       icon: <MdOutlinePeopleOutline />,
 =======
       icon: 'workspace',
 >>>>>>> b3b5137 (update dropdown components)
+=======
+      icon: <MdOutlinePeopleOutline />,
+>>>>>>> 8e4db92 (update Header, DropdownAnt, index.css)
       title: 'Create a workspace',
       des: 'A workspace is a collection of boards and people. Use Workspaces to organize your company, support busy people, family or friends',
     },
