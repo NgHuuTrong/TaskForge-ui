@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Avatar } from 'antd'
 import SidebarTab from './SidebarTab'
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveTab } from '../features/Sidebar/sidebarSlice';
 
 const tabs = [
     {
@@ -22,7 +24,8 @@ const tabs = [
 ];
 
 function WorkspaceSection({ name }) {
-    const [selectedTab, setSelectedTab] = useState('');
+    const activeTab = useSelector(state => state.sidebar.activeTab);
+    const dispatch = useDispatch();
     const [openDropdown, setOpenDropdown] = useState(false);
 
     return (
@@ -46,19 +49,23 @@ function WorkspaceSection({ name }) {
             {
                 openDropdown && <ul className='mt-[1rem]'>
                     {
-                        tabs.map(tab => <li
-                            className='mb-[0.25rem]'
-                            key={tab.title}
-                            onClick={() => setSelectedTab(tab.title)}
-                        >
-                            <SidebarTab
-                                to='/'
-                                icon={tab.icon}
-                                title={tab.title}
-                                size='small'
-                                selected={selectedTab === tab.title}
-                            />
-                        </li>
+                        tabs.map(tab => {
+                            const key = name + '-' + tab.title;
+                            
+                            return <li
+                                className='mb-[0.25rem]'
+                                key={key}
+                                onClick={() => dispatch(setActiveTab(key))}
+                            >
+                                <SidebarTab
+                                    to='/'
+                                    icon={tab.icon}
+                                    title={tab.title}
+                                    size='small'
+                                    selected={activeTab === key}
+                                />
+                            </li>
+                        }
                         )
                     }
                 </ul>
