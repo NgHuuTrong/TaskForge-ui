@@ -9,16 +9,8 @@ const DropdownCreate = ({ title }) => {
     return (
       <div href="/" className="my-2 flex max-w-md flex-col justify-center">
         <div className="flex flex-row items-center font-semibold">
-          {icon === 'table' ? (
-            <TbTable />
-          ) : icon === 'template' ? (
-            <TbTemplate />
-          ) : icon === 'workspace' ? (
-            <MdOutlinePeopleOutline />
-          ) : (
-            <></>
-          )}
-          <div className='ml-3'>{title}</div>
+          {icon}
+          <div className="ml-3">{title}</div>
         </div>
         <div className="text-[0.9em]">{des}</div>
       </div>
@@ -27,19 +19,19 @@ const DropdownCreate = ({ title }) => {
   const items = [
     {
       id: 1,
-      icon: 'table',
+      icon: <TbTable />,
       title: 'Create table',
       des: 'A board is made up of cards arranged in a list. Use boards to manage projects, track information or organize just about anything.',
     },
     {
       id: 2,
-      icon: 'template',
+      icon: <TbTemplate />,
       title: 'Start with a template',
       des: 'Get started faster with table templates.',
     },
     {
       id: 3,
-      icon: 'workspace',
+      icon: <MdOutlinePeopleOutline />,
       title: 'Create a workspace',
       des: 'A workspace is a collection of boards and people. Use Workspaces to organize your company, support busy people, family or friends',
     },
