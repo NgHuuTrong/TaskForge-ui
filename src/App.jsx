@@ -30,10 +30,15 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <Routes>
+            <Route element={<AppLayout />}>
+              <Route index element={<Navigate replace to="example" />} />
+              <Route path="example" element={<Example />} />
+            </Route>
             <Route
               path="authenticate"
               element={<Authenticate></Authenticate>}
             />
+<<<<<<< HEAD
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="authenticate" />} />
               <Route path="example" element={<Example />} />
@@ -49,6 +54,8 @@ function App() {
 >>>>>>> 730988d (add login/signup page)
 =======
 >>>>>>> b0f0874 (update styling login/sign-up page)
+=======
+>>>>>>> a1446c5 (fix router, z-index for header)
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
