@@ -72,10 +72,14 @@ function WorkspaceSection({ name }) {
                         tabs.map(tab => {
                             const key = name + '-' + tab.title;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
                             
 >>>>>>> f8e3df0 (update sidebar)
+=======
+
+>>>>>>> a1446c5 (fix router, z-index for header)
                             return <li
                                 className='mb-[0.25rem]'
                                 key={key}
