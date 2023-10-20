@@ -72,7 +72,7 @@ function WorkspaceSection({ name }) {
                                     to='/'
                                     icon={tab.icon}
                                     title={tab.title}
-                                    size='small'
+                                    type='sub-workspace'
                                     selected={activeTab === key}
                                 />
                             </li>

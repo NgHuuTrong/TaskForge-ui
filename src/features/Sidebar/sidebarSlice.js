@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    activeTab: 'boards'
+    activeTab: 'boards',
+    showSubTemplateTabs: false
 };
 
 const sidebarSlice = createSlice({
@@ -10,9 +11,12 @@ const sidebarSlice = createSlice({
     reducers: {
         setActiveTab(state, action) {
             state.activeTab = action.payload;
+        },
+        setShowSubTemplateTabs(state, action) {
+            state.showSubTemplateTabs = action.payload;
         }
     }
 });
 
-export const { setActiveTab } = sidebarSlice.actions;
+export const { setActiveTab, setShowSubTemplateTabs } = sidebarSlice.actions;
 export default sidebarSlice.reducer;

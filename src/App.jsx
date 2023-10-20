@@ -28,7 +28,7 @@ function App() {
             </Route>
             <Route
               path="authenticate"
-              element={<Authenticate></Authenticate>}
+              element={<Authenticate />}
             />
           </Routes>
         </BrowserRouter>
