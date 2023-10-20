@@ -4,9 +4,11 @@ import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import { HiArrowRightOnRectangle } from 'react-icons/hi2';
 import DarkModeToggle from '../../ui/DarkModeToggle';
+import CheckBox from '../../ui/CheckBox';
 
 function ExampleTest() {
   const [val, setVal] = useState('');
+  const [checked, setChecked] = useState(false);
   return (
     <>
       <Row>
@@ -28,6 +30,13 @@ function ExampleTest() {
       </Row>
 
       <DarkModeToggle />
+      <CheckBox
+        size="1rem"
+        checked={checked}
+        onChange={() => setChecked((prev) => !prev)}
+      >
+        Test
+      </CheckBox>
     </>
   );
 }
