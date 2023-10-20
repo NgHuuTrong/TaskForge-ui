@@ -43,7 +43,7 @@ function Sidebar() {
               to='/'
               icon={tab.icon}
               title={tab.title}
-              size='medium'
+              type='main'
               selected={activeTab === tab.key}
             />
           </li>

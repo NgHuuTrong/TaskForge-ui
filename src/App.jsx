@@ -36,7 +36,7 @@ function App() {
             </Route>
             <Route
               path="authenticate"
-              element={<Authenticate></Authenticate>}
+              element={<Authenticate />}
             />
 <<<<<<< HEAD
             <Route element={<AppLayout />}>

@@ -90,10 +90,14 @@ function WorkspaceSection({ name }) {
                                     icon={tab.icon}
                                     title={tab.title}
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     type='sub-workspace'
 =======
                                     size='small'
 >>>>>>> f8e3df0 (update sidebar)
+=======
+                                    type='sub-workspace'
+>>>>>>> e634ed9 (add sub tabs for Templates tab)
                                     selected={activeTab === key}
                                 />
                             </li>
