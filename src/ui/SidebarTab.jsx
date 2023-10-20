@@ -2,11 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import SubTemplateTabs from './SubTemplateTabs';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowSubTemplateTabs } from '../features/Sidebar/sidebarSlice';
 =======
 >>>>>>> 14c2e78 (update icons for Header, Sidebar)
+=======
+import SubTemplateTabs from './SubTemplateTabs';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShowSubTemplateTabs } from '../features/Sidebar/sidebarSlice';
+>>>>>>> e634ed9 (add sub tabs for Templates tab)
 
 function SidebarTab({
     icon = null,
@@ -29,6 +35,9 @@ function SidebarTab({
     const allClass = base + selectedStyle + types[type];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e634ed9 (add sub tabs for Templates tab)
     const showSubTemplateTabs = useSelector(state => state.sidebar.showSubTemplateTabs);
     const dispatch = useDispatch();
 
@@ -46,20 +55,27 @@ function SidebarTab({
                 }
             }}
         >
+<<<<<<< HEAD
 =======
     return (
         <Link to={to} className={allClass}>
 >>>>>>> 14c2e78 (update icons for Header, Sidebar)
+=======
+>>>>>>> e634ed9 (add sub tabs for Templates tab)
             <div className='flex items-center gap-3 text-[1.4rem] leading-[30px]'>
                 {icon}
                 <span>{title}</span>
             </div>
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 type === 'sub-workspace' && <div className='invisible translate-x-0 group-hover/item:visible group-hover/item:-translate-x-3 transition-all duration-300'>
 =======
                 size === 'small' && <div className='invisible translate-x-0 group-hover/item:visible group-hover/item:-translate-x-3 transition-all duration-300'>
 >>>>>>> 14c2e78 (update icons for Header, Sidebar)
+=======
+                type === 'sub-workspace' && <div className='invisible translate-x-0 group-hover/item:visible group-hover/item:-translate-x-3 transition-all duration-300'>
+>>>>>>> e634ed9 (add sub tabs for Templates tab)
                     <FaAngleRight />
                 </div>
             }
