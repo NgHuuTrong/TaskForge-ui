@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:src/components/DropdonwAnt/DropdownAnt.jsx
 import DropdownWorkspaces from './DropdownWorkspaces';
 import DropdownInfo from './DropdownInfo';
@@ -83,6 +84,8 @@ function DropdownAnt({ type, title, items }) {
 >>>>>>> 2a212d4 (update Header, DropdownAnt, index.css):src/features/DropdonwAnt/DropdownAnt.jsx
 =======
 =======
+=======
+>>>>>>> d909e11 (dropdownant)
 import DropdownWorkspaces from './DropdownWorkspaces';
 import DropdownInfo from './DropdownInfo';
 import DropdownStarred from './DropdownStarred';
@@ -111,7 +114,10 @@ const DropdownAnt = ({ type, title, items }) => {
 
   return <>{DropdownComponent}</>;
 };
+<<<<<<< HEAD
 >>>>>>> 14555d5 (update dropdown components):src/components/DropdonwAnt/DropdownAnt.jsx
 >>>>>>> b3b5137 (update dropdown components)
+=======
+>>>>>>> d909e11 (dropdownant)
 
 export default DropdownAnt;
