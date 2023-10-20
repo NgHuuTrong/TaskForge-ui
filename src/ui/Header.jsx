@@ -127,10 +127,6 @@ function Header({ color = 'primary', className = '' }) {
         </a>
         <div className="flex items-center basis-full">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b3b5137 (update dropdown components)
             <div className="mx-1 flex">
               <DropdownAnt
                 type={'workspaces'}
@@ -145,16 +141,6 @@ function Header({ color = 'primary', className = '' }) {
               />
               <DropdownAnt type={'sample'} title={'Sample'} items={templateData} />
               <DropdownAnt type={'create'} title={'Create new'} />
-<<<<<<< HEAD
-=======
-            <div className="mx-1 flex items-center gap-[1rem]">
-              <DropdownAnt type={'header'} title={'Workspaces'} items={items} />
-              <DropdownAnt type={'header'} title={'Recently'} items={items} />
-              <DropdownAnt type={'header'} title={'Starred'} items={items} />
-              <DropdownAnt type={'header'} title={'Sample'} items={items} />
->>>>>>> 2a212d4 (update Header, DropdownAnt, index.css)
-=======
->>>>>>> b3b5137 (update dropdown components)
             </div>
           </div>
         </div>
