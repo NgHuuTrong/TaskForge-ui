@@ -112,7 +112,7 @@ function Header({ color = 'primary', className = '' }) {
   ]
 
   return (
-    <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50]">
+    <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50] z-10">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
         {/* <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
           <span className="flex  items-center justify-center leading-none">

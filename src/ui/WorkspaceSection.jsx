@@ -39,7 +39,14 @@ function WorkspaceSection({ name }) {
                 onClick={() => setOpenDropdown(openDropdown => !openDropdown)}
             >
                 <div className='flex items-center gap-5 text-[1.4rem] leading-[30px] font-semibold'>
-                    <Avatar shape='square' size='small' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>C</Avatar>
+                    <Avatar
+                        className='z-0'
+                        shape='square'
+                        size='small'
+                        style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}
+                    >
+                        C
+                    </Avatar>
                     <span>{name}</span>
                 </div>
                 <div
@@ -55,7 +62,7 @@ function WorkspaceSection({ name }) {
                     {
                         tabs.map(tab => {
                             const key = name + '-' + tab.title;
-                            
+
                             return <li
                                 className='mb-[0.25rem]'
                                 key={key}
