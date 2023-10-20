@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import AppLayout from './ui/AppLayout';
 import Example from './pages/Example';
 import { DarkModeProvider } from './context/DarkModeContext';
-import { Login } from './pages/Login';
+import { Authenticate } from './pages/Authentication';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,11 +22,14 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <Routes>
+            <Route
+              path="authenticate"
+              element={<Authenticate></Authenticate>}
+            />
             <Route element={<AppLayout />}>
-              <Route index element={<Navigate replace to="example" />} />
+              <Route index element={<Navigate replace to="authenticate" />} />
               <Route path="example" element={<Example />} />
             </Route>
-            <Route path="/login" element={<Login></Login>} />{' '}
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
