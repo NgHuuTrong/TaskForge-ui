@@ -62,7 +62,7 @@ function WorkspaceSection({ name }) {
                     {
                         tabs.map(tab => {
                             const key = name + '-' + tab.title;
-                            
+
                             return <li
                                 className='mb-[0.25rem]'
                                 key={key}
