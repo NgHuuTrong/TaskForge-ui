@@ -41,6 +41,9 @@
   --image-grayscale: 0;
   --image-opacity: 100%;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b3b5137 (update dropdown components)
   
    --color-dark: #445471;
     --header-button-txt-hovered: #0C66E4;
@@ -48,6 +51,7 @@
     --header-button-bg-hovered: #CFE2FF;
     --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
     --header-button-color: var(--ds-text-subtle, #44546f);
+<<<<<<< HEAD
 =======
 
   --color-dark: #445471;
@@ -56,6 +60,8 @@
   --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
   --header-button-color: var(--ds-text-subtle, #44546f);
 >>>>>>> 2a212d4 (update Header, DropdownAnt, index.css)
+=======
+>>>>>>> b3b5137 (update dropdown components)
 }
 
 :root.dark-mode {
@@ -104,7 +110,11 @@
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
+<<<<<<< HEAD
 } 
+=======
+} */
+>>>>>>> b3b5137 (update dropdown components)
 
 /* *,
 *::before,

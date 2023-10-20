@@ -1,4 +1,5 @@
 import { Dropdown, Space } from 'antd';
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { RiShareBoxLine } from 'react-icons/ri';
 
@@ -168,6 +169,12 @@ const DropdownInfo = () => {
     },
   ];
 
+=======
+import React from 'react';
+import { AiOutlineDown } from 'react-icons/ai';
+
+const DropdownWorkspaces = ({ type, items, title }) => {
+>>>>>>> b3b5137 (update dropdown components)
   function commonItem(item) {
     return (
       <a href="/" className="flex items-center justify-center">
@@ -181,6 +188,7 @@ const DropdownInfo = () => {
       </a>
     );
   }
+<<<<<<< HEAD
 
   return (
     <Dropdown
@@ -204,3 +212,34 @@ const DropdownInfo = () => {
 };
 
 export default DropdownInfo;
+=======
+  const menuProps = {
+    items: items?.map((item, id) => {
+      return {
+        key: item.id,
+        label: commonItem(item),
+      };
+    }),
+  };
+
+  return (
+    <>
+      <Dropdown menu={menuProps} trigger={['click']} arrow={true}>
+        <button
+          className={
+            'hover:text-[--color-dark] ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-[--color-dark] p-2 text-sm font-semibold text-white hover:bg-[--color-grey-300] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]'
+          }
+        >
+          <a onClick={(e) => e.preventDefault()}>
+            <Space size={'small'} className="">
+              {title}
+            </Space>
+          </a>
+        </button>
+      </Dropdown>
+    </>
+  );
+};
+
+export default DropdownWorkspaces;
+>>>>>>> b3b5137 (update dropdown components)

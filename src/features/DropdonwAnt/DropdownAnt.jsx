@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/features/DropdonwAnt/DropdownAnt.jsx
 import { Dropdown, Space } from 'antd';
 import { FaAngleDown } from 'react-icons/fa';
 
@@ -45,5 +46,35 @@ function DropdownAnt({ type, title, items }) {
     </>
   );
 }
+=======
+import DropdownWorkspaces from './DropdownWorkspaces';
+import DropdownInfo from './DropdownInfo';
+import DropdownStarred from './DropdownStarred';
+import DropdownSample from './DropdownSample';
+import DropdownRecently from './DropdownRecently';
+import DropdownCreate from './DropdownCreate';
+
+const DropdownAnt = ({ type, title, items }) => {
+  
+  const DropdownComponent =
+    type === 'workspaces' ? (
+      <DropdownWorkspaces items={items} title={title} />
+    ) : type === 'info' ? (
+      <DropdownInfo items={items} title={title} />
+    ) : type === 'starred' ? (
+      <DropdownStarred items={items} title={title} />
+    ) : type === 'sample' ? (
+      <DropdownSample items={items} title={title} />
+    ) : type === 'recently' ? (
+      <DropdownRecently items={items} title={title} />
+    ) : type === 'create' ? (
+      <DropdownCreate title={title} />
+    ) : (
+      <></>
+    );
+
+  return <>{DropdownComponent}</>;
+};
+>>>>>>> 14555d5 (update dropdown components):src/components/DropdonwAnt/DropdownAnt.jsx
 
 export default DropdownAnt;

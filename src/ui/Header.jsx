@@ -113,7 +113,6 @@ function Header({ color = 'primary', className = '' }) {
     },
   ]
 
-
   return (
     <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50] z-10">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
@@ -144,11 +143,10 @@ function Header({ color = 'primary', className = '' }) {
               />
               <DropdownAnt type={'sample'} title={'Sample'} items={templateData} />
               <DropdownAnt type={'create'} title={'Create new'} />
-              {/* <DropdownTest></DropdownTest> */}
             </div>
           </div>
         </div>
-        <div className="flex absolute right-11 items-center justify-evenly">
+        <div className="flex right-11 items-center justify-evenly">
           <div className="flex mx-2">
             <input
               type="text"
