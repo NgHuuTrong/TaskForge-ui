@@ -24,6 +24,93 @@ function Header({ color = 'primary', className = '' }) {
     },
   ];
 
+  const workspaceData = [
+    {
+      id: 1,
+      imageWorkspace: '',
+      nameWorkspace: 'Van Hieu workspace',
+      current: false,
+      projects: [
+        {
+          id: 1,
+          imageProject: '',
+          nameProject: 'Project 1',
+          starred: true,
+        },
+        {
+          id: 2,
+          imageProject: '',
+          nameProject: 'Project 2',
+          starred: true,
+        },
+      ],
+    },
+    {
+      id: 2,
+      imageWorkspace: '',
+      nameWorkspace: 'Huu Trong workspace',
+      current: false,
+      projects: []
+    },
+    {
+      id: 3,
+      imageWorkspace: '',
+      nameWorkspace: 'Hai Nam workspace',
+      current: true,
+      projects: [
+        {
+          id: 1,
+          imageProject: '',
+          nameProject: 'Project 1',
+          starred: true,
+        },
+        {
+          id: 2,
+          imageProject: '',
+          nameProject: 'Project 2',
+          starred: false,
+        },
+      ],
+    },
+    {
+      id: 4,
+      imageWorkspace: '',
+      nameWorkspace: 'Khanh Hoa workspace',
+      current: false,
+      projects: [],
+    },
+    {
+      id: 5,
+      imageWorkspace: '',
+      nameWorkspace: 'Phuoc Hung workspace',
+      current: false,
+      projects: [],
+    },
+  ];
+
+  const templateData = [
+    {
+      id: 1,
+      imageTemplate: '',
+      nameTemplate: 'Meeting Agenda',
+    },
+    {
+      id: 2,
+      imageTemplate: '',
+      nameTemplate: 'Company Overview',
+    },
+    {
+      id: 3,
+      imageTemplate: '',
+      nameTemplate: 'Project manager',
+    },
+    {
+      id: 4,
+      imageTemplate: '',
+      nameTemplate: 'Business manager',
+    },
+  ]
+
   return (
     <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50] z-10">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
@@ -40,20 +127,29 @@ function Header({ color = 'primary', className = '' }) {
         </a>
         <div className="flex items-center basis-full">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
-            <div className="mx-1 flex items-center gap-[1rem]">
-              <DropdownAnt type={'header'} title={'Workspaces'} items={items} />
-              <DropdownAnt type={'header'} title={'Recently'} items={items} />
-              <DropdownAnt type={'header'} title={'Starred'} items={items} />
-              <DropdownAnt type={'header'} title={'Sample'} items={items} />
+            <div className="mx-1 flex">
+              <DropdownAnt
+                type={'workspaces'}
+                title={'Workspaces'}
+                items={workspaceData}
+              />
+              <DropdownAnt type={'recently'} title={'Recently'} items={items} />
+              <DropdownAnt
+                type={'starred'}
+                title={'Starred'}
+                items={workspaceData}
+              />
+              <DropdownAnt type={'sample'} title={'Sample'} items={templateData} />
+              <DropdownAnt type={'create'} title={'Create new'} />
             </div>
           </div>
         </div>
-        <div className="absolute right-11 flex items-center justify-evenly">
-          <div className="mx-2">
+        <div className="flex right-11 items-center justify-evenly">
+          <div className="flex mx-2">
             <input
               type="text"
               placeholder="Search"
-              className="flex h-11 w-56 rounded-md border-[0.01rem] px-4 py-1 text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
+              className="flex h-11 w-56 rounded-md border-[0.01rem] px-4 py-full text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
             />
           </div>
           <div className="h-11 w-11 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-[--color-grey-300]">
