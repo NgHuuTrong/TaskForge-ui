@@ -22,14 +22,14 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <Routes>
+            <Route element={<AppLayout />}>
+              <Route index element={<Navigate replace to="example" />} />
+              <Route path="example" element={<Example />} />
+            </Route>
             <Route
               path="authenticate"
               element={<Authenticate></Authenticate>}
             />
-            <Route element={<AppLayout />}>
-              <Route index element={<Navigate replace to="authenticate" />} />
-              <Route path="example" element={<Example />} />
-            </Route>
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
