@@ -23,8 +23,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<AppLayout />}>
-              {/* <Route index element={<Navigate replace to="example" />} /> */}
-              {/* <Route path="example" element={<Example />} /> */}
+              <Route index element={<Navigate replace to="example" />} />
+              <Route path="example" element={<Example />} />
               <Route path="templates" element={<Templates />} />
             </Route>
           </Routes>

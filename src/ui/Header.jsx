@@ -25,7 +25,7 @@ function Header({ color = 'primary', className = '' }) {
   ];
 
   return (
-    <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50]">
+    <header className="fixed z-50 w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50]">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
         {/* <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
           <span className="flex  items-center justify-center leading-none">
@@ -38,7 +38,7 @@ function Header({ color = 'primary', className = '' }) {
         >
           <img src={logo} alt="logo" className="h-12 w-auto object-contain" />
         </a>
-        <div className="flex items-center basis-full">
+        <div className="flex basis-full items-center">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
             <div className="mx-1 flex items-center gap-[1rem]">
               <DropdownAnt type={'header'} title={'Workspaces'} items={items} />
@@ -56,11 +56,8 @@ function Header({ color = 'primary', className = '' }) {
               className="flex h-11 w-56 rounded-md border-[0.01rem] px-4 py-1 text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
             />
           </div>
-          <div className="h-11 w-11 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-[--color-grey-300]">
-            <AiOutlineBell
-              className='text-[2rem] rotate-45'
-              cursor='pointer'
-            />
+          <div className="flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 hover:bg-[--color-grey-300]">
+            <AiOutlineBell className="rotate-45 text-[2rem]" cursor="pointer" />
           </div>
           <div>
             <DropdownAnt type={'info'} title={'HP'} items={items} />
