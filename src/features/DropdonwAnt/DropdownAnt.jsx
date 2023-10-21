@@ -11,7 +11,7 @@ const DropdownAnt = ({ type, title, items }) => {
     type === 'workspaces' ? (
       <DropdownWorkspaces items={items} title={title} />
     ) : type === 'info' ? (
-      <DropdownInfo items={items} title={title} />
+      <DropdownInfo />
     ) : type === 'starred' ? (
       <DropdownStarred items={items} title={title} />
     ) : type === 'sample' ? (
