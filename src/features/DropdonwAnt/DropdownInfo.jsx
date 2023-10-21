@@ -1,5 +1,6 @@
 import { Dropdown, Space } from 'antd';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { RiShareBoxLine } from 'react-icons/ri';
 
 const DropdownInfo = () => {
   const [open, setOpen] = useState(false);
@@ -10,8 +11,8 @@ const DropdownInfo = () => {
     change === 'visible' ? setChange('invisible') : setChange('visible');
   };
 
-  const handleSelected = (e, select) => {
-    setSelected(select);
+  const handleMouseLeave = (e) => {
+    setChange('invisible');
   };
 
   const handleMenuClick = (e) => {
@@ -49,12 +50,12 @@ const DropdownInfo = () => {
     {
       key: '1',
       type: 'group',
-      label: <div className="font-semibold">Account</div>,
+      label: <div className="font-semibold my-3">Account</div>,
       children: [
         {
           key: '1-1',
           label: (
-            <div className="flex items-center">
+            <div className="flex items-center my-2">
               <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-full bg-[--color-dark] text-[--color-grey-100]">
                 <div className="">{userData.userSName}</div>
               </div>
@@ -67,19 +68,14 @@ const DropdownInfo = () => {
         },
         {
           key: '1-2',
-          label: (
-            <a href="/">
-              Switch Account
-              {/* icon */}
-            </a>
-          ),
+          label: <a className='flex my-2' href="/">Switch Account</a>,
         },
         {
           key: '1-3',
           label: (
-            <a href="/">
+            <a className='flex justify-between items-center my-2' href="/">
               Account Management
-              {/* icon */}
+              <RiShareBoxLine />
             </a>
           ),
         },
@@ -91,48 +87,28 @@ const DropdownInfo = () => {
     {
       key: '2',
       type: 'group',
-      label: <div className="font-semibold">Trello</div>,
+      label: <div className="font-semibold flex my-2">Trello</div>,
       children: [
         {
           key: '2-1',
-          label: (
-            <a href="/">
-              Profile and Display
-              {/* icon */}
-            </a>
-          ),
+          label: <a className='flex my-2' href="/">Profile and Display</a>,
         },
         {
           key: '2-2',
-          label: (
-            <a href="/">
-              Work
-              {/* icon */}
-            </a>
-          ),
+          label: <a className='flex my-2' href="/">Work</a>,
         },
         {
           key: '2-3',
-          label: (
-            <a href="/">
-              Card
-              {/* icon */}
-            </a>
-          ),
+          label: <a className='flex my-2' href="/">Card</a>,
         },
         {
           key: '2-4',
-          label: (
-            <a href="/">
-              Setting
-              {/* icon */}
-            </a>
-          ),
+          label: <a className='flex my-2' href="/">Setting</a>,
         },
         {
           key: '2-5',
           label: (
-            <div className="relative flex">
+            <div className="relative flex my-2">
               <div
                 onClick={handleClick}
                 className="flex w-full overflow-hidden"
@@ -140,21 +116,24 @@ const DropdownInfo = () => {
                 Topic
               </div>
               <div
-                className={`absolute right-80 flex w-72 flex-col rounded-lg bg-[--color-grey-0] shadow-2xl ${change}`}
+                onMouseLeave={handleMouseLeave}
+                className={`absolute right-[19rem] flex w-72 flex-col rounded-lg bg-[--color-grey-0] hover:cursor-default shadow-2xl ${change}`}
               >
                 {topics.map((topic) => {
                   return (
                     <div
                       key={topic.id}
-                      className={`flex w-full items-center justify-evenly rounded-md p-5 font-medium hover:bg-[--color-grey-300] hover:text-[--header-button-txt-hovered] ${
+                      className={`flex h-24 w-full items-center justify-evenly rounded-md p-5 font-medium hover:bg-[--color-grey-300] hover:text-[--header-button-txt-hovered] [transition:background.4s_ease-in-out]${
                         topic.id === selected
-                          ? 'bg-[--header-button-bg-hovered]'
+                          ? 'bg-[--header-button-bg-hovered] hover:bg-[--header-button-bg-hovered]'
                           : ''
                       }`}
                     >
                       <input
                         type="checkbox"
+                        checked={topic.id === selected}
                         onClick={() => setSelected(topic.id)}
+                        className='hover:cursor-pointer'
                       ></input>
                       <div
                         className={`h-16 w-20 rounded-xl bg-center object-contain bg-[url(${topic.imageUrl})]`}
@@ -168,6 +147,24 @@ const DropdownInfo = () => {
           ),
         },
       ],
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: '3',
+      label: <a className='flex my-2' href="/">Help</a>,
+    },
+    {
+      key: '4',
+      label: <a className='flex my-2' href="/">Shorcut</a>,
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: '5',
+      label: <a className='flex my-2' href="/">Log out</a>,
     },
   ];
 
@@ -184,7 +181,6 @@ const DropdownInfo = () => {
       </a>
     );
   }
-
 
   return (
     <Dropdown
