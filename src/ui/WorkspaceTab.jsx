@@ -27,7 +27,7 @@ const tabs = [
     }
 ];
 
-function WorkspaceSection({ name }) {
+function WorkspaceTab({ name }) {
     const activeTab = useSelector(state => state.sidebar.activeTab);
     const dispatch = useDispatch();
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -85,4 +85,4 @@ function WorkspaceSection({ name }) {
     )
 }
 
-export default WorkspaceSection
+export default WorkspaceTab

@@ -1,5 +1,6 @@
 import Background from '../../assets/AuthenticationBackground.jpg';
-export const AuthenticateFormOverLay = ({ isSignIn }) => {
+
+function AuthenticateFormOverLay({ isSignIn }) {
   return (
     <div
       className="absolute right-0 top-0 z-40 h-full overflow-hidden shadow-2xl"
@@ -72,4 +73,6 @@ export const AuthenticateFormOverLay = ({ isSignIn }) => {
       </div>
     </div>
   );
-};
+}
+
+export default AuthenticateFormOverLay;

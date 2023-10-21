@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Button({
   children,
-  disabled,
+  disabled = false,
   to,
   size = 'medium',
   type = 'primary',
@@ -25,7 +25,7 @@ function Button({
       'text-[--color-brand-50] bg-[--color-brand-600] hover:bg-[--color-brand-700] ',
     secondary:
       base +
-      'text-[--color-grey-600] bg-[--color-grey-0] border-[1px] border-[solid] border-[--color-grey-200] hover:bg-[--color-grey-100] ',
+      'text-[--color-grey-700] bg-[--color-grey-200] border-[1px] border-[solid] border-[--color-grey-200] hover:bg-[--color-grey-300] ',
     danger:
       base +
       'text-[--color-red-100] bg-[--color-red-700] hover:bg-[--color-red-800]',

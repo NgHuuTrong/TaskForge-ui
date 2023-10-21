@@ -4,7 +4,8 @@ import Button from '../../ui/Button';
 import { SocialIcons } from './SocialIcons';
 import Logo from '../../assets/logo_red.png';
 import { useNavigate } from 'react-router-dom';
-export const SignInForm = ({ setIsSignIn, isSignIn }) => {
+
+function SignInForm({ setIsSignIn, isSignIn }) {
   const navigate = useNavigate();
   return (
     <form
@@ -16,7 +17,7 @@ export const SignInForm = ({ setIsSignIn, isSignIn }) => {
     >
       <div className="flex h-full flex-col px-20 py-20 text-center">
         <div className="flex w-full flex-col justify-start">
-          <img src={Logo} className="w-40"></img>
+          <img src={Logo} className="w-40" alt='logo' />
           <p className="mb-28 mt-8 text-start text-4xl font-semibold">
             Welcome back👋
           </p>
@@ -62,4 +63,6 @@ export const SignInForm = ({ setIsSignIn, isSignIn }) => {
       </div>
     </form>
   );
-};
+}
+
+export default SignInForm;

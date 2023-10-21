@@ -1,6 +1,6 @@
 import React from 'react';
 import SidebarTab from '../../ui/SidebarTab';
-import WorkspaceSection from '../../ui/WorkspaceSection';
+import WorkspaceTab from '../../ui/WorkspaceTab';
 import Row from '../../ui/Row';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveTab } from './sidebarSlice';
@@ -57,8 +57,8 @@ function Sidebar() {
             <span className='text-[2.3rem] cursor-pointer'>+</span>
           </div>
         </Row>
-        <WorkspaceSection name='CS300-Project' />
-        <WorkspaceSection name='CS163-Project' />
+        <WorkspaceTab name='CS300-Project' />
+        <WorkspaceTab name='CS163-Project' />
       </div>
     </aside >
   );
