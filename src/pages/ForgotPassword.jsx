@@ -1,22 +1,14 @@
-import Logo from '../assets/logo_black.png';
 import { Button, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { MailOutlined } from '@ant-design/icons';
+import FormTitle from '../features/Authenticate/FormTitle';
 
 function ForgotPassword() {
   const navigate = useNavigate();
   return (
     <div className="shadow-4xl flex h-screen w-screen items-center justify-center overflow-hidden">
       <div className="relative flex flex-col bg-white px-16 pb-20 pt-12 shadow-2xl">
-        <button
-          onClick={() => navigate('/example')}
-          className="absolute -top-[50px] left-1/2 -translate-x-[75px]"
-        >
-          <img src={Logo} className="flex w-60" alt='logo' />
-        </button>
-        <p className="mb-20 mt-16 text-4xl font-bold text-black">
-          <p>Forgot Your Password?</p>
-        </p>
+        <FormTitle title="Forgot Your Password?"></FormTitle>
         <form>
           <Input
             size="default"
@@ -32,7 +24,7 @@ function ForgotPassword() {
           </Button>
           <div className="mt-2 flex w-full justify-center">
             <Button
-              className="text-xl text-zinc-400 border-none"
+              className="border-none text-xl text-zinc-400"
               onClick={() => navigate('/authenticate')}
             >
               Back to sign in
