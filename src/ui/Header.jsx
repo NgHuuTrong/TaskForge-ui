@@ -129,7 +129,7 @@ function Header({ color = 'primary', className = '' }) {
         </a>
         <div className="flex items-center basis-full">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
-            <div className="mx-1 flex">
+            <div className="mx-1 flex gap-2">
               <DropdownAnt
                 type={'workspaces'}
                 title={'Workspaces'}

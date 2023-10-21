@@ -108,11 +108,11 @@
 html {
   @apply text-[62.5%];
 }
-/* 
+
 body {
   @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s,background-color];
   font-family: 'Poppins', sans-serif;
-} */
+}
 
 input,
 button,
