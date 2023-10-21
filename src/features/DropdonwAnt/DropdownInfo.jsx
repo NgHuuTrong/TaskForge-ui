@@ -6,7 +6,7 @@ const DropdownInfo = () => {
   const [open, setOpen] = useState(false);
   const [change, setChange] = useState('invisible');
   const [selected, setSelected] = useState(1);
-  const [loading, setLoading] = useState(false);
+
   const handleClick = () => {
     change === 'visible' ? setChange('invisible') : setChange('visible');
   };
