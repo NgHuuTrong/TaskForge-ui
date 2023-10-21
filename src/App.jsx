@@ -31,8 +31,8 @@ function App() {
               <Route path="boards" element={<Boards />} />
             </Route>
             <Route path="authenticate" element={<Authenticate />} />
-            <Route path="password_forgot" element={<ForgotPassword />} />
-            <Route path="password_reset" element={<ResetPassword />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="reset-password" element={<ResetPassword />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

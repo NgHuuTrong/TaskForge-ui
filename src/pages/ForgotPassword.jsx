@@ -1,9 +1,8 @@
-import { useForm } from 'react-hook-form';
-import Image from '../assets/forgot.png';
 import Logo from '../assets/logo_black.png';
 import { Button, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { MailOutlined } from '@ant-design/icons';
+
 function ForgotPassword() {
   const navigate = useNavigate();
   return (
@@ -13,7 +12,7 @@ function ForgotPassword() {
           onClick={() => navigate('/example')}
           className="absolute -top-[50px] left-1/2 -translate-x-[75px]"
         >
-          <img src={Logo} className="flex w-60"></img>
+          <img src={Logo} className="flex w-60" alt='logo' />
         </button>
         <p className="mb-20 mt-16 text-4xl font-bold text-black">
           <p>Forgot Your Password?</p>
@@ -22,7 +21,7 @@ function ForgotPassword() {
           <Input
             size="default"
             placeholder="Enter your email"
-            prefix={<MailOutlined></MailOutlined>}
+            prefix={<MailOutlined />}
             className="mb-8 h-20 w-full"
           ></Input>
           <Button
@@ -32,12 +31,12 @@ function ForgotPassword() {
             Reset password
           </Button>
           <div className="mt-2 flex w-full justify-center">
-            <button
-              className="text-xl text-zinc-400"
+            <Button
+              className="text-xl text-zinc-400 border-none"
               onClick={() => navigate('/authenticate')}
             >
               Back to sign in
-            </button>
+            </Button>
           </div>
         </form>
       </div>

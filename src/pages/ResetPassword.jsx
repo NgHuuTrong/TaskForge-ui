@@ -1,8 +1,8 @@
-import { useForm } from 'react-hook-form';
 import Logo from '../assets/logo_black.png';
 import { Button, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { LockOutlined } from '@ant-design/icons';
+
 function ResetPassword() {
   const navigate = useNavigate();
   return (
@@ -12,7 +12,7 @@ function ResetPassword() {
           onClick={() => navigate('/example')}
           className="absolute -top-[50px] left-1/2 -translate-x-[75px]"
         >
-          <img src={Logo} className="flex w-60"></img>
+          <img src={Logo} className="flex w-60" alt='logo' />
         </button>
         <p className="mb-20 mt-12 flex justify-center text-4xl font-bold text-black">
           <p>Reset your password</p>
@@ -43,12 +43,12 @@ function ResetPassword() {
             Reset password
           </Button>
           <div className="mt-2 flex w-full justify-center">
-            <button
-              className="text-xl text-zinc-400"
+            <Button
+              className="text-xl text-zinc-400 border-none"
               onClick={() => navigate('/authenticate')}
             >
               Back to sign in
-            </button>
+            </Button>
           </div>
         </form>
       </div>
