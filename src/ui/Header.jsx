@@ -1,8 +1,7 @@
 import DropdownAnt from '../features/DropdonwAnt/DropdownAnt';
 import logo from '../assets/logo_blue.png';
 import { AiOutlineBell } from 'react-icons/ai';
-import { CgMenuGridR } from "react-icons/cg";
-
+import { CgMenuGridR } from 'react-icons/cg';
 
 function Header({ color = 'primary', className = '' }) {
   const items = [
@@ -52,7 +51,7 @@ function Header({ color = 'primary', className = '' }) {
       imageWorkspace: '',
       nameWorkspace: 'Huu Trong workspace',
       current: false,
-      projects: []
+      projects: [],
     },
     {
       id: 3,
@@ -111,10 +110,10 @@ function Header({ color = 'primary', className = '' }) {
       imageTemplate: '',
       nameTemplate: 'Business manager',
     },
-  ]
+  ];
 
   return (
-    <header className="fixed w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50] z-10">
+    <header className="fixed z-50 w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50]">
       <nav className="flex items-center justify-between px-[4.8rem] py-[1.2rem]">
         <button className="flex h-11 w-16 items-center justify-center rounded hover:bg-[--color-grey-200] hover:text-[--header-button-color]">
           <span className="flex  items-center justify-center leading-none">
@@ -127,7 +126,7 @@ function Header({ color = 'primary', className = '' }) {
         >
           <img src={logo} alt="logo" className="h-12 w-auto object-contain" />
         </a>
-        <div className="flex items-center basis-full">
+        <div className="flex basis-full items-center">
           <div className="relative flex h-full shrink-0 flex-grow items-stretch">
             <div className="mx-1 flex gap-2">
               <DropdownAnt
@@ -141,24 +140,25 @@ function Header({ color = 'primary', className = '' }) {
                 title={'Starred'}
                 items={workspaceData}
               />
-              <DropdownAnt type={'sample'} title={'Sample'} items={templateData} />
+              <DropdownAnt
+                type={'sample'}
+                title={'Sample'}
+                items={templateData}
+              />
               <DropdownAnt type={'create'} title={'Create new'} />
             </div>
           </div>
         </div>
-        <div className="flex right-11 items-center justify-evenly">
-          <div className="flex mx-2">
+        <div className="right-11 flex items-center justify-evenly">
+          <div className="mx-2 flex">
             <input
               type="text"
               placeholder="Search"
-              className="flex h-11 w-56 rounded-md border-[0.01rem] px-4 py-full text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
+              className="py-full flex h-11 w-56 rounded-md border-[0.01rem] px-4 text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
             />
           </div>
-          <div className="h-11 w-11 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-[--color-grey-300]">
-            <AiOutlineBell
-              className='text-[2rem] rotate-45'
-              cursor='pointer'
-            />
+          <div className="flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 hover:bg-[--color-grey-300]">
+            <AiOutlineBell className="rotate-45 text-[2rem]" cursor="pointer" />
           </div>
           <div>
             <DropdownAnt type={'info'} title={'HP'} items={items} />

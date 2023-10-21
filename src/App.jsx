@@ -1,9 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { DarkModeProvider } from './context/DarkModeContext';
 
 import AppLayout from './ui/AppLayout';
 import Example from './pages/Example';
+import Templates from './pages/Templates';
 import { DarkModeProvider } from './context/DarkModeContext';
 import Authenticate from './pages/Authentication';
 import Boards from './pages/Boards';
@@ -26,6 +28,7 @@ function App() {
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="example" />} />
               <Route path="example" element={<Example />} />
+              <Route path="templates" element={<Templates />} />
               <Route path="boards" element={<Boards />} />
             </Route>
             <Route path="authenticate" element={<Authenticate />} />
