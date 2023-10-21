@@ -1,10 +1,10 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useState } from 'react';
-import { AuthenticateFormOverLay } from '../features/Authenticate/AuthenticateFormOverlay';
-import { SignInForm } from '../features/Authenticate/SignInForm';
-import { SignUpForm } from '../features/Authenticate/SignUpForm';
-export const Authenticate = ({}) => {
+import AuthenticateFormOverLay from '../features/Authenticate/AuthenticateFormOverlay';
+import SignInForm from '../features/Authenticate/SignInForm';
+import SignUpForm from '../features/Authenticate/SignUpForm';
+
+function Authenticate() {
   const [isSignIn, setIsSignIn] = useState(true);
   return (
     <div
@@ -20,13 +20,15 @@ export const Authenticate = ({}) => {
         }}
         id="login-container"
       >
-        <SignUpForm setIsSignIn={setIsSignIn} isSignIn={isSignIn}></SignUpForm>
-        <SignInForm isSignIn={isSignIn} setIsSignIn={setIsSignIn}></SignInForm>
+        <SignUpForm setIsSignIn={setIsSignIn} isSignIn={isSignIn} />
+        <SignInForm isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
         <AuthenticateFormOverLay
           isSignIn={isSignIn}
           setIsSignIn={setIsSignIn}
-        ></AuthenticateFormOverLay>
+        />
       </div>
     </div>
   );
-};
+}
+
+export default Authenticate;

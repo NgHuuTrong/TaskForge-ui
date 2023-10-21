@@ -4,8 +4,10 @@ import { SocialIcons } from './SocialIcons';
 import Logo from '../../assets/logo_red.png';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-export const SignUpForm = ({ setIsSignIn, isSignIn }) => {
+
+function SignUpForm({ setIsSignIn, isSignIn }) {
   const navigate = useNavigate();
+  
   return (
     <div
       className="absolute left-0 top-0 h-full w-1/2 bg-white"
@@ -61,4 +63,6 @@ export const SignUpForm = ({ setIsSignIn, isSignIn }) => {
       </form>
     </div>
   );
-};
+}
+
+export default SignUpForm;

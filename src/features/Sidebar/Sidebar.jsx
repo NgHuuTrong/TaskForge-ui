@@ -1,11 +1,12 @@
 import React from 'react';
 import SidebarTab from '../../ui/SidebarTab';
-import WorkspaceSection from '../../ui/WorkspaceSection';
+import WorkspaceTab from '../../ui/WorkspaceTab';
 import Row from '../../ui/Row';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveTab } from './sidebarSlice';
 import { HiOutlineViewBoards, HiOutlineTemplate } from 'react-icons/hi';
 import { AiOutlineHome } from 'react-icons/ai';
+import Heading from '../../ui/Heading';
 
 
 const tabs = [
@@ -50,15 +51,15 @@ function Sidebar() {
           )
         }
       </ul>
-      <div className='grow flex flex-col gap-[1rem] overflow-y-auto'>
+      <div className='grow flex flex-col gap-2 overflow-y-auto'>
         <Row classNames='text-[--color-grey-500] px-[1rem]'>
-          <h3 className='text-[1.3rem] font-semibold'>Workspaces</h3>
+          <Heading className='text-[1.3rem] font-semibold' as='h5'>Workspaces</Heading>
           <div className='flex justify-center items-center hover:bg-[--color-grey-200] w-[2.3rem] h-[2.3rem] rounded-md'>
             <span className='text-[2.3rem] cursor-pointer'>+</span>
           </div>
         </Row>
-        <WorkspaceSection name='CS300-Project' />
-        <WorkspaceSection name='CS163-Project' />
+        <WorkspaceTab name='CS300-Project' />
+        <WorkspaceTab name='CS163-Project' />
       </div>
     </aside >
   );
