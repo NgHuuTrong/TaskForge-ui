@@ -8,7 +8,7 @@ function Heading({
         h2: 'text-[2.5rem]',
         h3: 'text-[2rem]',
         h4: 'text-[1.75rem]',
-        h5: 'text-[1.5rem]'
+        h5: 'text-[1.3rem]'
     }
 
     return (

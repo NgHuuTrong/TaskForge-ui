@@ -42,7 +42,7 @@ function WorkspaceTab({ name }) {
     const [openDropdown, setOpenDropdown] = useState(false);
 
     return (
-        <div className='w-full mb-4'>
+        <div className='w-full mb-2'>
             <div
                 className='flex justify-between items-center font-medium w-full rounded-xl px-[1rem] py-[0.25rem] text-[--color-grey-500] hover:bg-[--color-grey-200] cursor-pointer'
                 onClick={() => setOpenDropdown(openDropdown => !openDropdown)}
