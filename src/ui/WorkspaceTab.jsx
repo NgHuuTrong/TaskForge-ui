@@ -3,19 +3,10 @@ import { Avatar } from 'antd'
 import SidebarTab from './SidebarTab'
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveTab } from '../features/Sidebar/sidebarSlice';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 14c2e78 (update icons for Header, Sidebar)
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { HiOutlineViewBoards, HiOutlineUsers } from 'react-icons/hi';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { PiGearLight } from 'react-icons/pi';
-<<<<<<< HEAD
-=======
->>>>>>> f8e3df0 (update sidebar)
-=======
->>>>>>> 14c2e78 (update icons for Header, Sidebar)
 
 const tabs = [
     {
@@ -71,15 +62,6 @@ function WorkspaceTab({ name }) {
                     {
                         tabs.map(tab => {
                             const key = name + '-' + tab.title;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-                            
->>>>>>> f8e3df0 (update sidebar)
-=======
-
->>>>>>> a1446c5 (fix router, z-index for header)
                             return <li
                                 className='mb-[0.25rem]'
                                 key={key}
@@ -89,15 +71,8 @@ function WorkspaceTab({ name }) {
                                     to='/'
                                     icon={tab.icon}
                                     title={tab.title}
-<<<<<<< HEAD
-<<<<<<< HEAD
                                     type='sub-workspace'
-=======
                                     size='small'
->>>>>>> f8e3df0 (update sidebar)
-=======
-                                    type='sub-workspace'
->>>>>>> e634ed9 (add sub tabs for Templates tab)
                                     selected={activeTab === key}
                                 />
                             </li>
