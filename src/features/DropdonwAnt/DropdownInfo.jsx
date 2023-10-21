@@ -1,9 +1,18 @@
-import { Dropdown, Space, Menu } from 'antd';
-import React, { useState } from 'react';
-import { Checkbox } from 'antd';
+import { Dropdown, Space } from 'antd';
+import React, { useState, useEffect } from 'react';
 
 const DropdownInfo = () => {
   const [open, setOpen] = useState(false);
+  const [change, setChange] = useState('invisible');
+  const [selected, setSelected] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const handleClick = () => {
+    change === 'visible' ? setChange('invisible') : setChange('visible');
+  };
+
+  const handleSelected = (e, select) => {
+    setSelected(select);
+  };
 
   const handleMenuClick = (e) => {
     if (e.key === '') {
@@ -24,12 +33,16 @@ const DropdownInfo = () => {
 
   const topics = [
     {
-      key: '1',
-      label: <div>Bright Mode</div>,
+      id: 1,
+      imageUrl: 'https://trello.com/assets/a3a279edd7e5baaef4f7.svg',
+      title: 'Bright Mode',
+      selected: true,
     },
     {
-      key: '2',
-      label: <div>Dark Mode</div>,
+      id: 2,
+      imageUrl: 'https://trello.com/assets/cb4097b01b57e5d91727.svg',
+      title: 'Dark Mode',
+      selected: false,
     },
   ];
   const items = [
@@ -45,7 +58,7 @@ const DropdownInfo = () => {
               <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-full bg-[--color-dark] text-[--color-grey-100]">
                 <div className="">{userData.userSName}</div>
               </div>
-              <div className="flex flex-col justify-center">
+              <div className={`flex flex-col justify-center`}>
                 <div>{userData.userFName}</div>
                 <div>{userData.userEmail}</div>
               </div>
@@ -64,10 +77,10 @@ const DropdownInfo = () => {
         {
           key: '1-3',
           label: (
-            <div href="/">
+            <a href="/">
               Account Management
               {/* icon */}
-            </div>
+            </a>
           ),
         },
       ],
@@ -83,19 +96,19 @@ const DropdownInfo = () => {
         {
           key: '2-1',
           label: (
-            <div href="/">
+            <a href="/">
               Profile and Display
               {/* icon */}
-            </div>
+            </a>
           ),
         },
         {
           key: '2-2',
           label: (
-            <div href="/">
+            <a href="/">
               Work
               {/* icon */}
-            </div>
+            </a>
           ),
         },
         {
@@ -119,11 +132,39 @@ const DropdownInfo = () => {
         {
           key: '2-5',
           label: (
-            <Menu.SubMenu key="2-5" title="Topic">
-              {topics.map((topic) => (
-                <Menu.Item key={topic.key}>{topic.label}</Menu.Item>
-              ))}
-            </Menu.SubMenu>
+            <div className="relative flex">
+              <div
+                onClick={handleClick}
+                className="flex w-full overflow-hidden"
+              >
+                Topic
+              </div>
+              <div
+                className={`absolute right-80 flex w-72 flex-col rounded-lg bg-[--color-grey-0] shadow-2xl ${change}`}
+              >
+                {topics.map((topic) => {
+                  return (
+                    <div
+                      key={topic.id}
+                      className={`flex w-full items-center justify-evenly rounded-md p-5 font-medium hover:bg-[--color-grey-300] hover:text-[--header-button-txt-hovered] ${
+                        topic.id === selected
+                          ? 'bg-[--header-button-bg-hovered]'
+                          : ''
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        onClick={() => setSelected(topic.id)}
+                      ></input>
+                      <div
+                        className={`h-16 w-20 rounded-xl bg-center object-contain bg-[url(${topic.imageUrl})]`}
+                      ></div>
+                      <div className="flex">{topic.title}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           ),
         },
       ],
@@ -143,26 +184,26 @@ const DropdownInfo = () => {
       </a>
     );
   }
+
+
   return (
-    <>
-      <Dropdown
-        open={open}
-        onOpenChange={handleOpenChange}
-        menu={{ items, onClick: handleMenuClick }}
-        trigger={['click']}
-        arrow={true}
+    <Dropdown
+      open={open}
+      onOpenChange={handleOpenChange}
+      menu={{ items, onClick: handleMenuClick }}
+      trigger={['click']}
+      arrow={true}
+    >
+      <button
+        className={
+          'ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-[--color-dark] p-2 text-sm font-semibold text-white hover:bg-[--color-grey-300] hover:text-[--color-dark] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]'
+        }
       >
-        <button
-          className={
-            'ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-[--color-dark] p-2 text-sm font-semibold text-white hover:bg-[--color-grey-300] hover:text-[--color-dark] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]'
-          }
-        >
-          <Space size={'small'} className="">
-            {userData.userSName}
-          </Space>
-        </button>
-      </Dropdown>
-    </>
+        <Space size={'small'} className="">
+          {userData.userSName}
+        </Space>
+      </button>
+    </Dropdown>
   );
 };
 
