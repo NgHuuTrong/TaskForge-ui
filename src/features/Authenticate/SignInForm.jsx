@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import Button from '../../ui/Button';
 import { SocialIcons } from './SocialIcons';
 import Logo from '../../assets/logo_red.png';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function SignInForm({ setIsSignIn, isSignIn }) {
   const navigate = useNavigate();
@@ -35,13 +35,12 @@ function SignInForm({ setIsSignIn, isSignIn }) {
           prefix={<LockOutlined />}
           className="mb-4"
         />
-        <a
-          href="#"
-          className="mb-8 text-end text-base"
-          style={{ color: '#4994e5' }}
+        <Link
+          to="/forgot-password"
+          className="mb-8 text-end text-base text-[--color-brand-600]"
         >
           Forgot password?
-        </a>
+        </Link>
         <Button
           classNames="rounded-none bg-[linear-gradient(225deg,_rgba(84,213,219,1)_45%,_rgba(73,148,229,1)_97%)] flex justify-center items-center h-16"
           onClick={() => navigate('/example')}
