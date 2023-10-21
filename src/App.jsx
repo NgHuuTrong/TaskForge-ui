@@ -8,6 +8,8 @@ import { DarkModeProvider } from './context/DarkModeContext';
 import { Login } from './pages/Login';
 import Authenticate from './pages/Authentication';
 import Boards from './pages/Boards';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,8 +40,6 @@ function App() {
               element={<Authenticate />}
             />
             <Route path="/login" element={<Login></Login>} />{' '}
-
-            <Route path="authenticate"element={<Authenticate />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
