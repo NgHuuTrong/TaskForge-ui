@@ -1,6 +1,7 @@
 import { Dropdown, Space } from 'antd';
 import React, { useState } from 'react';
 import { RiShareBoxLine } from 'react-icons/ri';
+import { MdOutlineWeb } from 'react-icons/md';
 
 const DropdownInfo = () => {
   const [open, setOpen] = useState(false);
@@ -11,17 +12,17 @@ const DropdownInfo = () => {
     change === 'visible' ? setChange('invisible') : setChange('visible');
   };
 
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = () => {
     setChange('invisible');
   };
 
   const handleMenuClick = (e) => {
     if (e.key === '') {
       setOpen(false);
-      console.log(open);
     }
   };
   const handleOpenChange = (flag) => {
+    setChange('invisible');
     setOpen(flag);
   };
 
@@ -35,13 +36,13 @@ const DropdownInfo = () => {
   const topics = [
     {
       id: 1,
-      imageUrl: 'https://trello.com/assets/a3a279edd7e5baaef4f7.svg',
+      icon: <MdOutlineWeb size={40} color="white" />,
       title: 'Bright Mode',
       selected: true,
     },
     {
       id: 2,
-      imageUrl: 'https://trello.com/assets/cb4097b01b57e5d91727.svg',
+      icon: <MdOutlineWeb size={40} color="black" />,
       title: 'Dark Mode',
       selected: false,
     },
@@ -50,30 +51,36 @@ const DropdownInfo = () => {
     {
       key: '1',
       type: 'group',
-      label: <div className="font-semibold my-3">Account</div>,
+      label: <div className="my-3 font-semibold">Account</div>,
       children: [
         {
           key: '1-1',
           label: (
-            <div className="flex items-center my-2">
+            <div className="my-2 flex items-center">
               <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-full bg-[--color-dark] text-[--color-grey-100]">
                 <div className="">{userData.userSName}</div>
               </div>
               <div className={`flex flex-col justify-center`}>
                 <div>{userData.userFName}</div>
-                <div>{userData.userEmail}</div>
+                <div className="text-sm text-[--color-grey-500]">
+                  {userData.userEmail}
+                </div>
               </div>
             </div>
           ),
         },
         {
           key: '1-2',
-          label: <a className='flex my-2' href="/">Switch Account</a>,
+          label: (
+            <a className="my-2 flex" href="/">
+              Switch Account
+            </a>
+          ),
         },
         {
           key: '1-3',
           label: (
-            <a className='flex justify-between items-center my-2' href="/">
+            <a className="my-2 flex items-center justify-between" href="/">
               Account Management
               <RiShareBoxLine />
             </a>
@@ -87,28 +94,44 @@ const DropdownInfo = () => {
     {
       key: '2',
       type: 'group',
-      label: <div className="font-semibold flex my-2">Trello</div>,
+      label: <div className="my-2 flex font-semibold">Trello</div>,
       children: [
         {
           key: '2-1',
-          label: <a className='flex my-2' href="/">Profile and Display</a>,
+          label: (
+            <a className="my-2 flex" href="/">
+              Profile and Display
+            </a>
+          ),
         },
         {
           key: '2-2',
-          label: <a className='flex my-2' href="/">Work</a>,
+          label: (
+            <a className="my-2 flex" href="/">
+              Work
+            </a>
+          ),
         },
         {
           key: '2-3',
-          label: <a className='flex my-2' href="/">Card</a>,
+          label: (
+            <a className="my-2 flex" href="/">
+              Card
+            </a>
+          ),
         },
         {
           key: '2-4',
-          label: <a className='flex my-2' href="/">Setting</a>,
+          label: (
+            <a className="my-2 flex" href="/">
+              Setting
+            </a>
+          ),
         },
         {
           key: '2-5',
           label: (
-            <div className="relative flex my-2">
+            <div className="relative my-2 flex">
               <div
                 onClick={handleClick}
                 className="flex w-full overflow-hidden"
@@ -117,7 +140,7 @@ const DropdownInfo = () => {
               </div>
               <div
                 onMouseLeave={handleMouseLeave}
-                className={`absolute right-[19rem] flex w-72 flex-col rounded-lg bg-[--color-grey-0] hover:cursor-default shadow-2xl ${change}`}
+                className={`absolute right-[17rem] flex w-72 flex-col rounded-lg bg-[--color-grey-0] shadow-[5px_10px_18px_#888888] hover:cursor-default ${change}`}
               >
                 {topics.map((topic) => {
                   return (
@@ -132,13 +155,17 @@ const DropdownInfo = () => {
                       <input
                         type="checkbox"
                         checked={topic.id === selected}
-                        onClick={() => setSelected(topic.id)}
-                        className='hover:cursor-pointer'
+                        onChange={() => setSelected(topic.id)}
+                        className="flex-1 hover:cursor-pointer"
                       ></input>
                       <div
-                        className={`h-16 w-20 rounded-xl bg-center object-contain bg-[url(${topic.imageUrl})]`}
-                      ></div>
-                      <div className="flex">{topic.title}</div>
+                        className={'flex-1 rounded-xl bg-[--color-grey-200] flex items-center justify-center'}
+                      >
+                        {topic.icon}
+                      </div>
+                      <div className="flex-[3] flex items-center justify-center">
+                      {topic.title}
+                      </div>
                     </div>
                   );
                 })}
@@ -153,18 +180,30 @@ const DropdownInfo = () => {
     },
     {
       key: '3',
-      label: <a className='flex my-2' href="/">Help</a>,
+      label: (
+        <a className="my-2 flex" href="/">
+          Help
+        </a>
+      ),
     },
     {
       key: '4',
-      label: <a className='flex my-2' href="/">Shorcut</a>,
+      label: (
+        <a className="my-2 flex" href="/">
+          Shorcut
+        </a>
+      ),
     },
     {
       type: 'divider',
     },
     {
       key: '5',
-      label: <a className='flex my-2' href="/">Log out</a>,
+      label: (
+        <a className="my-2 flex" href="/">
+          Log out
+        </a>
+      ),
     },
   ];
 

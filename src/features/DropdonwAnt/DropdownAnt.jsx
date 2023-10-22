@@ -4,9 +4,9 @@ import DropdownStarred from './DropdownStarred';
 import DropdownSample from './DropdownSample';
 import DropdownRecently from './DropdownRecently';
 import DropdownCreate from './DropdownCreate';
+import DropdonwnNotification from './DropdownNotification';
 
-const DropdownAnt = ({ type, title, items }) => {
-  
+const DropdownAnt = ({ type, items, title }) => {
   const DropdownComponent =
     type === 'workspaces' ? (
       <DropdownWorkspaces items={items} title={title} />
@@ -20,12 +20,13 @@ const DropdownAnt = ({ type, title, items }) => {
       <DropdownRecently items={items} title={title} />
     ) : type === 'create' ? (
       <DropdownCreate title={title} />
+    ) : type === 'noti' ? (
+      <DropdonwnNotification items={items} />
     ) : (
       <></>
     );
 
   return <>{DropdownComponent}</>;
 };
-
 
 export default DropdownAnt;
