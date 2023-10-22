@@ -9,15 +9,7 @@ const DropdownCreate = ({ title }) => {
     return (
       <div href="/" className="my-2 flex max-w-md flex-col justify-center">
         <div className="flex flex-row items-center font-semibold">
-          {icon === 'table' ? (
-            <TbTable />
-          ) : icon === 'template' ? (
-            <TbTemplate />
-          ) : icon === 'workspace' ? (
-            <MdOutlinePeopleOutline />
-          ) : (
-            <></>
-          )}
+          {icon}
           <div className="ml-3">{title}</div>
         </div>
         <div className="text-[0.9em]">{des}</div>

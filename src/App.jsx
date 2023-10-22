@@ -5,11 +5,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import AppLayout from './ui/AppLayout';
 import Example from './pages/Example';
 import { DarkModeProvider } from './context/DarkModeContext';
-import { Login } from './pages/Login';
 import Authenticate from './pages/Authentication';
 import Boards from './pages/Boards';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,7 +36,7 @@ function App() {
               path="authenticate"
               element={<Authenticate />}
             />
-            <Route path="/login" element={<Login></Login>} />{' '}
+            {/* <Route path="/login" element={<Login></Login>} />{' '} */}
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

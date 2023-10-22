@@ -149,7 +149,7 @@ function Header({ color = 'primary', className = '' }) {
             </div>
           </div>
         </div>
-        <div className="right-11 flex items-center justify-evenly">
+        <div className="right-11 absolute flex items-center justify-evenly">
           <div className="mx-2 flex">
             <input
               type="text"
