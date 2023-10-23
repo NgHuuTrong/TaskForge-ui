@@ -47,12 +47,12 @@ const DropdownSample = ({ items, title }) => {
             'mr-4 flex h-11 rounded p-2 text-lg font-semibold text-[--color-grey-500] hover:bg-[--color-grey-200] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]'
           }
         >
-          <a onClick={(e) => e.preventDefault()}>
-            <Space size={'small'} className="">
+          <span onClick={(e) => e.preventDefault()}>
+            <Space size={'small'} className="text-[1.3rem]">
               {title}
               <AiOutlineDown size={10} />
             </Space>
-          </a>
+          </span>
         </button>
       </Dropdown>
     </>

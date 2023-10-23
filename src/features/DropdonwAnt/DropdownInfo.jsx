@@ -234,7 +234,7 @@ const DropdownInfo = () => {
           'ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-[--color-dark] p-2 text-sm font-semibold text-white hover:bg-[--color-grey-300] hover:text-[--color-dark] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]'
         }
       >
-        <Space size={'small'} className="">
+        <Space size={'small'}>
           {userData.userSName}
         </Space>
       </button>

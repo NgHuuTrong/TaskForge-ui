@@ -4,7 +4,7 @@ import DropdownStarred from './DropdownStarred';
 import DropdownSample from './DropdownSample';
 import DropdownRecently from './DropdownRecently';
 import DropdownCreate from './DropdownCreate';
-import DropdonwnNotification from './DropdownNotification';
+import DropdownNotification from './DropdownNotification';
 
 const DropdownAnt = ({ type, items, title }) => {
   const DropdownComponent =
@@ -21,7 +21,7 @@ const DropdownAnt = ({ type, items, title }) => {
     ) : type === 'create' ? (
       <DropdownCreate title={title} />
     ) : type === 'noti' ? (
-      <DropdonwnNotification items={items} />
+      <DropdownNotification items={items} />
     ) : (
       <></>
     );

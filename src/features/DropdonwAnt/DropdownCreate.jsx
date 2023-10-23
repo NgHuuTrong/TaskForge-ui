@@ -54,11 +54,11 @@ const DropdownCreate = ({ title }) => {
             'mr-1 flex h-11 rounded bg-[--header-button-txt-hovered] p-2 text-lg font-semibold text-[--color-grey-0] hover:bg-[--header-button-hovered-200] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]'
           }
         >
-          <a onClick={(e) => e.preventDefault()}>
-            <Space size={'small'} className="">
+          <span onClick={(e) => e.preventDefault()}>
+            <Space size={'small'} className="text-[1.3rem]">
               {title}
             </Space>
-          </a>
+          </span>
         </button>
       </Dropdown>
     </>

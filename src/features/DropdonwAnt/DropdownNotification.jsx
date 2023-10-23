@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Dropdown, Space, Divider, Switch } from 'antd';
 import { AiOutlineBell } from 'react-icons/ai';
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import DropdownItem from './DropdownItem';
 import Notification from './Notification';
 
-const DropdonwnNotification = ({ items }) => {
+const DropdownNotification = ({ items }) => {
   const [open, setOpen] = useState(false);
   const [unreadOnly, setUnreadOnly] = useState(true);
 
@@ -34,8 +33,6 @@ const DropdonwnNotification = ({ items }) => {
                   <div className="flex items-center text-sm text-[--color-grey-500]">
                     Show unread only
                     <Switch
-                      checkedChildren={<CheckOutlined />}
-                      unCheckedChildren={<CloseOutlined />}
                       defaultChecked
                       size="small"
                       className="mx-4"
@@ -82,4 +79,4 @@ const DropdonwnNotification = ({ items }) => {
   );
 };
 
-export default DropdonwnNotification;
+export default DropdownNotification;
