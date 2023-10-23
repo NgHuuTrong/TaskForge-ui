@@ -26,6 +26,14 @@ const DropdownInfo = () => {
     setOpen(flag);
   };
 
+  function commonItem(item) {
+    const { title, link } = item;
+    return (
+      <a className="my-2 flex" href={link ? link : '/'}>
+        {title}
+      </a>
+    );
+  }
   const userData = {
     userSName: 'HT',
     userFName: 'To Phuoc Hung',
@@ -71,11 +79,7 @@ const DropdownInfo = () => {
         },
         {
           key: '1-2',
-          label: (
-            <a className="my-2 flex" href="/">
-              Switch Account
-            </a>
-          ),
+          label: commonItem({ title: 'Switch Account', link: '/' }),
         },
         {
           key: '1-3',
@@ -98,35 +102,19 @@ const DropdownInfo = () => {
       children: [
         {
           key: '2-1',
-          label: (
-            <a className="my-2 flex" href="/">
-              Profile and Display
-            </a>
-          ),
+          label: commonItem({ title: 'Profile and Display', link: '/' }),
         },
         {
           key: '2-2',
-          label: (
-            <a className="my-2 flex" href="/">
-              Work
-            </a>
-          ),
+          label: commonItem({ title: 'Work', link: '/' }),
         },
         {
           key: '2-3',
-          label: (
-            <a className="my-2 flex" href="/">
-              Card
-            </a>
-          ),
+          label: commonItem({ title: 'Card', link: '/' }),
         },
         {
           key: '2-4',
-          label: (
-            <a className="my-2 flex" href="/">
-              Setting
-            </a>
-          ),
+          label: commonItem({ title: 'Setting', link: '/' }),
         },
         {
           key: '2-5',
@@ -158,13 +146,11 @@ const DropdownInfo = () => {
                         onChange={() => setSelected(topic.id)}
                         className="flex-1 hover:cursor-pointer"
                       ></input>
-                      <div
-                        className={'flex-1 rounded-xl bg-[--color-grey-200] flex items-center justify-center'}
-                      >
+                      <div className='flex flex-1 items-center justify-center rounded-xl bg-[--color-grey-200]'>
                         {topic.icon}
                       </div>
-                      <div className="flex-[3] flex items-center justify-center">
-                      {topic.title}
+                      <div className="flex flex-[3] items-center justify-center">
+                        {topic.title}
                       </div>
                     </div>
                   );
@@ -180,46 +166,20 @@ const DropdownInfo = () => {
     },
     {
       key: '3',
-      label: (
-        <a className="my-2 flex" href="/">
-          Help
-        </a>
-      ),
+      label: commonItem({ title: 'Help', link: '/' }),
     },
     {
       key: '4',
-      label: (
-        <a className="my-2 flex" href="/">
-          Shorcut
-        </a>
-      ),
+      label: commonItem({ title: 'Shortcut', link: '/' }),
     },
     {
       type: 'divider',
     },
     {
       key: '5',
-      label: (
-        <a className="my-2 flex" href="/">
-          Log out
-        </a>
-      ),
+      label:commonItem({ title: 'Log out', link: '/' }),
     },
   ];
-
-  function commonItem(item) {
-    return (
-      <a href="/" className="flex items-center justify-center">
-        <div className="flex-[1] object-contain">
-          <img src={item.img} alt="image_alt" />
-        </div>
-        <div className="flex-[3]">
-          <div>{item.title}</div>
-          <div>{item.des}</div>
-        </div>
-      </a>
-    );
-  }
 
   return (
     <Dropdown
