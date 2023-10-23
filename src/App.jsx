@@ -31,7 +31,15 @@ function App() {
               <Route path="templates" element={<Templates />} />
               <Route path="boards" element={<Boards />} />
             </Route>
-            <Route path="authenticate" element={<Authenticate />} />
+            <Route element={<AppLayout />}>
+              <Route index element={<Navigate replace to="authenticate" />} />
+              <Route path="example" element={<Example />} />
+            </Route>
+            <Route
+              path="authenticate"
+              element={<Authenticate />}
+            />
+            {/* <Route path="/login" element={<Login></Login>} />{' '} */}
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
