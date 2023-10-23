@@ -1,7 +1,7 @@
 import DropdownAnt from '../features/DropdonwAnt/DropdownAnt';
 import logo from '../assets/logo_blue.png';
-import { AiOutlineBell } from 'react-icons/ai';
 import { CgMenuGridR } from 'react-icons/cg';
+import Input from './Input';
 
 function Header({ color = 'primary', className = '' }) {
   const items = [
@@ -111,6 +111,29 @@ function Header({ color = 'primary', className = '' }) {
       nameTemplate: 'Business manager',
     },
   ];
+  const notiData = [
+    {
+      id: 1,
+      img: '',
+      title: 'Hoa invited you to his project',
+      time: '1 hour before',
+      read: true,
+    },
+    {
+      id: 2,
+      img: '',
+      title: 'Nam edited your project',
+      time: '4 hour before',
+      read: false,
+    },
+    {
+      id: 3,
+      img: '',
+      title: 'Trong edited your project',
+      time: '2 hour before',
+      read: true,
+    },
+  ];
 
   return (
     <header className="fixed z-10 w-screen items-center border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50]">
@@ -149,19 +172,15 @@ function Header({ color = 'primary', className = '' }) {
             </div>
           </div>
         </div>
-        <div className="right-11 flex items-center justify-evenly">
+        <div className="absolute right-11 flex items-center justify-evenly">
           <div className="mx-2 flex">
-            <input
-              type="text"
-              placeholder="Search"
-              className="py-full flex h-11 w-56 rounded-md border-[0.01rem] px-4 text-lg [transition:width_.5s_ease-in-out] focus:w-[40rem]"
-            />
+            <Input classNames='w-[15rem] rounded-md text-lg outline-none [transition:width_.5s_ease-in-out] focus:w-[40rem] focus:border-[var(--color-brand-600)]' placeholder="Search" />
           </div>
-          <div className="flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 hover:bg-[--color-grey-300]">
-            <AiOutlineBell className="rotate-45 text-[2rem]" cursor="pointer" />
+          <div className="flex">
+            <DropdownAnt type={'noti'} items={notiData} />
           </div>
-          <div>
-            <DropdownAnt type={'info'} title={'HP'} items={items} />
+          <div className="flex">
+            <DropdownAnt type={'info'} />
           </div>
         </div>
       </nav>
