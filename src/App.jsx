@@ -6,6 +6,7 @@ import { DarkModeProvider } from './context/DarkModeContext';
 import AppLayout from './ui/AppLayout';
 import Example from './pages/Example';
 import Templates from './pages/Templates';
+import Settings from './pages/Settings';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,6 +28,7 @@ function App() {
               <Route path="example" element={<Example />} />
               <Route path="templates" element={<Templates />} />
             </Route>
+            <Route path='u/settings' element={<Settings />}/>
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
