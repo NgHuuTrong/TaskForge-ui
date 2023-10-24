@@ -1,17 +1,28 @@
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-function ButtonImage({ url, custom, title, to, subscription, hasStarred = true, type = 'url' }) {
+function ButtonImage({
+  url,
+  custom,
+  title,
+  to,
+  subscription,
+  hasStarred = true,
+  type = 'url',
+  height = '40px',
+  width = '280px',
+}) {
   return (
     <Link
       to={to}
-      className="flex h-[48px] min-w-0 items-center justify-between rounded-xl bg-[--color-grey-50] p-[4px] pr-[8px] hover:bg-[--color-grey-100]"
+      className="flex min-w-0 items-center justify-between rounded-xl bg-[--color-grey-50] p-[4px] pr-[8px] hover:bg-[--color-grey-100]"
+      style={{ width: width, height: height }}
     >
-      <div className="flex items-center">
+      <div className="flex items-center h-full">
         {type === 'url' && (
           <div
             className={
-              'mr-[8px] block h-[32px] w-[40px] flex-[0_0_auto] rounded-[4px] bg-cover bg-center'
+              'mr-[8px] block h-full w-[40px] flex-[0_0_auto] rounded-[4px] bg-cover bg-center'
             }
             style={{ backgroundImage: `url(${url ? url : '/project.jpeg'})` }}
           />
