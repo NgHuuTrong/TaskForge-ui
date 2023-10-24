@@ -41,14 +41,12 @@
   --image-grayscale: 0;
   --image-opacity: 100%;
 
-  
-   --color-dark: #445471;
-    --header-button-txt-hovered: #0C66E4;
-    --header-button-hovered-200: #074fb3;
-    --header-button-bg-hovered: #CFE2FF;
-    --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
-    --header-button-color: var(--ds-text-subtle, #44546f);
-
+  --color-dark: #445471;
+  --header-button-txt-hovered: #0c66e4;
+  --header-button-hovered-200: #074fb3;
+  --header-button-bg-hovered: #cfe2ff;
+  --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
+  --header-button-color: var(--ds-text-subtle, #44546f);
 }
 
 :root.dark-mode {
@@ -97,7 +95,7 @@
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
-} 
+}
 
 /* *,
 *::before,
@@ -113,7 +111,7 @@ html {
 
 body {
   @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s,background-color];
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 input,
