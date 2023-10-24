@@ -8,35 +8,34 @@ import { HiOutlineViewBoards, HiOutlineTemplate } from 'react-icons/hi';
 import { AiOutlineHome } from 'react-icons/ai';
 import Heading from '../../ui/Heading';
 
-
 const tabs = [
   {
-    icon: <HiOutlineViewBoards size='1.5rem' />,
+    icon: <HiOutlineViewBoards size="1.5rem" />,
     title: 'Boards',
-    key: 'boards'
+    key: 'boards',
   },
   {
-    icon: <HiOutlineTemplate size='1.5rem' />,
+    icon: <HiOutlineTemplate size="1.5rem" />,
     title: 'Templates',
-    key: 'templates'
+    key: 'templates',
   },
   {
-    icon: <AiOutlineHome size='1.5rem' />,
+    icon: <AiOutlineHome size="1.5rem" />,
     title: 'Home',
-    key: 'home'
-  }
+    key: 'home',
+  },
 ];
 
 function Sidebar() {
-  const activeTab = useSelector(state => state.sidebar.activeTab);
+  const activeTab = useSelector((state) => state.sidebar.activeTab);
   const dispatch = useDispatch();
 
   return (
-    <aside className="hidden h-screen w-1/6 bg-[--color-grey-50] md:flex flex-col gap-[2rem] px-[0.6rem] py-[3.2rem]">
-      <ul className='pb-[1rem] border-b'>
-        {
-          tabs.map(tab => <li
-            className='mb-[0.25rem]'
+    <aside className="sticky top-[40px] mt-[40px] hidden max-h-[90vh] w-[288px] flex-col bg-[--color-grey-50] px-[16px] md:flex">
+      <ul className="border-b py-[1rem]">
+        {tabs.map((tab) => (
+          <li
+            className="mb-[0.25rem]"
             key={tab.key}
             onClick={() => dispatch(setActiveTab(tab.key))}
           >
@@ -44,24 +43,25 @@ function Sidebar() {
               to={'/' + tab.key}
               icon={tab.icon}
               title={tab.title}
-              type='main'
+              type="main"
               selected={activeTab === tab.key}
             />
           </li>
-          )
-        }
+        ))}
       </ul>
-      <div className='grow flex flex-col gap-2 overflow-y-auto'>
-        <Row classNames='text-[--color-grey-500] px-[1rem]'>
-          <Heading className='text-[1.3rem] font-semibold' as='h5'>Workspaces</Heading>
-          <div className='flex justify-center items-center hover:bg-[--color-grey-200] w-[2.3rem] h-[2.3rem] rounded-md'>
-            <span className='text-[2.3rem] cursor-pointer'>+</span>
+      <div className="flex grow flex-col gap-2 overflow-y-auto">
+        <Row classNames="text-[--color-grey-500] p-[1rem]">
+          <Heading className="text-[1.3rem] font-semibold" as="h5">
+            Workspaces
+          </Heading>
+          <div className="flex h-[2.3rem] w-[2.3rem] items-center justify-center rounded-md hover:bg-[--color-grey-200]">
+            <span className="cursor-pointer text-[2.3rem]">+</span>
           </div>
         </Row>
-        <WorkspaceTab name='CS300-Project' />
-        <WorkspaceTab name='CS163-Project' />
+        <WorkspaceTab name="CS300-Project" />
+        <WorkspaceTab name="CS163-Project" />
       </div>
-    </aside >
+    </aside>
   );
 }
 
