@@ -39,7 +39,6 @@ export const { method2, fetching } = exampleSlice.actions;
 
 export function method1(amount, currency) {
   if (currency === 'USD') return { type: 'example/method1', payload: amount };
-  console.log(amount, currency);
 
   return async function (dispatch, getState) {
     dispatch({ type: 'example/fetching' });
