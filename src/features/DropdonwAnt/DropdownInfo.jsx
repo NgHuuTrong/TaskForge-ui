@@ -138,6 +138,7 @@ const DropdownInfo = () => {
                         ? 'bg-[--header-button-bg-hovered] hover:bg-[--header-button-bg-hovered]'
                         : ''
                         }`}
+                        onClick={() => setSelected(topic.id)}
                     >
                       <input
                         type="checkbox"

@@ -12,7 +12,6 @@ const DropdownCreate = ({ title }) => {
     const { icon, title, des } = item;
     return (
       <div
-        href="/"
         className="my-2 flex max-w-md flex-col justify-center"
         onClick={() => setOpenModal(true)}
       >
@@ -58,7 +57,7 @@ const DropdownCreate = ({ title }) => {
   return (
     <>
       <div>
-        <Modal openModal={openModal} setOpenModal={setOpenModal} size={'large'} background={workspacebg}/>
+        <Modal openModal={openModal} setOpenModal={setOpenModal} size={'large'} background={workspacebg} />
       </div>
       <Dropdown menu={menuProps} trigger={['click']} arrow={true}>
         <button
