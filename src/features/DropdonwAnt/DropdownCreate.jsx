@@ -3,8 +3,7 @@ import { Dropdown, Space } from 'antd';
 import { TbTemplate, TbTable } from 'react-icons/tb';
 import { MdOutlinePeopleOutline } from 'react-icons/md';
 import Modal from '../../ui/Modal';
-import workspacebg from '../../assets/workspacebg.png'
-
+import workspacebg from '../../assets/workspacebg.png';
 
 const DropdownCreate = ({ title }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -57,7 +56,12 @@ const DropdownCreate = ({ title }) => {
   return (
     <>
       <div>
-        <Modal openModal={openModal} setOpenModal={setOpenModal} size={'large'} background={workspacebg} />
+        <Modal
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          size={'large'}
+          background={workspacebg}
+        />
       </div>
       <Dropdown menu={menuProps} trigger={['click']} arrow={true}>
         <button
