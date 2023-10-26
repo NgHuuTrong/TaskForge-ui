@@ -9,6 +9,7 @@ import Authenticate from './pages/Authentication';
 import Boards from './pages/Boards';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import AddMember from './pages/AddMember';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +30,7 @@ function App() {
               <Route index element={<Navigate replace to="example" />} />
               <Route path="example" element={<Example />} />
               <Route path="boards" element={<Boards />} />
+              <Route path="add-member" element={<AddMember />} />
             </Route>
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="authenticate" />} />

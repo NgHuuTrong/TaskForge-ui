@@ -41,7 +41,7 @@ function Sidebar() {
             onClick={() => dispatch(setActiveTab(tab.key))}
           >
             <SidebarTab
-              to='/'
+              to="/"
               icon={tab.icon}
               title={tab.title}
               type='main'
