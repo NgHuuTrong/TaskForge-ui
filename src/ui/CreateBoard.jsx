@@ -71,22 +71,147 @@ function CreateBoard() {
     </div>
   );
 
+  const renderBackgroundImageList = () => {
+    return (
+      backgroundImage.map((item) => (
+        item.key < 5 && <div
+          onClick={() => { setSelectedIndex(item.key); setBackgroundType('image') }}
+          key={item.key} className='flex w-[64px] h-[40px] rounded-[3px]'
+          style={{ backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover' }}
+        >
+          {selectedIndex === item.key && backgroundType === 'image' ?
+            <div className='w-full h-full hover:cursor-pointer'>
+              <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
+                <IoIosCheckmark size={30} color='white' />
+              </div>
+            </div> :
+            <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
+            </div>}
+        </div>
+      ))
+    )
+  }
+
+  const renderBackgroundColorList = () => {
+    return (
+      backgroundColor.map((item) => (
+        item.key < 6 ?
+          <div
+            onClick={() => { setSelectedIndex(item.key); setBackgroundType('color') }}
+            key={item.key} className='flex w-[40px] h-[32px] rounded-[3px]'
+            style={{ backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover' }}
+          >
+            {selectedIndex === item.key && backgroundType === 'color' ?
+              <div className='w-full h-full hover:cursor-pointer'>
+                <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
+                  <IoIosCheckmark size={30} color='white' />
+                </div>
+              </div> :
+              <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
+              </div>}
+          </div> :
+          <Popover
+            key={item.key}
+            className='flex justify-center items-center w-[40px] h-[32px] bg-[--color-grey-200] rounded-[3px] hover:bg-[--create-board-button-hovered]'
+            arrow={false}
+            placement="right" title={PopoverHeader} content={
+              <PopoverContent selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} backgroundType={backgroundType} setBackgroundType={setBackgroundType} />
+            }
+            trigger="click"
+          >
+            <IoIosMore size={24} />
+          </Popover>
+      ))
+    )
+  }
+
+  const handleChangeTextInput = (e) => {
+    setTitleBoard(e.target.value);
+  }
+
+  return (
+    <div className='w-[304px]'>
+
+      <div onClick={() => { }} className='flex flex-row justify-between items-center p-[10px]'>
+        <div className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
+          <IoIosArrowBack />
+        </div>
+        <div>
+          <span className='text-[#44546f] text-[14px] font-semibold'>
+            Create Board
+          </span>
+        </div>
+        <div onClick={() => { }} className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
+          <IoMdClose />
+        </div>
+      </div>
+
+      <div className='p-[12px]'>
+
+        <div className='flex justify-center'>
+          <div
+            className="flex justify-center w-[200px] h-[120px] bg-cover rounded-[3px]"
+            style={{
+              backgroundImage: backgroundType === 'image' ?
+                `url(${backgroundImage[selectedIndex - 1].backgroundPath})` :
+                `url(${backgroundColor[selectedIndex - 1].backgroundPath})`
+            }}
+          >
+            <img className='p-[10px]' src="https://trello.com/assets/14cda5dc635d1f13bc48.svg" alt="/" />
+          </div>
+        </div>
+
+        <div className='flex flex-col gap-[8px] mt-[16px]'>
+          <span className='text-[12px] font-bold leading-[16px]'>
+            Background
+          </span>
+          <div className='flex flex-row justify-between'>
+            {renderBackgroundImageList()}
+          </div>
+          <div className='flex flex-row justify-between'>
+            {renderBackgroundColorList()}
+          </div>
+        </div>
+
+        <div className='mt-[16px]'>
+          <span className='text-[12px] font-bold leading-[16px]'>
+            Board title
+          </span>
+          <span className='text-[12px] font-bold leading-[16px] text-[red]'>*</span>
+          <Input value={titleBoard} onChange={handleChangeTextInput} />
+          <div className='flex flex-row items-center gap-[10px] py-[5px]'>
+            <BsHandIndex />
+            <p className='text-[14px]'>
+              Board title is required
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
+function PopoverContent({ selectedIndex, setSelectedIndex, backgroundType, setBackgroundType }) {
   const renderPopoverBackgroundImageList = () => {
     return (
       backgroundImage.map((item) => (
-        <div 
-          onClick={() => {setSelectedIndex(item.key); setBackgroundType('image')}} 
-          key={item.key} className='flex h-[56px] w-[31%] rounded-[3px]' 
-          style={{backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover'}}
+        <div
+          onClick={() => { setSelectedIndex(item.key); setBackgroundType('image') }}
+          key={item.key} className='flex h-[56px] w-[31%] rounded-[3px]'
+          style={{ backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover' }}
         >
-          {selectedIndex == item.key && backgroundType == 'image' ? 
-          <div className='w-full h-full hover:cursor-pointer'>
-            <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
-              <IoIosCheckmark size={30} color='white'/>
-            </div>
-          </div> :
-          <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
-          </div>}
+          {
+            selectedIndex === item.key && backgroundType === 'image' ?
+              <div className='w-full h-full hover:cursor-pointer'>
+                <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
+                  <IoIosCheckmark size={30} color='white' />
+                </div>
+              </div> :
+              <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
+              </div>
+          }
         </div>
       ))
     )
@@ -95,25 +220,27 @@ function CreateBoard() {
   const renderPopoverBackgroundColorList = () => {
     return (
       backgroundColor.map((item) => (
-        <div 
-          onClick={() => {setSelectedIndex(item.key); setBackgroundType('color')}} 
-          key={item.key} className='flex h-[56px] w-[31%] rounded-[3px]' 
-          style={{backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover'}}
+        <div
+          onClick={() => { setSelectedIndex(item.key); setBackgroundType('color') }}
+          key={item.key} className='flex h-[56px] w-[31%] rounded-[3px]'
+          style={{ backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover' }}
         >
-          {selectedIndex == item.key && backgroundType == 'color' ? 
-          <div className='w-full h-full hover:cursor-pointer'>
-            <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
-              <IoIosCheckmark size={30} color='white'/>
-            </div>
-          </div> :
-          <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
-          </div>}
+          {
+            selectedIndex === item.key && backgroundType === 'color' ?
+              <div className='w-full h-full hover:cursor-pointer'>
+                <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
+                  <IoIosCheckmark size={30} color='white' />
+                </div>
+              </div> :
+              <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
+              </div>
+          }
         </div>
       ))
     )
   }
 
-  const content = (
+  return (
     <div className='w-[304px]'>
       <div>
         <div className='my-[16px]'>
@@ -133,124 +260,7 @@ function CreateBoard() {
       </div>
     </div>
   );
-
-  const renderBackgroundImageList = () => {
-    return (
-      backgroundImage.map((item) => (
-        item.key < 5 ?
-        <div 
-          onClick={() => {setSelectedIndex(item.key); setBackgroundType('image')}} 
-          key={item.key} className='flex w-[64px] h-[40px] rounded-[3px]' 
-          style={{backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover'}}
-        >
-          {selectedIndex == item.key && backgroundType == 'image' ? 
-          <div className='w-full h-full hover:cursor-pointer'>
-            <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
-              <IoIosCheckmark size={30} color='white'/>
-            </div>
-          </div> :
-          <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
-          </div>}
-        </div> : <></>
-      ))
-    )
-  }
-
-  const renderBackgroundColorList = () => {
-    return (
-      backgroundColor.map((item) => (
-        item.key < 6 ?
-        <div 
-          onClick={() => {setSelectedIndex(item.key); setBackgroundType('color')}} 
-          key={item.key} className='flex w-[40px] h-[32px] rounded-[3px]' 
-          style={{backgroundImage: `url(${item.backgroundPath})`, backgroundSize: 'cover'}}
-        >
-          {selectedIndex == item.key && backgroundType == 'color' ? 
-          <div className='w-full h-full hover:cursor-pointer'>
-            <div className='flex w-full h-full justify-center items-center bg-[--create-board-button-hovered]'>
-              <IoIosCheckmark size={30} color='white'/>
-            </div>
-          </div> :
-          <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
-          </div>}
-        </div> : 
-        <Popover 
-          key={item.key} 
-          className='flex justify-center items-center w-[40px] h-[32px] bg-[--color-grey-200] rounded-[3px] hover:bg-[--create-board-button-hovered]' 
-          arrow={false}
-          placement="right" title={PopoverHeader} content={content} trigger="click"
-        >
-          <IoIosMore size={24}/>
-        </Popover>
-      ))
-    )
-  }
-
-  const handleChangeTextInput = (e) => {
-    console.log(e.target.value);
-    setTitleBoard(e.target.value);
-  }
-
-  return (
-    <div className='w-[304px]'>
-      
-      <div onClick={() => {}} className='flex flex-row justify-between items-center p-[10px]'>
-        <div className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
-          <IoIosArrowBack />
-        </div>
-        <div>
-          <span className='text-[#44546f] text-[14px] font-semibold'>
-            Create Board
-          </span>
-        </div>
-        <div onClick={() => {}} className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
-          <IoMdClose />
-        </div>
-      </div>
-
-      <div className='p-[12px]'>
-
-        <div className='flex justify-center'>
-          <div 
-            className="flex justify-center w-[200px] h-[120px] bg-cover rounded-[3px]" 
-            style={{backgroundImage: backgroundType == 'image' ? 
-            `url(${backgroundImage[selectedIndex-1].backgroundPath})` : 
-            `url(${backgroundColor[selectedIndex-1].backgroundPath})`}}
-          >
-            <img className='p-[10px]' src="https://trello.com/assets/14cda5dc635d1f13bc48.svg" alt="/" />
-          </div>
-        </div>
-        
-        <div className='flex flex-col gap-[8px] mt-[16px]'>
-          <span className='text-[12px] font-bold leading-[16px]'>
-            Background
-          </span>
-          <div className='flex flex-row justify-between'>
-            {renderBackgroundImageList()}
-          </div>
-          <div className='flex flex-row justify-between'>
-            {renderBackgroundColorList()}
-          </div>
-        </div>
-
-        <div className='mt-[16px]'>
-          <span className='text-[12px] font-bold leading-[16px]'>
-            Board title
-          </span>
-          <span className='text-[12px] font-bold leading-[16px] text-[red]'>*</span>
-          <Input value={titleBoard} onChange={handleChangeTextInput}/>
-          <div className='flex flex-row items-center gap-[10px] py-[5px]'>
-            <BsHandIndex /> 
-            <p className='text-[14px]'>
-              Board title is required
-            </p>
-          </div>
-          
-        </div>
-
-      </div>
-    </div>
-  )
 }
 
 export default CreateBoard
+
