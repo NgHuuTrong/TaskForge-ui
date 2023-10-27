@@ -46,6 +46,8 @@
   --header-button-bg-hovered: #CFE2FF;
   --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
   --header-button-color: var(--ds-text-subtle, #44546f);
+
+  --create-board-button-hovered: var(--dynamic-button-hovered, rgba(0, 0, 0, 0.3));
 }
 
 :root.dark-mode {
