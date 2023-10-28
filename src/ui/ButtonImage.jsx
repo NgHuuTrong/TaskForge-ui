@@ -29,7 +29,7 @@ function ButtonImage({
         {type === 'custom' && custom}
         <div className="mr-4 flex flex-col justify-between">
           <div className="text-[1.4rem] font-semibold text-[--color-grey-600]">{title}</div>
-          <div className="text-[1.2rem] text-[--color-grey-400]">{subscription}</div>
+          <div className="text-[1.2rem] text-[--color-grey-500]">{subscription}</div>
         </div>
       </div>
       {hasStarred && (
