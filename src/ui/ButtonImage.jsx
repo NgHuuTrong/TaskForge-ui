@@ -10,13 +10,12 @@ function ButtonImage({
   hasStarred = true,
   type = 'url',
   height = '40px',
-  width = '280px',
 }) {
   return (
     <Link
       to={to}
-      className="flex min-w-0 items-center justify-between rounded-xl bg-[--color-grey-50] p-[4px] pr-[8px] hover:bg-[--color-grey-100]"
-      style={{ width: width, height: height }}
+      className="flex min-w-0 items-center justify-between rounded-xl bg-inherit p-[4px] pr-[8px] hover:bg-[--color-grey-200]"
+      style={{ width: '100%', height: height }}
     >
       <div className="flex items-center h-full">
         {type === 'url' && (

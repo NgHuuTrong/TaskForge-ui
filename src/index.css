@@ -50,14 +50,14 @@
 }
 
 :root.dark-mode {
-  --color-grey-0: #18212f;
+  --color-grey-0: #282e33;
   --color-grey-50: #111827;
   --color-grey-100: #1f2937;
   --color-grey-200: #374151;
   --color-grey-300: #4b5563;
   --color-grey-400: #6b7280;
-  --color-grey-500: #9ca3af;
-  --color-grey-600: #d1d5db;
+  --color-grey-500: #9fadbc;
+  --color-grey-600: #b6c2cf;
   --color-grey-700: #e5e7eb;
   --color-grey-800: #f3f4f6;
   --color-grey-900: #f9fafb;
@@ -86,7 +86,7 @@
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
   --color-brand-200: #c7d2fe;
-  --color-brand-500: #6366f1;
+  --color-brand-500: #579dff;
   --color-brand-600: #4f46e5;
   --color-brand-700: #4338ca;
   --color-brand-800: #3730a3;
@@ -111,7 +111,17 @@ html {
 
 body {
   @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s,background-color];
-  font-family: 'Roboto', sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Noto Sans,
+    Ubuntu,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif,
+    sans-serif;
 }
 
 input,
