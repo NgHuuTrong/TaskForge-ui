@@ -13,8 +13,8 @@ const Notification = ({ item }) => {
         />
       </div>
       <div className="flex flex-col justify-center">
-        <div className="flex text-lg font-medium">{title}</div>
-        <div className="flex text-sm text-[--header-button-txt-hovered]">{time}</div>
+        <div className="flex text-xl font-medium text-[--color-grey-600]">{title}</div>
+        <div className="flex text-lg text-[--header-button-txt-hovered]">{time}</div>
       </div>
     </div>
   );
