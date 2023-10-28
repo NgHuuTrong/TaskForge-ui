@@ -1,0 +1,35 @@
+{
+  "todo": {
+    "id": "todo",
+    "list": [
+      {
+        "id": 1,
+        "description": "Complete the software development project by the end of the week.",
+        "userId": 1,
+        "userImage": "/src/assets/user1.png"
+      },
+      {
+        "id": 2,
+        "description": "Design a new user interface for the company's website.",
+        "userId": 2,
+        "userImage": "/src/assets/user2.png"
+      },
+      {
+        "id": 3,
+        "description": "Execute a digital marketing campaign to increase the company's online visibility.",
+        "userId": 3,
+        "userImage": "/src/assets/user3.png"
+      },
+      {
+        "id": 4,
+        "description": "Prepare a special menu for the upcoming weekend in the restaurant.",
+        "userId": 4,
+        "userImage": "/src/assets/user4.png"
+      }
+    ]
+  },
+  "done": {
+    "id": "done",
+    "list": []
+  }
+}

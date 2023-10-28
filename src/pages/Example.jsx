@@ -1,10 +1,8 @@
-import ExampleComponent from '../features/example/ExampleComponent';
-import ExampleTest from '../features/example/ExampleTest';
+import CardList from '../features/Boards/CardList';
 function Example() {
   return (
-    <div>
-      <ExampleComponent />
-      <ExampleTest />
+    <div className="flex overflow-scroll">
+      <CardList></CardList>
     </div>
   );
 }
