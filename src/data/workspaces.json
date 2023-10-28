@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "workspaceName": "Van Hieu workspace"
+  },
+  {
+    "id": 2,
+    "workspaceName": "Huu Trong workspace"
+  },
+  {
+    "id": 3,
+    "workspaceName": "Hai Nam workspace"
+  },
+  {
+    "id": 4,
+    "workspaceName": "Khanh Hoa workspace"
+  },
+  {
+    "id": 5,
+    "workspaceName": "Phuoc Hung workspace"
+  }
+]

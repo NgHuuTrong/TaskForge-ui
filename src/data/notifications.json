@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "img": "",
+    "title": "Hoa invited you to his project",
+    "time": "1 hour before",
+    "read": true
+  },
+  {
+    "id": 2,
+    "img": "",
+    "title": "Nam edited your project",
+    "time": "4 hour before",
+    "read": false
+  },
+  {
+    "id": 3,
+    "img": "",
+    "title": "Trong edited your project",
+    "time": "2 hour before",
+    "read": true
+  }
+]
