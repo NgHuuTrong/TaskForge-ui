@@ -5,9 +5,9 @@ import Sidebar from '../features/Sidebar/Sidebar';
 
 function AppLayout() {
   return (
-    <div className="flex h-full flex-col bg-[--color-grey-50]">
+    <div className="h-full w-full bg-[--color-grey-50] relative">
       <Header />
-      <div className="mt-[52px] flex h-full justify-center">
+      <div className="mt-[52px] flex justify-center overflow-hidden min-h-screen">
         <Sidebar />
         <main className="mx-[16px] mt-[40px] w-full min-w-[288px] max-w-[825px] bg-[--color-grey-50]">
           <div className="mx-[auto] my-[0] flex max-w-[120rem] flex-col gap-[3.2rem]">
