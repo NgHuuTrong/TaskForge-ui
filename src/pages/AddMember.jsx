@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Divider } from 'antd';
+import { Divider } from 'antd';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { Select } from 'antd';
 import projectImg from '../assets/project.jpeg';
+import ExampleTest from '../features/example/ExampleTest';
 
 const AddMember = () => {
   const [activated, setActivated] = useState(1);
@@ -36,7 +37,7 @@ const AddMember = () => {
             />
           </div>
           <div className="flex flex-col text-left">
-            <div className=" text-lg font-semibold text-black">{name}</div>
+            <div className=" text-lg font-semibold text-[--color-grey-900]">{name}</div>
             <div className="text-base text-[--color-grey-600]">{tag}</div>
           </div>
         </div>
@@ -53,11 +54,11 @@ const AddMember = () => {
               ]}
             />
           ) : type === 'guests' ? (
-            <button className="my-1 flex h-11 justify-center items-center whitespace-nowrap rounded-xl bg-[--color-grey-200] p-6 text-left text-base font-medium text-black transition-colors duration-300 focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]">
+            <button className="my-1 flex h-11 items-center justify-center whitespace-nowrap rounded-xl bg-[--color-grey-200] p-6 text-left text-base font-medium text-[--color-grey-900] transition-colors duration-300 focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]">
               Add to workspace
             </button>
           ) : type === 'processing' ? (
-            <button className="my-1 flex h-11 justify-center items-center whitespace-nowrap rounded-xl bg-[--color-grey-200] p-6 text-left text-base font-medium text-black transition-colors duration-300 focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]">
+            <button className="my-1 flex h-11 items-center justify-center whitespace-nowrap rounded-xl bg-[--color-grey-200] p-6 text-left text-base font-medium text-[--color-grey-900] transition-colors duration-300 focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]">
               Allow
             </button>
           ) : (
@@ -82,17 +83,17 @@ const AddMember = () => {
       children: (
         <div className="flex flex-col">
           <div className="flex flex-col">
-            <div className="text-xl font-medium text-black">
+            <div className="text-xl font-medium text-[--color-grey-900]">
               Workspace members
             </div>
-            <span className="my-3 text-base">
+            <span className="text- my-3 text-base">
               Members in the Workspace can view and join all visible Workspace
               boards and create new boards in the Workspace.
             </span>
           </div>
           <Divider />
           <div className="flex flex-col">
-            <div className="text-xl font-medium text-black">
+            <div className="text-xl font-medium text-[--color-grey-900]">
               Invite members to join you
             </div>
             <div className="my-3 flex justify-between">
@@ -116,7 +117,7 @@ const AddMember = () => {
                 </div>
                 <button
                   onClick={showCopied}
-                  className="my-1 flex h-11 justify-center items-center whitespace-nowrap rounded-xl bg-[--color-grey-200] p-6 text-left text-base font-medium text-black transition-colors duration-300 focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]"
+                  className="my-1 flex h-11 items-center justify-center whitespace-nowrap rounded-xl bg-[--color-grey-200] p-6 text-left text-base font-medium text-[--color-grey-900] transition-colors duration-300 focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered]"
                 >
                   Invite by link
                 </button>
@@ -137,12 +138,12 @@ const AddMember = () => {
       children: (
         <div className="flex w-full flex-col">
           <div className="flex w-full flex-col">
-            <div className="text-xl font-medium text-black">Guests</div>
+            <div className="text-xl font-medium text-[--color-grey-900]">Guests</div>
             <span className="my-3 flex text-base">
               Guests can only view and edit boards they are added to.
             </span>
             <Divider />
-            <div className="text-xl font-medium text-black">
+            <div className="text-xl font-medium text-[--color-grey-900]">
               Guests per table
             </div>
             <span className="my-3 text-base">
@@ -161,7 +162,7 @@ const AddMember = () => {
       children: (
         <div className="flex flex-col">
           <div className="flex flex-col">
-            <div className="text-xl font-medium text-black">Processing</div>
+            <div className="text-xl font-medium text-[--color-grey-900]">Processing</div>
             <span className="my-3 text-base">
               These people have requested to join this Workspace. All members of
               the Workspace are admins and can edit Workspace settings.
@@ -190,7 +191,7 @@ const AddMember = () => {
                 <button
                   key={index}
                   onClick={() => setActivated(id)}
-                  className={`my-1 flex h-11 w-[20rem] items-center whitespace-nowrap rounded-xl bg-[--color-grey-50] p-6 text-left text-lg font-medium text-black transition-colors duration-300 hover:bg-[--color-grey-200] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered] ${
+                  className={`my-1 flex h-11 w-[20rem] items-center whitespace-nowrap rounded-xl bg-[--color-grey-50] p-6 text-left text-lg font-medium text-[--color-grey-900] transition-colors duration-300 hover:bg-[--color-grey-200] focus:bg-[--header-button-bg-hovered] focus:text-[--header-button-txt-hovered] ${
                     activated === id ? '' : ''
                   }`}
                 >
@@ -213,6 +214,7 @@ const AddMember = () => {
           })}
         </div>
       </div>
+      <ExampleTest />
     </div>
   );
 };
