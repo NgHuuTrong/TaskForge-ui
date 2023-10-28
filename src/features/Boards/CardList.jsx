@@ -45,8 +45,8 @@ function CardList() {
   };
 
   const deleteList = (listId) => {
-    columns.filter((column) => column.id !== listId);
-    setColumns([...columns]);
+    const newList = columns.filter((column) => column.id !== listId);
+    setColumns([...newList]);
   };
 
   const moveItemToAnotherList = (originalListId, newListId, index) => {
