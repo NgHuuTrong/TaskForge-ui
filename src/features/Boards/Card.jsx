@@ -119,20 +119,20 @@ function Card({
 
   return (
     <>
-      <Droppable droppableId={col.id} key={col.id}>
+      <Droppable droppableId={col.id} key={col.id} type="ROW">
         {(provided) => (
-          <div className="ml-4 rounded-lg bg-[#f1f2f4] p-4">
+          <div className="ml-4 h-fit rounded-lg bg-[#f1f2f4] p-4">
             <CardHeader id={col.id} items={items}></CardHeader>
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="w-[270px]"
+              className="min-h-[10px] w-[270px]"
             >
-              {col.list.map(({ description, userImage }, index) => (
-                <Draggable draggableId={description} index={index} key={index}>
+              {col.list.map(({ id, description, userImage }, index) => (
+                <Draggable draggableId={id.toString()} index={index} key={id}>
                   {(provided) => (
                     <CardItem
-                      id={index}
+                      id={id}
                       setMoveItem={setMoveItem}
                       provided={provided}
                       description={description}
