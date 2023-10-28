@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
 
-import Header from './Header';
 import Sidebar from '../features/Sidebar/Sidebar';
+import Header from '../features/Header/Header';
 
 function AppLayout() {
   return (
-    <div className="h-full w-full bg-[--color-grey-50] relative">
+    <div className="h-full w-full bg-[--color-grey-50] relative overflow-hidden">
       <Header />
       <div className="mt-[52px] flex justify-center overflow-hidden min-h-screen">
         <Sidebar />
