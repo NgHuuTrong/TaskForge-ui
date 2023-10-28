@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/f0d9aec449f9ce4db03d20994b231754/photo-1653216977227-fa2ae9547f96.jpg",
+    "boardName": "Simple Project Board",
+    "workspaceName": "TaskForge",
+    "starred": true
+  },
+  {
+    "id": 1,
+    "img": null,
+    "boardName": "Project Management",
+    "workspaceName": "CS163-21APCS1-OddGroups",
+    "starred": true
+  },
+  {
+    "id": 2,
+    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/350dda08d977f92d756f3d9ec111ea66/photo-1521495084171-3ad639e3d525.jpg",
+    "boardName": "Group05-21APCS1",
+    "workspaceName": "CS163-21APCS1-OddGroups",
+    "starred": false
+  },
+  {
+    "id": 3,
+    "img": null,
+    "boardName": "1-on-1 Meeting Agenda",
+    "workspaceName": "TaskForge",
+    "starred": false
+  },
+  {
+    "id": 4,
+    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/350dda08d977f92d756f3d9ec111ea66/photo-1521495084171-3ad639e3d525.jpg",
+    "boardName": "Group08-21APCS2",
+    "workspaceName": "CS163-21APCS1-EvenGroups",
+    "starred": true
+  }
+]
