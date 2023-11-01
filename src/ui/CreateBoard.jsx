@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { IoIosArrowBack, IoMdClose, IoIosCheckmark, IoIosMore } from 'react-icons/io';
-import { BsHandIndex } from 'react-icons/bs'
-import { Popover, Input } from 'antd';
+import { BsHandIndex, BsPeople } from 'react-icons/bs';
+import { AiOutlineLock } from 'react-icons/ai';
+import { Popover, Input, Select, Space, Tooltip } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+
+const { Option } = Select;
 
 const backgroundImage = [
   {
@@ -57,8 +61,40 @@ const backgroundColor = [
   }
 ]
 
+const workspace = [
+  {
+    title: 'Workspace 1',
+    key: '1',
+    children: [
+      {
+        title: 'Board 1-1',
+        key: '1-1',
+      },
+      {
+        title: 'Board 1-2',
+        key: '1-2',
+      }
+    ]
+  },
+  {
+    title: 'Workspace 2',
+    key: '2',
+    children: [
+      {
+        title: 'Board 2-1',
+        key: '2-1',
+      },
+      {
+        title: 'Board 2-2',
+        key: '2-2',
+      }
+    ]
+  }
+]
+
 function CreateBoard() {
   const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedWorkspace, setSelectedWorkspace] = useState(workspace ? workspace[0].title : '');
   const [backgroundType, setBackgroundType] = useState('image');
   const [titleBoard, setTitleBoard] = useState('');
   const [inputStatus, setInputStatus] = useState('error');
@@ -127,13 +163,15 @@ function CreateBoard() {
 
   const handleChangeTextInput = (e) => {
     setTitleBoard(e.target.value);
+    if (e.target.value != '') setInputStatus('none');
+    else setInputStatus('error')
   }
 
   return (
-    <div className='w-[304px]'>
+    <div className='w-[304px] shadow-md border'>
 
       <div onClick={() => { }} className='flex flex-row justify-between items-center p-[10px]'>
-        <div className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
+        <div onClick={() => {}} className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
           <IoIosArrowBack />
         </div>
         <div>
@@ -178,15 +216,94 @@ function CreateBoard() {
             Board title
           </span>
           <span className='text-[12px] font-bold leading-[16px] text-[red]'>*</span>
-          <Input value={titleBoard} onChange={handleChangeTextInput} />
+          <Input status={inputStatus} value={titleBoard} onChange={handleChangeTextInput} />
           <div className='flex flex-row items-center gap-[10px] py-[5px]'>
             <BsHandIndex />
             <p className='text-[14px]'>
               Board title is required
             </p>
           </div>
-
         </div>
+
+        <div className='mt-[8px]'>
+          <div>
+            <span className='text-[12px] font-bold leading-[16px]'>
+              Workspace
+            </span>
+          </div>
+          <div>
+            <Select
+              defaultValue={workspace != null ? workspace[0].title : ''}
+              style={{
+                width: '100%'
+              }}
+              onChange={(value) => setSelectedWorkspace(value)}
+              options={workspace.map((item) => {
+                return { value: item.title }
+              })}
+            />
+          </div>
+        </div>
+
+        <div className='mt-[8px]'>
+          <div>
+            <span className='text-[12px] font-bold leading-[16px]'>
+              Visibility
+            </span>
+          </div>
+          <div>
+            <Select
+              defaultValue='Private'
+              style={{
+                width: '100%'
+              }}
+              onChange={{}}
+              optionLabelProp='value'
+              options={[
+                {
+                  value: 'Private', 
+                  label:
+                  <Tooltip title="Only board members can see and edit this board.">
+                    <Space>
+                      <AiOutlineLock/>
+                      <span>Private</span>
+                    </Space>
+                  </Tooltip>
+                },
+                {
+                  value: 'Workspace', 
+                  label: 
+                  <Tooltip title={`All members of ${selectedWorkspace} can see and edit this board`}>
+                    <Space>
+                      <BsPeople/>
+                      <span>Workspace</span>
+                    </Space>
+                  </Tooltip>
+                }
+              ]}
+            />
+          </div>
+        </div>
+        
+        <div className='flex flex-col gap-[8px] mt-[16px]'>
+          {titleBoard != '' ? 
+          <div onClick={() => {}} className='flex justify-center p-[5px] bg-[#0c66e4] rounded-[5px] hover:bg-[#0055cc] cursor-pointer'>
+            <span className='text-[14px] leading-[20px] text-white'>
+              Create
+            </span>
+          </div> :
+          <div onClick={() => {}} className='flex justify-center opacity-50 p-[5px] bg-[#f1f2f4] rounded-[5px]'>
+            <span className='text-[14px] leading-[20px]'>
+              Create
+            </span>
+          </div>}
+          <div onClick={() => {}} className='flex justify-center p-[5px] bg-[#f1f2f4] rounded-[5px] hover:bg-[#dcdfe4] cursor-pointer'>
+            <span className='text-[14px] leading-[20px]'>
+              Start with a template
+            </span>
+          </div>
+        </div>
+        
 
       </div>
     </div>
