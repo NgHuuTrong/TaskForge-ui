@@ -1,9 +1,10 @@
-import CardList from '../features/Boards/CardList';
+import BoardContent from '../features/Boards/BoardContent';
 import ExampleTest from '../features/example/ExampleTest';
+
 function Example() {
   return (
     <div className="flex overflow-scroll">
-      <CardList />
+      <BoardContent />
     </div>
   );
 }

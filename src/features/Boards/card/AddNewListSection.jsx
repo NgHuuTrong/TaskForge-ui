@@ -1,17 +1,23 @@
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addList } from '../boardSlice';
 
-function AddNewListSection({ addNewList }) {
+function AddNewListSection() {
+  const dispatch = useDispatch();
   const [isAdding, setIsAdding] = useState(false);
   const [listTitle, setListTitle] = useState('');
+
   const handleAddNewList = () => {
     if (listTitle) {
-      addNewList(listTitle);
+      dispatch(addList(listTitle));
     }
+
     setIsAdding(false);
     setListTitle('');
   };
+
   if (isAdding) {
     return (
       <div className="ml-4 h-fit bg-[#f1f2f4] p-4">
@@ -32,11 +38,12 @@ function AddNewListSection({ addNewList }) {
           className="border-none shadow-none"
           onClick={() => setIsAdding(false)}
         >
-          <CloseOutlined></CloseOutlined>
+          <CloseOutlined />
         </Button>
       </div>
     );
   }
+
   return (
     <Button
       className="ml-4 flex h-fit w-[270px] items-center justify-start rounded-lg"

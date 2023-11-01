@@ -1,29 +1,42 @@
-import { Input, Modal } from 'antd';
+import { Input } from 'antd';
+import CardModal from '../../../ui/CardModal';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { copyList } from '../boardSlice';
 
 function CopyListModal({
-  isCopyModalOpen,
-  handleCopyList,
-  setIsCopyModalOpen,
-  setCopyListName,
-  copyListName,
+  originalList,
+  isCopyListOpen,
+  setIsCopyListOpen
 }) {
+  const [copyListId, setCopyListId] = useState(originalList.id + ' Copy');
+  const dispatch = useDispatch();
+
+  function handleCopyList() {
+    if (!copyListId) return;
+
+    dispatch(copyList({
+      listId: copyListId,
+      cardList: originalList.list
+    }));
+
+    setCopyListId('');
+    setIsCopyListOpen(false);
+  }
+
   return (
-    <Modal
+    <CardModal
       title="Copy list"
-      open={isCopyModalOpen}
-      onOk={() => handleCopyList()}
-      okButtonProps={{ type: 'primary', className: 'bg-sky-500' }}
-      onCancel={() => {
-        setIsCopyModalOpen(false);
-        setCopyListName('');
-      }}
+      open={isCopyListOpen}
+      onOk={handleCopyList}
+      onCancel={() => setIsCopyListOpen(false)}
     >
       <Input
         placeholder="Name"
-        value={copyListName}
-        onChange={(e) => setCopyListName(e.target.value)}
-      ></Input>
-    </Modal>
+        value={copyListId}
+        onChange={(e) => setCopyListId(e.target.value)}
+      />
+    </CardModal>
   );
 }
 
