@@ -20,9 +20,9 @@ import CardDetailHeader from './CardDetailHeader'
 import CardDetailActivity from './CardDetailActivity'
 import CardDetailAttachments from './CardDetailAttachments'
 
-function CardDetail({ index }) {
+function CardDetail() {
     const [moveCard, setMoveCard] = useState('');
-    const { listId, detail, openModal } = useSelector(getCurrentCard);
+    const { listId, index, detail, openModal } = useSelector(getCurrentCard);
     const { content: lists } = useSelector(getBoard(123));
     const dispatch = useDispatch();
 
@@ -90,7 +90,7 @@ function CardDetail({ index }) {
                                 e.stopPropagation();
                                 dispatch(deleteCard({
                                     listId,
-                                    cardIndex: index
+                                    cardId: detail.id
                                 }));
                                 dispatch(clearCurrentCardDetail());
                             }}>

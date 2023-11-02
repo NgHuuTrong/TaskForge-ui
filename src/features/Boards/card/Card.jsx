@@ -14,6 +14,7 @@ function Card({ listId, card, index, setMoveCard, provided }) {
     onClick={() => {
       dispatch(setCurrentCardDetail({
         listId,
+        index,
         card
       }));
     }}
@@ -37,7 +38,7 @@ function Card({ listId, card, index, setMoveCard, provided }) {
         className="flex w-full items-center justify-center rounded-none border-none text-xl hover:bg-white"
         onClick={(e) => {
           e.stopPropagation();
-          dispatch(deleteCard({ listId, cardIndex: index }))
+          dispatch(deleteCard({ listId, cardId: id }))
         }}
       >
         Delete

@@ -12,6 +12,7 @@ const initialState = {
     },
     currentCard: {
         listId: null,
+        index: null,
         detail: {},
         openModal: false
     }
@@ -57,10 +58,10 @@ const boardSlice = createSlice({
             }];
         },
         deleteCard(state, action) {
-            const { listId, cardIndex } = action.payload;
+            const { listId, cardId } = action.payload;
             const list = state.currentBoard.content.find(list => list.id === listId);
 
-            list.list.splice(cardIndex, 1);
+            list.list = list.list.filter(card => card.id !== cardId);
         },
         moveAllCards(state, action) {
             const { originalListId, newListId } = action.payload;
@@ -95,10 +96,11 @@ const boardSlice = createSlice({
             newList.list.splice(newIndex, 0, removeCard);
         },
         setCurrentCardDetail(state, action) {
-            const { listId, card } = action.payload;
+            const { listId, index, card } = action.payload;
 
             state.currentCard = {
-                listId: listId,
+                listId,
+                index,
                 detail: card,
                 openModal: true
             };
@@ -106,6 +108,7 @@ const boardSlice = createSlice({
         clearCurrentCardDetail(state, action) {
             state.currentCard = {
                 listId: null,
+                index: null,
                 detail: {},
                 openModal: false
             };
