@@ -12,12 +12,7 @@ import { useDispatch } from 'react-redux';
 
 function List({
   list,
-  lists,
-  addCard,
-  copyList,
-  moveList,
-  deleteAllTasks,
-  moveItemToAnotherList,
+  lists
 }) {
   const items = [
     {
@@ -111,6 +106,7 @@ function List({
                   {
                     (provided) => (
                       <Card
+                        listId={list.id}
                         card={card}
                         index={index}
                         setMoveCard={setMoveCard}

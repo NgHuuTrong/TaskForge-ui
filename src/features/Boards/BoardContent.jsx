@@ -6,6 +6,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { useSelector } from 'react-redux';
 import { exchangeTwoList, getBoard, moveCardInList, moveCardToAnotherList } from './boardSlice';
 import { useDispatch } from 'react-redux';
+import CardDetail from './Card/CardDetail/CardDetail';
 
 function BoardContent() {
   const dispatch = useDispatch();
@@ -104,6 +105,7 @@ function BoardContent() {
           )}
         </Droppable>
       </div>
+      <CardDetail />
     </DragDropContext>
   );
 }

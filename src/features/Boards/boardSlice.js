@@ -10,7 +10,11 @@ const initialState = {
         name: 'My Board',
         content: initialColumns
     },
-    currentCard: {}
+    currentCard: {
+        listId: null,
+        detail: {},
+        openModal: false
+    }
 };
 
 const boardSlice = createSlice({
@@ -52,9 +56,14 @@ const boardSlice = createSlice({
                 userImage: userImage3
             }];
         },
+        deleteCard(state, action) {
+            const { listId, cardIndex } = action.payload;
+            const list = state.currentBoard.content.find(list => list.id === listId);
+
+            list.list.splice(cardIndex, 1);
+        },
         moveAllCards(state, action) {
             const { originalListId, newListId } = action.payload;
-            console.log(originalListId + newListId);
             const originalList = state.currentBoard.content.find(list => list.id === originalListId);
             const newList = state.currentBoard.content.find(list => list.id === newListId);
 
@@ -84,6 +93,22 @@ const boardSlice = createSlice({
 
             // add card to the new list
             newList.list.splice(newIndex, 0, removeCard);
+        },
+        setCurrentCardDetail(state, action) {
+            const { listId, card } = action.payload;
+
+            state.currentCard = {
+                listId: listId,
+                detail: card,
+                openModal: true
+            };
+        },
+        clearCurrentCardDetail(state, action) {
+            state.currentCard = {
+                listId: null,
+                detail: {},
+                openModal: false
+            };
         }
     }
 });
@@ -95,12 +120,16 @@ export const {
     copyList,
     exchangeTwoList,
     addCard,
+    deleteCard,
     moveAllCards,
     deleteAllCards,
     moveCardInList,
-    moveCardToAnotherList
+    moveCardToAnotherList,
+    setCurrentCardDetail,
+    clearCurrentCardDetail
 } = boardSlice.actions;
 
 export default boardSlice.reducer;
 
 export const getBoard = (boardId) => (state) => state.board.currentBoard;
+export const getCurrentCard = (state) => state.board.currentCard;
