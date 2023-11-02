@@ -66,7 +66,7 @@ function App() {
               <Route path="templates" element={<Templates />} />
               <Route path="boards" element={<Boards />} />
               <Route path="home" element={<Home />} />
-              <Route path="board-detail" element={<BoardDetailLayout title="My board" template={templates[0]} creator={creator} membersList={members}/>}></Route>
+              <Route path="board-detail" element={<BoardDetailLayout title="My board" isPrivate={false} template={templates[1]} creator={creator} membersList={members}/>}></Route>
             </Route>
             <Route path="authenticate" element={<Authenticate />} />
             <Route path="forgot-password" element={<ForgotPassword />} />

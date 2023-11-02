@@ -5,11 +5,10 @@ function BoardDetailLayout({title, template, backgroundPath, creator, membersLis
   const [background, setBackground] = useState(backgroundPath != undefined ? backgroundPath : template.img)
 
   return (
-    <div className=''>
-      <Header/>
-      <div className='bg-cover flex-1 h-screen' style={{backgroundImage: `url(${background})`}}>
-
-      </div>
+    <div className='bg-cover h-screen' style={{backgroundImage: `url(${background})`}}>
+      <Header title={title} creator={creator} membersList={membersList}/>
+      
+      
     </div>
   )
 }
