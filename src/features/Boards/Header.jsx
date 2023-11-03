@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { AiOutlineStar, AiFillStar, AiOutlineLock, AiOutlineUserAdd } from 'react-icons/ai';
 import { BsPeople, BsCheck } from 'react-icons/bs';
-import { LuTrello } from 'react-icons/lu'
-import { Tooltip, Avatar, Input, Popover  } from 'antd';
-import { FiMoreHorizontal } from 'react-icons/fi';
+import { FiMoreHorizontal, FiLink } from 'react-icons/fi';
 import { RiArrowUpDoubleLine } from 'react-icons/ri';
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { Tooltip, Avatar, Input, Popover, Modal, Button  } from 'antd';
+
 
 function Header({title, isPrivate, creator, membersList}) {
     const [favorite, setFavorite] = useState(false);
@@ -12,6 +13,9 @@ function Header({title, isPrivate, creator, membersList}) {
     const [currTitle, setCurrTitle] = useState(title);
     const [changeVisibilityBox, setChangeVisibilityBox] = useState(false);
     const [visibility, setVisibility] = useState(isPrivate ? 'private' : 'workspace');
+    const [modalShareBoard, setModalShareBoard] = useState(false);
+    const [changeShareLinkBox, setChangeShareLinkBox] = useState(false);
+    const [isCreatedLink, setIsCreatedLink] = useState(false);
 
     const renderAvatarList = () => (
         membersList.map((item, index) => (
@@ -23,6 +27,11 @@ function Header({title, isPrivate, creator, membersList}) {
 
     const handleChangeTitle = (e) => {
         setCurrTitle(e.target.value);
+    }
+
+    const handleChangedTitle = (e) => {
+        if (e.target.value === '') setCurrTitle(title);
+        setChangeTitleBox(false)
     }
 
     const ChangeVisibilityContent = () => (
@@ -54,6 +63,32 @@ function Header({title, isPrivate, creator, membersList}) {
         </div>
     )
 
+    const ChangeShareLinkContent = () => (
+        <div>
+            <div onClick={() => setChangeShareLinkBox(false)} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
+                <div className='flex gap-[5px] items-center'>
+                    <span className='text-[16px]'>Can join as member</span>
+                    <BsCheck size={20} color='green'/>
+                </div>
+                <div>
+                    <span>
+                        Board members can view and edit cards, lists, and some board settings. 
+                    </span>
+                </div>
+            </div>
+            <div onClick={() => {setIsCreatedLink(false); setChangeShareLinkBox(false)}} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
+                <div>
+                    <span className='text-[16px]'>Delete link</span>
+                </div>
+                <div>
+                    <span>
+                        The existing board share link will no longer work.
+                    </span>
+                </div>
+            </div>
+        </div>
+    )
+
   return (
     <div className='pt-[52px] backdrop-blur-sm bg-white/30'>
         <div className='flex justify-between p-[10px]'>
@@ -61,7 +96,7 @@ function Header({title, isPrivate, creator, membersList}) {
             <div className='flex items-center gap-[20px]'>
                 <div>
                     {changeTitleBox ?  
-                    <Input onPressEnter={() => setChangeTitleBox(false)} onBlur={() => setChangeTitleBox(false)} onChange={handleChangeTitle} value={currTitle}  defaultValue={currTitle}/>
+                    <Input className='max-w-[200px] border-[2px]' onPressEnter={handleChangedTitle} onBlur={handleChangedTitle} onChange={handleChangeTitle} value={currTitle}  defaultValue={currTitle}/>
                     : 
                     <span onClick={() => setChangeTitleBox(true)} className='text-[18px] font-bold leading-[32px]'>
                         {currTitle}
@@ -122,14 +157,54 @@ function Header({title, isPrivate, creator, membersList}) {
                     </span>
                 </div> */}
 
-                <div className='flex items-center gap-[5px] p-[5px] rounded-[4px] bg-[#646362] text-white hover:bg-[#504f4f] cursor-pointer'>
+                <div onClick={() => setModalShareBoard(true)} className='flex items-center gap-[5px] p-[5px] rounded-[4px] bg-[#646362] text-white hover:bg-[#504f4f] cursor-pointer'>
                     <AiOutlineUserAdd/>
                     <span>
                         Share
                     </span>
                 </div>
+                <Modal title="Share Board" footer={null} open={modalShareBoard} onBlur={() => setModalShareBoard(false)} onCancel={() => setModalShareBoard(false)}>
+                    <div className='flex gap-[5px]'>
+                        <Input className='p-[10px] rounded-[4px]' placeholder="Email address" />
+                        <div className='p-[10px] px-[20px] rounded-[4px] text-white bg-[#0c66e4] hover:bg-[#0055cc] cursor-pointer'>Share</div>
+                    </div>
+                    <div className='flex justify-between items-center mt-[20px]'>
+                        <div className='flex items-center gap-[10px]'>
+                            <div className='rounded-[4px] p-[12px] bg-[#f1f2f4]'>
+                                <FiLink/>
+                            </div>
+                            <div className='flex flex-col'>
+                                <span>Anyone with the board share link</span>
+                                {!isCreatedLink ? 
+                                <div>
+                                    <Button onClick={() => setIsCreatedLink(true)} className='p-[0px] mt-[-10px]' type='link'>Create link</Button>
+                                </div> :
+                                <div>
+                                    <Button onClick={() => {}} className='p-[0px] mt-[-10px]' type='link'>Copy link</Button>
+                                </div>}
+                            </div>
+                        </div>
 
-                <div className='p-[8px] rounded-[4px] hover:bg-[#8896a6] cursor-pointer'>
+                        {isCreatedLink ? 
+                        <Popover
+                            content={<ChangeShareLinkContent/>}
+                            trigger="click"
+                            open={changeShareLinkBox}
+                            onOpenChange={() => setChangeShareLinkBox(false)}
+                            placement='bottom'
+                        >
+                            <div onClick={() => setChangeShareLinkBox(true)} className='flex gap-[16px] items-center rounded-[4px] p-[12px] bg-[#f1f2f4] hover:bg-[#dcdfe4] cursor-pointer'>
+                                <span>Can join as member</span>
+                                <MdOutlineKeyboardArrowDown size={20}/>
+                            </div>
+                        </Popover>:
+                        <div></div>
+                        }
+                        
+                    </div>
+                </Modal>
+
+                <div className='p-[8px] rounded-[4px] hover:bg-[#21282f] cursor-pointer'>
                     <FiMoreHorizontal/>
                 </div>
             </div>
