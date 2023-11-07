@@ -8,6 +8,8 @@ import { HiOutlineViewBoards, HiOutlineTemplate } from 'react-icons/hi';
 import { AiOutlineHome } from 'react-icons/ai';
 import Heading from '../../ui/Heading';
 
+import workspaces from '../../data/workspaces.json';
+
 const tabs = [
   {
     icon: <HiOutlineViewBoards size="1.5rem" />,
@@ -58,8 +60,9 @@ function Sidebar() {
             <span className="cursor-pointer text-[2.3rem]">+</span>
           </div>
         </Row>
-        <WorkspaceTab name="CS300-Project" />
-        <WorkspaceTab name="CS163-Project" />
+        {workspaces.map((workspace) => (
+          <WorkspaceTab key={workspace.id} workspace={workspace} />
+        ))}
       </div>
     </aside>
   );
