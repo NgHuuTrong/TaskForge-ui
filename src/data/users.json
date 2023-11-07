@@ -1,0 +1,38 @@
+[
+  {
+    "id": 0,
+    "name": "Nguyễn Hữu Trọng",
+    "tag": "nghuutrong",
+    "bg": "#0052cc"
+  },
+  {
+    "id": 1,
+    "name": "Nguyễn Văn Hiếu",
+    "tag": "ngvahiu",
+    "bg": "#172b4d"
+  },
+  {
+    "id": 2,
+    "name": "Trần Hải Nam",
+    "tag": "thnam",
+    "bg": "#00875a"
+  },
+  {
+    "id": 3,
+    "name": "Lâm Khánh Hòa",
+    "tag": "wibutop1thegioi",
+    "bg": "#de350b"
+  },
+  {
+    "id": 4,
+    "name": "Tô Phước Hưng",
+    "tag": "nguoimiennui",
+    "bg": "#ff991f"
+  },
+  {
+    "id": 5,
+    "name": "Nguyễn Đình Tùng",
+    "tag": "nguoimiennui",
+    "bg": "https://trello-members.s3.amazonaws.com/6290312ef8ef268a0da8e04c/aa008cee223edd408db328e68d371c1e/30.png"
+  }
+]
