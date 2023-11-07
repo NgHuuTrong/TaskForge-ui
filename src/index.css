@@ -185,6 +185,16 @@ img {
   /* For dark mode */
 }
 
+:where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-arrow:before,
+.ant-popover .ant-popover-arrow:before {
+  background-color: var(--color-grey-0);
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-tabs .ant-tabs-tab-btn,
+.ant-tabs .ant-tabs-tab-btn {
+  color: var(--color-grey-600);
+}
+
 /*
 FOR DARK MODE
 

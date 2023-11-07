@@ -61,11 +61,10 @@ function CreateBoard() {
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [backgroundType, setBackgroundType] = useState('image');
   const [titleBoard, setTitleBoard] = useState('');
-  const [inputStatus, setInputStatus] = useState('error');
 
   const PopoverHeader = (
     <div className='flex flex-row justify-center items-center'>
-      <span className='text-[#44546f] text-[14px] font-semibold mx-[10px]'>
+      <span className='text-[--color-grey-500] text-[14px] font-semibold mx-[10px]'>
         Board background
       </span>
     </div>
@@ -108,18 +107,26 @@ function CreateBoard() {
                 </div>
               </div> :
               <div className='w-full h-full hover:cursor-pointer hover:bg-[--create-board-button-hovered]'>
-              </div>}
+              </div>
+            }
           </div> :
           <Popover
             key={item.key}
-            className='flex justify-center items-center w-[40px] h-[32px] bg-[--color-grey-200] rounded-[3px] hover:bg-[--create-board-button-hovered]'
+            className='flex justify-center items-center w-[40px] h-[32px] rounded-[3px] hover:bg-[--create-board-button-hovered]'
             arrow={false}
             placement="right" title={PopoverHeader} content={
               <PopoverContent selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} backgroundType={backgroundType} setBackgroundType={setBackgroundType} />
             }
             trigger="click"
+            overlayInnerStyle={{
+              backgroundColor: 'var(--color-grey-0)',
+              borderWidth: 2,
+              borderColor: 'var(--color-grey-300)'
+            }}
           >
-            <IoIosMore size={24} />
+            <div className='bg-[--color-grey-300]'>
+              <IoIosMore color='var(--color-grey-900)' size={24} />
+            </div>
           </Popover>
       ))
     )
@@ -131,19 +138,18 @@ function CreateBoard() {
 
   return (
     <div className='w-[304px]'>
-
-      <div onClick={() => { }} className='flex flex-row justify-between items-center p-[10px]'>
-        <div className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
+      <div onClick={() => { }} className='flex flex-row justify-between items-center p-[10px] border-b-[--color-grey-200] border-b-2'>
+        <button className='p-[10px] rounded-[5px] text-[--color-grey-500]'>
           <IoIosArrowBack />
-        </div>
+        </button>
         <div>
-          <span className='text-[#44546f] text-[14px] font-semibold'>
+          <span className='text-[14px] text-[--color-grey-500] font-semibold'>
             Create Board
           </span>
         </div>
-        <div onClick={() => { }} className='p-[10px] rounded-[5px] hover:bg-[#dcdfe4]'>
+        <button onClick={() => { }} className='p-[10px] rounded-[5px] text-[--color-grey-500]'>
           <IoMdClose />
-        </div>
+        </button>
       </div>
 
       <div className='p-[12px]'>
@@ -162,7 +168,7 @@ function CreateBoard() {
         </div>
 
         <div className='flex flex-col gap-[8px] mt-[16px]'>
-          <span className='text-[12px] font-bold leading-[16px]'>
+          <span className='text-[12px] font-bold leading-[16px] text-[--color-grey-500]'>
             Background
           </span>
           <div className='flex flex-row justify-between'>
@@ -174,14 +180,14 @@ function CreateBoard() {
         </div>
 
         <div className='mt-[16px]'>
-          <span className='text-[12px] font-bold leading-[16px]'>
+          <span className='text-[12px] font-bold leading-[16px] text-[--color-grey-500]'>
             Board title
           </span>
           <span className='text-[12px] font-bold leading-[16px] text-[red]'>*</span>
           <Input value={titleBoard} onChange={handleChangeTextInput} />
           <div className='flex flex-row items-center gap-[10px] py-[5px]'>
-            <BsHandIndex />
-            <p className='text-[14px]'>
+            <BsHandIndex color='yellow' />
+            <p className='text-[14px] text-[--color-grey-500]'>
               Board title is required
             </p>
           </div>
@@ -244,7 +250,7 @@ function PopoverContent({ selectedIndex, setSelectedIndex, backgroundType, setBa
     <div className='w-[304px]'>
       <div>
         <div className='my-[16px]'>
-          <span className='text-[#44546f] text-[14px] font-semibold my-[20px]'>Photos</span>
+          <span className='text-[--color-grey-500] text-[14px] font-semibold my-[20px]'>Photos</span>
         </div>
         <div className='flex flex-wrap justify-between gap-[10px] w-full'>
           {renderPopoverBackgroundImageList()}
@@ -252,7 +258,7 @@ function PopoverContent({ selectedIndex, setSelectedIndex, backgroundType, setBa
       </div>
       <div>
         <div className=' my-[16px]'>
-          <span className='text-[#44546f] text-[14px] font-semibold'>Colors</span>
+          <span className='text-[--color-grey-500] text-[14px] font-semibold'>Colors</span>
         </div>
         <div className='flex flex-wrap justify-between gap-[10px] w-full'>
           {renderPopoverBackgroundColorList()}

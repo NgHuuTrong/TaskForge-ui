@@ -12,13 +12,13 @@ function Profile(props) {
         <img src="https://trello.com/assets/eff3d701a9c3a71105ea.svg" alt="" />
 
         <div className='w-full max-w-[530px]'>
-            <h3 className='text-[#172b4d] text-[20px] font-medium leading-[26px] mt-[40px]'>About</h3>
+            <h3 className='text-[--color-grey-800] text-[20px] font-medium leading-[26px] mt-[40px]'>About</h3>
             <hr className='border-[1px] mt-[10px]'/>
 
             <div>
                 <div className='flex flex-row justify-between items-center mt-[40px]'>
-                    <span className='text-[#172b4d] text-[14px] font-semibold leading-[16px]'>Avatar</span>
-                    <Tooltip title='Visible to anyone on the internet' className='flex gap-[5px] items-center cursor-pointer leading-[12px] text-[#44546f] text-[12px]'>
+                    <span className='text-[--color-grey-800] text-[14px] font-semibold leading-[16px]'>Avatar</span>
+                    <Tooltip title='Visible to anyone on the internet' className='flex gap-[5px] items-center cursor-pointer leading-[12px] text-[--color-grey-400] text-[12px]'>
                         <MdPublic/>
                         <span>Alsways public</span>
                     </Tooltip>
@@ -35,8 +35,8 @@ function Profile(props) {
 
             <div>
                 <div className='flex flex-row justify-between items-center mt-[20px]'>
-                    <span className='text-[#172b4d] text-[14px] font-semibold leading-[16px]'>Username</span>
-                    <Tooltip title='Visible to anyone on the internet' className='flex gap-[5px] items-center cursor-pointer leading-[12px] text-[#44546f] text-[12px]'>
+                    <span className='text-[--color-grey-800] text-[14px] font-semibold leading-[16px]'>Username</span>
+                    <Tooltip title='Visible to anyone on the internet' className='flex gap-[5px] items-center cursor-pointer leading-[12px] text-[--color-grey-400] text-[12px]'>
                         <MdPublic/>
                         <span>Alsways public</span>
                     </Tooltip>
@@ -46,8 +46,8 @@ function Profile(props) {
 
             <div>
                 <div className='flex flex-row justify-between items-center mt-[20px]'>
-                    <span className='text-[#172b4d] text-[14px] font-semibold leading-[16px]'>Bio</span>
-                    <Tooltip title='Visible to anyone on the internet' className='flex gap-[5px] items-center cursor-pointer leading-[12px] text-[#44546f] text-[12px]'>
+                    <span className='text-[--color-grey-800] text-[14px] font-semibold leading-[16px]'>Bio</span>
+                    <Tooltip title='Visible to anyone on the internet' className='flex gap-[5px] items-center cursor-pointer leading-[12px] text-[--color-grey-400] text-[12px]'>
                         <MdPublic/>
                         <span>Alsways public</span>
                     </Tooltip>

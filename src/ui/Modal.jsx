@@ -21,7 +21,7 @@ function Modal({
     medium: ' w-[75rem] h-[25rem]',
     large: ' w-[100rem] h-[50rem] min-h-[50rem]',
   };
-  const base = ` flex bg-white relative overflow-hidden`;
+  const base = ` flex bg-[--color-grey-0] relative overflow-hidden`;
 
   const classModalContainer = base + sizes[size];
 
@@ -49,17 +49,17 @@ function Modal({
 
         <div className="flex flex-1 flex-col px-20 py-10">
           <div className="mt-10 flex flex-col">
-            <div className="text-4xl font-medium">
+            <div className="text-4xl text-[--color-grey-600] font-bold">
               Let's build a Workspace
             </div>
-            <span className="text-xl text-[--color-grey-400]">
+            <span className="text-[1.5rem] text-[--color-grey-400]">
               Increase your productivity by making it easy for everyone to
               access boards in one location.
             </span>
           </div>
           <div className="flex flex-col justify-evenly">
             <div className="my-10">
-              <div className="text-lg">Workspace Name</div>
+              <div className="text-lg text-[--color-grey-600]">Workspace Name</div>
               <div className="flex max-w-xl">
                 <input
                   type="text"
@@ -74,7 +74,7 @@ function Modal({
               </span>
             </div>
             <div className="my-auto">
-              <div className="text-lg">
+              <div className="text-lg text-[--color-grey-600]">
                 Description Workspace
                 <span className="text-[--color-grey-400]"> Options</span>
               </div>

@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from '../ui/Header'
 import Profile from '../features/Setting/Profile';
 import Workspace from '../features/Setting/Workspace';
 
 import { Tabs } from 'antd';
+import Header from '../features/Header/Header';
 
 const user = {
     fullName: 'Lâm Khánh Hòa',
@@ -42,35 +42,35 @@ const user = {
 }
 
 function Settings() {
-  return (
-    <div>
-        <Header/>
-        <div className='pl-[48px] pr-[48px]'>
-            <div className='flex flex-row items-center max-w-[875px] pt-[100px] pb-[26px]'>
-                <img className='mr-[16px] rounded-full' width={48} height={48} src={user.avatarPath} alt="/" />
-                <div className='flex flex-col'>
-                    <span className='text-[20px] leading-[24px] font-medium text-[#172b4d] mr-[10px]'>
-                        {user.fullName}
-                    </span>
-                    <span className='text-[12px] leading-[20px] text-[#44546f]'>
-                        @{user.username}
-                    </span>
+    return (
+        <div className='bg-[--color-grey-0] min-h-screen'>
+            <Header />
+            <div className='pl-[48px] pr-[48px]'>
+                <div className='flex flex-row items-center max-w-[875px] pt-[100px] pb-[26px]'>
+                    <img className='mr-[16px] rounded-full' width={48} height={48} src={user.avatarPath} alt="/" />
+                    <div className='flex flex-col'>
+                        <span className='text-[20px] leading-[24px] font-medium text-[--color-grey-900] mr-[10px]'>
+                            {user.fullName}
+                        </span>
+                        <span className='text-[12px] leading-[20px] text-[--color-grey-500]'>
+                            @{user.username}
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <Tabs tabBarStyle={{ color: 'var(--color-grey-700)', fontWeight: 700 }}>
+                        <Tabs.TabPane tab='Profile and Visibility' key={0}>
+                            <Profile user={user} />
+                        </Tabs.TabPane>
+                        <Tabs.TabPane tab='Workspace' key={1}>
+                            <Workspace user={user} />
+                        </Tabs.TabPane>
+                    </Tabs>
                 </div>
             </div>
-
-            <div>
-                <Tabs tabBarStyle={{color: '#44546f', fontWeight: 700}}>
-                    <Tabs.TabPane tab='Profile and Visibility' key={0}>
-                        <Profile user={user}/>
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab='Workspace' key={1}>
-                        <Workspace user={user}/>
-                    </Tabs.TabPane>
-                </Tabs>
-            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Settings
