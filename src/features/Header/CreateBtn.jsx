@@ -30,14 +30,12 @@ const CreateBtn = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
-      <div>
-        <Modal
-          openModal={openModal}
-          setOpenModal={setOpenModal}
-          size={'large'}
-          background={workspacebg}
-        />
-      </div>
+      <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        size={'large'}
+        background={workspacebg}
+      />
       <MyDropdown
         title="Create"
         type="primary"

@@ -13,10 +13,16 @@ function MyDropdown({
     'border-[none] rounded-[--border-radius-sm] [box-shadow:var(--shadow-sm)] flex gap-[6px] items-center [transition:all_0.2s] py-[6px] px-[10px]';
   const types = {
     header: 'text-[--color-grey-500] bg-none hover:bg-[--color-grey-100]',
-    primary: 'text-[--color-grey-50] bg-[--color-brand-500] hover:bg-[--color-brand-600]',
+    primary: 'text-[--color-grey-50] bg-[--color-brand-500] hover:bg-[--color-brand-400]',
   };
   return (
-    <Dropdown placement={placement} trigger={['click']} dropdownRender={() => render} {...props}>
+    <Dropdown
+      getPopupContainer={(trigger) => trigger.parentElement}
+      placement={placement}
+      trigger={['click']}
+      dropdownRender={() => render}
+      {...props}
+    >
       <button className={`${base} ${types[type]}`}>
         <span className="text-[1.4rem] font-medium leading-[2rem]">{title}</span>
         {hasChevron && <HiOutlineChevronDown size={16} />}
