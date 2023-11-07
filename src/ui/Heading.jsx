@@ -3,12 +3,12 @@ function Heading({ as = 'h1', children, classNames = '' }) {
     h1: 'text-[3rem]',
     h2: 'text-[2.5rem]',
     h3: 'text-[2rem]',
-    h4: 'text-[1.7rem]',
+    h4: 'text-[1.6rem]',
     h5: 'text-[1.4rem]',
   };
 
   return (
-    <h1 className={`text-[--color-grey-600] font-[700] leading-6 ${styles[as]} ${classNames}`}>
+    <h1 className={`flex items-center text-[--color-grey-600] font-[700] leading-[2rem] ${styles[as]} ${classNames}`}>
       {children}
     </h1>
   );
