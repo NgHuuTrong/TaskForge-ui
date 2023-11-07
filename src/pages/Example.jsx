@@ -1,8 +1,12 @@
-import CardList from '../features/Boards/CardList';
+import ExampleComponent from '../features/example/ExampleComponent';
+import ExampleTest from '../features/example/ExampleTest';
+import CreateBoard from '../ui/CreateBoard';
 function Example() {
   return (
-    <div className="flex overflow-scroll">
-      <CardList></CardList>
+    <div>
+      {/* <ExampleComponent />
+      <ExampleTest /> */}
+      <CreateBoard />
     </div>
   );
 }
