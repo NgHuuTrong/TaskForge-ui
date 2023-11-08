@@ -1,22 +1,32 @@
 [
   {
+    "id": 0,
+    "workspaceName": "CS163-21APCS1-EvenGroups",
+    "isPrivate": true
+  },
+  {
     "id": 1,
-    "workspaceName": "Van Hieu workspace"
+    "workspaceName": "CS163-21APCS1-OddGroups",
+    "isPrivate": false
   },
   {
     "id": 2,
-    "workspaceName": "Huu Trong workspace"
+    "workspaceName": "Huu Trong workspace",
+    "isPrivate": true
   },
   {
     "id": 3,
-    "workspaceName": "Hai Nam workspace"
+    "workspaceName": "TaskForge",
+    "isPrivate": false
   },
   {
     "id": 4,
-    "workspaceName": "Khanh Hoa workspace"
+    "workspaceName": "CS300-FinalProject",
+    "isPrivate": false
   },
   {
     "id": 5,
-    "workspaceName": "Phuoc Hung workspace"
+    "workspaceName": "Phuoc Hung workspace",
+    "isPrivate": true
   }
 ]

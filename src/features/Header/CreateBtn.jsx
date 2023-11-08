@@ -34,32 +34,25 @@ function CreateBtn() {
 
   function renderItem({ id, icon, title, des }) {
     if (id === 1) {
-      return <Popover
-        placement="right"
-        title={null}
-        content={<CreateBoard />}
-        trigger="click"
-        overlayInnerStyle={{
-          backgroundColor: 'var(--color-grey-0)',
-          borderWidth: 2,
-          borderColor: 'var(--color-grey-300)'
-        }}
-      >
-        <ItemCreateBtn
-          id={id}
-          icon={icon}
-          title={title}
-          des={des}
-        />
-      </Popover >
+      return (
+        <Popover
+          placement="right"
+          title={null}
+          content={<CreateBoard />}
+          trigger="click"
+          overlayInnerStyle={{
+            backgroundColor: 'var(--color-grey-0)',
+            borderWidth: 2,
+            borderColor: 'var(--color-grey-300)',
+          }}
+        >
+          <ItemCreateBtn id={id} icon={icon} title={title} des={des} />
+        </Popover>
+      );
     } else {
-      return <ItemCreateBtn
-        id={id}
-        icon={icon}
-        title={title}
-        des={des}
-        onClick={() => setOpenCreateWorkspaceModal(true)}
-      />
+      return (
+        <ItemCreateBtn id={id} icon={icon} title={title} des={des} onClick={() => setOpenCreateWorkspaceModal(true)} />
+      );
     }
   }
 
@@ -82,23 +75,23 @@ function CreateBtn() {
         }
       />
     </>
-  )
+  );
 }
 
 function ItemCreateBtn({ id, icon, title, des, onClick }) {
-  return <div
-    key={id}
-    onClick={onClick}
-    className="flex flex-col justify-center hover:bg-[--color-grey-200] px-[12px] py-[6px] cursor-pointer"
-  >
-    <div className="flex items-center font-[400] text-[--color-grey-600]">
-      {icon}
-      <p className="ml-3">{title}</p>
+  return (
+    <div
+      key={id}
+      onClick={onClick}
+      className="flex flex-col justify-center hover:bg-[--color-grey-200] px-[12px] py-[6px] cursor-pointer"
+    >
+      <div className="flex items-center font-[400] text-[--color-grey-600]">
+        {icon}
+        <p className="ml-3">{title}</p>
+      </div>
+      <p className="text-[12px] text-[--color-grey-500] leading-[16px] mt-[4px]">{des}</p>
     </div>
-    <p className="text-[12px] text-[--color-grey-500] leading-[16px] mt-[4px]">
-      {des}
-    </p>
-  </div>
+  );
 }
 
 export default CreateBtn;

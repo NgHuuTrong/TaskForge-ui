@@ -10,6 +10,8 @@ import Boards from './pages/Boards';
 import Home from './pages/Home';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import WorkspaceHome from './pages/WorkspaceHome';
+import WorkspaceMember from './pages/WorkspaceMember';
 import { DarkModeProvider } from './context/DarkModeContext';
 import Settings from './pages/Settings';
 
@@ -34,6 +36,8 @@ function App() {
               <Route path="templates" element={<Templates />} />
               <Route path="boards" element={<Boards />} />
               <Route path="home" element={<Home />} />
+              <Route path=":workspaceId/home" element={<WorkspaceHome />} />
+              <Route path=":workspaceId/members" element={<WorkspaceMember />} />
             </Route>
             <Route path="authenticate" element={<Authenticate />} />
             <Route path="forgot-password" element={<ForgotPassword />} />

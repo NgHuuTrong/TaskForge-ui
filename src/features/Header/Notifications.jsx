@@ -29,12 +29,10 @@ const Notifications = () => {
                 Show unread only
                 <Switch defaultChecked size="small" className="mx-4" onClick={handleClick} />
               </div>
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-[--color-grey-300] hover:text-[--header-button-txt-hovered]">
-                <EmailFrequency
-                  trigger={'click'}
-                  icon={<BiDotsVerticalRounded size={16} color="var(--color-grey-600)" />}
-                />
-              </div>
+              <EmailFrequency
+                trigger={'click'}
+                icon={<BiDotsVerticalRounded size={16} color="var(--color-grey-600)" />}
+              />
             </div>
           </div>
           <div className="p-4">

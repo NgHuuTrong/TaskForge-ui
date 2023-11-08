@@ -1,16 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
 import SubTemplateTabs from './SubTemplateTabs';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowSubTemplateTabs } from '../features/Sidebar/sidebarSlice';
 
-function SidebarTab({ icon = null, to, title, type = 'main', selected = false, onClick }) {
+function SidebarTab({ icon = null, to, title, type = 'main', onClick }) {
   const base = 'flex justify-between items-center w-full rounded-xl';
-
-  const selectedStyle = selected
-    ? ' text-[--color-brand-500] bg-[--color-brand-50]'
-    : ' text-[--color-grey-500] hover:bg-[--color-grey-200]';
 
   const types = {
     main: ' pl-[1rem] pr-[0.5rem] py-[0.25rem] font-semibold',
@@ -18,16 +14,21 @@ function SidebarTab({ icon = null, to, title, type = 'main', selected = false, o
     'sub-workspace': ' group/item pl-[2.8rem] pr-[0.5rem] py-[0.25rem] font-normal',
   };
 
-  const allClass = base + selectedStyle + types[type];
+  const allClass = base + types[type];
 
   const showSubTemplateTabs = useSelector((state) => state.sidebar.showSubTemplateTabs);
   const dispatch = useDispatch();
 
   return (
     <>
-      <Link
+      <NavLink
         to={to}
-        className={allClass}
+        className={({ isActive }) =>
+          allClass +
+          (isActive
+            ? ' text-[--color-brand-500] bg-[--color-selected-bg]'
+            : ' text-[--color-grey-500] hover:bg-[--color-grey-200]')
+        }
         onClick={() => {
           if (type === 'sub-templates') {
             onClick();
@@ -47,7 +48,7 @@ function SidebarTab({ icon = null, to, title, type = 'main', selected = false, o
             <FaAngleRight />
           </div>
         )}
-      </Link>
+      </NavLink>
       {title === 'Templates' && <SubTemplateTabs />}
     </>
   );

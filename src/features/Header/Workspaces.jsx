@@ -4,6 +4,7 @@ import ButtonImage from '../../ui/ButtonImage';
 import Heading from '../../ui/Heading';
 
 import workspaces from '../../data/workspaces.json';
+import Logo from '../../ui/Logo';
 
 const WorkspaceItem = ({ workspace }) => {
   return (
@@ -15,9 +16,9 @@ const WorkspaceItem = ({ workspace }) => {
         hasStarred={false}
         type="custom"
         custom={
-          <div className="rounded-lg font-bold text-[#1d2125] h-[40px] w-[40px] bg-[linear-gradient(#4bce97,_#216e4e)] text-[2rem] flex justify-center items-center mr-[12px]">
+          <Logo classNames="mr-[1.2rem] bg-[linear-gradient(#4bce97,_#216e4e)]">
             {workspace.workspaceName[0].toUpperCase()}
-          </div>
+          </Logo>
         }
       />
     </div>
