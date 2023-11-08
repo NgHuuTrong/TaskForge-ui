@@ -16,9 +16,11 @@ const WorkspaceItem = ({ workspace }) => {
         hasStarred={false}
         type="custom"
         custom={
-          <Logo classNames="mr-[1.2rem] bg-[linear-gradient(#4bce97,_#216e4e)]">
-            {workspace.workspaceName[0].toUpperCase()}
-          </Logo>
+          <div className="mr-[1.2rem] font-bold">
+            <Logo bgImage={workspace.bg || 'linear-gradient(#4bce97,#216e4e)'} bgSrc={workspace.bg}>
+              {workspace.workspaceName[0].toUpperCase()}
+            </Logo>
+          </div>
         }
       />
     </div>

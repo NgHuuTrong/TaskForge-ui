@@ -7,6 +7,7 @@ import workspacebg from '../../assets/workspacebg.png';
 import MyDropdown from '../../ui/MyDropdown';
 import { Popover } from 'antd';
 import CreateBoard from './CreateBoard';
+import MenuDropdown from '../../pages/MenuDropdown';
 
 const items = [
   {
@@ -64,7 +65,7 @@ function CreateBtn() {
         size={'large'}
         background={workspacebg}
       />
-      <MyDropdown
+      {/* <MyDropdown
         title="Create"
         type="primary"
         hasChevron={false}
@@ -73,7 +74,8 @@ function CreateBtn() {
             {items.map(renderItem)}
           </div>
         }
-      />
+      /> */}
+      <MenuDropdown openCreateWorkspaceModal={() => setOpenCreateWorkspaceModal(true)} />
     </>
   );
 }

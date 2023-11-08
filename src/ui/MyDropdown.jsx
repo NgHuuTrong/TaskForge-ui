@@ -1,14 +1,7 @@
 import { Dropdown } from 'antd';
 import { HiOutlineChevronDown } from 'react-icons/hi2';
 
-function MyDropdown({
-  render,
-  title,
-  hasChevron = true,
-  placement = 'bottomLeft',
-  type = 'header',
-  ...props
-}) {
+function MyDropdown({ render, title, hasChevron = true, placement = 'bottomLeft', type = 'header', ...props }) {
   const base =
     'border-[none] rounded-[--border-radius-sm] [box-shadow:var(--shadow-sm)] flex gap-[6px] items-center [transition:all_0.2s] py-[6px] px-[10px]';
   const types = {

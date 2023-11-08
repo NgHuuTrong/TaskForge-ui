@@ -111,6 +111,7 @@ html {
 
 body {
   @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s,background-color];
+  overflow: hidden auto;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -122,6 +123,21 @@ body {
     Helvetica Neue,
     sans-serif,
     sans-serif;
+}
+
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--color-grey-300);
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: var(--color-grey-50);
 }
 
 input,
@@ -171,7 +187,7 @@ input:focus,
 textarea:focus,
 select:focus {
   @apply -outline-offset-1;
-  outline: 2px solid var(--color-brand-600);
+  outline: 2px solid var(--color-brand-500);
 }
 
 /* Parent selector, finally 😃 */
@@ -206,12 +222,16 @@ img {
 
 :where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-arrow:before,
 .ant-popover .ant-popover-arrow:before {
-  background-color: var(--color-grey-0);
+  @apply bg-[var(--color-grey-0)];
 }
 
 :where(.css-dev-only-do-not-override-3mqfnx).ant-tabs .ant-tabs-tab-btn,
 .ant-tabs .ant-tabs-tab-btn {
-  color: var(--color-grey-600);
+  @apply text-[var(--color-grey-600)];
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-input {
+  @apply px-[1.2rem] py-[0.8rem] bg-[--color-grey-0] text-[--color-grey-600] border-[--color-grey-300] placeholder:text-[--color-grey-400];
 }
 
 /*

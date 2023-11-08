@@ -2,31 +2,37 @@
   {
     "id": 0,
     "workspaceName": "CS163-21APCS1-EvenGroups",
-    "isPrivate": true
+    "isPrivate": true,
+    "bg": "https://trello-logos.s3.amazonaws.com/085034c2f5a31a37daf25907af51f0d4/30.png"
   },
   {
     "id": 1,
     "workspaceName": "CS163-21APCS1-OddGroups",
-    "isPrivate": false
+    "isPrivate": false,
+    "bg": null
   },
   {
     "id": 2,
     "workspaceName": "Huu Trong workspace",
-    "isPrivate": true
+    "isPrivate": true,
+    "bg": null
   },
   {
     "id": 3,
     "workspaceName": "TaskForge",
-    "isPrivate": false
+    "isPrivate": false,
+    "bg": null
   },
   {
     "id": 4,
     "workspaceName": "CS300-FinalProject",
-    "isPrivate": false
+    "isPrivate": false,
+    "bg": null
   },
   {
     "id": 5,
     "workspaceName": "Phuoc Hung workspace",
-    "isPrivate": true
+    "isPrivate": true,
+    "bg": null
   }
 ]

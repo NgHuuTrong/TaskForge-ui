@@ -11,8 +11,6 @@ const { TextArea } = Input;
 
 function EditWorkspace({ workspace }) {
   const [editWorkspace, setEditWorkspace] = useState(false);
-  const styles =
-    'w-[28rem] bg-[--color-grey-0] border-[--color-grey-300] text-[--color-grey-600] px-[1.2rem] py-[0.8rem] font-normal text-[1.4rem]';
 
   if (!editWorkspace) {
     return (
@@ -48,16 +46,16 @@ function EditWorkspace({ workspace }) {
   return (
     <div className="flex flex-col">
       <FormRow label="Name" isCompulsory type="ver">
-        <Input id="name" className={styles} defaultValue={workspace.workspaceName} />
+        <Input id="name" className="w-[28rem]" defaultValue={workspace.workspaceName} />
       </FormRow>
       <FormRow label="Short name" isCompulsory type="ver">
-        <Input id="shortname" className={styles} defaultValue={workspace.workspaceName} />
+        <Input id="shortname" className="w-[28rem]" defaultValue={workspace.workspaceName} />
       </FormRow>
       <FormRow label="Website (optional)" type="ver">
-        <Input id="website" className={styles} autoComplete="website" />
+        <Input id="website" className="w-[28rem]" autoComplete="website" />
       </FormRow>
       <FormRow label="Description (optional)" type="ver">
-        <TextArea id="description" className={styles} rows={2} />
+        <TextArea id="description" className="w-[28rem]" rows={2} />
       </FormRow>
       <div className="flex gap-4">
         <Button size="normal" onClick={() => setEditWorkspace(false)}>
