@@ -29,24 +29,20 @@ const tabs = [
 ];
 
 function Sidebar() {
-  const activeTab = useSelector((state) => state.sidebar.activeTab);
+  // const activeTab = useSelector((state) => state.sidebar.activeTab);
   const dispatch = useDispatch();
 
   return (
     <aside className="sticky top-[40px] mt-[40px] hidden max-h-[90vh] w-[288px] flex-col bg-[--color-grey-50] px-[16px] md:flex">
       <ul className="border-b py-[1rem]">
         {tabs.map((tab) => (
-          <li
-            className="mb-[0.25rem]"
-            key={tab.key}
-            onClick={() => dispatch(setActiveTab(tab.key))}
-          >
+          <li className="mb-[0.25rem]" key={tab.key} onClick={() => dispatch(setActiveTab(tab.key))}>
             <SidebarTab
               to={'/' + tab.key}
               icon={tab.icon}
               title={tab.title}
               type="main"
-              selected={activeTab === tab.key}
+              // selected={activeTab === tab.key}
             />
           </li>
         ))}

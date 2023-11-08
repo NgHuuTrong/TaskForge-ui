@@ -40,13 +40,9 @@
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
   --image-grayscale: 0;
   --image-opacity: 100%;
-
-  --color-dark: #445471;
-  --header-button-txt-hovered: #0c66e4;
-  --header-button-hovered-200: #074fb3;
-  --header-button-bg-hovered: #cfe2ff;
-  --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
-  --header-button-color: var(--ds-text-subtle, #44546f);
+  --color-selected-bg: #e9f2ff;
+  --color-disabled-text: #091e424f;
+  --color-disabled-bg: #091e420f;
 }
 
 :root.dark-mode {
@@ -80,6 +76,9 @@
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
   --image-grayscale: 10%;
   --image-opacity: 90%;
+  --color-selected-bg: #1c2b41;
+  --color-disabled-text: #bfdbf847;
+  --color-disabled-bg: #a1bdd914;
 }
 
 :root {
@@ -133,6 +132,27 @@ select {
   font: inherit;
 }
 
+:where(.css-dev-only-do-not-override-3mqfnx).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  @apply bg-[--color-grey-0] text-[--color-grey-500];
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-select-single.ant-select-open .ant-select-selection-item {
+  @apply text-[--color-grey-400];
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown {
+  @apply bg-[--color-grey-0];
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown .ant-select-item {
+  @apply text-[--color-grey-500] hover:bg-[--color-grey-200];
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  @apply text-[--color-brand-500] bg-[--color-selected-bg];
+}
+
 button {
   @apply cursor-pointer;
 }
@@ -141,18 +161,18 @@ button {
   @apply cursor-not-allowed;
 }
 
+button:disabled,
 select:disabled,
 input:disabled {
-  @apply bg-[color:var(--color-grey-200)] text-[color:var(--color-grey-500)];
+  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-disabled-text)];
 }
 
-/* input:focus,
-button:focus,
+input:focus,
 textarea:focus,
 select:focus {
   @apply -outline-offset-1;
   outline: 2px solid var(--color-brand-600);
-} */
+}
 
 /* Parent selector, finally 😃 */
 button:has(svg) {

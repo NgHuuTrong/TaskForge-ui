@@ -32,7 +32,7 @@ const tabs = [
 function WorkspaceTab({ workspace }) {
   const activeTab = useSelector((state) => state.sidebar.activeTab);
   const dispatch = useDispatch();
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(true);
 
   return (
     <div className="w-full mb-2">

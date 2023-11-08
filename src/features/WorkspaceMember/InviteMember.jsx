@@ -12,7 +12,7 @@ function InviteMember() {
           Anyone with an invite link can join this Workspace. You can also disable and create a new invite link for this
           Workspace at any time.
         </Heading>
-        <div className="w-1/2 flex justify-end">
+        <div className="w-1/2 flex justify-end items-center">
           <Button size="normal" type="icon">
             Disable invite link
           </Button>
