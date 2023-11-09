@@ -6,7 +6,7 @@ function BoardDetailLayout({title, template, backgroundPath, creator, membersLis
 
   return (
     <div className='bg-cover h-screen' style={{backgroundImage: `url(${background})`}}>
-      <Header background={background} title={title} creator={creator} membersList={membersList}/>
+      <Header setBackground={setBackground} background={background} title={title} creator={creator} membersList={membersList}/>
       
       
     </div>

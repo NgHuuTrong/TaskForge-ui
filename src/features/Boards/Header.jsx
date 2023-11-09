@@ -9,7 +9,7 @@ import ShareBoardModal from './ShareBoardModal';
 import MoreOptionContent from './MoreOptionContent';
 import ChangeVisibilityContent from './ChangeVisibilityContent';
 
-function Header({background, title, isPrivate, creator, membersList}) {
+function Header({setBackground, background, title, isPrivate, creator, membersList}) {
     const [favorite, setFavorite] = useState(false);
     const [changeTitleBox, setChangeTitleBox] = useState(false);
     const [currTitle, setCurrTitle] = useState(title);
@@ -84,8 +84,8 @@ function Header({background, title, isPrivate, creator, membersList}) {
                 <Popover
                     content={
                         <MoreOptionContent 
+                            setBackground={setBackground}
                             background={background} 
-                            setMoreOptionBox={setMoreOptionBox} 
                             admins={admins}
                         />
                     }
