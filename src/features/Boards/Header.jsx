@@ -9,7 +9,7 @@ import ShareBoardModal from './ShareBoardModal';
 import MoreOptionContent from './MoreOptionContent';
 import ChangeVisibilityContent from './ChangeVisibilityContent';
 
-function Header({title, isPrivate, creator, membersList}) {
+function Header({background, title, isPrivate, creator, membersList}) {
     const [favorite, setFavorite] = useState(false);
     const [changeTitleBox, setChangeTitleBox] = useState(false);
     const [currTitle, setCurrTitle] = useState(title);
@@ -17,6 +17,8 @@ function Header({title, isPrivate, creator, membersList}) {
     const [visibility, setVisibility] = useState(isPrivate ? 'private' : 'workspace');
     const [modalShareBoard, setModalShareBoard] = useState(false);
     const [moreOptionBox, setMoreOptionBox] = useState(false);
+    const [admins, setAdmins] = useState([creator]);
+    const [members, setMembers] = useState(membersList);
     
     const renderAvatarList = () => (
         membersList.map((item, index) => (
@@ -80,7 +82,13 @@ function Header({title, isPrivate, creator, membersList}) {
                 </div>
 
                 <Popover
-                    content={<MoreOptionContent/>}
+                    content={
+                        <MoreOptionContent 
+                            background={background} 
+                            setMoreOptionBox={setMoreOptionBox} 
+                            admins={admins}
+                        />
+                    }
                     title="More Options"
                     trigger="click"
                     open={moreOptionBox}
@@ -127,7 +135,12 @@ function Header({title, isPrivate, creator, membersList}) {
                     </span>
                 </div>
                 <Modal title="Share Board" footer={null} open={modalShareBoard} onBlur={() => setModalShareBoard(false)} onCancel={() => setModalShareBoard(false)}>
-                    <ShareBoardModal creator={creator} membersList={membersList}/>
+                    <ShareBoardModal 
+                        admins={admins} 
+                        setAdmins={setAdmins} 
+                        members={members} 
+                        setMembers={setMembers} 
+                    />
                 </Modal>
             </div>
 

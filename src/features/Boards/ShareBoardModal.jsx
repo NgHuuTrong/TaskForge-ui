@@ -4,11 +4,9 @@ import { FiLink } from 'react-icons/fi';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { Input, Popover, Button } from 'antd';
 
-function ShareBoardModal({creator, membersList}) {
+function ShareBoardModal({admins, setAdmins, members, setMembers}) {
     const [changeShareLinkBox, setChangeShareLinkBox] = useState(false);
     const [isCreatedLink, setIsCreatedLink] = useState(false);
-    const [admins, setAdmins] = useState([creator]);
-    const [members, setMembers] = useState(membersList);
 
     const renderAdminsShareBoard = () => (
         admins.map((admin, index) => (
