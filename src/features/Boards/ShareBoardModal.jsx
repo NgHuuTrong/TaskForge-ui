@@ -67,7 +67,7 @@ function ShareBoardModal({creator, membersList}) {
     )
 
     const ChangeRoleContent = ({index, isMember}) => {
-        if (isMember) return (
+        if (!isMember) return (
         <div>
             <div onClick={() => {}} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
                 <div className='flex gap-[5px] items-center'>
@@ -79,7 +79,6 @@ function ShareBoardModal({creator, membersList}) {
             <div onClick={() => {}} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
                 <div className='flex gap-[5px] items-center'>
                     <span className='text-[16px] font-medium'>Member</span>
-                    <BsCheck size={20} color='green'/>
                 </div>
             </div> : 
             <div className='p-[8px] rounded-[5px] text-[#d2d5dc]'>
@@ -99,10 +98,15 @@ function ShareBoardModal({creator, membersList}) {
             </div>
         </div>)
         return (
-            <div>
+        <div>
             <div onClick={() => {}} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
                 <div className='flex gap-[5px] items-center'>
                     <span className='text-[16px] font-medium'>Admin</span>
+                </div>
+            </div>
+            <div onClick={() => {}} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
+                <div className='flex gap-[5px] items-center'>
+                    <span className='text-[16px] font-medium'>Member</span>
                     <BsCheck size={20} color='green'/>
                 </div>
             </div>

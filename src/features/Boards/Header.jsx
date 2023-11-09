@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { AiOutlineStar, AiFillStar, AiOutlineLock, AiOutlineUserAdd } from 'react-icons/ai';
-import { BsPeople, BsCheck } from 'react-icons/bs';
+import { BsPeople } from 'react-icons/bs';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { RiArrowUpDoubleLine } from 'react-icons/ri';
-import { Tooltip, Avatar, Input, Popover, Modal, Button  } from 'antd';
-import ShareBoardModal from './ShareBoardModal';
+import { Tooltip, Avatar, Input, Popover, Modal, } from 'antd';
 
+import ShareBoardModal from './ShareBoardModal';
+import MoreOptionContent from './MoreOptionContent';
+import ChangeVisibilityContent from './ChangeVisibilityContent';
 
 function Header({title, isPrivate, creator, membersList}) {
     const [favorite, setFavorite] = useState(false);
@@ -14,6 +16,7 @@ function Header({title, isPrivate, creator, membersList}) {
     const [changeVisibilityBox, setChangeVisibilityBox] = useState(false);
     const [visibility, setVisibility] = useState(isPrivate ? 'private' : 'workspace');
     const [modalShareBoard, setModalShareBoard] = useState(false);
+    const [moreOptionBox, setMoreOptionBox] = useState(false);
     
     const renderAvatarList = () => (
         membersList.map((item, index) => (
@@ -31,35 +34,6 @@ function Header({title, isPrivate, creator, membersList}) {
         if (e.target.value === '') setCurrTitle(title);
         setChangeTitleBox(false)
     }
-
-    const ChangeVisibilityContent = () => (
-        <div>
-            <div onClick={() => {setVisibility('private'); setChangeVisibilityBox(false)}} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
-                <div className='flex gap-[5px] items-center'>
-                    <AiOutlineLock color='red'/>
-                    <span className='text-[16px]'>Private</span>
-                    {visibility === 'private' ? <BsCheck size={20} color='green'/> : <></>}
-                </div>
-                <div>
-                    <span>
-                        Only board members can see and edit this board.
-                    </span>
-                </div>
-            </div>
-            <div onClick={() => {setVisibility('workspace'); setChangeVisibilityBox(false)}} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
-                <div className='flex gap-[5px] items-center'>
-                    <BsPeople/>
-                    <span className='text-[16px]'>Workspace</span>
-                    {visibility === 'workspace' ? <BsCheck size={20} color='green'/> : <></>}
-                </div>
-                <div>
-                    <span>
-                        All members of this workspace can see and edit this board.
-                    </span>
-                </div>
-            </div>
-        </div>
-    )
 
   return (
     <div className='pt-[52px] backdrop-blur-sm bg-white/30'>
@@ -87,7 +61,13 @@ function Header({title, isPrivate, creator, membersList}) {
 
                 <div>
                 <Popover
-                    content={<ChangeVisibilityContent/>}
+                    content={
+                        <ChangeVisibilityContent 
+                            visibility={visibility} 
+                            setVisibility={setVisibility} 
+                            setChangeVisibilityBox={setChangeVisibilityBox}
+                        />
+                    }
                     title="Change Visibility"
                     trigger="click"
                     open={changeVisibilityBox}
@@ -99,6 +79,17 @@ function Header({title, isPrivate, creator, membersList}) {
                 </Popover>
                 </div>
 
+                <Popover
+                    content={<MoreOptionContent/>}
+                    title="More Options"
+                    trigger="click"
+                    open={moreOptionBox}
+                    onOpenChange={() => setMoreOptionBox(false)}
+                    >
+                    <div onClick={() => setMoreOptionBox(true)} className='p-[8px] rounded-[4px] hover:bg-[#8896a6] cursor-pointer'>
+                        <FiMoreHorizontal/>
+                    </div>
+                </Popover>
             </div>
 
             <div className='flex items-center gap-[20px]'>
@@ -138,10 +129,6 @@ function Header({title, isPrivate, creator, membersList}) {
                 <Modal title="Share Board" footer={null} open={modalShareBoard} onBlur={() => setModalShareBoard(false)} onCancel={() => setModalShareBoard(false)}>
                     <ShareBoardModal creator={creator} membersList={membersList}/>
                 </Modal>
-
-                <div className='p-[8px] rounded-[4px] hover:bg-[#21282f] cursor-pointer'>
-                    <FiMoreHorizontal/>
-                </div>
             </div>
 
         </div>
