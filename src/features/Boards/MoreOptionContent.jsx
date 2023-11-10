@@ -148,8 +148,6 @@ function MoreOptionContent({setBackground, background, admins}) {
                         <Popover
                             content={<ListBackgroundContent isPhotos={true}/>}
                             trigger="click"
-                            open={listPhotosBox}
-                            onOpenChange={() => setListPhotosBox(false)}
                             placement='left'
                             >
                             <div onClick={() => setListPhotosBox(true)} className='flex flex-col items-center'>
@@ -161,8 +159,6 @@ function MoreOptionContent({setBackground, background, admins}) {
                         <Popover
                             content={<ListBackgroundContent isPhotos={false}/>}
                             trigger="click"
-                            open={listColorsBox}
-                            onOpenChange={() => setListColorsBox(false)}
                             placement='right'
                             >
                             <div onClick={() => setListColorsBox(true)} className='flex flex-col items-center'>
@@ -198,8 +194,6 @@ function MoreOptionContent({setBackground, background, admins}) {
         <Popover
             content={<AboutBoardContent/>}
             trigger="click"
-            open={aboutBoardBox}
-            onOpenChange={() => setAboutBoardBox(false)}
             placement='right'
         >
             <div onClick={() => setAboutBoardBox(true)} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
@@ -218,8 +212,6 @@ function MoreOptionContent({setBackground, background, admins}) {
         <Popover
             content={<ChangeBackgroundContent/>}
             trigger="click"
-            open={changeBackgroundBox}
-            onOpenChange={() => setChangeBackgroundBox(false)}
             placement='right'
             >
             <div onClick={() => setChangeBackgroundBox(true)} className='p-[8px] rounded-[5px] hover:bg-[#8896a6] cursor-pointer'>
