@@ -13,7 +13,44 @@ import ResetPassword from './pages/ResetPassword';
 import WorkspaceHome from './pages/WorkspaceHome';
 import WorkspaceMember from './pages/WorkspaceMember';
 import { DarkModeProvider } from './context/DarkModeContext';
+import BoardDetailLayout from './features/Boards/BoardDetailLayout';
+
+import templates from './data/templates.json';
 import Settings from './pages/Settings';
+
+const creator = {
+  fullName: 'Lâm Khánh Hòa',
+  username: 'hoalamkhanh',
+  avatarPath:
+    'https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0',
+};
+
+const members = [
+  {
+    fullName: 'Nguyen Huu Trong',
+    username: 'trongnguyenhuu',
+    avatarPath:
+      'https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0',
+  },
+  {
+    fullName: 'Nguyen Van Hieu',
+    username: 'hieunguyenvan',
+    avatarPath:
+      'https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0',
+  },
+  {
+    fullName: 'Tran Hai Nam',
+    username: 'namtranhai',
+    avatarPath:
+      'https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0',
+  },
+  {
+    fullName: 'To Phuoc Hung',
+    username: 'hungtophuoc',
+    avatarPath:
+      'https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0',
+  },
+];
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,13 +73,23 @@ function App() {
               <Route path="templates" element={<Templates />} />
               <Route path="boards" element={<Boards />} />
               <Route path="home" element={<Home />} />
-              <Route path=":workspaceId/home" element={<WorkspaceHome />} />
-              <Route path=":workspaceId/members" element={<WorkspaceMember />} />
             </Route>
+            <Route
+              path="/:boardId/board-detail"
+              element={
+                <BoardDetailLayout
+                  title="My board"
+                  isPrivate={false}
+                  template={templates[1]}
+                  creator={creator}
+                  membersList={members}
+                />
+              }
+            ></Route>
             <Route path="authenticate" element={<Authenticate />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="reset-password" element={<ResetPassword />} />
-            <Route path='u/settings' element={<Settings />} />
+            <Route path="u/settings" element={<Settings />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
