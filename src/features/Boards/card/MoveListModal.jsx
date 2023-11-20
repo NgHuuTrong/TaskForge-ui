@@ -1,32 +1,45 @@
-import { Modal, Select } from 'antd';
+import { Select } from 'antd';
+import CardModal from '../../../ui/CardModal';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { moveAllCards } from '../boardSlice';
 
 function MoveListModal({
-  isMoveListModalOpen,
-  setIsMoveListModalOpen,
-  setListMoveTo,
-  handleMoveList,
-  listMoveTo,
-  columns,
+  originalList,
+  isMoveListOpen,
+  setIsMoveListOpen,
+  lists
 }) {
+  const [listMoveTo, setListMoveTo] = useState(null);
+  const dispatch = useDispatch();
+
+  function handleMoveList() {
+    if (listMoveTo !== originalList.id) {
+      dispatch(moveAllCards({
+        originalListId: originalList.id,
+        newListId: listMoveTo
+      }));
+    }
+
+    setIsMoveListOpen(false);
+  }
+
   return (
-    <Modal
+    <CardModal
       title="Move list"
-      open={isMoveListModalOpen}
-      onOk={() => handleMoveList()}
-      okButtonProps={{ type: 'primary', className: 'bg-sky-500' }}
-      onCancel={() => {
-        setIsMoveListModalOpen(false);
-      }}
+      open={isMoveListOpen}
+      onOk={handleMoveList}
+      onCancel={() => setIsMoveListOpen(false)}
     >
       <Select
-        defaultValue={listMoveTo}
+        defaultValue={originalList.id}
         onChange={(value) => setListMoveTo(value)}
-        options={Object.values(columns).map((col) => {
-          return { value: col.id, label: col.id };
+        options={lists.map((list) => {
+          return { value: list.id, label: list.id };
         })}
         className="h-16 w-full rounded-sm"
       />
-    </Modal>
+    </CardModal>
   );
 }
 
