@@ -29,16 +29,16 @@ function Card({ listId, card, index, setMoveCard, provided }) {
       <div className="flex w-full items-center justify-between">
         <div className="flex">
           <div className="mr-4 flex items-center">
-            <BiMessageRounded></BiMessageRounded>
+            <BiMessageRounded />
             <span className="ml-1 text-lg">1</span>
           </div>
           <div className="flex items-center">
-            <MdAttachFile></MdAttachFile>
+            <MdAttachFile />
             <span className="ml-1 text-lg">1</span>
           </div>
         </div>
         <div className="flex justify-end">
-          <CardDetailMemberList size={'small'}></CardDetailMemberList>
+          <CardDetailMemberList size={'small'} />
         </div>
       </div>
       <div className="absolute left-full top-[1px] z-10 bg-white opacity-0 group-hover:opacity-100">

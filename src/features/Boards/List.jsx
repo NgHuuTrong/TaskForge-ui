@@ -2,7 +2,7 @@ import { Button, Popconfirm } from 'antd';
 import { useState } from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import CardHeader from './Card/CardHeader';
-import Card from './Card/Card';
+import Card from './card/Card'; 
 import CopyListModal from './Card/CopyListModal';
 import MoveListModal from './Card/MoveListModal';
 import AddCardSection from './Card/AddCardSection';
