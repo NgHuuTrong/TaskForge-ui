@@ -1,9 +1,10 @@
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import TextArea from 'antd/es/input/TextArea';
+import { Button, Input } from 'antd';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../boardSlice';
+
+const { TextArea } = Input;
 
 function AddCardSection({ isAddCard, setIsAddCard, listId }) {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function AddCardSection({ isAddCard, setIsAddCard, listId }) {
     return (
       <div>
         <TextArea
+          className='bg-[--color-grey-300] text-[--color-grey-600]'
           value={cardDescription}
           onChange={(e) => setCardDescription(e.target.value)}
           placeholder="Enter a title for this card..."
@@ -33,11 +35,11 @@ function AddCardSection({ isAddCard, setIsAddCard, listId }) {
             Add card
           </Button>
           <Button
-            className="flex items-center justify-center border-none"
+            className="flex items-center justify-center border-none text-[--color-grey-800]"
             type="text"
             onClick={() => setIsAddCard((prev) => !prev)}
           >
-            <CloseOutlined />
+            <CloseOutlined className='text-[--color-grey-800]' />
           </Button>
         </div>
       </div>
@@ -46,11 +48,13 @@ function AddCardSection({ isAddCard, setIsAddCard, listId }) {
 
   return (
     <Button
-      className="mt-2 flex w-full items-center justify-center border-none bg-transparent shadow-sm hover:bg-[#d0d4dc]"
+      className="mt-2 flex w-full items-center justify-center border-none bg-transparent shadow-sm hover:bg-[--color-grey-400]"
       onClick={() => setIsAddCard((prev) => !prev)}
       type="text"
     >
-      <PlusOutlined /> Add a card
+      <span className='text-[--color-grey-700] hover:text-[--color-grey-700]'>
+        <PlusOutlined /> Add a card
+      </span>
     </Button>
   );
 }

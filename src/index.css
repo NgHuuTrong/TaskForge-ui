@@ -48,7 +48,7 @@
   --header-button-bg-hovered: #CFE2FF;
   --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
   --header-button-color: var(--ds-text-subtle, #44546f);
-  
+
   --color-selected-bg: #e9f2ff;
   --color-disabled-text: #091e424f;
   --color-disabled-bg: #091e420f;
@@ -120,7 +120,7 @@ html {
 }
 
 body {
-  @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s, background-color];
+  @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s,background-color];
   overflow: hidden auto;
   font-family:
     -apple-system,
@@ -189,7 +189,7 @@ button {
 button:disabled,
 select:disabled,
 input:disabled {
-  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-disabled-text)];
+  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-grey-600)];
 }
 
 input:focus,
@@ -230,7 +230,8 @@ img {
 }
 
 :where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-arrow:before,
-.ant-popover .ant-popover-arrow:before {
+.ant-popover .ant-popover-arrow:before,
+:where(.css-dev-only-do-not-override-nllxry).ant-popover .ant-popover-inner {
   @apply bg-[var(--color-grey-0)];
 }
 
@@ -243,9 +244,22 @@ img {
   @apply px-[1.2rem] py-[0.8rem] bg-[--color-grey-0] text-[--color-grey-600] border-[--color-grey-300] placeholder:text-[--color-grey-400];
 }
 
-.ant-upload-wrapper .ant-upload-select {
-  width: 100%;
+textarea:where(.css-dev-only-do-not-override-nllxry).ant-input::placeholder {
+  @apply text-[var(--color-grey-600)]
 }
+
+:where(.css-dev-only-do-not-override-nllxry).ant-modal .ant-modal-content {
+  @apply bg-[var(--color-grey-50)]
+}
+
+.ant-upload-wrapper .ant-upload-select {
+  @apply w-full;
+}
+
+.ql-editor p {
+  @apply text-[--color-grey-800]
+}
+
 /*
 FOR DARK MODE
 

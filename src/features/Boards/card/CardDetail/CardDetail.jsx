@@ -29,7 +29,7 @@ function CardDetail() {
     return (
         <>
             <Modal
-                className='bg-[--color-grey-0] rounded-xl my-8'
+                className='rounded-xl my-8'
                 width={800}
                 centered
                 open={openModal}

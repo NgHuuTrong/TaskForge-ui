@@ -9,7 +9,7 @@ import ShareBoardModal from './ShareBoardModal';
 import MoreOptionContent from './MoreOptionContent';
 import ChangeVisibilityContent from './ChangeVisibilityContent';
 
-function Header({setBackground, background, title, isPrivate, creator, membersList}) {
+function SubHeader({setBackground, background, title, isPrivate, creator, membersList}) {
     const [favorite, setFavorite] = useState(false);
     const [changeTitleBox, setChangeTitleBox] = useState(false);
     const [currTitle, setCurrTitle] = useState(title);
@@ -149,4 +149,4 @@ function Header({setBackground, background, title, isPrivate, creator, membersLi
   )
 }
 
-export default Header
+export default SubHeader
