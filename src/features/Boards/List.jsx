@@ -51,8 +51,8 @@ function List({
     {
       label: (
         <Popconfirm
-          title="Delete all the task"
-          description="Are you sure you want to delete all the tasks in this list?"
+          title={<span className='text-[--color-grey-900] text-[1.5rem] font-bold'>Delete all the task</span>}
+          description={<span className='text-[--color-grey-900]'>Are you sure you want to delete all the tasks in this list?</span>}
           onConfirm={() => dispatch(deleteAllCards(list.id))}
           cancelButtonProps={{ type: 'text' }}
           okButtonProps={{ className: 'bg-sky-500' }}
@@ -69,8 +69,8 @@ function List({
     {
       label: (
         <Popconfirm
-          title="Delete this list"
-          description="Are you sure you want to delete this list?"
+          title={<span className='text-[--color-grey-900] text-[1.5rem] font-bold'>Delete this list</span>}
+          description={<span className='text-[--color-grey-900]'>Are you sure you want to delete this list?</span>}
           onConfirm={() => dispatch(deleteList(list.id))}
           cancelButtonProps={{ type: 'text' }}
           okButtonProps={{ className: 'bg-sky-500' }}

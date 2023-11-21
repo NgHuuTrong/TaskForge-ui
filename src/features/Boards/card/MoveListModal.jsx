@@ -26,7 +26,7 @@ function MoveListModal({
 
   return (
     <CardModal
-      title="Move list"
+      title={<h1 className='text-[--color-grey-800]'>Move list</h1>}
       open={isMoveListOpen}
       onOk={handleMoveList}
       onCancel={() => setIsMoveListOpen(false)}

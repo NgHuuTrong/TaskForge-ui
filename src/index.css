@@ -240,6 +240,15 @@ img {
   @apply text-[var(--color-grey-600)];
 }
 
+:where(.css-dev-only-do-not-override-nllxry).ant-btn-default,
+:where(.css-dev-only-do-not-override-nllxry).ant-btn.ant-btn-sm {
+  @apply text-[var(--color-grey-900)]
+}
+
+:where(.css-dev-only-do-not-override-nllxry).ant-btn.ant-btn-sm:hover {
+  @apply text-[var(--color-grey-600)] !important;
+}
+
 :where(.css-dev-only-do-not-override-3mqfnx).ant-input {
   @apply px-[1.2rem] py-[0.8rem] bg-[--color-grey-0] text-[--color-grey-600] border-[--color-grey-300] placeholder:text-[--color-grey-400];
 }
@@ -248,8 +257,9 @@ textarea:where(.css-dev-only-do-not-override-nllxry).ant-input::placeholder {
   @apply text-[var(--color-grey-600)]
 }
 
-:where(.css-dev-only-do-not-override-nllxry).ant-modal .ant-modal-content {
-  @apply bg-[var(--color-grey-50)]
+:where(.css-dev-only-do-not-override-nllxry).ant-modal .ant-modal-content,
+:where(.css-dev-only-do-not-override-nllxry).ant-modal .ant-modal-title {
+  @apply bg-[var(--color-grey-0)] text-[var(--color-grey-800)]
 }
 
 .ant-upload-wrapper .ant-upload-select {
