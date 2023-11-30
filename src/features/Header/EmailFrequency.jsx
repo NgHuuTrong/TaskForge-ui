@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Space, Select } from 'antd';
+import { Space, Select, Dropdown } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { BsArrowUpRight } from 'react-icons/bs';
+
 import Heading from '../../ui/Heading';
-import MyDropdown from '../../ui/MyDropdown';
 import Button from '../../ui/Button';
 
 const EmailFrequency = ({ trigger, icon }) => {
@@ -13,12 +13,12 @@ const EmailFrequency = ({ trigger, icon }) => {
   };
 
   return (
-    <MyDropdown
+    <Dropdown
       open={open}
       onOpenChange={handleOpenChange}
-      trigger={[trigger]}
-      render={
-        <div className="flex flex-col p-5 w-[304px] rounded-xl bg-[--color-grey-0] border border-[--color-grey-300]">
+      trigger={['click']}
+      dropdownRender={() => (
+        <div className="w-[304px]">
           <div className="mb-8 flex w-full justify-between items-center">
             <div />
             <Heading as="h5">Notifications settings</Heading>
@@ -47,14 +47,12 @@ const EmailFrequency = ({ trigger, icon }) => {
             </Button>
           </div>
         </div>
-      }
-      title={
-        <Space size={'small'} className="flex items-center justify-center">
-          {icon}
-        </Space>
-      }
-      hasChevron={false}
-    />
+      )}
+    >
+      <Space size={'small'} className="hover:bg-[--color-grey-200]">
+        {icon}
+      </Space>
+    </Dropdown>
   );
 };
 

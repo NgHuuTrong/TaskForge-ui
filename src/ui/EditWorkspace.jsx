@@ -25,7 +25,7 @@ function EditWorkspace({ workspace }) {
               <HiOutlinePencilSquare size={16} />
             </Button>
           </Heading>
-          <span className="text-[1.2rem] flex text-[--color-grey-500] items-center gap-[0.2rem] pl-[0.2rem]">
+          <span className="text-[1.2rem] flex items-center gap-[0.2rem] pl-[0.2rem]">
             {workspace.isPrivate ? (
               <>
                 <MdLockOutline size={16} />

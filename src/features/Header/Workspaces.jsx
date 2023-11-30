@@ -1,10 +1,12 @@
 import React from 'react';
-import MyDropdown from '../../ui/MyDropdown';
+import { Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+
 import ButtonImage from '../../ui/ButtonImage';
 import Heading from '../../ui/Heading';
-
 import workspaces from '../../data/workspaces.json';
 import Logo from '../../ui/Logo';
+import Button from '../../ui/Button';
 
 const WorkspaceItem = ({ workspace }) => {
   return (
@@ -29,10 +31,11 @@ const WorkspaceItem = ({ workspace }) => {
 
 const Workspaces = () => {
   return (
-    <MyDropdown
-      title="Workspaces"
-      render={
-        <div className="mt-4 w-[296px] rounded-xl bg-[--color-grey-0] p-4 border border-[--color-grey-300]">
+    <Dropdown
+      getPopupContainer={(trigger) => trigger.parentElement}
+      trigger={['click']}
+      dropdownRender={() => (
+        <div className="w-[296px]">
           <Heading as="h5" classNames="p-4">
             Current Workspace
           </Heading>
@@ -44,8 +47,12 @@ const Workspaces = () => {
             <WorkspaceItem key={workspace.id} workspace={workspace} />
           ))}
         </div>
-      }
-    />
+      )}
+    >
+      <Button type="icon" size="normal">
+        Workspaces <DownOutlined />
+      </Button>
+    </Dropdown>
   );
 };
 

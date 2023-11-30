@@ -10,24 +10,20 @@ function Boards() {
   return (
     <Row type="ver" classNames="pt-[2rem] px-[2rem]">
       <div className="mb-[5rem]">
-        <Heading classNames="text-[--color-grey-900] flex items-center gap-4 mb-[1rem]" as="h5">
+        <Heading classNames="flex items-center gap-4 mb-[1rem]" as="h5">
           <AiOutlineClockCircle size="2.5rem" />
           Recently viewed
         </Heading>
         <BoardCard />
       </div>
       <div className="space-y-10">
-        <Heading classNames="text-[--color-grey-600] uppercase flex items-center gap-4" as="h4">
+        <Heading classNames="uppercase flex items-center gap-4" as="h4">
           Your workspaces
         </Heading>
         {workspaces.map((workspace) => (
           <WorkspaceSection workspace={workspace} key={workspace.id} />
         ))}
-        <Button
-          classNames="flex items-center font-semibold gap-2 px-[2rem]"
-          size="small"
-          type="secondary"
-        >
+        <Button classNames="flex items-center font-semibold gap-2 px-[2rem]" size="small" type="secondary">
           View all closed boards
         </Button>
       </div>

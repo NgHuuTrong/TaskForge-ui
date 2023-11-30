@@ -4,34 +4,39 @@
     "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/f0d9aec449f9ce4db03d20994b231754/photo-1653216977227-fa2ae9547f96.jpg",
     "boardName": "Simple Project Board",
     "workspaceName": "TaskForge",
-    "starred": true
+    "starred": true,
+    "visibility": "Workspace"
   },
   {
     "id": 1,
     "img": null,
     "boardName": "Project Management",
     "workspaceName": "CS163-21APCS1-OddGroups",
-    "starred": true
+    "starred": true,
+    "visibility": "Private"
   },
   {
     "id": 2,
-    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/350dda08d977f92d756f3d9ec111ea66/photo-1521495084171-3ad639e3d525.jpg",
+    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/4315f9a5b3c78f696d170e9b626a44d6/e2d2752f.jpg",
     "boardName": "Group05-21APCS1",
     "workspaceName": "CS163-21APCS1-OddGroups",
-    "starred": false
+    "starred": false,
+    "visibility": "Workspace"
   },
   {
     "id": 3,
-    "img": null,
+    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/963ddbe30ac0e2ab51ed5ed7403a5143/photo-1523266092241-0077129f31fe.jpg",
     "boardName": "1-on-1 Meeting Agenda",
     "workspaceName": "TaskForge",
-    "starred": false
+    "starred": false,
+    "visibility": "Private"
   },
   {
     "id": 4,
-    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/350dda08d977f92d756f3d9ec111ea66/photo-1521495084171-3ad639e3d525.jpg",
+    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/720x960/e06eb3ab5bd0f8ab762098b7aa42cb1d/photo-1696144706485-ff7825ec8481.jpg",
     "boardName": "Group08-21APCS2",
     "workspaceName": "CS163-21APCS1-EvenGroups",
-    "starred": true
+    "starred": true,
+    "visibility": "Workspace"
   }
 ]

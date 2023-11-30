@@ -7,11 +7,7 @@ function Heading({ as = 'h1', children, classNames = '' }) {
     h5: 'text-[1.4rem]',
   };
 
-  return (
-    <h1 className={`flex items-center text-[--color-grey-600] font-[700] leading-[2rem] ${styles[as]} ${classNames}`}>
-      {children}
-    </h1>
-  );
+  return <span className={`flex items-center font-bold leading-[2rem] ${styles[as]} ${classNames}`}>{children}</span>;
 }
 
 export default Heading;

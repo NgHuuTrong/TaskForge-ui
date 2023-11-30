@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     example: exampleSlice,
     sidebar: sidebarSlice,
-    board: boardSlice
+    board: boardSlice,
   },
 });
 
