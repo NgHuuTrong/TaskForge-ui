@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
 import SubTemplateTabs from './SubTemplateTabs';
-import { useDispatch, useSelector } from 'react-redux';
-import { setShowSubTemplateTabs } from '../features/Sidebar/sidebarSlice';
 
 function SidebarTab({ icon = null, to, title, type = 'main', onClick }) {
   const base = 'flex justify-between items-center w-full rounded-xl';
+  const [showSubTabs, setShowSubTabs] = useState(false);
 
   const types = {
     main: ' pl-[1rem] pr-[0.5rem] py-[0.25rem] font-semibold',
@@ -16,26 +15,18 @@ function SidebarTab({ icon = null, to, title, type = 'main', onClick }) {
 
   const allClass = base + types[type];
 
-  const showSubTemplateTabs = useSelector((state) => state.sidebar.showSubTemplateTabs);
-  const dispatch = useDispatch();
-
   return (
     <>
       <NavLink
         to={to}
         className={({ isActive }) =>
-          allClass +
-          (isActive
-            ? ' text-[--color-brand-500] bg-[--color-selected-bg]'
-            : ' text-[--color-grey-500] hover:bg-[--color-grey-200]')
+          allClass + (isActive ? ' text-[--color-brand-500] bg-[--color-selected-bg]' : ' hover:bg-[--color-grey-200]')
         }
         onClick={() => {
           if (type === 'sub-templates') {
             onClick();
-          } else if (title === 'Templates' && !showSubTemplateTabs) {
-            dispatch(setShowSubTemplateTabs(true));
-          } else if (showSubTemplateTabs) {
-            dispatch(setShowSubTemplateTabs(false));
+          } else if (title === 'Templates') {
+            setShowSubTabs((prev) => !prev);
           }
         }}
       >
@@ -49,7 +40,7 @@ function SidebarTab({ icon = null, to, title, type = 'main', onClick }) {
           </div>
         )}
       </NavLink>
-      {title === 'Templates' && <SubTemplateTabs />}
+      {title === 'Templates' && <SubTemplateTabs showSubTabs={showSubTabs} />}
     </>
   );
 }

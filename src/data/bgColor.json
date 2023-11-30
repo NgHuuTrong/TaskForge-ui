@@ -1,0 +1,38 @@
+[
+  {
+    "key": 1,
+    "backgroundPath": "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)"
+  },
+  {
+    "key": 2,
+    "backgroundPath": "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)"
+  },
+  {
+    "key": 3,
+    "backgroundPath": "linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)"
+  },
+  {
+    "key": 4,
+    "backgroundPath": "linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)"
+  },
+  {
+    "key": 5,
+    "backgroundPath": "linear-gradient(43deg, #00DBDE 0%, #FC00FF 100%)"
+  },
+  {
+    "key": 6,
+    "backgroundPath": "linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%)"
+  },
+  {
+    "key": 7,
+    "backgroundPath": "linear-gradient(132deg, #F4D03F 0%, #16A085 100%)"
+  },
+  {
+    "key": 8,
+    "backgroundPath": "linear-gradient(15deg, #FFDEE9 0%, #B5FFFC 100%)"
+  },
+  {
+    "key": 9,
+    "backgroundPath": "linear-gradient(100deg, #52ACFF 25%, #FFE32C 100%)"
+  }
+]

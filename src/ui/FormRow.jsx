@@ -6,14 +6,14 @@ function FormRow({ label, note, error, children, isCompulsory = false, type = 'h
   return (
     <div className={types[type]}>
       {label && (
-        <label htmlFor={children.props.id} className="text-[1.2rem] text-[--color-grey-500] font-bold">
+        <label htmlFor={children.props.id} className="flex items-center gap-2 text-[1.2rem] font-bold">
           {label}
-          {isCompulsory && <span className="text-[--color-red-700] pl-[0.2rem]">*</span>}
+          {isCompulsory && <span className="text-[--color-red-400]">*</span>}
         </label>
       )}
       {children}
-      {error && <span className="text-[1.4rem] text-[--color-red-700]">{error}</span>}
-      {note && <span className="text-[1.2rem] text-[--color-grey-500]">{note}</span>}
+      {error && <div className="flex items-center gap-4 text-[1.4rem] text-[--color-red-400]">{error}</div>}
+      {note && <div className="flex items-center gap-4 text-[1.2rem] text-[--color-subtext]">{note}</div>}
     </div>
   );
 }

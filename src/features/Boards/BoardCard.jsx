@@ -1,20 +1,22 @@
 import { AiOutlineStar } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 function BoardCard({
   board = {
+    id: 0,
     boardName: 'Board name',
     workspaceName: 'test',
     img: null,
   },
-  type = 'normal'
 }) {
   return (
-    <div
-      className="w-[23%] bg-center bg-cover rounded-md cursor-pointer mr-[2%] mb-[2%]"
+    <Link
+      to={`/b/${board.id}/board-detail`}
+      className="flex w-[23%] min-w-[12rem] bg-center bg-cover rounded-md mr-[2%] mb-[2%]"
       style={{
         backgroundImage: `url(${
           board.img ||
-          'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/615x960/85db5179991ab12eb75dbf72228430ed/photo-1669183213616-6fcc8a3e2226.jpg'
+          'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/350dda08d977f92d756f3d9ec111ea66/photo-1521495084171-3ad639e3d525.jpg'
         })`,
       }}
     >
@@ -24,7 +26,7 @@ function BoardCard({
           <AiOutlineStar className="text-white hover:scale-125" />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

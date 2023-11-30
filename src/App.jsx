@@ -12,11 +12,9 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import WorkspaceHome from './pages/WorkspaceHome';
 import WorkspaceMember from './pages/WorkspaceMember';
-import { DarkModeProvider } from './context/DarkModeContext';
-import BoardDetailLayout from './features/Boards/BoardDetailLayout';
-
-import templates from './data/templates.json';
 import Settings from './pages/Settings';
+import { DarkModeProvider } from './context/DarkModeContext';
+import BoardDetailLayout from './features/Boards/layout/BoardDetailLayout';
 
 const creator = {
   fullName: 'Lâm Khánh Hòa',
@@ -68,24 +66,20 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<AppLayout />}>
-              <Route index element={<Navigate replace to="example" />} />
+              <Route index element={<Navigate replace to="boards" />} />
               <Route path="example" element={<Example />} />
               <Route path="templates" element={<Templates />} />
               <Route path="boards" element={<Boards />} />
               <Route path="home" element={<Home />} />
+              <Route path="/w/:workspaceId/home" element={<WorkspaceHome />} />
+              <Route path="/w/:workspaceId/members" element={<WorkspaceMember />} />
             </Route>
-            <Route
-              path="/:boardId/board-detail"
-              element={
-                <BoardDetailLayout
-                  title="My board"
-                  isPrivate={false}
-                  template={templates[1]}
-                  creator={creator}
-                  membersList={members}
-                />
-              }
-            ></Route>
+            <Route element={<AppLayout headerOnly />}>
+              <Route
+                path="/b/:boardId/board-detail"
+                element={<BoardDetailLayout isPrivate={false} creator={creator} membersList={members} />}
+              />
+            </Route>
             <Route path="authenticate" element={<Authenticate />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="reset-password" element={<ResetPassword />} />
