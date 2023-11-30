@@ -40,9 +40,19 @@
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
   --image-grayscale: 0;
   --image-opacity: 100%;
+
+
+  --color-dark: #445471;
+  --header-button-txt-hovered: #0C66E4;
+  --header-button-hovered-200: #074fb3;
+  --header-button-bg-hovered: #CFE2FF;
+  --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
+  --header-button-color: var(--ds-text-subtle, #44546f);
+
   --color-selected-bg: #e9f2ff;
   --color-disabled-text: #091e424f;
   --color-disabled-bg: #091e420f;
+
 }
 
 :root.dark-mode {
@@ -164,8 +174,7 @@ select {
   @apply text-[--color-grey-500] hover:bg-[--color-grey-200];
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown
-  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
   @apply text-[--color-brand-500] bg-[--color-selected-bg];
 }
 
@@ -180,7 +189,7 @@ button {
 button:disabled,
 select:disabled,
 input:disabled {
-  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-disabled-text)];
+  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-grey-600)];
 }
 
 input:focus,
@@ -221,7 +230,8 @@ img {
 }
 
 :where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-arrow:before,
-.ant-popover .ant-popover-arrow:before {
+.ant-popover .ant-popover-arrow:before,
+:where(.css-dev-only-do-not-override-nllxry).ant-popover .ant-popover-inner {
   @apply bg-[var(--color-grey-0)];
 }
 
@@ -230,8 +240,34 @@ img {
   @apply text-[var(--color-grey-600)];
 }
 
+:where(.css-dev-only-do-not-override-nllxry).ant-btn-default,
+:where(.css-dev-only-do-not-override-nllxry).ant-btn.ant-btn-sm {
+  @apply text-[var(--color-grey-900)]
+}
+
+:where(.css-dev-only-do-not-override-nllxry).ant-btn.ant-btn-sm:hover {
+  @apply text-[var(--color-grey-600)] !important;
+}
+
 :where(.css-dev-only-do-not-override-3mqfnx).ant-input {
   @apply px-[1.2rem] py-[0.8rem] bg-[--color-grey-0] text-[--color-grey-600] border-[--color-grey-300] placeholder:text-[--color-grey-400];
+}
+
+textarea:where(.css-dev-only-do-not-override-nllxry).ant-input::placeholder {
+  @apply text-[var(--color-grey-600)]
+}
+
+:where(.css-dev-only-do-not-override-nllxry).ant-modal .ant-modal-content,
+:where(.css-dev-only-do-not-override-nllxry).ant-modal .ant-modal-title {
+  @apply bg-[var(--color-grey-0)] text-[var(--color-grey-800)]
+}
+
+.ant-upload-wrapper .ant-upload-select {
+  @apply w-full;
+}
+
+.ql-editor p {
+  @apply text-[--color-grey-800]
 }
 
 /*

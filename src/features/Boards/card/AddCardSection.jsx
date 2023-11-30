@@ -1,21 +1,28 @@
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import TextArea from 'antd/es/input/TextArea';
+import { Button, Input } from 'antd';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCard } from '../boardSlice';
 
-function AddCardSection({ addCardItem, isAddCard, setIsAddCard, listId }) {
-  const [cardItemDescription, setCardItemDescription] = useState('');
-  const handleAddCardItem = () => {
-    setCardItemDescription('');
+const { TextArea } = Input;
+
+function AddCardSection({ isAddCard, setIsAddCard, listId }) {
+  const dispatch = useDispatch();
+  const [cardDescription, setCardDescription] = useState('');
+
+  const handleAddCard = () => {
+    setCardDescription('');
     setIsAddCard(false);
-    addCardItem(listId, cardItemDescription);
+    dispatch(addCard({ listId, cardDescription }));
   };
+
   if (isAddCard) {
     return (
       <div>
         <TextArea
-          value={cardItemDescription}
-          onChange={(e) => setCardItemDescription(e.target.value)}
+          className='bg-[--color-grey-300] text-[--color-grey-600]'
+          value={cardDescription}
+          onChange={(e) => setCardDescription(e.target.value)}
           placeholder="Enter a title for this card..."
           autoSize={{ minRows: 3, maxRows: 5 }}
         />
@@ -23,30 +30,31 @@ function AddCardSection({ addCardItem, isAddCard, setIsAddCard, listId }) {
           <Button
             className="mr-2 flex items-center justify-center bg-blue-500 text-white"
             type="primary"
-            onClick={() => {
-              handleAddCardItem();
-            }}
+            onClick={handleAddCard}
           >
             Add card
           </Button>
           <Button
-            className="flex items-center justify-center border-none"
+            className="flex items-center justify-center border-none text-[--color-grey-800]"
             type="text"
             onClick={() => setIsAddCard((prev) => !prev)}
           >
-            <CloseOutlined></CloseOutlined>
+            <CloseOutlined className='text-[--color-grey-800]' />
           </Button>
         </div>
       </div>
     );
   }
+
   return (
     <Button
-      className="mt-2 flex w-full items-center justify-center border-none bg-transparent shadow-sm hover:bg-[#d0d4dc]"
+      className="mt-2 flex w-full items-center justify-center border-none bg-transparent shadow-sm hover:bg-[--color-grey-400]"
       onClick={() => setIsAddCard((prev) => !prev)}
       type="text"
     >
-      <PlusOutlined></PlusOutlined> Add a card
+      <span className='text-[--color-grey-700] hover:text-[--color-grey-700]'>
+        <PlusOutlined /> Add a card
+      </span>
     </Button>
   );
 }
