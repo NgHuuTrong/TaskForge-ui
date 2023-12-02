@@ -323,5 +323,12 @@
       "Live | Deployed",
       "Live | Victory"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/5423102a85612209a94bcde8/2560x1440/575c4d97c9004f4f38e6a248ef8ac3ba/Budget_Full_HD.jpg",
+    "name": "Advanced Project Budgeting and Time Tracking",
+    "description": "If you are going to track your time and additional expenses spent on different projects along with tracking payments from clients this board is for you. Before the start of the project normally you are estimating Time needed to complete the project and also estimating additional costs.",
+    "type": "Project management",
+    "defaultList": ["To Do", "Doing", "Done"]
   }
 ]
