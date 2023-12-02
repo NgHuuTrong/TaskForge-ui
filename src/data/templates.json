@@ -103,5 +103,19 @@
     "description": "It essentially consists of “cards” that you put into “lists” on a “board”. I make a board for each class I teach where the lists are the weeks of the semester (including the week before and after) and the cards are things I need to do for my class each week. There’s also a “Done” list that cards get moved to as they are completed.",
     "type": "Education",
     "defaultList": ["Beginning of Term", "Week 1 (copy for remaining weeks)", "End of Term"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2317x1600/c777bdcaa82e10e7ed542c47ce826093/photo-1542216172-f356fdd22653.jpg",
+    "name": "Project Based Learning",
+    "description": "The entirety of a students’ assessment is based on projects, so one of the key aspects of that is organizing your project, creating a timeline, responsibilities, and checklists.",
+    "type": "Education",
+    "defaultList": [
+      "Brainstorm & Research",
+      "Design",
+      "Development",
+      "Testing & Evaluation",
+      "Branding",
+      "Presentation"
+    ]
   }
 ]
