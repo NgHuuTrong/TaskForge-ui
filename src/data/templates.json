@@ -205,5 +205,19 @@
     "description": "This is the very template we use to organise and run Adaptavist Live and Team Titans podcasts, the top Atlassian ecosystem podcasts.",
     "type": "Marketing",
     "defaultList": ["Resources", "This Week", "Podcast Content Shortlist", "Parking / Waiting", "Promotion"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/b22d1f7e3ac76a926c2630141dd090bc/photo-1592781959774-4f2498f581d7.jpg",
+    "name": "Dating Funnel Template",
+    "description": "Both dates, collisions of misaligned values and nuanced dialogue unnoticed. Things I wanted to avoid. And so I built a Trello board to keep track of it all.",
+    "type": "Personal",
+    "defaultList": [
+      "Vetting",
+      "Scheduling",
+      "Scheduled",
+      "Dating",
+      "No (Try to keep a bunch of cards in here so when you get dumped so you'll feel less crappy about yourself)",
+      "Hold (FarAway/IsUnavailable/etc.)"
+    ]
   }
 ]
