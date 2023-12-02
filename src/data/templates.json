@@ -48,5 +48,17 @@
     "name": "Design Project Template",
     "type": "Design",
     "defaultList": ["Project Brief", "Brand Identity", "Product Design", "Marketing Website", "Client Reviews"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/9eb2d682830dae055b61e1ebc54e1ddb/photo-1523726491678-bf852e717f6a.jpg",
+    "name": "Design System Checklist",
+    "type": "Design",
+    "defaultList": [
+      "Guidelines",
+      "UI Components",
+      "Design Tokens",
+      "Accessibility Touchpoints",
+      "SSOT (Single Source Of Truth) Components"
+    ]
   }
 ]
