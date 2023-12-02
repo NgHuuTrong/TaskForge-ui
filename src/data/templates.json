@@ -285,5 +285,21 @@
     "description": "Plan every day of the week and after you're finished, just drag it to the done list!",
     "type": "Productivity",
     "defaultList": ["Done", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2401x1600/3ec9b90c95f9c9ce4daa0a477a8ceca8/photo-1578403414495-5bb49bf9447b.jpg",
+    "name": "Life Watchers 2020",
+    "description": "Life Watchers, \"It's like Weight Watchers, but for your life!\"",
+    "type": "Productivity",
+    "defaultList": [
+      "2020 Resolutions",
+      "Life Watchers Missions",
+      "Done ✔️✨",
+      "Wins 🏆✨",
+      "Life 🔑",
+      "Health 🍎",
+      "Career 💻",
+      "Ideas 💡"
+    ]
   }
 ]
