@@ -191,5 +191,12 @@
     "description": "Did you know that a majority of marketing content goes unused? It has nothing to do with the content's quality; it's just not accessible enough. With a marketing content catalog, you can centralize all the content your teams create and make it easily searchable.",
     "type": "Marketing",
     "defaultList": ["Blog Posts", "Gated Assets", "ON THE DAY", "Webinars", "Case Studies", "Export & Sync"]
+  },
+  {
+    "defaultBackground": "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/purty_wood_dark.png",
+    "name": "Marketing Overview",
+    "description": "Use this board with your marketing team to run smooth weekly team meetings and keep everybody on the same page with the status of projects.",
+    "type": "Marketing",
+    "defaultList": ["Start Here!", "Marketing Team This Week", "Team Meeting", "In Progress", "Up Next", "Done"]
   }
 ]
