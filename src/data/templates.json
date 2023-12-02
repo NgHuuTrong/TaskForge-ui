@@ -75,5 +75,11 @@
       "Client Review",
       "Final Handoff"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/ee4afc28fad7c7932339b3278f4e185a/photo-1504805572947-34fad45aed93.jpg",
+    "name": "Game Design Template",
+    "type": "Design",
+    "defaultList": ["High Concept", "Concept Art - List Style", "Game Description", "Gameplay Minute"]
   }
 ]
