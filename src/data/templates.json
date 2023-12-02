@@ -308,5 +308,20 @@
     "description": "At Palace Law, case folders are now represented by a Trello card. Those cards are assigned to attorneys’ Trello boards, and attorneys use Trello features to prioritize their work. In the old model, an attorney manually marked a case folder indicating when it needed to be reviewed again. Now, they receive a reminder in Trello that it’s time to revisit a case.",
     "type": "Project management",
     "defaultList": ["New Client Onboarding", "Attorney Assigned", "Doing", "On Hold", "Win", "Lost"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/575584dacedaafdf0d8660c2/2048x2048/b30b118405e4fbe5947cba512d6a19da/UN074431_2.JPG.jpg",
+    "name": "UNICEF Global Innovation Centre",
+    "description": "UNICEF's Global Innovation Centre team evaluates and implement ideas and technologies that can scale at a national or multinational level for improving the lives of children and their families more efficiently and accurately. They also explore what it means to be a truly distributed team enabled by technology.",
+    "type": "Project management",
+    "defaultList": [
+      "Initial Interest",
+      "Formal Interest",
+      "Exploring | Scoping & Research",
+      "Exploring | Business Case",
+      "Pipeline | Under Review -> Contracting",
+      "Live | Deployed",
+      "Live | Victory"
+    ]
   }
 ]
