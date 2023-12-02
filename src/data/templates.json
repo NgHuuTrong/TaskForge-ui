@@ -161,5 +161,21 @@
       "🧑🏾‍💻 Testing [Staging Server]",
       "📆 Sprint - Done [Version: 1.2.0]"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2402x1600/1b101b2674301e95f8ed6abfb4f0181e/photo-1581896184337-1330180ac3e6.jpg",
+    "name": "Web Development",
+    "description": "Template to help web developers to organize and manage tasks and features for their projects and website development.",
+    "type": "Engineering",
+    "defaultList": [
+      "Backlog",
+      "New Features",
+      "Running Tasks",
+      "Fix & Upgrade",
+      "Phase 1 Testing",
+      "Phase 2 Testing",
+      "Ready",
+      "Done and Deployed"
+    ]
   }
 ]
