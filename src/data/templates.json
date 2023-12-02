@@ -2,12 +2,14 @@
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/2560x1440/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png",
     "name": "A Lead Management Pipeline by Crmble",
+    "description": "Use this template to manage relations with important contacts for your business. Feel free to change or add more lists to cutomize the stages of your funnel to your needs.",
     "type": "Business",
     "defaultList": ["New Lead 🙋", "Discovery call 🤝", "Proposal review 🔎", "Processed", "Future follow-up 🔮"]
   },
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1280x1920/842930275c7de22dfabb6bb21b3cb8cd/photo-1590978553854-f1c0fe76ca70.jpg",
     "name": "Lean Canvas",
+    "description": "Lean Canvas is a 1-page business plan template created by Ash Maurya that helps you deconstruct your idea into its key assumptions. It is adapted from Alex Osterwalder's Business Model Canvas and optimized for Lean Startups. It replaces elaborate business plans with a single page business model.",
     "type": "Business",
     "defaultList": [
       "1. Problem",
@@ -24,12 +26,14 @@
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/7f16c6eb93506d217fd0954458890909/photo-1537134394103-214adc4bd836.jpg",
     "name": "Nonprofit Project Management",
+    "description": "Big dreams turn into bigger results with a killer project plan. Use this basic structure to build your team's ideal workflow, for projects big or small.",
     "type": "Business",
     "defaultList": ["Project Resources", "Questions For Next Meeting", "To Do", "Pending", "Blocked", "Done"]
   },
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1280x1920/0b921b1dbc79d63fe6d71a67517808d1/photo-1544357513-401463078b59.jpg",
     "name": "Business Model Canvas",
+    "description": "Business Model Canvas is a strategic management and lean startup template for developing new or documenting existing business models. It is a visual chart with elements describing a firm's or product's value proposition, infrastructure, customers, and finances. Add cards under each list as you define your criteria.",
     "type": "Business",
     "defaultList": [
       "1. Value Propositions",
@@ -46,12 +50,14 @@
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2401x1600/cf8274d3ee4a86a151953a4baad1a1bd/photo-1487446929682-f62f73984006.jpg",
     "name": "Design Project Template",
+    "description": "An easy to use template for planning and monitoring your branding and product design projects online.",
     "type": "Design",
     "defaultList": ["Project Brief", "Brand Identity", "Product Design", "Marketing Website", "Client Reviews"]
   },
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/9eb2d682830dae055b61e1ebc54e1ddb/photo-1523726491678-bf852e717f6a.jpg",
     "name": "Design System Checklist",
+    "description": "A design system unites product teams around a common visual language. It reduces the design debt, accelerates the design process, and builds bridges between teams working in concert to bring products to life.",
     "type": "Design",
     "defaultList": [
       "Guidelines",
@@ -64,6 +70,7 @@
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/f9650585123ca82bae4358b8618ccfe6/photo-1452860606245-08befc0ff44b.jpg",
     "name": "Freelance Branding Project",
+    "description": "Use this template to run your next Branding project. This board will help you build an easy, repeatable process that will help you and your clients know what's happening and what's coming up next.",
     "type": "Design",
     "defaultList": [
       "New Client Onboarding",
@@ -79,6 +86,7 @@
   {
     "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/ee4afc28fad7c7932339b3278f4e185a/photo-1504805572947-34fad45aed93.jpg",
     "name": "Game Design Template",
+    "description": "Use this Trello board as an easy to organize template for planning a video game project.",
     "type": "Design",
     "defaultList": ["High Concept", "Concept Art - List Style", "Game Description", "Gameplay Minute"]
   }
