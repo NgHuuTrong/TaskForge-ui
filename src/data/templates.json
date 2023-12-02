@@ -60,5 +60,20 @@
       "Accessibility Touchpoints",
       "SSOT (Single Source Of Truth) Components"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/f9650585123ca82bae4358b8618ccfe6/photo-1452860606245-08befc0ff44b.jpg",
+    "name": "Freelance Branding Project",
+    "type": "Design",
+    "defaultList": [
+      "New Client Onboarding",
+      "Creative Brief",
+      "Discovery",
+      "Design Phase",
+      "First Client Review Meeting",
+      "First Round of Revisions",
+      "Client Review",
+      "Final Handoff"
+    ]
   }
 ]
