@@ -263,5 +263,20 @@
     "description": "Increase your personal productivity each week with this board that Justin Gallagher, one of the creators of Trello, uses every day. Split your work into very specific lists so nothing falls through the cracks. Use the reference list to keep important information on hand. Hold yourself accountable with meeting notes, and most importantly spend some time each morning planning out the day ahead.",
     "type": "Productivity",
     "defaultList": ["Start here!", "Today", "Tomorrow", "This Week", "Waiting", "Inbox", "Done!", "References"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1120x1920/4fadadcdac7dde6efb0c4e5b672cf638/photo-1579546928686-286c9fbde1ec.jpg",
+    "name": "Self-Advocacy Record",
+    "description": "Sharing a record of feedback you receive, goals you’re pursuing, and wins under your belt is a powerful way to advocate for yourself at work. Use this template to keep track of the following artifacts.",
+    "type": "Productivity",
+    "defaultList": [
+      "☆ Feedback",
+      "☆ Projects",
+      "☆ Leadership",
+      "☆ Personal Development",
+      "☆ Written Work",
+      "☆ \"Invisible\" work",
+      "☆ Service"
+    ]
   }
 ]
