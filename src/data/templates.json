@@ -117,5 +117,12 @@
       "Branding",
       "Presentation"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1280x1920/93ada3938911bad6d22b224806c390ad/photo-1615111784767-4d7c527f32a1.jpg",
+    "name": "Plan your Studies - Vet Student",
+    "description": "So much to learn, so little time! This template is designed to help vet students visualize their study workload and make a plan for the week based on upcoming exams.",
+    "type": "Education",
+    "defaultList": ["To Do", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun", "Done!"]
   }
 ]
