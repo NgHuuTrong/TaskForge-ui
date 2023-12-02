@@ -124,5 +124,12 @@
     "description": "So much to learn, so little time! This template is designed to help vet students visualize their study workload and make a plan for the week based on upcoming exams.",
     "type": "Education",
     "defaultList": ["To Do", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun", "Done!"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2386x1600/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg",
+    "name": "Kanban Template",
+    "description": "Use this simple Kanban template to keep the engineering team on the same page and moving through work fluidly.",
+    "type": "Engineering",
+    "defaultList": ["Backlog", "Design", "To Do", "Doing", "Code Review", "Testing", "Done 🎉"]
   }
 ]
