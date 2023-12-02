@@ -184,5 +184,12 @@
     "description": "Regardless if you are a professional speaker and you do this dozen times per week, or you are just getting ready for your first public presentation, this board can help you get organized for speaking at a live streamed event.",
     "type": "Marketing",
     "defaultList": ["YOUR PRESENTATION", "STREAMING ENVIRONMENT", "ON THE DAY", "AFTER EVENT", "IN PROGRESS", "DONE"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1201/4ff956445063b6458ae044342d2e76b2/photo-1507842217343-583bb7270b66.jpg",
+    "name": "Marketing Content Catalog",
+    "description": "Did you know that a majority of marketing content goes unused? It has nothing to do with the content's quality; it's just not accessible enough. With a marketing content catalog, you can centralize all the content your teams create and make it easily searchable.",
+    "type": "Marketing",
+    "defaultList": ["Blog Posts", "Gated Assets", "ON THE DAY", "Webinars", "Case Studies", "Export & Sync"]
   }
 ]
