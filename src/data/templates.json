@@ -278,5 +278,12 @@
       "☆ \"Invisible\" work",
       "☆ Service"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1120x1920/3f06723d6882d2942a9b248f22f95f22/photo-1579547944212-c4f4961a8dd8.jpg",
+    "name": "Weekly Planner",
+    "description": "Plan every day of the week and after you're finished, just drag it to the done list!",
+    "type": "Productivity",
+    "defaultList": ["Done", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
   }
 ]
