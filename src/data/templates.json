@@ -330,5 +330,12 @@
     "description": "If you are going to track your time and additional expenses spent on different projects along with tracking payments from clients this board is for you. Before the start of the project normally you are estimating Time needed to complete the project and also estimating additional costs.",
     "type": "Project management",
     "defaultList": ["To Do", "Doing", "Done"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/e9f0bfcc98e89fffe8417ec99f4fd6a0/photo-1523821741446-edb2b68bb7a0.jpg",
+    "name": "Amazing Kanban Project Management Template",
+    "description": "You can use this Amazing Kanban board as a starting point for helping your team track work in progress on any project. It makes use of the Amazing Fields PowerUp to track key information for each item. The template can be used for any type of team including software development, support, IT, marketing, design, and many others.",
+    "type": "Project management",
+    "defaultList": ["Backlog", "Planning / Design", "Ready", "In Progress", "Review", "Done 🎉"]
   }
 ]
