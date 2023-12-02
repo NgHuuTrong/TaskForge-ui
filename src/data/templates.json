@@ -1,27 +1,52 @@
 [
   {
-    "id": 0,
-    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/963ddbe30ac0e2ab51ed5ed7403a5143/photo-1523266092241-0077129f31fe.jpg",
-    "templateName": "Mise-En-Place Personal Productivity System"
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/2560x1440/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png",
+    "name": "A Lead Management Pipeline by Crmble",
+    "type": "Business",
+    "defaultList": ["New Lead 🙋", "Discovery call 🤝", "Proposal review 🔎", "Processed", "Future follow-up 🔮"]
   },
   {
-    "id": 1,
-    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x480/1849a4a0cc47bd7f5c6e08a06cf3affa/photo-1516553174826-d05833723cd4.jpg",
-    "templateName": "Remote Team Meetings"
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1280x1920/842930275c7de22dfabb6bb21b3cb8cd/photo-1590978553854-f1c0fe76ca70.jpg",
+    "name": "Lean Canvas",
+    "type": "Business",
+    "defaultList": [
+      "1. Problem",
+      "2. Customer Segments",
+      "3. Unique Value Propositions",
+      "4. Solution",
+      "5. Unfair Advantage",
+      "6. Revenue Streams",
+      "7. Cost Structure",
+      "8. Key Metrics",
+      "9. Channels"
+    ]
   },
   {
-    "id": 2,
-    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/4315f9a5b3c78f696d170e9b626a44d6/e2d2752f.jpg",
-    "templateName": "Company Overview"
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/7f16c6eb93506d217fd0954458890909/photo-1537134394103-214adc4bd836.jpg",
+    "name": "Nonprofit Project Management",
+    "type": "Business",
+    "defaultList": ["Project Resources", "Questions For Next Meeting", "To Do", "Pending", "Blocked", "Done"]
   },
   {
-    "id": 3,
-    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x322/47f09f0e3910259568294477d0bdedac/photo-1576502200916-3808e07386a5.jpg",
-    "templateName": "Kanban Template"
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1280x1920/0b921b1dbc79d63fe6d71a67517808d1/photo-1544357513-401463078b59.jpg",
+    "name": "Business Model Canvas",
+    "type": "Business",
+    "defaultList": [
+      "1. Value Propositions",
+      "2. Customer Segments",
+      "3. Channels",
+      "4. Customer Relationships",
+      "5. Revenue Streams",
+      "6. Key Resources",
+      "7. Key Partnerships",
+      "8. Key Activities",
+      "9. Cost Structure"
+    ]
   },
   {
-    "id": 4,
-    "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/ff001cf6d3206de96d324c4a3646f844/photo-1500462918059-b1a0cb512f1d.jpg",
-    "templateName": "Design Huddle"
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2401x1600/cf8274d3ee4a86a151953a4baad1a1bd/photo-1487446929682-f62f73984006.jpg",
+    "name": "Design Project Template",
+    "type": "Design",
+    "defaultList": ["Project Brief", "Brand Identity", "Product Design", "Marketing Website", "Client Reviews"]
   }
 ]
