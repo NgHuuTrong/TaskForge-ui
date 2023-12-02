@@ -177,5 +177,12 @@
       "Ready",
       "Done and Deployed"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/88badc718574e79916d2330ccd49a75a/photo-1587270804625-48c99a3cc707.jpg",
+    "name": "Speaker guide for online events",
+    "description": "Regardless if you are a professional speaker and you do this dozen times per week, or you are just getting ready for your first public presentation, this board can help you get organized for speaking at a live streamed event.",
+    "type": "Marketing",
+    "defaultList": ["YOUR PRESENTATION", "STREAMING ENVIRONMENT", "ON THE DAY", "AFTER EVENT", "IN PROGRESS", "DONE"]
   }
 ]
