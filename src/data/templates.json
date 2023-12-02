@@ -146,5 +146,20 @@
       "Testing",
       "Done Sprint DATE - DATE 🎉"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/c9ada8526a0585ddf17441d7e68dc9ac/photo-1593689217914-19621b0eac82.jpg",
+    "name": "Software Development [Web App, iOS App, Android App]",
+    "description": "Template for software development team to organize, manage tasks, manage deadlines and features for their software development projects.",
+    "type": "Engineering",
+    "defaultList": [
+      "🗃 Templates",
+      "🗒 Backlog",
+      "🗓 Sprint Backlog - [Timeline]",
+      "📅 Working On",
+      "🐞 Bugs",
+      "🧑🏾‍💻 Testing [Staging Server]",
+      "📆 Sprint - Done [Version: 1.2.0]"
+    ]
   }
 ]
