@@ -231,7 +231,14 @@
       "Travel costs",
       "Best time to travel",
       "Travel checklist",
-      "Countdown"
+      "And done!"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/5874460daa34760c4ba7bd64/2560x1600/3ecbc05ba9e075a2c86d4f335b43d121/background-1%402x.png",
+    "name": "Guided Gratitude Practice",
+    "description": "Did you know cultivating a sense of gratitude acts as a buffer against feelings of anxiety and loneliness? (True story!) This board can guide your personal gratitude practice or help you establish a group practice with friends or colleagues.",
+    "type": "Personal",
+    "defaultList": ["The daily", "Gratitude affirmations", "That feeling when...", "3 things!"]
   }
 ]
