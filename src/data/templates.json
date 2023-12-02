@@ -240,5 +240,21 @@
     "description": "Did you know cultivating a sense of gratitude acts as a buffer against feelings of anxiety and loneliness? (True story!) This board can guide your personal gratitude practice or help you establish a group practice with friends or colleagues.",
     "type": "Personal",
     "defaultList": ["The daily", "Gratitude affirmations", "That feeling when...", "3 things!"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2401x1600/fd20a5912227344d8b140e72787e508c/photo-1541464522988-31b420f688b9.jpg",
+    "name": "My Climate Action Plan (MyCAP)",
+    "description": "The Business Council on Climate Change (BC3) is a membership-driven nonprofit organization of corporate sustainability leaders implementing and championing tangible climate action. Based in the San Francisco Bay Area, and working closely with the city of San Francisco, the organization serves as a platform to share climate change programs and incubate collaborative multi-sector engagement, while providing a model to replicate its innovative work.",
+    "type": "Personal",
+    "defaultList": [
+      "👉🏼Getting Started",
+      "🌳Our Sustainability Goals",
+      "🥅 Set SMART Goals",
+      "🥗 Food",
+      "🚴🏼‍♀️ Transportation",
+      "🌊 Energy",
+      "📦 Waste",
+      "💡Reflection"
+    ]
   }
 ]
