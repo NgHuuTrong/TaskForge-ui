@@ -301,5 +301,12 @@
       "Career 💻",
       "Ideas 💡"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2397x1600/0b085a9b17db7d52cc7378e67ab21da7/photo-1472289065668-ce650ac443d2.jpg",
+    "name": "Client Workflow Management",
+    "description": "At Palace Law, case folders are now represented by a Trello card. Those cards are assigned to attorneys’ Trello boards, and attorneys use Trello features to prioritize their work. In the old model, an attorney manually marked a case folder indicating when it needed to be reviewed again. Now, they receive a reminder in Trello that it’s time to revisit a case.",
+    "type": "Project management",
+    "defaultList": ["New Client Onboarding", "Attorney Assigned", "Doing", "On Hold", "Win", "Lost"]
   }
 ]
