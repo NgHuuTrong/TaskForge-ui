@@ -262,16 +262,6 @@
     "name": "Mise-En-Place Personal Productivity System",
     "description": "Increase your personal productivity each week with this board that Justin Gallagher, one of the creators of Trello, uses every day. Split your work into very specific lists so nothing falls through the cracks. Use the reference list to keep important information on hand. Hold yourself accountable with meeting notes, and most importantly spend some time each morning planning out the day ahead.",
     "type": "Productivity",
-    "defaultList": [
-      "Start here!",
-      "Today",
-      "🥅 Set SMART Goals",
-      "Tomorrow",
-      "This Week",
-      "Waiting",
-      "Inbox",
-      "Done!",
-      "References"
-    ]
+    "defaultList": ["Start here!", "Today", "Tomorrow", "This Week", "Waiting", "Inbox", "Done!", "References"]
   }
 ]
