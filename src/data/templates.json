@@ -131,5 +131,20 @@
     "description": "Use this simple Kanban template to keep the engineering team on the same page and moving through work fluidly.",
     "type": "Engineering",
     "defaultList": ["Backlog", "Design", "To Do", "Doing", "Code Review", "Testing", "Done 🎉"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/4e8eb47da16fe58f9dbdf7d0/2560x1600/0f299a7485408e6ad3daac75476be678/background.png",
+    "name": "Scrum Board",
+    "description": "The Scrum Board by Corrello is a Template for a Software Development team following a Scrum process. There are some example Cards on the Board plus some additional details on how to get started in the How to use this Board List.",
+    "type": "Engineering",
+    "defaultList": [
+      "Backlog",
+      "Next Sprint",
+      "Sprint Backlog",
+      "Dev",
+      "Code Review",
+      "Testing",
+      "Done Sprint DATE - DATE 🎉"
+    ]
   }
 ]
