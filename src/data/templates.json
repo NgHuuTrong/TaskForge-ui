@@ -96,5 +96,12 @@
     "description": "Template for my suddenly-remote biochemistry course. A lot of students expressed that they were worried about staying on top of their coursework remotely, so this was my attempt to help them stay organized. There are cards for each week with check-lists of everything the students need to do for that week including lecture and lab assignments, studying time, and quizzes/exams. Additional lists have the big lab projects (with suggested breakdown of work by week) and more details on the exams (with the learning objectives attached for each one). This was also helpful for me to make and check that there weren't too many assignments stacking up in a particular week with the revised schedule.",
     "type": "Education",
     "defaultList": ["Resources", "Weekly Assignments", "Lab Projects", "Exams"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/575584dacedaafdf0d8660c2/1024x579/02a67bbc2d5b879d912dad85eb5f3a05/asset_3.png",
+    "name": "Teaching: Weekly Planning",
+    "description": "It essentially consists of “cards” that you put into “lists” on a “board”. I make a board for each class I teach where the lists are the weeks of the semester (including the week before and after) and the cards are things I need to do for my class each week. There’s also a “Done” list that cards get moved to as they are completed.",
+    "type": "Education",
+    "defaultList": ["Beginning of Term", "Week 1 (copy for remaining weeks)", "End of Term"]
   }
 ]
