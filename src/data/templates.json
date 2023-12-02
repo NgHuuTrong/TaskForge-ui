@@ -89,5 +89,12 @@
     "description": "Use this Trello board as an easy to organize template for planning a video game project.",
     "type": "Design",
     "defaultList": ["High Concept", "Concept Art - List Style", "Game Description", "Gameplay Minute"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/690360c54dbfe62a0fa6c2e545a017bf/photo-1428908728789-d2de25dbd4e2.jpg",
+    "name": "Remote Class Template",
+    "description": "Template for my suddenly-remote biochemistry course. A lot of students expressed that they were worried about staying on top of their coursework remotely, so this was my attempt to help them stay organized. There are cards for each week with check-lists of everything the students need to do for that week including lecture and lab assignments, studying time, and quizzes/exams. Additional lists have the big lab projects (with suggested breakdown of work by week) and more details on the exams (with the learning objectives attached for each one). This was also helpful for me to make and check that there weren't too many assignments stacking up in a particular week with the revised schedule.",
+    "type": "Education",
+    "defaultList": ["Resources", "Weekly Assignments", "Lab Projects", "Exams"]
   }
 ]
