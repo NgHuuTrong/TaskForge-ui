@@ -219,5 +219,19 @@
       "No (Try to keep a bunch of cards in here so when you get dumped so you'll feel less crappy about yourself)",
       "Hold (FarAway/IsUnavailable/etc.)"
     ]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/5b0c262371561d5257cb2c07/2560x1440/17406b2c01fb87b0232707fe98ea5111/TrelloTemplate-03.png",
+    "name": "Where to next: Travel inspiration board",
+    "description": "Your head says Miami. Your heart says Maui. Your intuition says hey, let’s not rush into this. This handy Trello board is the perfect tool to explore inspirational new destinations, compare costs, find out the best time to go and hold your hand all the way to take off time.",
+    "type": "Personal",
+    "defaultList": [
+      "Bucket list",
+      "Things to think about",
+      "Travel costs",
+      "Best time to travel",
+      "Travel checklist",
+      "And done!"
+    ]
   }
 ]
