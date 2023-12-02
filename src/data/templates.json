@@ -198,5 +198,12 @@
     "description": "Use this board with your marketing team to run smooth weekly team meetings and keep everybody on the same page with the status of projects.",
     "type": "Marketing",
     "defaultList": ["Start Here!", "Marketing Team This Week", "Team Meeting", "In Progress", "Up Next", "Done"]
+  },
+  {
+    "defaultBackground": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x2048/855e9acb690c544c840cdcb71a6d7b70/photo-1482442120256-9c03866de390.jpg",
+    "name": "Podcast Workflow Template",
+    "description": "This is the very template we use to organise and run Adaptavist Live and Team Titans podcasts, the top Atlassian ecosystem podcasts.",
+    "type": "Marketing",
+    "defaultList": ["Resources", "This Week", "Podcast Content Shortlist", "Parking / Waiting", "Promotion"]
   }
 ]
