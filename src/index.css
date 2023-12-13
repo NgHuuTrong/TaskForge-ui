@@ -7,7 +7,6 @@
   consider using classes instead of the `@apply` directive
   @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
 */
-:root,
 :root.light-mode {
   /* Grey */
   --color-grey-0: #fff;
@@ -163,127 +162,6 @@ select {
   font: inherit;
 }
 
-/* Ant Design Selector */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  @apply bg-[var(--color-grey-0)] text-[var(--color-text)] border-[var(--color-grey-300)] rounded;
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(
-    .ant-pagination-size-changer
-  ):focus
-  .ant-select-selector,
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(
-    .ant-pagination-size-changer
-  ):focus-within
-  .ant-select-selector {
-  @apply border-solid border-[2px] border-[var(--color-border-focus)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-single.ant-select-open .ant-select-selection-item {
-  @apply text-[var(--color-text)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown {
-  @apply bg-[var(--color-grey-0)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown .ant-select-item-option-content {
-  @apply overflow-auto whitespace-break-spaces break-words;
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown .ant-select-item {
-  @apply text-[var(--color-text)] hover:bg-[var(--color-grey-200)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown
-  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-  @apply text-[var(--color-brand-500)] bg-[var(--color-selected-bg)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select .ant-select-arrow {
-  @apply text-[var(--color-text)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-single.ant-select-show-arrow .ant-select-selection-item,
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
-  @apply text-[var(--color-text)];
-}
-
-/* Ant Design Popover */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-inner {
-  @apply bg-[var(--color-grey-0)];
-}
-:where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-title,
-:where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-inner-content {
-  @apply text-[var(--color-text)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-arrow:before,
-.ant-popover .ant-popover-arrow:before {
-  @apply bg-[var(--color-grey-0)];
-}
-
-/* Ant Design Tabs */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tabs {
-  @apply text-[var(--color-text)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  @apply text-[var(--color-border-focus)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tabs .ant-tabs-ink-bar {
-  @apply bg-[var(--color-border-focus)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tabs .ant-tabs-tab-btn,
-.ant-tabs .ant-tabs-tab-btn {
-  @apply text-[var(--color-text)];
-}
-
-/* Ant Design Input */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-input-affix-wrapper {
-  @apply bg-[var(--color-grey-0)] border-[var(--color-grey-300)] text-[var(--color-grey-600)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-input {
-  @apply px-[1.2rem] py-[0.8rem] bg-[var(--color-grey-0)] text-[var(--color-grey-600)] border-[var(--color-grey-300)] rounded placeholder:text-[var(--color-grey-600)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-input:focus,
-:where(.css-dev-only-do-not-override-3mqfnx).ant-input:focus-within {
-  @apply border-[2px] border-[var(--color-border-focus)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-input-status-error:not(.ant-input-disabled):not(
-    .ant-input-borderless
-  ).ant-input {
-  @apply border-[var(--color-red-400)];
-}
-
-/* Ant Design Modal */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-content {
-  @apply p-0 bg-[var(--color-grey-50)] text-[var(--color-text)];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-modal .ant-modal-close {
-  @apply text-[var(--color-grey-500)] hover:text-[var(--color-grey-400)];
-}
-
-/* Ant Design Dropdown */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-dropdown {
-  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] border border-[var(--color-grey-300)] rounded-xl p-4 max-h-[85vh] overflow-y-auto overflow-x-hidden;
-}
-
-/* Ant Design Tree */
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tree {
-  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] text-[16px];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tree .ant-tree-checkbox + span.ant-tree-node-selected {
-  @apply bg-[var(--color-grey-200)];
-}
 button {
   @apply cursor-pointer;
 }
@@ -330,46 +208,119 @@ h6 {
 
 img {
   @apply max-w-full opacity-[var(--image-opacity)] grayscale-[var(--image-grayscale)];
-
-  /* For dark mode */
 }
 
-/*
-FOR DARK MODE
+/* Ant Design Selector */
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  @apply bg-[var(--color-grey-0)] text-[var(--color-text)] border-[var(--color-grey-300)] rounded;
+}
 
---color-grey-0: #18212f;
---color-grey-50: #111827;
---color-grey-100: #1f2937;
---color-grey-200: #374151;
---color-grey-300: #4b5563;
---color-grey-400: #6b7280;
---color-grey-500: #9ca3af;
---color-grey-600: #d1d5db;
---color-grey-700: #e5e7eb;
---color-grey-800: #f3f4f6;
---color-grey-900: #f9fafb;
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):focus
+  .ant-select-selector,
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):focus-within
+  .ant-select-selector {
+  @apply border-solid border-[2px] border-[var(--color-border-focus)];
+}
 
---color-blue-100: #075985;
---color-blue-700: #e0f2fe;
---color-green-100: #166534;
---color-green-700: #dcfce7;
---color-yellow-100: #854d0e;
---color-yellow-700: #fef9c3;
---color-silver-100: #374151;
---color-silver-700: #f3f4f6;
---color-indigo-100: #3730a3;
---color-indigo-700: #e0e7ff;
+.ant-select-single.ant-select-open .ant-select-selection-item {
+  @apply text-[var(--color-text)];
+}
 
---color-red-100: #fee2e2;
---color-red-700: #b91c1c;
---color-red-800: #991b1b;
+.ant-select-dropdown {
+  @apply bg-[var(--color-grey-0)];
+}
 
---backdrop-color: rgba(0, 0, 0, 0.3);
+.ant-select-dropdown .ant-select-item-option-content {
+  @apply overflow-auto whitespace-break-spaces break-words;
+}
 
---shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
---shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
---shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
+.ant-select-dropdown .ant-select-item {
+  @apply text-[var(--color-text)] hover:bg-[var(--color-grey-200)];
+}
 
---image-grayscale: 10%;
---image-opacity: 90%;
-*/
+.ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  @apply text-[var(--color-brand-500)] bg-[var(--color-selected-bg)];
+}
+
+.ant-select .ant-select-arrow {
+  @apply text-[var(--color-text)];
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  @apply text-[var(--color-text)];
+}
+
+/* Ant Design Popover */
+.ant-popover .ant-popover-inner {
+  @apply bg-[var(--color-grey-0)];
+}
+.ant-popover .ant-popover-title,
+.ant-popover .ant-popover-inner-content {
+  @apply text-[var(--color-text)];
+}
+
+.ant-popover .ant-popover-arrow:before,
+.ant-popover .ant-popover-arrow:before {
+  @apply bg-[var(--color-grey-0)];
+}
+
+/* Ant Design Tabs */
+.ant-tabs {
+  @apply text-[var(--color-text)];
+}
+
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  @apply text-[var(--color-border-focus)];
+}
+
+.ant-tabs .ant-tabs-ink-bar {
+  @apply bg-[var(--color-border-focus)];
+}
+
+.ant-tabs .ant-tabs-tab-btn,
+.ant-tabs .ant-tabs-tab-btn {
+  @apply text-[var(--color-text)];
+}
+
+/* Ant Design Input */
+.ant-input-affix-wrapper {
+  @apply bg-[var(--color-grey-0)] border-[var(--color-grey-300)] text-[var(--color-grey-600)];
+}
+
+.ant-input {
+  @apply px-[1.2rem] py-[0.8rem] bg-[var(--color-grey-0)] text-[var(--color-grey-600)] border-[var(--color-grey-300)] rounded placeholder:text-[var(--color-grey-600)];
+}
+
+.ant-input:hover {
+  @apply border-[0.2px] border-[var(--color-border-focus)];
+}
+
+.ant-input:focus,
+.ant-input:focus-within {
+  @apply border-[2px] border-[var(--color-border-focus)];
+}
+
+/* Ant Design Modal */
+.ant-modal .ant-modal-content {
+  @apply p-0 bg-[var(--color-grey-50)] text-[var(--color-text)];
+}
+
+.ant-modal .ant-modal-close {
+  @apply text-[var(--color-grey-500)] hover:text-[var(--color-grey-400)];
+}
+
+/* Ant Design Dropdown */
+.ant-dropdown {
+  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] border border-[var(--color-grey-300)] rounded-xl py-4 pl-4 max-h-[85vh] overflow-x-hidden;
+}
+
+/* Ant Design Tree */
+.ant-tree {
+  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] text-[16px];
+}
+
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
+.ant-tree .ant-tree-checkbox + span.ant-tree-node-selected {
+  @apply bg-[var(--color-grey-200)];
+}

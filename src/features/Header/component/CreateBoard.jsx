@@ -8,7 +8,7 @@ import BoardBackground from './BoardBackground';
 import BoardTemplate from './BoardTemplate';
 
 function CreateBoard({ template, onAddHistory }) {
-  const [titleBoard, setTitleBoard] = useState(template ? template.templateName : '');
+  const [titleBoard, setTitleBoard] = useState(template ? template.name : '');
   const handleChangeTextInput = (e) => {
     setTitleBoard(e.target.value);
   };

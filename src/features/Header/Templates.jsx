@@ -14,13 +14,10 @@ export const TemplatesList = ({ onAddHistory }) => (
       <div
         key={template.id}
         onClick={() =>
-          onAddHistory((prev) => [
-            ...prev,
-            { title: template.templateName, component: 'CreateWithTemplate ' + template.id },
-          ])
+          onAddHistory((prev) => [...prev, { title: template.name, component: 'CreateWithTemplate ' + template.id }])
         }
       >
-        <ButtonImage height="40px" url={template.img} title={template.templateName} hasStarred={false} />
+        <ButtonImage height="40px" url={template.defaultBackground} title={template.name} hasStarred={false} />
       </div>
     ))}
   </div>

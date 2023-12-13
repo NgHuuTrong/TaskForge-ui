@@ -12,7 +12,7 @@ import Button from '../../ui/Button';
 
 function Header() {
   return (
-    <header className="fixed top-[0] left-[0] w-full h-[52px] flex justify-between items-center z-10 border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50] p-[8px]">
+    <header className="fixed top-[0] left-[0] w-full max-h-[50px] flex justify-between items-center z-10 border-b border-solid border-b-[--color-grey-300] bg-[--color-grey-50] p-[8px]">
       <div className="flex items-center gap-[0.4rem]">
         <Button type="icon" size="small">
           <CgMenuGridR size={20} color="var(--color-grey-500)" />

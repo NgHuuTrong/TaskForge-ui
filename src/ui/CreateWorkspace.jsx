@@ -12,7 +12,7 @@ function CreateWorkspace() {
   const [workspaceType, setWorkspaceType] = useState(null);
   return (
     <div className="flex items-stretch">
-      <div className="flex items-center bg-[--color-grey-50] w-1/2 flex-col mt-[64px] mb-[16px]">
+      <div className="flex items-center bg-[--color-grey-0] w-1/2 flex-col mt-[64px] mb-[16px]">
         <div className="w-[388px]">
           <div className="text-4xl font-bold">Let&apos;s build a Workspace</div>
           <span className="text-[1.5rem]">

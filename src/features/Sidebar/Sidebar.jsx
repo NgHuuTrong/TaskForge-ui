@@ -32,7 +32,7 @@ function Sidebar() {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <aside className="sticky top-[40px] mt-[40px] hidden max-h-[90vh] w-[288px] flex-col bg-[--color-grey-50] px-[1rem] md:block overflow-y-auto">
+    <aside className="sticky top-[40px] max-h-[90vh] mt-[40px] hidden w-[27.6rem] flex-col bg-[--color-grey-50] px-[1rem] md:block overflow-y-auto overflow-x-hidden">
       <ul className="border-b py-[1rem]">
         {tabs.map((tab) => (
           <li className="mb-[0.25rem]" key={tab.key}>
