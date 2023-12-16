@@ -64,13 +64,5 @@
         "message": "kkkkkkkkk",
         "createdAt": "2023-12-11T03: 36: 28.638+00: 00",
         "updatedAt": "2023-12-11T03: 36: 28.638+00: 00"
-    },
-    {
-        "id": 9,
-        "boardId": 1,
-        "senderId": 0,
-        "message": "asdasda sdsdasd asfbsdfmsdbfkjsdfkjasndf kasdnfksdnfkajsdfbkjad",
-        "createdAt": "2023-12-11T03: 36: 28.638+00: 00",
-        "updatedAt": "2023-12-11T03: 36: 28.638+00: 00"
     }
 ]
