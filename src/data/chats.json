@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "boardId": 1,
+    "senderId": 2,
+    "message": "Hai Nam chao moi nguoi o board name = Project Management",
+    "createdAt": "2023-12-11T03 34: 15.192+00: 00",
+    "updatedAt": "2023-12-11T03: 34: 15.192+00: 00"
+  },
+  {
+    "id": 2,
+    "boardId": 1,
+    "senderId": 3,
+    "message": "Hoa Lam chao moi nguoi",
+    "createdAt": "2023-12-11T03: 35: 59.914+00: 00",
+    "updatedAt": "2023-12-11T03: 35: 59.914+00: 00"
+  },
+  {
+    "id": 3,
+    "boardId": 1,
+    "senderId": 3,
+    "message": "Lam Khanh Hoa xin chao board name = Project Management",
+    "createdAt": "2023-12-11T03: 36: 28.638+00: 00",
+    "updatedAt": "2023-12-11T03: 36: 28.638+00: 00"
+  },
+  {
+    "id": 4,
+    "boardId": 1,
+    "senderId": 0,
+    "message": "Trong xin chao board name = Project Management",
+    "createdAt": "2023-12-11T03: 36: 44.422+00: 00",
+    "updatedAt": "2023-12-11T03: 36: 44.422+00: 00"
+  },
+  {
+    "id": 5,
+    "boardId": 1,
+    "senderId": 0,
+    "message": "hello",
+    "createdAt": "2023-12-11T12: 03: 01.813+00: 00",
+    "updatedAt": "2023-12-11T12: 03: 01.813+00: 00"
+  },
+  {
+    "id": 6,
+    "boardId": 1,
+    "senderId": 1,
+    "message": "Hieu la tao",
+    "createdAt": "2023-12-11T03: 36: 28.638+00: 00",
+    "updatedAt": "2023-12-11T03: 36: 28.638+00: 00"
+  },
+  {
+    "id": 7,
+    "boardId": 1,
+    "senderId": 4,
+    "message": "hehehehe",
+    "createdAt": "2023-12-11T03: 36: 28.638+00: 00",
+    "updatedAt": "2023-12-11T03: 36: 28.638+00: 00"
+  },
+  {
+    "id": 8,
+    "boardId": 1,
+    "senderId": 0,
+    "message": "kkkkkkkkk",
+    "createdAt": "2023-12-11T03: 36: 28.638+00: 00",
+    "updatedAt": "2023-12-11T03: 36: 28.638+00: 00"
+  }
+]

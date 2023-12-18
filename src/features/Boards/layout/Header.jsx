@@ -3,6 +3,8 @@ import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import { RiArrowUpDoubleLine } from 'react-icons/ri';
 import { Tooltip, Avatar, Input } from 'antd';
 
+import Chat from '../../Chat/Chat';
+
 import MoreBtn from './MoreBtn';
 import ShareBoard from './ShareBoard';
 import VisibilityBtn from './VisibilityBtn';
@@ -10,6 +12,8 @@ import UserDetail from '../../../ui/UserDetail';
 import users from '../../../data/users.json';
 const creator = users.pop();
 const members = users;
+
+
 
 function Header({ setBackground, background, board }) {
   const [changeTitleBox, setChangeTitleBox] = useState(false);
@@ -85,6 +89,8 @@ function Header({ setBackground, background, board }) {
             <span>Join board</span>
           </div> */}
           <VisibilityBtn visibility={visibility} setVisibility={setVisibility} />
+
+          <Chat others={members} currentUser={users[0]} boardId={1} />
 
           <MoreBtn background={background} setBackground={setBackground} creator={creator} />
         </div>
