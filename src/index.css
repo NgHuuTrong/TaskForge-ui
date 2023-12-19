@@ -41,13 +41,6 @@
   --image-grayscale: 0;
   --image-opacity: 100%;
 
-  --color-dark: #445471;
-  --header-button-txt-hovered: #0c66e4;
-  --header-button-hovered-200: #074fb3;
-  --header-button-bg-hovered: #cfe2ff;
-  --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
-  --header-button-color: var(--ds-text-subtle, #44546f);
-
   --color-selected-bg: #e9f2ff;
   --color-disabled-text: #091e424f;
   --color-disabled-bg: #091e4208;
