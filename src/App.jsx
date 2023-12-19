@@ -15,6 +15,7 @@ import WorkspaceMember from './pages/WorkspaceMember';
 import Settings from './pages/Settings';
 import { DarkModeProvider } from './context/DarkModeContext';
 import BoardDetailLayout from './features/Boards/layout/BoardDetailLayout';
+import ProtectedRoute from './ui/ProtectedRoute';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,7 +32,13 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <Routes>
-            <Route element={<AppLayout />}>
+            <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Navigate replace to="boards" />} />
               <Route path="example" element={<Example />} />
               <Route path="templates" element={<Templates />} />

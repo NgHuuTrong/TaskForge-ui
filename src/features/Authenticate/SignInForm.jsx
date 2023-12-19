@@ -3,29 +3,28 @@ import { Input } from 'antd';
 import Button from '../../ui/Button';
 import { SocialIcons } from './SocialIcons';
 import Logo from '../../assets/logo_red.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from './useLogin';
 
 function SignInForm({ setIsSignIn, isSignIn }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [data, setData] = useState({});
   const { login, isLoading } = useLogin();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+    const handleChange = (e) => {
+      setData({ ...data, [e.target.name]: e.target.value });
+    };
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!email || !password) return;
-    login(
-      { email, password },
-      {
-        onSettled: () => {
-          setEmail('');
-          setPassword('');
-        },
+    if (!data.email || !data.password) return;
+    login(data, {
+      onSettled: () => {
+        setData({})
       },
-    );
+    });
   }
 
   return (
@@ -44,17 +43,21 @@ function SignInForm({ setIsSignIn, isSignIn }) {
         </div>
 
         <Input
+          name="email"
           disabled={isLoading}
           size="large size"
-          placeholder="Username"
+          placeholder="Email"
+          onChange={handleChange}
           prefix={<UserAddOutlined />}
           className="mb-8"
         />
         <Input
+          name="password"
           type="password"
           disabled={isLoading}
           size="large size"
           placeholder="Password"
+          onChange={handleChange}
           prefix={<LockOutlined />}
           className="mb-4"
         />
