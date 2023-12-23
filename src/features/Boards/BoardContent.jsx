@@ -17,27 +17,27 @@ function BoardContent() {
 
     if (type === 'ROW') {
       if (destination === undefined || destination === null) return null;
-      if (
-        source.droppableId === destination.droppableId &&
-        destination.index === source.index
-      )
-        return null;
+      if (source.droppableId === destination.droppableId && destination.index === source.index) return null;
 
       if (source.droppableId === destination.droppableId) {
-        dispatch(moveCardInList({
-          listId: source.droppableId,
-          originalIndex: source.index,
-          newIndex: destination.index
-        }));
+        dispatch(
+          moveCardInList({
+            listId: source.droppableId,
+            originalIndex: source.index,
+            newIndex: destination.index,
+          }),
+        );
 
         return null;
       } else {
-        dispatch(moveCardToAnotherList({
-          originalListId: source.droppableId,
-          newListId: destination.droppableId,
-          originalIndex: source.index,
-          newIndex: destination.index
-        }));
+        dispatch(
+          moveCardToAnotherList({
+            originalListId: source.droppableId,
+            newListId: destination.droppableId,
+            originalIndex: source.index,
+            newIndex: destination.index,
+          }),
+        );
 
         return null;
       }
@@ -46,64 +46,42 @@ function BoardContent() {
     if (type === 'COLUMN') {
       if (destination === undefined || destination === null) return null;
 
-      if (
-        source.droppableId === destination.droppableId &&
-        destination.index === source.index
-      )
-        return null;
+      if (source.droppableId === destination.droppableId && destination.index === source.index) return null;
 
       if (source.index === destination.index) return null;
       else {
-        dispatch(exchangeTwoList({
-          sourceIndex: source.index,
-          destinationIndex: destination.index
-        }));
+        dispatch(
+          exchangeTwoList({
+            sourceIndex: source.index,
+            destinationIndex: destination.index,
+          }),
+        );
       }
     }
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="mt-4 flex ">
-        <Droppable
-          droppableId={'outter'}
-          key={'outter'}
-          type="COLUMN"
-          direction="horizontal"
-        >
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              className="flex flex-row"
-            >
-              {lists?.map((list, index) => (
-                <Draggable
-                  draggableId={list.id?.toString()}
-                  index={index}
-                  key={list.id}
-                >
-                  {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      <List
-                        list={list}
-                        lists={lists}
-                        key={list.id}
-                        columns={lists}
-                      />
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-              <AddNewListSection />
-            </div>
-          )}
-        </Droppable>
+      <div className="pt-4 flex flex-1">
+        <div className="w-full h-full overflow-x-scroll">
+          <Droppable droppableId={'outter'} key={'outter'} type="COLUMN" direction="horizontal">
+            {(provided, snapshot) => (
+              <div ref={provided.innerRef} {...provided.droppableProps} className="flex flex-row w-screen">
+                {lists?.map((list, index) => (
+                  <Draggable draggableId={list.id?.toString()} index={index} key={list.id}>
+                    {(provided) => (
+                      <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        <List list={list} lists={lists} key={list.id} columns={lists} />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+                <AddNewListSection />
+              </div>
+            )}
+          </Droppable>
+        </div>
       </div>
       <CardDetail />
     </DragDropContext>

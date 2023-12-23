@@ -19,7 +19,7 @@ function BoardDetailLayout() {
 
   return (
     <div
-      className="bg-cover h-screen"
+      className="bg-cover h-screen flex flex-col w-screen"
       style={{ backgroundImage: `${background.startsWith('linear') ? background : 'url(' + background + ')'}` }}
     >
       <Header setBackground={setBackground} background={background} board={board} />

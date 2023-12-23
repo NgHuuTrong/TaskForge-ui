@@ -13,8 +13,6 @@ import users from '../../../data/users.json';
 const creator = users.pop();
 const members = users;
 
-
-
 function Header({ setBackground, background, board }) {
   const [changeTitleBox, setChangeTitleBox] = useState(false);
   const [favorite, setFavorite] = useState(board.starred);
@@ -32,9 +30,9 @@ function Header({ setBackground, background, board }) {
 
   return (
     <div className="pt-[52px] backdrop-blur-[6px] bg-[#0000003d]">
-      <div className="flex justify-between p-[10px]">
+      <div className="flex justify-between p-[10px] flex-col md:flex-row">
         <div className="flex items-center gap-[1rem]">
-          <div className="w-[25rem] overflow-hidden whitespace-nowrap">
+          <div className="w-[25rem] overflow-hidden whitespace-nowrap justify-start mb-4 md:mb-0">
             {changeTitleBox ? (
               <Input
                 style={{ color: 'white', textAlign: 'center' }}
@@ -65,7 +63,7 @@ function Header({ setBackground, background, board }) {
           <ShareBoard creator={creator} members={members} />
         </div>
 
-        <div className="flex items-center gap-[20px]">
+        <div className="flex items-center gap-[20px] justify-end">
           <Avatar.Group
             maxCount={3}
             size="medium"
