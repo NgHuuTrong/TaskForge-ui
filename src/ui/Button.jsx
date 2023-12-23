@@ -4,11 +4,11 @@ function Button({ children, disabled = false, to, size = 'medium', type = 'prima
   const base = 'flex items-center border-[none] rounded-[--border-radius-sm] font-medium gap-2 ';
 
   const sizes = {
-    small: 'text-[1.2rem] px-[0.8rem] py-[0.4rem] ',
-    normal: 'text-[1.4rem] px-[1.2rem] py-[0.8rem] ',
-    medium: 'text-[1.4rem] px-[1.6rem] py-[1.2rem] ',
-    large: 'text-[1.6rem] px-[2.4rem] py-[1.2rem] ',
-    mass: 'text-[2rem] px-[3.2rem] py-[1.6rem] ',
+    small: 'text-[1rem] md:text-[1.2rem] px-[0.6rem] md:px-[0.8rem] py-[0.2rem] md:py-[0.4rem] ',
+    normal: 'text-[1.2rem] md:text-[1.4rem] px-[1rem] md:px-[1.2rem] md:py-[0.6rem] md:py-[0.8rem] ',
+    medium: 'text-[1.2rem] md:text-[1.4rem] px-[1.4rem] md:px-[1.6rem] py-[1rem] md:py-[1.2rem] ',
+    large: 'text-[1.4rem] md:text-[1.6rem] px-[2.2rem] md:px-[2.4rem] py-[1rem] md:py-[1.2rem] ',
+    mass: 'text-[1.8rem] md:text-[2rem] px-[3rem] md:px-[3.2rem] py-[1.4rem] md:py-[1.6rem] ',
   };
 
   const types = {

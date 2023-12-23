@@ -9,7 +9,7 @@ function Authenticate() {
   return (
     <div className="flex h-screen w-full items-center justify-center " style={{ backgroundColor: '#4994e5' }}>
       <div
-        className="relative flex overflow-hidden bg-white w-[384px] md:w-[768px]"
+        className="relative flex overflow-hidden bg-white w-[300px] sm:w-[380px] md:w-[768px]"
         style={{
           minHeight: '520px',
           backgroundImage: '../assets/gradient_background.gif',

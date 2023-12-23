@@ -20,19 +20,32 @@ function SignInForm({ setIsSignIn, isSignIn }) {
           <img src={Logo} className="w-40" alt="logo" />
           <p className="mb-28 mt-8 text-start text-4xl font-semibold">Welcome back👋</p>
         </div>
-
-        <Input size="Username" placeholder="large size" prefix={<UserAddOutlined />} className="mb-8" />
-        <Input size="Password" placeholder="large size" prefix={<LockOutlined />} className="mb-4" />
+        <div className='space-y-4'>
+          <Input
+            size="default"
+            type='password'
+            placeholder="Username"
+            prefix={<UserAddOutlined />}
+            className="text-[1.1rem] sm:text-[1.3rem] md:text-[1.5rem]"
+          />
+          <Input
+            size="default"
+            type='password'
+            placeholder="Password"
+            prefix={<LockOutlined />}
+            className="text-[1.1rem] sm:text-[1.3rem] md:text-[1.5rem] mb-2"
+          />
+        </div>
         <Link to="/forgot-password" className="mb-8 text-end text-base text-[--color-brand-600]">
           Forgot password?
         </Link>
         <Button
-          classNames="rounded-none bg-[linear-gradient(225deg,_rgba(84,213,219,1)_45%,_rgba(73,148,229,1)_97%)] flex justify-center items-center h-16"
+          classNames="rounded-none bg-[linear-gradient(225deg,_rgba(84,213,219,1)_45%,_rgba(73,148,229,1)_97%)] flex justify-center items-center"
           onClick={() => navigate('/example')}
         >
           Sign in
         </Button>
-        <SocialIcons></SocialIcons>
+        <SocialIcons />
         <span className="mt-12 text-center text-base text-zinc-500">
           {'Do you have an account? '}
           <button type="button" style={{ color: '#4994e5' }} onClick={() => setIsSignIn((prev) => !prev)}>
