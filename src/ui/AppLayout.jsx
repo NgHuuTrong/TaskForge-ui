@@ -17,7 +17,9 @@ function AppLayout({ headerOnly = false }) {
           </main>
         </div>
       ) : (
-        <Outlet />
+        <div className="mt-[52px]">
+          <Outlet />
+        </div>
       )}
     </div>
   );

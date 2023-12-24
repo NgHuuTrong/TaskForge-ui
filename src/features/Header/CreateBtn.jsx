@@ -39,7 +39,7 @@ function CreateBtn() {
         <Button size="normal">Create</Button>
       </MenuDropdown>
       <Modal centered open={openModal} width={1200} footer={false} title="" onCancel={() => setOpenModal(false)}>
-        <CreateWorkspace />
+        <CreateWorkspace closeModal={() => setOpenModal(false)} />
       </Modal>
     </>
   );

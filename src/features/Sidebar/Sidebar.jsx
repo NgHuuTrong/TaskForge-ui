@@ -8,7 +8,7 @@ import WorkspaceTab from '../../ui/WorkspaceTab';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import CreateWorkspace from '../../ui/CreateWorkspace';
-import workspaces from '../../data/workspaces.json';
+import { useWorkspaces } from '../../hooks/useWorkspace';
 
 const tabs = [
   {
@@ -30,7 +30,8 @@ const tabs = [
 
 function Sidebar() {
   const [openModal, setOpenModal] = useState(false);
-
+  const { workspaces, isLoading } = useWorkspaces();
+  if (isLoading) return <></>;
   return (
     <aside className="sticky top-[40px] max-h-[90vh] mt-[40px] hidden w-[27.6rem] flex-col bg-[--color-grey-50] px-[1rem] md:block overflow-y-auto overflow-x-hidden">
       <ul className="border-b py-[1rem]">
@@ -47,7 +48,7 @@ function Sidebar() {
             <span className="text-[2.0rem] font-bold">+</span>
           </Button>
           <Modal centered open={openModal} width={1200} footer={false} onCancel={() => setOpenModal(false)}>
-            <CreateWorkspace />
+            <CreateWorkspace closeModal={() => setOpenModal(false)} />
           </Modal>
         </Row>
         {workspaces.map((workspace) => (
