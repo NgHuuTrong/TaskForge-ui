@@ -2,7 +2,7 @@ import React from 'react';
 
 const Spinner = () => {
   return (
-    <div className="m-12 w-16 h-16 rounded-full bg-gradient-to-br from-brand-600 to-transparent bg-clip-border border-0 border-black animate-spin"></div>
+    <div className="mx-[auto] w-[15%] min-w-[1.8rem] max-w-[4.8rem] aspect-square rounded-[50%] border-4 border-t-[radial-gradient(farthest-side,_var(--color-red-700)_94%,_#000)_top/10px_10px_no-repeat,_conic-gradient(#000_30%,_var(--color-red-700))] animate-spin z-10" />
   );
 };
 

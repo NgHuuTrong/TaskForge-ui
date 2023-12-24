@@ -13,9 +13,9 @@ function WorkspaceSection({ workspace }) {
       <Row>
         <div className="flex items-center gap-5 text-[1.6rem] leading-[30px] font-bold">
           <Logo size="medium" bgImage="linear-gradient(#4bce97, #216e4e)">
-            {workspace.workspaceName[0]}
+            {workspace.name[0]}
           </Logo>
-          {workspace.workspaceName}
+          {workspace.name}
         </div>
         <div className="flex gap-4">
           <Button to={`/w/${workspace.id}/home`} classNames="font-semibold" size="small" type="secondary">
@@ -33,8 +33,9 @@ function WorkspaceSection({ workspace }) {
         </div>
       </Row>
       <div className="flex items-center flex-wrap gap-5">
-        <BoardCard />
-        <BoardCard />
+        {workspace.boards.map((board) => (
+          <BoardCard key={board.id} board={board} />
+        ))}
         <CreateBoardCard />
       </div>
     </div>

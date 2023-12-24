@@ -38,9 +38,9 @@ function WorkspaceTab({ workspace }) {
       >
         <div className="flex items-center gap-[0.8rem] text-[1.4rem] font-semibold">
           <Logo size="small" bgImage="linear-gradient(#4bce97, #216e4e)">
-            {workspace.workspaceName[0]}
+            {workspace.name[0]}
           </Logo>
-          <span>{workspace.workspaceName}</span>
+          <span>{workspace.name}</span>
         </div>
         <div className="flex justify-center items-center rounded-md">
           {openDropdown ? <FaAngleUp size="2rem" /> : <FaAngleDown size="2rem" />}
@@ -49,7 +49,7 @@ function WorkspaceTab({ workspace }) {
       {openDropdown && (
         <ul className="mt-[1rem]">
           {tabs.map((tab) => {
-            const key = workspace.workspaceName + '-' + tab.title;
+            const key = workspace.name + '-' + tab.title;
             return (
               <li className="mb-[0.25rem]" key={key}>
                 <SidebarTab
