@@ -23,7 +23,7 @@ function DetailHeader({ workspace }) {
             <Input className="w-full" placeholder="Email address or name" />
             <Row>
               <div className="flex flex-col">
-                <span>Invite someone to {workspace.workspaceName} Workspace with a link</span>
+                <span>Invite someone to {workspace.name} Workspace with a link</span>
                 <Button type="text" classNames="pl-0 pt-0 pb-0">
                   Disable Link
                 </Button>

@@ -8,23 +8,26 @@ import Button from '../../../ui/Button';
 import Row from '../../../ui/Row';
 import UserDetail from '../../../ui/UserDetail';
 
-function MemberRow({ member }) {
+function MemberRow({ member, isAdmin = false }) {
+  const role = isAdmin ? 'Admin' : 'Member';
   return (
     <Row>
       <UserDetail user={member} size="32" />
       <Select
-        defaultValue={'Member'}
+        defaultValue={role}
         dropdownStyle={{ width: '28rem' }}
         options={[
           {
             value: 'Admin',
-            disabled: true,
+            disabled: !isAdmin,
           },
           {
             value: 'Member',
+            disabled: !isAdmin,
           },
           {
             value: 'Remove from board',
+            disabled: !isAdmin,
           },
         ]}
       />
@@ -32,7 +35,7 @@ function MemberRow({ member }) {
   );
 }
 
-function ShareBoard({ creator, members }) {
+function ShareBoard({ creator, members, curMember }) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -67,7 +70,7 @@ function ShareBoard({ creator, members }) {
             </Button>
           </Row>
 
-          <MemberRow member={creator} />
+          <MemberRow member={creator} isAdmin={curMember.userId !== creator.id} />
           {members.map((member) => (
             <MemberRow member={member} key={member.id} />
           ))}

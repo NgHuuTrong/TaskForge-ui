@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 import Header from './Header';
-import boards from '../../../data/recent.json';
 import BoardContent from '../BoardContent';
+import { useBoard } from '../../../hooks/useBoard';
+import Spinner from '../../../ui/Spinner';
 
-const defaultBg =
-  'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x480/1849a4a0cc47bd7f5c6e08a06cf3affa/photo-1516553174826-d05833723cd4.jpg';
+const defaultBg = 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)';
 
 function BoardDetailLayout() {
-  const { boardId } = useParams();
-  const board = boards[boardId];
+  const { board, isLoading } = useBoard();
 
-  const [background, setBackground] = useState(board.img || defaultBg);
+  const [background, setBackground] = useState(defaultBg);
+
   useEffect(() => {
-    setBackground(board.img || defaultBg);
-  }, [board.img]);
-
+    if (!isLoading) setBackground(board.background || defaultBg);
+  }, [board, isLoading]);
+  if (isLoading) return <Spinner />;
   return (
     <div
       className="bg-cover h-screen"
