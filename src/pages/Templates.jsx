@@ -1,319 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
 
-import CategoriesList from '../features/Templates/CategoriesList';
 import TemplatesList from '../features/Templates/TemplatesList';
+import Row from '../ui/Row';
+import { useTemplates } from '../hooks/useTemplate';
+import Spinner from '../ui/Spinner';
 
 const categories = [
-  {
-    key: 0,
-    imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg',
-    title: 'Business',
-    templates: [
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-    ],
-  },
-  {
-    key: 1,
-    imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg',
-    title: 'Business',
-    templates: [
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-    ],
-  },
-  {
-    key: 2,
-    imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg',
-    title: 'Business',
-    templates: [
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-    ],
-  },
-  {
-    key: 3,
-    imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg',
-    title: 'Business',
-    templates: [
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-    ],
-  },
-  {
-    key: 4,
-    imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg',
-    title: 'Business',
-    templates: [
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-    ],
-  },
-  {
-    key: 5,
-    imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg',
-    title: 'Business',
-    templates: [
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-    ],
-  },
-  {
-    key: 6,
-    imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg',
-    title: 'Business',
-    templates: [
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-      {
-        key: 0,
-        name: 'A Lead Management Pipeline by Crmble',
-        backgroundPath:
-          'https://trello-backgrounds.s3.amazonaws.com/5e627d9fa6c99f7637f32c47/480x270/c0d295ff3ef480a03090b113f1eae301/crmble_trello_order-mgmt.png',
-        avatarPath: 'https://trello-logos.s3.amazonaws.com/e4816f3c4e30318dc91ee7f3f4938c86/170.png',
-        author: 'Toni, Founder @ Crmble',
-        description: 'Use this board to manage inventory or swag requests with the Crmble Power-Up!',
-        copies: 30069,
-        views: 185224,
-      },
-    ],
-  },
+  { type: 'Education', imagePath: 'https://trello.com/assets/dea39a045ff4c4d1d9b1.svg' },
+  { type: 'Business', imagePath: 'https://trello.com/assets/3919e0fe0976de0298b4.svg' },
+  { type: 'Design', imagePath: 'https://trello.com/assets/157c58403db677619bea.svg' },
+  { type: 'Engineering', imagePath: 'https://trello.com/assets/e0b1e866de40a5468aaa.svg' },
 ];
 
 function Templates() {
-  const renderCategoriesList = () => {
-    return (
-      <div>
-        {categories.map((item) => (
-          <TemplatesList key={item.key} category={item} />
-        ))}
-      </div>
-    );
-  };
-
+  // const [input, setInput] = useState('');
+  const [search, setSearch] = useState(null);
+  const { templates, isLoading } = useTemplates(search ? 'search=' + search : 'sort=name&limit=12');
   return (
-    <div className="mt-[16px] mb-[0] max-w-[825px] min-w-[288px] w-full">
-      <div className="flex items-center mb-[6px] mt-[6px]">
-        <div className="flex justify-between items-center w-full">
-          <h1 className="leading-[24px] text-[20px] mb-0 font-semibold">Featured categories</h1>
-          <div className="min-w-[240px]">
-            <Input style={{ borderRadius: 0, padding: 8 }} placeholder="Find template" suffix={<SearchOutlined />} />
-          </div>
+    <Row type="ver" classNames="pt-[2rem] px-[2rem]">
+      <div className="flex items-center my-[0.6rem] justify-between">
+        <h1 className="text-[2rem] font-semibold">Featured categories</h1>
+        <div className="min-w-[240px]">
+          <Input
+            placeholder="Find template..."
+            // value={input}
+            // onChange={(e) => setInput(e.target.value)}
+            onPressEnter={(e) => setSearch(e.target.value)}
+          />
         </div>
       </div>
 
-      <CategoriesList categoriesList={categories} />
+      <div className="flex flex-wrap gap-[16px]">
+        {categories.map((item) => (
+          <div className="flex flex-col w-[11rem] max-w-[30%] items-center" key={item.type}>
+            <img src={item.imagePath} alt="" className="w-full aspect-square rounded-lg" />
+            <span className="text-[1.4rem]">{item.type}</span>
+          </div>
+        ))}
+      </div>
 
-      {renderCategoriesList()}
-    </div>
+      {isLoading ? (
+        <Spinner />
+      ) : templates.length === 0 ? (
+        <span>No templates found</span>
+      ) : (
+        <TemplatesList templates={templates} />
+      )}
+    </Row>
   );
 }
 

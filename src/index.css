@@ -309,7 +309,7 @@ img {
 
 /* Ant Design Dropdown */
 .ant-dropdown {
-  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] border border-[var(--color-grey-300)] rounded-xl py-4 pl-4 max-h-[85vh] overflow-x-hidden;
+  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] border border-[var(--color-grey-300)] rounded-xl py-4 pl-4 max-h-[90vh] overflow-x-hidden;
 }
 
 /* Ant Design Tree */

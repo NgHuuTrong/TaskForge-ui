@@ -36,7 +36,7 @@ function WorkspaceSection({ workspace }) {
         {workspace.boards.map((board) => (
           <BoardCard key={board.id} board={board} />
         ))}
-        <CreateBoardCard />
+        <CreateBoardCard initialValues={{ workspaceId: workspace.id, type: 'Workspace' }} />
       </div>
     </div>
   );
