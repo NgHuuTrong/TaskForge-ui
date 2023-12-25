@@ -8,7 +8,7 @@ import BoardBackground from './BoardBackground';
 import BoardTemplate from './BoardTemplate';
 import { useCreateBoard } from '../../../hooks/useBoard';
 
-function CreateBoard({ template, onAddHistory }) {
+function CreateBoard({ template, onAddHistory, initialValues }) {
   const { isCreating, createBoard } = useCreateBoard();
   const [form] = Form.useForm();
   const onFinish = (data) => {
@@ -22,11 +22,17 @@ function CreateBoard({ template, onAddHistory }) {
     );
   };
   return (
-    <Form className="p-[12px]" onFinish={onFinish} form={form} disabled={isCreating}>
+    <Form
+      className="p-[12px]"
+      onFinish={onFinish}
+      form={form}
+      disabled={isCreating}
+      initialValues={initialValues || { type: 'Workspace' }}
+    >
       {template ? <BoardTemplate template={template} /> : <BoardBackground />}
 
       <div className="mt-[16px]">
-        <FormRow label="Workspace name" type="ver" note="This is the name of your company, group or organization.">
+        <FormRow label="Board name" type="ver" note="This is the name of your board.">
           <Form.Item name="name" rules={[{ required: true, message: 'This field is required!' }]}>
             <Input placeholder="Your board" />
           </Form.Item>

@@ -45,7 +45,7 @@ export function useCreateBoard() {
     mutationFn: createNewBoard,
     onSuccess: () => {
       toast.success('New board successfully created');
-      queryClient.invalidateQueries({ queryKey: ['boards'] });
+      queryClient.invalidateQueries({ queryKey: ['boards'], exact: true });
     },
     onError: (err) => toast.error(err.message),
   });
@@ -60,9 +60,6 @@ export function useStarredBoard() {
     error,
   } = useMutation({
     mutationFn: starredBoard,
-    onSuccess: () => {
-      toast.success('Successfully!');
-    },
     onError: (err) => toast.error(err.message),
   });
 
@@ -80,8 +77,7 @@ export function useUpdateBoard() {
   } = useMutation({
     mutationFn: patchBoard,
     onSuccess: () => {
-      toast.success('Editted Successfully!');
-      queryClient.invalidateQueries({ queryKey: ['board', boardId] });
+      queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
     },
     onError: (err) => toast.error(err.message),
   });

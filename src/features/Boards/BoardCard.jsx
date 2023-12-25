@@ -5,7 +5,7 @@ function BoardCard({ board }) {
   return (
     <Link
       to={`/b/${board.id}/board-detail`}
-      className="flex w-[23%] min-w-[12rem] bg-center bg-cover rounded-md mr-[2%] mb-[2%]"
+      className="flex w-[19%] min-w-[12rem] bg-center bg-cover rounded-md mr-[2%] mb-[2%]"
       style={{
         backgroundImage: `url(${
           board.background ||
@@ -13,7 +13,7 @@ function BoardCard({ board }) {
         })`,
       }}
     >
-      <div className="w-full h-[9.6rem] p-[0.8rem] bg-transparent hover:bg-black/20 relative group/item">
+      <div className="w-full aspect-video p-[0.8rem] bg-transparent hover:bg-black/20 relative group/item">
         <span className="text-white font-bold">{board.name}</span>
         <div className="absolute bottom-[1rem] right-[1rem] invisible translate-x-3 group-hover/item:visible group-hover/item:translate-x-0 transition-all duration-300">
           <AiOutlineStar className="text-white hover:scale-125" />

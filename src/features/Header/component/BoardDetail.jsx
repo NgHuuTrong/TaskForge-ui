@@ -29,7 +29,6 @@ function BoardDetail() {
         <FormRow label="Visibility" type="ver" note="This is the name of your company, group or organization.">
           <Form.Item name="type" rules={[{ required: true, message: 'This field is required!' }]}>
             <Select
-              placeholder="Choose..."
               getPopupContainer={(trigger) => trigger.parentElement}
               optionLabelProp="value"
               options={[

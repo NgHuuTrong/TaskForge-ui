@@ -3,6 +3,7 @@ import { useStarredBoard, useUpdateBoard } from '../../../hooks/useBoard';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 import { Input } from 'antd';
+import toast from 'react-hot-toast';
 function LeftSection({ board }) {
   const [changeTitleBox, setChangeTitleBox] = useState(false);
   const [favorite, setFavorite] = useState(board.curMember.starred);
@@ -11,12 +12,19 @@ function LeftSection({ board }) {
   const { updateBoard, isUpdating } = useUpdateBoard();
   const handleStarredClick = (status) => {
     setFavorite(status);
-    favorBoard({ starred: status, boardId: board.id });
+    favorBoard(
+      { starred: status, boardId: board.id },
+      { onSuccess: () => toast.success(status ? 'Starred successfully!' : 'Unstarred successfully!') },
+    );
   };
 
   const handleChangedTitle = (e) => {
     const changedTitle = e.target.value || board.name;
-    if (e.target.value !== board.name) updateBoard({ body: { name: changedTitle }, boardId: board.id });
+    if (e.target.value !== board.name)
+      updateBoard(
+        { body: { name: changedTitle }, boardId: board.id },
+        { onSuccess: () => toast.success('Board name has already changed successfully!') },
+      );
     setCurrTitle(changedTitle);
     setChangeTitleBox(false);
   };
