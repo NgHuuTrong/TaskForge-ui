@@ -20,34 +20,39 @@ function AddNewListSection() {
 
   if (isAdding) {
     return (
-      <div className="ml-4 h-fit bg-[#f1f2f4] p-4">
+      <div className="flex flex-col ml-4 h-fit bg-[--color-grey-50] p-4">
         <Input
           className="mb-4 w-[260px]"
           placeholder="Input list title..."
           value={listTitle}
           onChange={(e) => setListTitle(e.target.value)}
-        ></Input>
-        <Button
-          type="primary"
-          className="bg-blue-500"
-          onClick={handleAddNewList}
-        >
-          Add new list
-        </Button>
-        <Button
-          className="border-none shadow-none"
-          onClick={() => setIsAdding(false)}
-        >
-          <CloseOutlined />
-        </Button>
+        />
+        <div>
+          <Button
+            type="primary"
+            className="bg-blue-500"
+            onClick={handleAddNewList}
+          >
+            Add new list
+          </Button>
+          <Button
+            className="border-none shadow-none text-[--color-grey-800]"
+            onClick={() => setIsAdding(false)}
+          >
+            <CloseOutlined className='text-[--color-grey-800]' />
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
     <Button
-      className="ml-4 flex h-fit w-[270px] items-center justify-start rounded-lg"
+      className="ml-4 flex h-fit w-[270px] items-center justify-start rounded-lg transition-all duration-300 bg-white bg-opacity-40"
       type="text"
+      style={{
+        backgroundOpacity: 0.5
+      }}
       onClick={() => setIsAdding(true)}
     >
       <PlusOutlined /> Add another list

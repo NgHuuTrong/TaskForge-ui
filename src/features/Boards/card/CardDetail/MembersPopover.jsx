@@ -3,7 +3,12 @@ import Input from "../../../../ui/Input"
 
 function MembersPopover({ children }) {
     return (
-        <Popover placement="bottomLeft" title={<h1 className="font-bold text-center">Members</h1>} content={<MembersPopoverContent />} trigger="click">
+        <Popover
+            placement="bottomLeft"
+            title={<h1 className="font-bold text-center text-[--color-grey-800]">Members</h1>}
+            content={<MembersPopoverContent />}
+            trigger="click"
+        >
             <>
                 {children}
             </>
@@ -13,9 +18,9 @@ function MembersPopover({ children }) {
 
 function MembersPopoverContent() {
     return (
-        <div>
+        <div className="bg-[--color-grey-0]">
             <Input
-                classNames="w-full rounded-none outline-[--color-blue-700] mb-5"
+                classNames="w-full rounded-none text-[--color-grey-800] outline-[--color-blue-700] mb-5"
                 placeholder="Search members"
             />
             <h1 className="font-bold text-[1.2rem] text-[--color-grey-600]">Board members</h1>
@@ -32,7 +37,7 @@ function MemberItem() {
     return (
         <div className="flex items-center gap-5 p-2 rounded-lg cursor-pointer bg-[--color-grey-0] hover:bg-[--color-grey-200]">
             <Avatar style={{ backgroundColor: '#87d068' }}>K</Avatar>
-            <span>Nguyen Van Hieu (ngvahiu)</span>
+            <span className="text-[--color-grey-600]">Nguyen Van Hieu (ngvahiu)</span>
         </div>
     )
 }

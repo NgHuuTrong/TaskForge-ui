@@ -1,13 +1,13 @@
 import { Button, Popconfirm } from 'antd';
 import { useState } from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import CardHeader from './Card/CardHeader';
+import ListHeader from './card/ListHeader';
 import Card from './card/Card'; 
-import CopyListModal from './Card/CopyListModal';
-import MoveListModal from './Card/MoveListModal';
-import AddCardSection from './Card/AddCardSection';
+import CopyListModal from './card/CopyListModal';
+import MoveListModal from './card/MoveListModal';
+import AddCardSection from './card/AddCardSection';
 import { deleteAllCards, deleteList } from './boardSlice';
-import MoveCard from './Card/MoveCard';
+import MoveCard from './card/MoveCard';
 import { useDispatch } from 'react-redux';
 
 function List({
@@ -19,7 +19,7 @@ function List({
       label: (
         <Button
           onClick={() => setIsAddCard(true)}
-          className="w-full border-none"
+          className="w-full border-none text-[--color-grey-800]"
         >
           Add card
         </Button>
@@ -30,7 +30,7 @@ function List({
       label: (
         <Button
           onClick={() => setIsCopyListOpen(true)}
-          className="w-full border-none"
+          className="w-full border-none text-[--color-grey-800]"
         >
           Copy list
         </Button>
@@ -41,7 +41,7 @@ function List({
       label: (
         <Button
           onClick={() => setIsMoveListOpen(true)}
-          className="w-full border-none"
+          className="w-full border-none text-[--color-grey-800]"
         >
           Move all cards in this list
         </Button>
@@ -51,15 +51,15 @@ function List({
     {
       label: (
         <Popconfirm
-          title="Delete all the task"
-          description="Are you sure you want to delete all the tasks in this list?"
+          title={<span className='text-[--color-grey-900] text-[1.5rem] font-bold'>Delete all the task</span>}
+          description={<span className='text-[--color-grey-900]'>Are you sure you want to delete all the tasks in this list?</span>}
           onConfirm={() => dispatch(deleteAllCards(list.id))}
           cancelButtonProps={{ type: 'text' }}
           okButtonProps={{ className: 'bg-sky-500' }}
           okText="Yes"
           cancelText="No"
         >
-          <Button className="flex border-none">
+          <Button className="w-full border-none text-[--color-grey-800]">
             Archive all cards in this list
           </Button>
         </Popconfirm>
@@ -69,15 +69,15 @@ function List({
     {
       label: (
         <Popconfirm
-          title="Delete this list"
-          description="Are you sure you want to delete this list?"
+          title={<span className='text-[--color-grey-900] text-[1.5rem] font-bold'>Delete this list</span>}
+          description={<span className='text-[--color-grey-900]'>Are you sure you want to delete this list?</span>}
           onConfirm={() => dispatch(deleteList(list.id))}
           cancelButtonProps={{ type: 'text' }}
           okButtonProps={{ className: 'bg-sky-500' }}
           okText="Yes"
           cancelText="No"
         >
-          <Button className="w-full border-none">Archive this list</Button>
+          <Button className="w-full border-none text-[--color-grey-800]">Archive this list</Button>
         </Popconfirm>
       ),
       key: '5',
@@ -94,8 +94,8 @@ function List({
     <>
       <Droppable droppableId={list.id} key={list.id} type="ROW">
         {(provided) => (
-          <div className="ml-4 h-fit rounded-lg bg-[#f1f2f4] p-4">
-            <CardHeader id={list.id} items={items} />
+          <div className="ml-4 h-fit rounded-lg bg-[--color-grey-0] p-4">
+            <ListHeader id={list.id} items={items} />
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}

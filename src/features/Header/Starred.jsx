@@ -1,27 +1,34 @@
 import React from 'react';
-import ButtonImage from '../../ui/ButtonImage';
-import MyDropdown from '../../ui/MyDropdown';
+import { Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 
+import ButtonImage from '../../ui/ButtonImage';
 import starred from '../../data/starred.json';
+import Button from '../../ui/Button';
 
 const Starred = () => {
   return (
-    <MyDropdown
-      title="Starred"
-      render={
-        <div className="mt-4 w-[280px] rounded-xl bg-[--color-grey-0] p-4 border border-[--color-grey-300]">
+    <Dropdown
+      getPopupContainer={(trigger) => trigger.parentElement}
+      trigger={['click']}
+      dropdownRender={() => (
+        <div className="w-[280px]">
           {starred.map((board) => (
             <ButtonImage
               key={board.id}
               title={board.boardName}
               subscription={board.workspaceName}
               url={board.img}
-              to="/"
+              to={'/b/' + board.id + '/board-detail'}
             />
           ))}
         </div>
-      }
-    />
+      )}
+    >
+      <Button type="icon" size="normal">
+        Starred <DownOutlined />
+      </Button>
+    </Dropdown>
   );
 };
 

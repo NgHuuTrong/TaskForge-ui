@@ -10,10 +10,10 @@ function CardDetailMembers() {
         Members
       </h1>
       <div className="flex items-center gap-5">
-        <CardDetailMemberList size={'default'}></CardDetailMemberList>
+        <CardDetailMemberList size={'default'} />
         <MembersPopover>
           <Avatar className="flex cursor-pointer items-center justify-center bg-[--color-grey-300] text-[--color-grey-700] hover:bg-[--color-grey-200]">
-            <BsPlusLg size="1.8rem" />
+            <BsPlusLg className='text-[--color-grey-700]' size="1.8rem" />
           </Avatar>
         </MembersPopover>
       </div>

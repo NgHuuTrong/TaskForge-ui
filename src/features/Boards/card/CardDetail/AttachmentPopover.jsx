@@ -5,7 +5,12 @@ import Button from "../../../../ui/Button"
 
 function AttachmentPopover({ children }) {
     return (
-        <Popover placement="bottomLeft" title={<h1 className="font-bold text-center">Attach</h1>} content={<AttachmentPopoverContent />} trigger="click">
+        <Popover
+            placement="bottomLeft"
+            title={<h1 className="font-bold text-center text-[--color-grey-800]">Attach</h1>}
+            content={<AttachmentPopoverContent />}
+            trigger="click"
+        >
             <>
                 {children}
             </>
@@ -27,15 +32,15 @@ function AttachmentPopoverContent() {
             <div className="space-y-2">
                 <h1 className="text-[--color-grey-600] font-bold">Paste a link</h1>
                 <Input
-                    classNames="w-full rounded-none outline-[--color-blue-700] mb-5"
+                    classNames="w-full text-[--color-grey-800] rounded-none outline-[--color-blue-700] mb-5"
                     placeholder="Paste a new link"
                 />
                 <h1 className="text-[--color-grey-600] font-bold">Display text (optional)</h1>
                 <Input
-                    classNames="w-full rounded-none outline-[--color-blue-700] mb-5"
+                    classNames="w-full text-[--color-grey-800] rounded-none outline-[--color-blue-700] mb-5"
                     placeholder="Text to display"
                 />
-                <div className='text-right space-x-3 mt-3'>
+                <div className='flex space-x-3 mt-3'>
                     <Button type='primary' size='small'>Save</Button>
                     <Button type='secondary' size='small'>Cancel</Button>
                 </div>

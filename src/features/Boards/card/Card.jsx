@@ -11,7 +11,7 @@ function Card({ listId, card, index, setMoveCard, provided }) {
 
   return (
     <div
-      className="group relative mb-2 flex w-full flex-col items-center rounded-lg bg-white p-4 pr-8 shadow-md hover:bg-sky-100"
+      className="group relative mb-2 flex w-full flex-col items-center rounded-lg bg-[--color-grey-200] border p-4 pr-8 shadow-md"
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
@@ -25,7 +25,7 @@ function Card({ listId, card, index, setMoveCard, provided }) {
         );
       }}
     >
-      <p className="my-1 text-2xl">{description}</p>
+      <p className="my-1 text-2xl text-[--color-grey-700]">{description}</p>
       <div className="flex w-full items-center justify-between">
         <div className="flex">
           <div className="mr-4 flex items-center">
@@ -41,12 +41,12 @@ function Card({ listId, card, index, setMoveCard, provided }) {
           <CardDetailMemberList size={'small'} />
         </div>
       </div>
-      <div className="absolute left-full top-[1px] z-10 bg-white opacity-0 group-hover:opacity-100">
-        <Button className="flex w-full items-center justify-center rounded-none border-none text-xl hover:bg-white">
+      <div className="absolute left-full top-[1px] z-10 opacity-0 bg-[--color-grey-0] group-hover:opacity-100">
+        <Button className="flex w-full items-center justify-center rounded-none border-none text-xl text-[--color-grey-800]">
           Edit
         </Button>
         <Button
-          className="flex items-center justify-center rounded-none border-none text-xl hover:bg-white"
+          className="flex items-center justify-center rounded-none border-none text-xl text-[--color-grey-800] hover:bg-opacity-50"
           onClick={(e) => {
             e.stopPropagation();
             setMoveCard(index);
@@ -55,7 +55,7 @@ function Card({ listId, card, index, setMoveCard, provided }) {
           Move to
         </Button>
         <Button
-          className="flex w-full items-center justify-center rounded-none border-none text-xl hover:bg-white"
+          className="flex w-full items-center justify-center rounded-none border-none text-xl text-[--color-grey-800]"
           onClick={(e) => {
             e.stopPropagation();
             dispatch(deleteCard({ listId, cardId: id }));

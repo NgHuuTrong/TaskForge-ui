@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Switch } from 'antd';
+import { Dropdown, Switch } from 'antd';
 import { AiOutlineBell } from 'react-icons/ai';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
+
 import EmailFrequency from './EmailFrequency';
 import Notification from './Notification';
 import Heading from '../../ui/Heading';
-import MyDropdown from '../../ui/MyDropdown';
-
 import notifications from '../../data/notifications.json';
+import Button from '../../ui/Button';
 
 const Notifications = () => {
   const [unreadOnly, setUnreadOnly] = useState(true);
@@ -17,18 +17,20 @@ const Notifications = () => {
   };
 
   return (
-    <MyDropdown
+    <Dropdown
+      getPopupContainer={(trigger) => trigger.parentElement}
+      openClassName="mt-12"
       placement="bottomRight"
       trigger={['click']}
-      render={
-        <div className="min-h-[20rem] w-[40rem] rounded-xl bg-[--color-grey-0] border border-[--color-grey-300]">
+      dropdownRender={() => (
+        <div className="min-h-[20rem] w-[40rem]">
           <div className="flex items-center justify-between pl-[16px] pr-[10px] py-[22px] border-b border-b-[--color-grey-400]">
             <Heading as="h3">Notifications</Heading>
             <div className="flex items-center justify-evenly">
-              <div className="flex items-center text-[12px] text-[--color-grey-500]">
+              <span className="flex items-center text-[12px]">
                 Show unread only
                 <Switch defaultChecked size="small" className="mx-4" onClick={handleClick} />
-              </div>
+              </span>
               <EmailFrequency
                 trigger={'click'}
                 icon={<BiDotsVerticalRounded size={16} color="var(--color-grey-600)" />}
@@ -44,10 +46,12 @@ const Notifications = () => {
             )}
           </div>
         </div>
-      }
-      title={<AiOutlineBell className="rotate-45 cursor-pointer text-[2.4rem]" />}
-      hasChevron={false}
-    />
+      )}
+    >
+      <Button type="icon" size="small" classNames="rounded-full">
+        <AiOutlineBell color="var(--color-grey-500)" className="rotate-45 cursor-pointer text-[2.4rem]" />
+      </Button>
+    </Dropdown>
   );
 };
 

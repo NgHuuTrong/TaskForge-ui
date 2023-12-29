@@ -1,12 +1,12 @@
 import React from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import List from './List';
-import AddNewListSection from './Card/AddNewListSection';
+import AddNewListSection from './card/AddNewListSection';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { useSelector } from 'react-redux';
 import { exchangeTwoList, getBoard, moveCardInList, moveCardToAnotherList } from './boardSlice';
 import { useDispatch } from 'react-redux';
-import CardDetail from './Card/CardDetail/CardDetail';
+import CardDetail from './card/CardDetail/CardDetail';
 
 function BoardContent() {
   const dispatch = useDispatch();

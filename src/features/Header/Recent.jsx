@@ -1,27 +1,34 @@
 import React from 'react';
-import MyDropdown from '../../ui/MyDropdown';
-import ButtonImage from '../../ui/ButtonImage';
+import { Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 
 import recents from '../../data/recent.json';
+import ButtonImage from '../../ui/ButtonImage';
+import Button from '../../ui/Button';
 
 const Recent = () => {
   return (
-    <MyDropdown
-      title="Recent"
-      render={
-        <div className="mt-4 w-[280px] rounded-xl bg-[--color-grey-0] p-4 border border-[--color-grey-300]">
+    <Dropdown
+      getPopupContainer={(trigger) => trigger.parentElement}
+      trigger={['click']}
+      dropdownRender={() => (
+        <div className="w-[280px]">
           {recents.map((recent) => (
             <ButtonImage
               key={recent.id}
               title={recent.boardName}
               subscription={recent.workspaceName}
               url={recent.img}
-              to="/"
+              to={'/b/' + recent.id + '/board-detail'}
             />
           ))}
         </div>
-      }
-    />
+      )}
+    >
+      <Button type="icon" size="normal">
+        Recent <DownOutlined />
+      </Button>
+    </Dropdown>
   );
 };
 

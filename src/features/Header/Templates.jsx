@@ -1,33 +1,55 @@
-import React from 'react';
-import Heading from '../../ui/Heading';
-import ButtonImage from '../../ui/ButtonImage';
-import MyDropdown from '../../ui/MyDropdown';
+import React, { useState } from 'react';
+import { DownOutlined } from '@ant-design/icons';
 
-import templates from '../../data/templates.json';
+import ButtonImage from '../../ui/ButtonImage';
+import Button from '../../ui/Button';
+import MenuDropdown from '../../ui/MenuDropdown';
+import CreateBoard from './component/CreateBoard';
+import { useTemplates } from '../../hooks/useTemplate';
+import Spinner from '../../ui/Spinner';
+
+export const TemplatesList = ({ onAddHistory, templates }) => (
+  <div className="flex flex-col gap-1 w-[300px] mt-2">
+    <span className="text-[1.2rem] font-medium text-[--color-subtext]">Top Templates</span>
+    {templates.map((template) => (
+      <div
+        key={template.id}
+        onClick={() =>
+          onAddHistory((prev) => [...prev, { title: template.name, component: 'CreateWithTemplate ' + template.id }])
+        }
+      >
+        <ButtonImage height="40px" url={template.defaultBackground} title={template.name} hasStarred={false} />
+      </div>
+    ))}
+  </div>
+);
 
 const Templates = () => {
+  const [templateHistory, setTemplateHistory] = useState([{ title: null, component: 'TemplatesList' }]);
+  const { templates, isLoading } = useTemplates('sort=name&limit=12');
+
+  const renderComponent = (component) => {
+    if (isLoading) return <Spinner />;
+    if (component.startsWith('CreateWithTemplate')) {
+      const id = Number(component.split([' '])[1]);
+      const template = templates.find((el) => el.id === id);
+      return <CreateBoard onAddHistory={setTemplateHistory} template={template} />;
+    }
+    return (
+      <>{component === 'TemplatesList' && <TemplatesList onAddHistory={setTemplateHistory} templates={templates} />}</>
+    );
+  };
   return (
-    <MyDropdown
-      title="Templates"
-      render={
-        <div className="mt-4 w-[300px] rounded-xl bg-[--color-grey-0] p-4 border border-[--color-grey-300]">
-          <Heading as="h5" classNames="text-[--color-grey-600] p-4">
-            Top Templates
-          </Heading>
-          {templates.map((template) => (
-            <div className="py-2 bg-inherit" key={template.id}>
-              <ButtonImage
-                height="40px"
-                url={template.img}
-                title={template.templateName}
-                to="/"
-                hasStarred={false}
-              />
-            </div>
-          ))}
-        </div>
-      }
-    />
+    <MenuDropdown
+      onBack={() => setTemplateHistory((prev) => prev.slice(0, -1))}
+      onReset={() => setTemplateHistory((prev) => prev.slice(0, 1))}
+      history={templateHistory}
+      renderComponent={renderComponent}
+    >
+      <Button type="icon" size="normal">
+        Templates <DownOutlined />
+      </Button>
+    </MenuDropdown>
   );
 };
 

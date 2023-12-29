@@ -7,7 +7,6 @@
   consider using classes instead of the `@apply` directive
   @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
 */
-:root,
 :root.light-mode {
   /* Grey */
   --color-grey-0: #fff;
@@ -31,9 +30,6 @@
   --color-silver-700: #374151;
   --color-indigo-100: #e0e7ff;
   --color-indigo-700: #4338ca;
-  --color-red-100: #fee2e2;
-  --color-red-700: #b91c1c;
-  --color-red-800: #991b1b;
   --backdrop-color: rgba(255, 255, 255, 0.1);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
@@ -41,18 +37,12 @@
   --image-grayscale: 0;
   --image-opacity: 100%;
 
-
-  --color-dark: #445471;
-  --header-button-txt-hovered: #0C66E4;
-  --header-button-hovered-200: #074fb3;
-  --header-button-bg-hovered: #CFE2FF;
-  --header-button-hovered: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
-  --header-button-color: var(--ds-text-subtle, #44546f);
-  
   --color-selected-bg: #e9f2ff;
   --color-disabled-text: #091e424f;
-  --color-disabled-bg: #091e420f;
-
+  --color-disabled-bg: #091e4208;
+  --color-text: #172b4d;
+  --color-border-focus: #388bff;
+  --color-subtext: #626f86;
 }
 
 :root.dark-mode {
@@ -62,8 +52,8 @@
   --color-grey-200: #374151;
   --color-grey-300: #4b5563;
   --color-grey-400: #6b7280;
-  --color-grey-500: #9fadbc;
-  --color-grey-600: #b6c2cf;
+  --color-grey-500: #9ca3af;
+  --color-grey-600: #d1d5db;
   --color-grey-700: #e5e7eb;
   --color-grey-800: #f3f4f6;
   --color-grey-900: #f9fafb;
@@ -77,9 +67,6 @@
   --color-silver-700: #f3f4f6;
   --color-indigo-100: #3730a3;
   --color-indigo-700: #e0e7ff;
-  --color-red-100: #fee2e2;
-  --color-red-700: #b91c1c;
-  --color-red-800: #991b1b;
   --backdrop-color: rgba(0, 0, 0, 0.3);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
@@ -88,7 +75,10 @@
   --image-opacity: 90%;
   --color-selected-bg: #1c2b41;
   --color-disabled-text: #bfdbf847;
-  --color-disabled-bg: #a1bdd914;
+  --color-disabled-bg: #bcd6f00a;
+  --color-text: #b6c2cf;
+  --color-border-focus: #85b8ff;
+  --color-subtext: #9fadbc;
 }
 
 :root {
@@ -101,26 +91,30 @@
   --color-brand-700: #4338ca;
   --color-brand-800: #3730a3;
   --color-brand-900: #312e81;
+  --color-red-100: #fee2e2;
+  --color-red-400: #f15b50;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
   --border-radius-tiny: 3px;
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
 }
 
-/* *,
+*,
 *::before,
 *::after {
   @apply m-0 box-border p-0 transition-[background-color] delay-[0.05s] duration-[0.3s,border];
 
   /* Creating animations for dark mode */
-/* } */
+}
 
 html {
   @apply text-[62.5%];
 }
 
 body {
-  @apply min-h-screen text-[1.6rem] leading-normal text-[color:var(--color-grey-700)] transition-[color] delay-[0.3s] duration-[0.3s, background-color];
+  @apply min-h-screen text-[1.6rem] leading-normal text-[var(--color-text)] transition-[color] delay-[0.3s] duration-[0.3s,background-color];
   overflow: hidden auto;
   font-family:
     -apple-system,
@@ -158,26 +152,6 @@ select {
   font: inherit;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  @apply bg-[--color-grey-0] text-[--color-grey-500];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-single.ant-select-open .ant-select-selection-item {
-  @apply text-[--color-grey-400];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown {
-  @apply bg-[--color-grey-0];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown .ant-select-item {
-  @apply text-[--color-grey-500] hover:bg-[--color-grey-200];
-}
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-  @apply text-[--color-brand-500] bg-[--color-selected-bg];
-}
-
 button {
   @apply cursor-pointer;
 }
@@ -189,14 +163,13 @@ button {
 button:disabled,
 select:disabled,
 input:disabled {
-  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-disabled-text)];
+  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-disabled-text)] hover:bg-[var(--color-disabled-bg)];
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  @apply -outline-offset-1;
-  outline: 2px solid var(--color-brand-500);
+  @apply border-[var(--color-brand-500)];
 }
 
 /* Parent selector, finally 😃 */
@@ -225,63 +198,126 @@ h6 {
 
 img {
   @apply max-w-full opacity-[var(--image-opacity)] grayscale-[var(--image-grayscale)];
-
-  /* For dark mode */
+}
+.ant-form {
+  color: var(--color-text) !important;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-popover .ant-popover-arrow:before,
+/* Ant Design Selector */
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  @apply bg-[var(--color-grey-0)] text-[var(--color-text)] border-[var(--color-grey-300)] rounded;
+}
+
+.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  @apply text-[var(--color-disabled-text)] bg-[var(--color-disabled-bg)];
+}
+
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):focus
+  .ant-select-selector,
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):focus-within
+  .ant-select-selector {
+  @apply border-solid border-[2px] border-[var(--color-border-focus)];
+}
+
+.ant-select-single.ant-select-open .ant-select-selection-item {
+  @apply text-[var(--color-text)];
+}
+
+.ant-select-dropdown {
+  @apply bg-[var(--color-grey-0)];
+}
+
+.ant-select-dropdown .ant-select-item-option-content {
+  @apply overflow-auto whitespace-break-spaces break-words;
+}
+
+.ant-select-dropdown .ant-select-item {
+  @apply text-[var(--color-text)] hover:bg-[var(--color-grey-200)];
+}
+
+.ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  @apply text-[var(--color-brand-500)] bg-[var(--color-selected-bg)];
+}
+
+.ant-select .ant-select-arrow {
+  @apply text-[var(--color-text)];
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  @apply text-[var(--color-text)];
+}
+
+/* Ant Design Popover */
+.ant-popover .ant-popover-inner {
+  @apply bg-[var(--color-grey-0)];
+}
+.ant-popover .ant-popover-title,
+.ant-popover .ant-popover-inner-content {
+  @apply text-[var(--color-text)];
+}
+
+.ant-popover .ant-popover-arrow:before,
 .ant-popover .ant-popover-arrow:before {
   @apply bg-[var(--color-grey-0)];
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-tabs .ant-tabs-tab-btn,
+/* Ant Design Tabs */
+.ant-tabs {
+  @apply text-[var(--color-text)];
+}
+
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  @apply text-[var(--color-border-focus)];
+}
+
+.ant-tabs .ant-tabs-ink-bar {
+  @apply bg-[var(--color-border-focus)];
+}
+
+.ant-tabs .ant-tabs-tab-btn,
 .ant-tabs .ant-tabs-tab-btn {
-  @apply text-[var(--color-grey-600)];
+  @apply text-[var(--color-text)];
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-input {
-  @apply px-[1.2rem] py-[0.8rem] bg-[--color-grey-0] text-[--color-grey-600] border-[--color-grey-300] placeholder:text-[--color-grey-400];
+/* Ant Design Input */
+.ant-input-affix-wrapper {
+  @apply bg-[var(--color-grey-0)] border-[var(--color-grey-300)] text-[var(--color-grey-600)];
 }
 
-.ant-upload-wrapper .ant-upload-select {
-  width: 100%;
+.ant-input {
+  @apply px-[1.2rem] py-[0.8rem] bg-[var(--color-grey-0)] text-[var(--color-grey-600)] border-[var(--color-grey-300)] rounded placeholder:text-[var(--color-grey-600)];
 }
-/*
-FOR DARK MODE
 
---color-grey-0: #18212f;
---color-grey-50: #111827;
---color-grey-100: #1f2937;
---color-grey-200: #374151;
---color-grey-300: #4b5563;
---color-grey-400: #6b7280;
---color-grey-500: #9ca3af;
---color-grey-600: #d1d5db;
---color-grey-700: #e5e7eb;
---color-grey-800: #f3f4f6;
---color-grey-900: #f9fafb;
+.ant-input:hover {
+  @apply border-[0.2px] border-[var(--color-border-focus)];
+}
 
---color-blue-100: #075985;
---color-blue-700: #e0f2fe;
---color-green-100: #166534;
---color-green-700: #dcfce7;
---color-yellow-100: #854d0e;
---color-yellow-700: #fef9c3;
---color-silver-100: #374151;
---color-silver-700: #f3f4f6;
---color-indigo-100: #3730a3;
---color-indigo-700: #e0e7ff;
+.ant-input:focus,
+.ant-input:focus-within {
+  @apply border-[2px] border-[var(--color-border-focus)];
+}
 
---color-red-100: #fee2e2;
---color-red-700: #b91c1c;
---color-red-800: #991b1b;
+/* Ant Design Modal */
+.ant-modal .ant-modal-content {
+  @apply p-0 bg-[var(--color-grey-50)] text-[var(--color-text)];
+}
 
---backdrop-color: rgba(0, 0, 0, 0.3);
+.ant-modal .ant-modal-close {
+  @apply text-[var(--color-grey-500)] hover:text-[var(--color-grey-400)];
+}
 
---shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
---shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
---shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
+/* Ant Design Dropdown */
+.ant-dropdown {
+  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] border border-[var(--color-grey-300)] rounded-xl py-4 pl-4 max-h-[90vh] overflow-x-hidden;
+}
 
---image-grayscale: 10%;
---image-opacity: 90%;
-*/
+/* Ant Design Tree */
+.ant-tree {
+  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] text-[16px];
+}
+
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
+.ant-tree .ant-tree-checkbox + span.ant-tree-node-selected {
+  @apply bg-[var(--color-grey-200)];
+}
