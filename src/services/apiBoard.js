@@ -12,6 +12,30 @@ export async function getMyBoards() {
   return data.boards;
 }
 
+export async function getRecentBoards() {
+  const data = await authAxios
+    .get('/boards/recent-boards')
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+  console.log('getRecentBoards', data);
+  return data.boardMembers;
+}
+
+export async function getStarredBoards() {
+  const data = await authAxios
+    .get('/boards/joined-boards')
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+  console.log('getStarredBoards', data);
+  return data.boards;
+}
+
 export async function getBoard(boardId) {
   const data = await authAxios
     .get(`/boards/${boardId}`)
