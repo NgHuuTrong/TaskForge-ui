@@ -16,6 +16,7 @@ import Settings from './pages/Settings';
 import { DarkModeProvider } from './context/DarkModeContext';
 import BoardDetailLayout from './features/Boards/layout/BoardDetailLayout';
 import { Toaster } from 'react-hot-toast';
+import Admin from './pages/Admin';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ function App() {
             <Route element={<AppLayout headerOnly />}>
               <Route path="/b/:boardId/board-detail" element={<BoardDetailLayout />} />
             </Route>
+            <Route path="admin" element={<Admin />} />
             <Route path="authenticate" element={<Authenticate />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="reset-password" element={<ResetPassword />} />

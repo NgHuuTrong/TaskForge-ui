@@ -33,7 +33,7 @@ export function useStarredBoards() {
     error,
   } = useQuery({
     queryKey: ['starred-boards'],
-    queryFn: getRecentBoards,
+    queryFn: getStarredBoards,
     useErrorBoundary: true,
   });
   return { isLoading, error, boards };

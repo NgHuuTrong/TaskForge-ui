@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
 import ButtonImage from '../../ui/ButtonImage';
-import starred from '../../data/starred.json';
 import Button from '../../ui/Button';
-import { useBoards, useStarredBoards } from '../../hooks/useBoard';
-import { getMyBoards } from '../../services/apiBoard';
+import { useStarredBoards } from '../../hooks/useBoard';
 const Starred = () => {
   const { isLoading, boards } = useStarredBoards();
-  console.log(boards);
   return (
     <Dropdown
       getPopupContainer={(trigger) => trigger.parentElement}
@@ -17,17 +14,15 @@ const Starred = () => {
       dropdownRender={() => (
         <div className="w-[280px]">
           {!isLoading &&
-            boards
-              .filter((a) => a.starred)
-              .map(({ board }) => (
-                <ButtonImage
-                  key={board.id}
-                  title={board.name}
-                  subscription={board.workspaceName}
-                  url={board.background}
-                  to={'/b/' + board.id + '/board-detail'}
-                />
-              ))}
+            boards.map(({ board }) => (
+              <ButtonImage
+                key={board.id}
+                title={board.name}
+                subscription={board.workspaceName}
+                url={board.background}
+                to={'/b/' + board.id + '/board-detail'}
+              />
+            ))}
         </div>
       )}
     >

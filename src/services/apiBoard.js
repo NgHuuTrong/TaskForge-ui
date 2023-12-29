@@ -21,7 +21,7 @@ export async function getRecentBoards() {
       throw new Error(err.response.data);
     });
   console.log('getRecentBoards', data);
-  return data.boardMembers;
+  return data.boardMembers.filter((item) => item.starred);
 }
 
 export async function getStarredBoards() {
@@ -33,7 +33,7 @@ export async function getStarredBoards() {
       throw new Error(err.response.data);
     });
   console.log('getStarredBoards', data);
-  return data.boards;
+  return data.boardMembers;
 }
 
 export async function getBoard(boardId) {
