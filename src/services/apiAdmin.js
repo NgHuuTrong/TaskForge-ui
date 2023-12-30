@@ -23,3 +23,21 @@ export async function deleteTemplate(templateId) {
     });
   console.log('Template deleted');
 }
+
+export async function editTemplate(id, description, type, defaultList, defaultBackground) {
+  defaultList = JSON.stringify(defaultList);
+  const data = await authAxios
+    .patch('/templates/' + id, {
+      id,
+      description,
+      type,
+      defaultList,
+      defaultBackground,
+    })
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+  console.log('Edit template');
+}
