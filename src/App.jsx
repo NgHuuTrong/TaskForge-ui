@@ -48,6 +48,7 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="/w/:workspaceId/home" element={<WorkspaceHome />} />
               <Route path="/w/:workspaceId/members" element={<WorkspaceMember />} />
+              <Route path="u/settings" element={<Settings />} />
             </Route>
             <Route element={<AppLayout headerOnly />}>
               <Route path="/b/:boardId/board-detail" element={<BoardDetailLayout />} />
@@ -55,7 +56,6 @@ function App() {
             <Route path="authenticate" element={<Authenticate />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="reset-password" element={<ResetPassword />} />
-            <Route path="u/settings" element={<Settings />} />
           </Routes>
         </BrowserRouter>
         <Toaster

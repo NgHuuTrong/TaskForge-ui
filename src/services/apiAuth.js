@@ -1,15 +1,12 @@
-import { API } from './API';
-import { getCurrentUser } from './apiUser';
+import authAxios from '../utils/axios';
+// import { getCurrentUser } from './apiUser';
 
 export const login = async ({ email, password }) => {
   try {
-    const { data } = await API.post('/auth/signin', { email, password });
-    const user = await getCurrentUser(data.data.accessToken);
-    const finalData = {
-      accessToken: data.data.accessToken,
-      user: user,
-    };
-    return finalData;
+    const { data } = await authAxios.post('/auth/signin', { email, password });
+    localStorage.setItem('token', JSON.stringify(data.data.accessToken));
+
+    return data.data;
   } catch (error) {
     console.log(error);
     throw new Error(error.message);
@@ -18,7 +15,7 @@ export const login = async ({ email, password }) => {
 
 export const signup = async ({ username, email, name, password, passwordConfirm }) => {
   try {
-    const { data } = await API.post('/auth/signup', { username, email, name, password, passwordConfirm });
+    const { data } = await authAxios.post('/auth/signup', { username, email, name, password, passwordConfirm });
     return data;
   } catch (error) {
     console.log(error);

@@ -1,14 +1,52 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { Input, Tooltip, Upload } from 'antd';
 import { MdPublic } from 'react-icons/md';
 import { AiFillCamera } from 'react-icons/ai';
 import Button from '../../ui/Button';
 import FormRow from '../../ui/FormRow';
-
+import { useUpdateUser } from '../Authenticate/useUpdateUser';
+import UserDetail from '../../ui/UserDetail';
+import ImgCrop from 'antd-img-crop';
 const { TextArea } = Input;
 
 function Profile({ user }) {
+  const [username, setUsername] = useState(user.username);
+  const [bio, setBio] = useState(user.bio);
+  const [file, setFile] = useState();
+  const { updateUser, isLoading } = useUpdateUser();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!username && !bio && !file) return;
+    updateUser({ username, bio, file });
+  }
+  const getBase64 = (img, callback) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  };
+
+  const handleUpload = (info) => {
+    getBase64(info.file, (url) => {
+      user.avatar = url;
+    });
+    setFile(info.file);
+  };
+  const onPreview = async (file) => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow?.document.write(image.outerHTML);
+  };
+
   return (
     <div className="flex flex-col items-center mt-[50px] ">
       <img src="https://trello.com/assets/eff3d701a9c3a71105ea.svg" alt="" />
@@ -31,14 +69,22 @@ function Profile({ user }) {
         >
           <div className="flex justify-center mt-[40px]">
             <div className="relative">
-              <img className="rounded-full" width={100} height={100} src={user.avatarPath} alt="/" />
-              <Upload>
-                <AiFillCamera
-                  onClick={() => {}}
-                  size={32}
-                  className="p-[0.6rem] bg-black rounded-full absolute right-0 bottom-[2rem] text-white hover:opacity-80 cursor-pointer"
-                />
-              </Upload>
+              <UserDetail user={user} showDetail={false} size={150} />
+              <ImgCrop rotationSlider>
+                <Upload
+                  disabled={isLoading}
+                  name="avatar"
+                  showUploadList={false}
+                  customRequest={handleUpload}
+                  onPreview={onPreview}
+                >
+                  <AiFillCamera
+                    onClick={() => {}}
+                    size={32}
+                    className="p-[0.6rem] bg-black rounded-full absolute right-0 bottom-[2rem] text-white hover:opacity-80 cursor-pointer"
+                  />
+                </Upload>
+              </ImgCrop>
             </div>
           </div>
         </FormRow>
@@ -55,7 +101,7 @@ function Profile({ user }) {
             </div>
           }
         >
-          <Input defaultValue={user.username} />
+          <Input value={username} disabled={isLoading} onChange={(e) => setUsername(e.target.value)} />
         </FormRow>
 
         <FormRow
@@ -70,10 +116,12 @@ function Profile({ user }) {
             </div>
           }
         >
-          <TextArea rows={4} />
+          <TextArea rows={4} value={bio} disabled={isLoading} onChange={(e) => setBio(e.target.value)} />
         </FormRow>
 
-        <Button>Save</Button>
+        <Button disabled={isLoading} onClick={handleSubmit}>
+          Save
+        </Button>
       </div>
 
       <div className="h-[50px]"></div>

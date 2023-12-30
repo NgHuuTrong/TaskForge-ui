@@ -6,6 +6,5 @@ export function useUser() {
     queryKey: ['token'],
     queryFn: getCurrentUser,
   });
-  console.log(isLoading, user);
   return { isLoading, user, isAuthenticated: user?.role };
 }

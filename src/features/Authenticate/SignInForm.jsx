@@ -3,26 +3,38 @@ import { Input } from 'antd';
 import Button from '../../ui/Button';
 import { SocialIcons } from './SocialIcons';
 import Logo from '../../assets/logo_red.png';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useLogin } from './useLogin';
+import { useUser } from './useUser';
 
 function SignInForm({ setIsSignIn, isSignIn }) {
   const [data, setData] = useState({});
   const { login, isLoading } = useLogin();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleChange = (e) => {
-      setData({ ...data, [e.target.name]: e.target.value });
-    };
+  // 1. Load the authenticated user
+  const { isLoading: loadAuth, isAuthenticated } = useUser();
+  // navigate(0);
+  // 2. If there is NO authenticated user, redirect to the /login
+  useEffect(
+    function () {
+      if (isAuthenticated && !loadAuth) navigate('/boards', { replace: true });
+    },
+    [isAuthenticated, loadAuth, navigate],
+  );
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!data.email || !data.password) return;
     login(data, {
-      onSettled: () => {
-        setData({})
+      onSuccess: () => {
+        setData({});
       },
     });
   }
