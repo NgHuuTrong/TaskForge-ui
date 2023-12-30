@@ -9,6 +9,7 @@ export async function getAllTemplates(options) {
       throw new Error(err.response.data);
     });
   console.log('getAllTemplates', data);
+  data.templates.sort((a, b) => a.id - b.id);
   return data.templates;
 }
 

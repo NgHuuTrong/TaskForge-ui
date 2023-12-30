@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
-import { deleteTemplate, getUsers } from '../services/apiAdmin';
+import { deleteTemplate, editTemplate, getUsers } from '../services/apiAdmin';
 
 export function useUsers() {
   const {
@@ -34,4 +34,23 @@ export function useDeleteTemplate() {
   });
 
   return { isDeleting, deleteTemplateById, error };
+}
+
+export function useEditTemplate() {
+  const queryClient = useQueryClient();
+
+  const {
+    mutate: editTemplateById,
+    isLoading: isEditing,
+    error,
+  } = useMutation({
+    mutationFn: editTemplate,
+    onSuccess: () => {
+      toast.success('Template successfully edited');
+      queryClient.invalidateQueries({ queryKey: ['templates'] });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isEditing, editTemplateById, error };
 }

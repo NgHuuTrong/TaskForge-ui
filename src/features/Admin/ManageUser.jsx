@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Spin, Table, Tag } from 'antd';
+import { Button, Space, Spin, Table, Tag } from 'antd';
 import { useUsers } from '../../hooks/useAdmin';
 import { CheckCircleTwoTone, CloseCircleTwoTone } from '@ant-design/icons';
 const columns = [
@@ -7,6 +7,7 @@ const columns = [
     title: 'Id',
     dataIndex: 'id',
     key: 'id',
+    sorter: (a, b) => a.id - b.id,
   },
   {
     title: 'Username',
@@ -50,6 +51,18 @@ const columns = [
             <CloseCircleTwoTone twoToneColor="#eb2f96" />
           </div>
         );
+      }
+    },
+  },
+  {
+    title: 'Action',
+    dataIndex: 'active',
+    key: 'action',
+    render: (_, { active }) => {
+      if (active) {
+        return <Button>Deactivate</Button>;
+      } else {
+        return <Button>Activate</Button>;
       }
     },
   },
