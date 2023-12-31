@@ -15,6 +15,7 @@ import WorkspaceMember from './pages/WorkspaceMember';
 import Settings from './pages/Settings';
 import { DarkModeProvider } from './context/DarkModeContext';
 import BoardDetailLayout from './features/Boards/layout/BoardDetailLayout';
+import ProtectedRoute from './ui/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
@@ -22,6 +23,8 @@ import WebsocketProvider from './context/WebsocketContext';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 5 * 1000,
       refetchOnWindowFocus: false,
       staleTime: 5 * 1000,
     },
@@ -36,7 +39,13 @@ function App() {
           <ReactQueryDevtools initialIsOpen={false} />
           <BrowserRouter>
             <Routes>
-              <Route element={<AppLayout />}>
+              <Route
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
                 <Route index element={<Navigate replace to="boards" />} />
                 <Route path="example" element={<Example />} />
                 <Route path="templates" element={<Templates />} />
@@ -46,13 +55,26 @@ function App() {
                 <Route path="w/:workspaceId/home" element={<WorkspaceHome />} />
                 <Route path="w/:workspaceId/members" element={<WorkspaceMember />} />
               </Route>
-              <Route element={<AppLayout headerOnly />}>
+              <Route
+                element={
+                  <ProtectedRoute>
+                    <AppLayout headerOnly />
+                  </ProtectedRoute>
+                }
+              >
                 <Route path="b/:boardId/board-detail" element={<BoardDetailLayout />} />
               </Route>
               <Route path="authenticate" element={<Authenticate />} />
               <Route path="forgot-password" element={<ForgotPassword />} />
               <Route path="reset-password" element={<ResetPassword />} />
-              <Route path="u/settings" element={<Settings />} />
+              <Route
+                path="u/settings"
+                element={
+                  <ProtectedRoute>
+                    <Settings />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </BrowserRouter>
           <Toaster

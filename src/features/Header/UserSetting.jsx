@@ -5,20 +5,23 @@ import { Dropdown } from 'antd';
 import Button from '../../ui/Button';
 import DarkModeToggle from '../../ui/DarkModeToggle';
 import UserDetail from '../../ui/UserDetail';
-import users from '../../data/users.json';
+
+import { useUser } from '../Authenticate/useUser';
 
 const UserSetting = () => {
+  const { user, isLoading } = useUser();
   return (
     <Dropdown
       getPopupContainer={(trigger) => trigger.parentElement}
       placement="bottomRight"
       trigger={['click']}
+      disabled={isLoading}
       dropdownRender={() => (
         <div>
           <div className="flex flex-col border-b border-b-[--color-grey-400]">
             <span className="font-medium p-4 text-[11px]">ACCOUNT</span>
             <div className="py-[8px] px-[10px] bg-inherit">
-              <UserDetail user={users[0]} />
+              <UserDetail user={user} />
             </div>
             <Button type="icon" classNames="text-start [box-shadow:none] py-[8px]">
               Switch accounts
@@ -48,7 +51,7 @@ const UserSetting = () => {
       )}
     >
       <Button type="text" size="small">
-        <UserDetail showDetail={false} user={users[0]} size={24} hasTooltip={false} />
+        <UserDetail showDetail={false} user={user} size={24} hasTooltip={false} />
       </Button>
     </Dropdown>
   );

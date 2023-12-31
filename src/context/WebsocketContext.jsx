@@ -5,12 +5,12 @@ import { useLocalStorageState } from '../hooks/useLocalStorageState';
 const WebsocketContext = createContext();
 
 function WebsocketProvider({ children }) {
-  const [authTokens, setAuthTokens] = useLocalStorageState(
-    localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null,
+  const [token, setToken] = useLocalStorageState(
+    localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null,
   );
   const socket = io('http://localhost:3000', {
     extraHeaders: {
-      authorization: 'Bearer ' + authTokens,
+      authorization: 'Bearer ' + token,
     },
   });
   return <WebsocketContext.Provider value={{ socket }}>{children}</WebsocketContext.Provider>;

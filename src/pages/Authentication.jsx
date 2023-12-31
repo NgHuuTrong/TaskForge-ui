@@ -7,12 +7,9 @@ import SignUpForm from '../features/Authenticate/SignUpForm';
 function Authenticate() {
   const [isSignIn, setIsSignIn] = useState(true);
   return (
-    <div
-      className="flex h-screen w-full items-center justify-center "
-      style={{ backgroundColor: '#4994e5' }}
-    >
+    <div className="flex h-screen w-full items-center justify-center bg-[--color-brand-500]">
       <div
-        className="relative flex overflow-hidden bg-white"
+        className="relative flex overflow-hidden bg-[--color-grey-50]"
         style={{
           width: '768px',
           minHeight: '520px',
@@ -22,10 +19,7 @@ function Authenticate() {
       >
         <SignUpForm setIsSignIn={setIsSignIn} isSignIn={isSignIn} />
         <SignInForm isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
-        <AuthenticateFormOverLay
-          isSignIn={isSignIn}
-          setIsSignIn={setIsSignIn}
-        />
+        <AuthenticateFormOverLay isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
       </div>
     </div>
   );

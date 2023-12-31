@@ -199,6 +199,9 @@ h6 {
 img {
   @apply max-w-full opacity-[var(--image-opacity)] grayscale-[var(--image-grayscale)];
 }
+.ant-form {
+  color: var(--color-text) !important;
+}
 
 .ant-form {
   color: var(--color-text) !important;
@@ -301,7 +304,7 @@ img {
 
 /* Ant Design Modal */
 .ant-modal .ant-modal-content {
-  @apply p-0 bg-[var(--color-grey-50)] text-[var(--color-text)];
+  @apply p-4 bg-[var(--color-grey-50)] text-[var(--color-text)];
 }
 
 .ant-modal .ant-modal-close {
