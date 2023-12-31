@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Button({ children, disabled = false, to, size = 'medium', type = 'primary', classNames = '', onClick }) {
+function Button({ children, disabled = false, to, size = 'medium', type = 'primary', classNames = '', onClick, buttonType }) {
   const base = 'flex items-center border-[none] rounded-[--border-radius-sm] font-medium gap-2 ';
 
   const sizes = {
@@ -31,13 +31,13 @@ function Button({ children, disabled = false, to, size = 'medium', type = 'prima
 
   if (onClick)
     return (
-      <button onClick={onClick} disabled={disabled} className={allClass}>
+      <button onClick={onClick} disabled={disabled} className={allClass} type={buttonType}>
         {children}
       </button>
     );
 
   return (
-    <button disabled={disabled} className={allClass}>
+    <button disabled={disabled} className={allClass} type={buttonType}>
       {children}
     </button>
   );

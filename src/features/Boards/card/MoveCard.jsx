@@ -1,45 +1,59 @@
 import { Select } from 'antd';
 import CardModal from '../../../ui/CardModal';
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { moveCardToAnotherList } from '../boardSlice';
+import { useMoveCardToAnotherList } from '../../../hooks/useCard';
 
 function MoveCard({
-  moveCard,
-  setMoveCard,
-  currentList,
-  lists
+  moveCardId,
+  setMoveCardId,
+  currentListId,
+  boardId,
+  lists,
+  setLists
 }) {
-  const dispatch = useDispatch();
-  const [listToMove, setListToMove] = useState(currentList);
+  const [listToMove, setListToMove] = useState(currentListId);
+  const { isMoving, mutate: moveCardAnotherList } = useMoveCardToAnotherList(boardId);
 
   function handleMoveCard() {
-    if (listToMove !== currentList) {
-      dispatch(moveCardToAnotherList({
-        originalListId: currentList,
-        newListId: listToMove,
-        originalIndex: moveCard,
-        newIndex: 0
-      }));
+    if (listToMove !== currentListId) {
+      const oldListIndex = lists.findIndex(l => l.id === currentListId);
+      const newListIndex = lists.findIndex(l => l.id === listToMove);
+      const card = lists[oldListIndex].cards.find(c => c.id === moveCardId);
+
+      lists[oldListIndex].cardsOrder = lists[oldListIndex].cardsOrder.filter(id => id !== moveCardId);
+      lists[oldListIndex].cards = lists[oldListIndex].cards.filter(c => c.id !== moveCardId);
+      lists[newListIndex].cards.push(card);
+      lists[newListIndex].cardsOrder.push(moveCardId);
+      if(setLists) setLists([...lists]);
+
+      moveCardAnotherList({
+        cardId: moveCardId,
+        body: {
+          oldListId: currentListId,
+          newListId: listToMove,
+          newIndex: lists[newListIndex].cardsOrder.length - 1
+        }
+      });
     }
 
-    setMoveCard('');
+    setMoveCardId(null);
   }
 
   return (
     <CardModal
-      title="Move list"
-      open={moveCard !== ''}
+      title="Move card"
+      open={moveCardId}
       onOk={handleMoveCard}
-      onCancel={() => setMoveCard('')}
+      onCancel={() => setMoveCardId(null)}
     >
       <Select
-        defaultValue={currentList}
+        defaultValue={currentListId}
         onChange={(value) => setListToMove(value)}
         options={lists.map((col) => {
-          return { value: col.id, label: col.id };
+          return { value: col.id, label: col.name };
         })}
         className="h-16 w-full rounded-sm"
+        disabled={isMoving}
       />
     </CardModal>
   );

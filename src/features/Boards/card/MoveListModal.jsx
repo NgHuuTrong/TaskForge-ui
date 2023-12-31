@@ -1,8 +1,7 @@
 import { Select } from 'antd';
 import CardModal from '../../../ui/CardModal';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { moveAllCards } from '../boardSlice';
+import { useMoveAllCardsInList } from '../../../hooks/useList';
 
 function MoveListModal({
   originalList,
@@ -11,14 +10,11 @@ function MoveListModal({
   lists
 }) {
   const [listMoveTo, setListMoveTo] = useState(null);
-  const dispatch = useDispatch();
+  const { isMoving, moveAllCards } = useMoveAllCardsInList(originalList?.boardId);
 
   function handleMoveList() {
     if (listMoveTo !== originalList.id) {
-      dispatch(moveAllCards({
-        originalListId: originalList.id,
-        newListId: listMoveTo
-      }));
+      moveAllCards({ listId: originalList.id, body: { destinationListId: listMoveTo } })
     }
 
     setIsMoveListOpen(false);
@@ -26,7 +22,7 @@ function MoveListModal({
 
   return (
     <CardModal
-      title={<h1 className='text-[--color-grey-800]'>Move list</h1>}
+      title={<h1 className='text-[--color-grey-800]'>Move All Cards To</h1>}
       open={isMoveListOpen}
       onOk={handleMoveList}
       onCancel={() => setIsMoveListOpen(false)}
@@ -35,9 +31,10 @@ function MoveListModal({
         defaultValue={originalList.id}
         onChange={(value) => setListMoveTo(value)}
         options={lists.map((list) => {
-          return { value: list.id, label: list.id };
+          return { value: list.id, label: list.name };
         })}
         className="h-16 w-full rounded-sm"
+        disabled={isMoving}
       />
     </CardModal>
   );

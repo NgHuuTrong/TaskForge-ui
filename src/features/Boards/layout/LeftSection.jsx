@@ -33,8 +33,8 @@ function LeftSection({ board }) {
       <div className="w-[25rem] overflow-hidden whitespace-nowrap">
         {changeTitleBox ? (
           <Input
-            style={{ color: 'white', textAlign: 'center' }}
-            className="h-[3.2rem] text-[1.8rem] font-bold"
+            style={{ color: 'black', textAlign: 'center' }}
+            className="h-[3.2rem] text-[1.8rem] font-bold bg-transparent"
             onPressEnter={handleChangedTitle}
             onBlur={handleChangedTitle}
             onChange={(e) => setCurrTitle(e.target.value)}

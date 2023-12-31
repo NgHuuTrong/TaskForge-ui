@@ -1,44 +1,55 @@
-import { Button } from 'antd';
-import { useDispatch } from 'react-redux';
-import { deleteCard, setCurrentCardDetail } from '../boardSlice';
-import CardDetailMemberList from './CardDetail/CardDetailMemberList';
+import { Avatar, Button } from 'antd';
 import { BiMessageRounded } from 'react-icons/bi';
 import { MdAttachFile } from 'react-icons/md';
+import UserDetail from '../../../ui/UserDetail';
+import { useDeleteCard } from '../../../hooks/useCard';
+import { useNavigate } from 'react-router-dom';
 
-function Card({ listId, card, index, setMoveCard, provided }) {
-  const { id, userImage, description } = card;
-  const dispatch = useDispatch();
+function Card({ listId, boardId, card, setMoveCardId, provided, setOpenCardDetailModal }) {
+  const { id, title, cardAttachments, comments, cardAssignees } = card;
+  const assignees = cardAssignees?.map((cardAssignee) => {
+    return cardAssignee.assignee;
+  });
+  const { isDeleting, removeCard } = useDeleteCard();
+  const navigate = useNavigate();
 
   return (
-    <div
-      className="group relative mb-2 flex w-full flex-col items-center rounded-lg bg-[--color-grey-200] border p-4 pr-8 shadow-md"
+    card && <div
+      className="group relative mb-2 flex w-full flex-col rounded-lg bg-[--color-grey-200] border p-4 pr-8 shadow-md"
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
       onClick={() => {
-        dispatch(
-          setCurrentCardDetail({
-            listId,
-            index,
-            card,
-          }),
-        );
+        navigate(`/b/${boardId}/c/${card.id}/card-detail`)
+        setOpenCardDetailModal(true);
       }}
     >
-      <p className="my-1 text-2xl text-[--color-grey-700]">{description}</p>
+      <p className="my-1 text-2xl text-[--color-grey-700] text-left">{title}</p>
       <div className="flex w-full items-center justify-between">
         <div className="flex">
-          <div className="mr-4 flex items-center">
-            <BiMessageRounded />
-            <span className="ml-1 text-lg">1</span>
-          </div>
-          <div className="flex items-center">
-            <MdAttachFile />
-            <span className="ml-1 text-lg">1</span>
-          </div>
+          {
+            comments.length > 0 && <div className="mr-4 flex items-center">
+              <BiMessageRounded />
+              <span className="ml-1 text-lg">{comments.length}</span>
+            </div>
+          }
+          {
+            cardAttachments.length > 0 && <div className="flex items-center">
+              <MdAttachFile />
+              <span className="ml-1 text-lg">{cardAttachments.length}</span>
+            </div>
+          }
         </div>
         <div className="flex justify-end">
-          <CardDetailMemberList size={'small'} />
+          {
+            assignees.length > 0 && <Avatar.Group
+              maxCount={2}
+              maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}
+              size={assignees.length}
+            >
+              {assignees?.map(assignee => <UserDetail key={assignee.id} user={assignee} showDetail={false} size={24} />)}
+            </Avatar.Group>
+          }
         </div>
       </div>
       <div className="absolute left-full top-[1px] z-10 opacity-0 bg-[--color-grey-0] group-hover:opacity-100">
@@ -49,7 +60,7 @@ function Card({ listId, card, index, setMoveCard, provided }) {
           className="flex items-center justify-center rounded-none border-none text-xl text-[--color-grey-800] hover:bg-opacity-50"
           onClick={(e) => {
             e.stopPropagation();
-            setMoveCard(index);
+            setMoveCardId(card.id);
           }}
         >
           Move to
@@ -58,8 +69,9 @@ function Card({ listId, card, index, setMoveCard, provided }) {
           className="flex w-full items-center justify-center rounded-none border-none text-xl text-[--color-grey-800]"
           onClick={(e) => {
             e.stopPropagation();
-            dispatch(deleteCard({ listId, cardId: id }));
+            removeCard(id);
           }}
+          disabled={isDeleting}
         >
           Delete
         </Button>

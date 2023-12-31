@@ -5,7 +5,7 @@ import Header from '../features/Header/Header';
 
 function AppLayout({ headerOnly = false }) {
   return (
-    <div className="h-screen w-full bg-[--color-grey-50] overflow-hidden relative">
+    <div className="min-h-screen bg-[--color-grey-50] flex flex-col relative">
       <Header />
       {!headerOnly ? (
         <div className="mt-[52px] flex justify-center overflow-scroll h-screen">
@@ -17,7 +17,7 @@ function AppLayout({ headerOnly = false }) {
           </main>
         </div>
       ) : (
-        <div className="mt-[52px]">
+        <div className="pt-[52px] h-screen">
           <Outlet />
         </div>
       )}

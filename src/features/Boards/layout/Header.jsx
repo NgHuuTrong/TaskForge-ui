@@ -14,6 +14,21 @@ function Header({ setBackground, background, board }) {
   const creator = board.boardMembers.find((member) => member.userId === board.creatorId).user;
   const members = board.boardMembers.filter((member) => member.userId !== board.creatorId).map((el) => el.user);
 
+  function renderMemberAvatars() {
+    return board.boardMembers.map((member) => {
+      if (member.userId !== board.creatorId) {
+        return <UserDetail key={member.id} showDetail={false} size={28} user={member.user} />
+      } else {
+        return <div className="relative cursor-pointer" key={member.id}>
+          <UserDetail user={member.user} showDetail={false} size={28} />
+          <Tooltip title="This member is admin of this board" placement="bottom">
+            <RiArrowUpDoubleLine className="absolute left-0 bottom-0 text-[blue] bg-white rounded-full" />
+          </Tooltip>
+        </div>
+      }
+    })
+  }
+
   return (
     <div className="backdrop-blur-[6px] bg-[#0000003d]">
       <div className="flex justify-between p-[10px]">
@@ -28,15 +43,7 @@ function Header({ setBackground, background, board }) {
               backgroundColor: '#fde3cf',
             }}
           >
-            <div className="relative">
-              <UserDetail user={creator} showDetail={false} size={28} />
-              <Tooltip title="This member is admin of this board" placement="bottom">
-                <RiArrowUpDoubleLine className="absolute left-0 bottom-0 text-[blue] bg-white rounded-full" />
-              </Tooltip>
-            </div>
-            {members.map((member) => (
-              <UserDetail key={member.id} showDetail={false} size={28} user={member} />
-            ))}
+            {renderMemberAvatars()}
           </Avatar.Group>
 
           <VisibilityBtn board={board} />

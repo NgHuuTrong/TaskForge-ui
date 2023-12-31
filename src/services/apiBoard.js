@@ -24,6 +24,18 @@ export async function getBoard(boardId) {
   return data.board;
 }
 
+export async function getBoardMembers(boardId, search) {
+  const data = await authAxios
+    .get(`/boards/${boardId}/members?search=${search}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+  console.log('getBoardMembers', data);
+  return data.users;
+}
+
 export async function createNewBoard({ name, workspaceId, templateId = 1, visibility = 'false' }) {
   const data = await authAxios
     .post('/boards', {
@@ -64,4 +76,17 @@ export async function patchBoard({ boardId, body }) {
       throw new Error(err.response.data.message);
     });
   console.log('patchBoard', data);
+  return data.board;
+}
+
+export async function leaveBoard(boardId) {
+  const data = await authAxios
+    .delete(`/boards/leave-board/${boardId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data.board;
 }
