@@ -5,8 +5,7 @@ import { SocialIcons } from './SocialIcons';
 import Logo from '../../assets/logo_red.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useLogin } from './useLogin';
-import { useUser } from './useUser';
+import { useLogin, useUser } from '../../hooks/useAuthenticate';
 
 function SignInForm({ setIsSignIn, isSignIn }) {
   const [data, setData] = useState({});

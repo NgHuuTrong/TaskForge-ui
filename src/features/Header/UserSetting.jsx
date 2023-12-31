@@ -5,8 +5,7 @@ import { Dropdown } from 'antd';
 import Button from '../../ui/Button';
 import DarkModeToggle from '../../ui/DarkModeToggle';
 import UserDetail from '../../ui/UserDetail';
-
-import { useUser } from '../Authenticate/useUser';
+import { useUser } from '../../hooks/useAuthenticate';
 
 const UserSetting = () => {
   const { user, isLoading } = useUser();
