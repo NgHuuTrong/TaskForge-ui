@@ -34,7 +34,7 @@ function MenuDropdown({ onBack, onReset, history, renderComponent, children }) {
     <Dropdown
       open={open}
       onOpenChange={handleResetMenu}
-      getPopupContainer={(trigger) => trigger.parentElement}
+      //getPopupContainer={(trigger) => trigger.parentElement}
       trigger={['click']}
       dropdownRender={() => (
         <div className="w-[304px]">

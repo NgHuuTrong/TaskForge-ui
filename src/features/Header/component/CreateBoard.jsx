@@ -15,7 +15,6 @@ function CreateBoard({ template, onAddHistory }) {
   return (
     <div className="p-[12px]">
       {template ? <BoardTemplate template={template} /> : <BoardBackground />}
-
       <div className="mt-[16px]">
         <FormRow
           type="ver"
