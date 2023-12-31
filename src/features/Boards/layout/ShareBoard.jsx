@@ -8,34 +8,37 @@ import Button from '../../../ui/Button';
 import Row from '../../../ui/Row';
 import UserDetail from '../../../ui/UserDetail';
 
-function MemberRow({ member, isAdmin = false }) {
+function MemberRow({ member, isAdmin = false, isCurrent = false }) {
   const role = isAdmin ? 'Admin' : 'Member';
   return (
     <Row>
-      <UserDetail user={member} size="32" />
-      <Select
-        defaultValue={role}
-        dropdownStyle={{ width: '28rem' }}
-        options={[
-          {
-            value: 'Admin',
-            disabled: !isAdmin,
-          },
-          {
-            value: 'Member',
-            disabled: !isAdmin,
-          },
-          {
-            value: 'Remove from board',
-            disabled: !isAdmin,
-          },
-        ]}
-      />
+      <UserDetail user={member.user} size="32" />
+      <div>
+        {isCurrent && <strong className="mr-4">You</strong>}
+        <Select
+          defaultValue={role}
+          dropdownStyle={{ width: '28rem' }}
+          options={[
+            {
+              value: 'Admin',
+              disabled: !isAdmin,
+            },
+            {
+              value: 'Member',
+              disabled: !isAdmin,
+            },
+            {
+              value: 'Remove from board',
+              disabled: !isAdmin,
+            },
+          ]}
+        />
+      </div>
     </Row>
   );
 }
 
-function ShareBoard({ creator, members, curMember }) {
+function ShareBoard({ creator, members, curMember, isAdmin }) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -70,9 +73,10 @@ function ShareBoard({ creator, members, curMember }) {
             </Button>
           </Row>
 
-          <MemberRow member={creator} isAdmin={curMember.userId !== creator.id} />
+          {isAdmin || <MemberRow member={curMember} isCurrent />}
+          <MemberRow member={creator} isAdmin isCurrent={isAdmin} />
           {members.map((member) => (
-            <MemberRow member={member} key={member.id} />
+            <MemberRow member={member} key={member.userId} />
           ))}
         </div>
       </Modal>

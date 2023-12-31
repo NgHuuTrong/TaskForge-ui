@@ -15,15 +15,11 @@ export function useTemplates(options) {
 }
 
 export function useTemplatesByType(temmplateType, search = '') {
-  const {
-    isLoading,
-    data: templates,
-    error,
-  } = useQuery({
+  const { isLoading, data, error } = useQuery({
     queryKey: ['template', temmplateType],
     queryFn: () => getAllTemplatesByType(temmplateType, search),
     retry: false,
     useErrorBoundary: true,
   });
-  return { isLoading, error, templates };
+  return { isLoading, error, data };
 }

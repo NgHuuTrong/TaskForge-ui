@@ -39,7 +39,9 @@ function CreateBtn() {
         history={createHistory}
         renderComponent={renderComponent}
       >
-        <Button size="normal">Create</Button>
+        <Button size="normal" classNames="h-full">
+          Create
+        </Button>
       </MenuDropdown>
       <Modal centered open={openModal} width={1200} footer={false} title="" onCancel={() => setOpenModal(false)}>
         <CreateWorkspace closeModal={() => setOpenModal(false)} />

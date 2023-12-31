@@ -1,5 +1,8 @@
 import React from 'react';
 import { CopyOutlined, EyeOutlined } from '@ant-design/icons';
+import Button from '../../ui/Button';
+import { Dropdown } from 'antd';
+import CreateBoard from '../Header/component/CreateBoard';
 
 function randomNumber() {
   const number = Math.random() * 30000 + 10000;
@@ -22,11 +25,9 @@ const TemplateCard = ({ template }) => {
           alt=""
         />
       </div>
-      <div className="relative pb-[12px] px-[12px]">
-        <div className="flex flex-col">
-          <span className="mt-[12px] text-[1.4rem] font-bold">{template.name}</span>
-          <span className="text-[1.2rem] text-[--color-subtext]">by: @TaskForge_Team</span>
-        </div>
+      <div className="flex flex-col gap-2 pb-[12px] px-[12px]">
+        <span className="mt-[12px] text-[1.4rem] font-bold">{template.name}</span>
+        <span className="text-[1.2rem] text-[--color-subtext]">by: @TaskForge_Team</span>
 
         <p className="text-[1.2rem]">{template.description}</p>
 
@@ -40,6 +41,17 @@ const TemplateCard = ({ template }) => {
             <span>{randomNumber()}</span>
           </span>
         </div>
+        <Dropdown
+          getPopupContainer={(trigger) => trigger.parentElement}
+          placement="right"
+          trigger={['click']}
+          overlayStyle={{ width: '31rem' }}
+          dropdownRender={() => <CreateBoard template={template} />}
+        >
+          <Button size="normal" classNames="justify-center">
+            Use template
+          </Button>
+        </Dropdown>
       </div>
     </div>
   );

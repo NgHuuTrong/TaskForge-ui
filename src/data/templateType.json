@@ -1,0 +1,6 @@
+[
+  { "key": "education", "type": "Education", "imagePath": "https://trello.com/assets/dea39a045ff4c4d1d9b1.svg" },
+  { "key": "business", "type": "Business", "imagePath": "https://trello.com/assets/3919e0fe0976de0298b4.svg" },
+  { "key": "design", "type": "Design", "imagePath": "https://trello.com/assets/157c58403db677619bea.svg" },
+  { "key": "engineering", "type": "Engineering", "imagePath": "https://trello.com/assets/e0b1e866de40a5468aaa.svg" }
+]

@@ -18,7 +18,7 @@ function BoardDetailLayout() {
   if (isLoading) return <Spinner />;
   return (
     <div
-      className="bg-cover h-screen"
+      className="bg-cover h-full relative"
       style={{ backgroundImage: `${background.startsWith('linear') ? background : 'url(' + background + ')'}` }}
     >
       <Header setBackground={setBackground} background={background} board={board} />

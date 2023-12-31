@@ -10,7 +10,7 @@ function WorkspaceHome() {
   const { isLoading, workspace } = useWorkspace();
   if (isLoading) return <Spinner />;
   return (
-    <Row type="ver">
+    <Row type="ver" classNames="pt-[2rem] px-[2rem]">
       <EditWorkspace workspace={workspace} />
       <hr className="border-[--color-grey-300] m-[1.6rem]" />
       <BoardSection

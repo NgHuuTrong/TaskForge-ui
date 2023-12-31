@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 import FormRow from '../../../ui/FormRow';
 import Button from '../../../ui/Button';
@@ -9,14 +10,16 @@ import BoardTemplate from './BoardTemplate';
 import { useCreateBoard } from '../../../hooks/useBoard';
 
 function CreateBoard({ template, onAddHistory, initialValues }) {
+  const navigate = useNavigate();
   const { isCreating, createBoard } = useCreateBoard();
   const [form] = Form.useForm();
   const onFinish = (data) => {
     createBoard(
-      { ...data, visibility: data?.type === 'Private' ? false : true },
+      { ...data, visibility: data?.type === 'Private' ? false : true, templateId: template && template.id },
       {
-        onSuccess: () => {
+        onSuccess: (data) => {
           form.resetFields();
+          navigate('/b/' + data.id + '/board-detail');
         },
       },
     );

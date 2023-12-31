@@ -46,6 +46,7 @@ export function useCreateBoard() {
     onSuccess: () => {
       toast.success('New board successfully created');
       queryClient.invalidateQueries({ queryKey: ['boards'], exact: true });
+      queryClient.invalidateQueries({ queryKey: ['workspaces'], exact: true });
     },
     onError: (err) => toast.error(err.message),
   });

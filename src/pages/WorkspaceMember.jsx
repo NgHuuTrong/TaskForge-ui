@@ -10,7 +10,7 @@ function WorkspaceMember() {
   const { workspace, isLoading } = useWorkspace();
   if (isLoading) return <Spinner />;
   return (
-    <Row type="ver">
+    <Row type="ver" classNames="pt-[2rem] px-[2rem]">
       <DetailHeader workspace={workspace} />
       <InviteMember />
       <Members users={users} />

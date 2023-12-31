@@ -8,16 +8,14 @@ function AppLayout({ headerOnly = false }) {
     <div className="h-screen w-full bg-[--color-grey-50] overflow-hidden relative">
       <Header />
       {!headerOnly ? (
-        <div className="mt-[52px] flex justify-center overflow-scroll h-screen">
+        <div className="pt-[52px] flex justify-center overflow-y-auto h-full">
           <Sidebar />
-          <main className="mx-[16px] mt-[40px] w-full min-w-[30rem] max-w-[75%] bg-[--color-grey-50]">
-            <div className="mx-auto my-0 flex flex-col">
-              <Outlet />
-            </div>
+          <main className="p-[2.4rem] w-full min-w-[30rem] max-w-[75%] bg-[--color-grey-50] overflow-y-scroll">
+            <Outlet />
           </main>
         </div>
       ) : (
-        <div className="mt-[52px]">
+        <div className="pt-[52px] h-full">
           <Outlet />
         </div>
       )}

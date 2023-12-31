@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 function Button({ children, disabled = false, to, size = 'medium', type = 'primary', classNames = '', onClick }) {
-  const base = 'flex items-center border-[none] rounded-[--border-radius-sm] font-medium gap-2 ';
+  const base = 'flex items-center rounded-[--border-radius-sm] font-medium gap-2 ';
 
   const sizes = {
     small: 'text-[1.2rem] px-[0.8rem] py-[0.4rem] ',
