@@ -4,7 +4,6 @@ import Button from "../../../../ui/Button"
 import { useState } from "react"
 import { useUploadFile, useUploadLink } from "../../../../hooks/useCard"
 import { useParams } from "react-router-dom"
-import toast from "react-hot-toast"
 
 function AttachmentPopover({ children }) {
     return (

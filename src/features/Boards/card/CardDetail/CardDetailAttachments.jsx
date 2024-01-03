@@ -44,7 +44,9 @@ function Attachment({ type, attachment }) {
         return <img className="w-full h-full" src={attachment?.url} alt="img" />
       case 'file':
         return <div className="w-full h-full bg-[--color-grey-200] flex justify-center items-center">
-          <span className="text-[1.5rem] text-[--color-grey-600] font-bold">{getFileExtension(attachment?.fileName)}</span>
+          <span className="text-[1.5rem] text-[--color-grey-600] font-bold">
+            {getFileExtension(attachment?.url)}
+          </span>
         </div>
       default:
         return <div className="w-full h-full bg-[--color-grey-200] flex justify-center items-center">
