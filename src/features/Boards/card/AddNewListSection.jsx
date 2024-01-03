@@ -1,21 +1,27 @@
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addList } from '../boardSlice';
+import { useCreateList } from '../../../hooks/useList';
+import { toast } from 'react-hot-toast';
+import { useQueryClient } from '@tanstack/react-query';
 
-function AddNewListSection() {
-  const dispatch = useDispatch();
+function AddNewListSection({ boardId }) {
   const [isAdding, setIsAdding] = useState(false);
   const [listTitle, setListTitle] = useState('');
+  const { isCreating, createList } = useCreateList();
+  const queryClient = useQueryClient();
 
   const handleAddNewList = () => {
     if (listTitle) {
-      dispatch(addList(listTitle));
+      createList({ name: listTitle, boardId }, {
+        onSuccess: () => {
+          toast.success('New list successfully created');
+          queryClient.invalidateQueries({ queryKey: ['board', boardId.toString()], exact: true });
+          setIsAdding(false);
+          setListTitle('');
+        }
+      });
     }
-
-    setIsAdding(false);
-    setListTitle('');
   };
 
   if (isAdding) {
@@ -32,6 +38,7 @@ function AddNewListSection() {
             type="primary"
             className="bg-blue-500"
             onClick={handleAddNewList}
+            disabled={isCreating}
           >
             Add new list
           </Button>

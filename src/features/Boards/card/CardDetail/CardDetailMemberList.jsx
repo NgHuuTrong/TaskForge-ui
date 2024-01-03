@@ -1,16 +1,16 @@
 import { Avatar } from 'antd';
+import UserDetail from '../../../../ui/UserDetail';
 
-function CardDetailMemberList({ size }) {
+function CardDetailMemberList({ size, members }) {
   return (
     <Avatar.Group
       maxCount={2}
       maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}
       size={size}
     >
-      <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=2" />
-      <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
-      <Avatar style={{ backgroundColor: '#87d068' }}>K</Avatar>
-      <Avatar style={{ backgroundColor: '#1677ff' }}>K</Avatar>
+      {
+        members.map((member) => <UserDetail key={member.id} showDetail={false} size={28} user={member} />)
+      }
     </Avatar.Group>
   );
 }

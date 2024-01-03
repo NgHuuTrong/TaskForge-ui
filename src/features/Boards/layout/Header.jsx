@@ -10,7 +10,23 @@ import LeftSection from './LeftSection';
 import ShareBoard from './ShareBoard';
 
 function Header({ setBackground, background, board }) {
-  const isAdmin = board.creatorId === board.curMember.userId;
+  const creator = board.boardMembers.find((member) => member.userId === board.creatorId).user;
+  const members = board.boardMembers.filter((member) => member.userId !== board.creatorId).map((el) => el.user);
+
+  function renderMemberAvatars() {
+    return board.boardMembers.map((member) => {
+      if (member.userId !== board.creatorId) {
+        return <UserDetail key={member.id} showDetail={false} size={28} user={member.user} />
+      } else {
+        return <div className="relative cursor-pointer" key={member.id}>
+          <UserDetail user={member.user} showDetail={false} size={28} />
+          <Tooltip title="This member is admin of this board" placement="bottom">
+            <RiArrowUpDoubleLine className="absolute left-0 bottom-0 text-[blue] bg-white rounded-full" />
+          </Tooltip>
+        </div>
+      }
+    })
+  }
 
   return (
     <div className="sticky top-0 left-0 backdrop-blur-[6px] bg-[#0000003d]">
@@ -26,16 +42,7 @@ function Header({ setBackground, background, board }) {
               backgroundColor: '#fde3cf',
             }}
           >
-            {isAdmin || <UserDetail user={board.curMember.user} showDetail={false} size={28} />}
-            <div className="relative">
-              <UserDetail user={board.creator.user} showDetail={false} size={28} />
-              <Tooltip title="This member is admin of this board" placement="bottom">
-                <RiArrowUpDoubleLine className="absolute left-0 bottom-0 text-[blue] bg-white rounded-full" />
-              </Tooltip>
-            </div>
-            {board.boardMembers.map((member) => (
-              <UserDetail key={member.userId} showDetail={false} size={28} user={member.user} />
-            ))}
+            {renderMemberAvatars()}
           </Avatar.Group>
 
           <VisibilityBtn board={board} />

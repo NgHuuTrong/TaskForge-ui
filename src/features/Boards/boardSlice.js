@@ -5,11 +5,6 @@ import userImage3 from '../../assets/user3.png';
 let currentId = 5;
 
 const initialState = {
-    boardList: [],
-    currentBoard: {
-        name: 'My Board',
-        content: initialColumns
-    },
     currentCard: {
         listId: null,
         index: null,

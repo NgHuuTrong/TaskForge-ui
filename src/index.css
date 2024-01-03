@@ -213,7 +213,7 @@ img {
 }
 
 .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  @apply text-[var(--color-disabled-text)] bg-[var(--color-disabled-bg)];
+  @apply text-white border-white bg-[var(--color-disabled-bg)];
 }
 
 .ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):focus
@@ -307,13 +307,17 @@ img {
   @apply p-4 bg-[var(--color-grey-50)] text-[var(--color-text)];
 }
 
+.ant-modal .ant-modal-title {
+  @apply bg-[var(--color-grey-50)] text-[var(--color-grey-900)];
+}
+
 .ant-modal .ant-modal-close {
   @apply text-[var(--color-grey-500)] hover:text-[var(--color-grey-400)];
 }
 
 /* Ant Design Dropdown */
 .ant-dropdown {
-  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] border border-[var(--color-grey-300)] rounded-xl py-4 pl-4 max-h-[90vh] overflow-x-hidden;
+  @apply text-[var(--color-text)] bg-[var(--color-grey-0)] border border-[var(--color-grey-300)] rounded-xl py-4 px-4 max-h-[90vh] overflow-x-hidden;
 }
 
 /* Ant Design Tree */
@@ -324,4 +328,14 @@ img {
 .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
 .ant-tree .ant-tree-checkbox + span.ant-tree-node-selected {
   @apply bg-[var(--color-grey-200)];
+}
+
+/* Ant Button */
+.ant-btn-default {
+  @apply text-[var(--color-grey-900)]
+}
+
+/* Ant Checkbox */
+.ant-checkbox+span {
+  @apply text-[var(--color-grey-900)]
 }
