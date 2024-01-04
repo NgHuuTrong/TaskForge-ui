@@ -32,7 +32,7 @@ function Header({ setBackground, background, board }) {
   return (
     <div className="backdrop-blur-[6px] bg-[#0000003d]">
       <div className="flex justify-between p-[10px]">
-        <LeftSection board={board} />
+        {/* <LeftSection board={board} /> */}
 
         <div className="flex items-center gap-[20px]">
           <Avatar.Group
@@ -46,7 +46,7 @@ function Header({ setBackground, background, board }) {
             {renderMemberAvatars()}
           </Avatar.Group>
 
-          <VisibilityBtn board={board} />
+          {/* <VisibilityBtn board={board} /> */}
 
           <Chat others={members} currentUser={users[0]} boardId={1} />
 

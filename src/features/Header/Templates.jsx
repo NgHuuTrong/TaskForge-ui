@@ -46,7 +46,7 @@ const Templates = () => {
       history={templateHistory}
       renderComponent={renderComponent}
     >
-      <Button type="icon" size="normal">
+      <Button type="icon" size="normal" classNames="w-full flex justify-between">
         Templates <DownOutlined />
       </Button>
     </MenuDropdown>

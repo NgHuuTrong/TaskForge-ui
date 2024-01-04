@@ -20,7 +20,7 @@ function WorkspaceHome() {
             <span>Starred boards</span>
           </>
         }
-        items={workspace.boards}
+        items={workspace.boards.filter((board) => board.starred)}
       />
       <BoardSection
         title={

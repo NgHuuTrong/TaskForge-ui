@@ -1,31 +1,31 @@
 import React from 'react';
-import { Dropdown } from 'antd';
+import { Button, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-
-import recents from '../../data/recent.json';
 import ButtonImage from '../../ui/ButtonImage';
-import Button from '../../ui/Button';
+import { useRecentBoards } from '../../hooks/useBoard';
 
 const Recent = () => {
+  const { isLoading, boards } = useRecentBoards();
   return (
     <Dropdown
+      load
       getPopupContainer={(trigger) => trigger.parentElement}
       trigger={['click']}
       dropdownRender={() => (
         <div className="w-[280px]">
-          {recents.map((recent) => (
+          {boards.map(({ board }) => (
             <ButtonImage
-              key={recent.id}
-              title={recent.boardName}
-              subscription={recent.workspaceName}
-              url={recent.img}
-              to={'/b/' + recent.id + '/board-detail'}
+              key={board.id}
+              title={board.name}
+              subscription={board.workspaceName}
+              url={board.background}
+              to={'/b/' + board.id + '/board-detail'}
             />
           ))}
         </div>
       )}
     >
-      <Button type="icon" size="normal">
+      <Button loading={isLoading} type="icon" size="normal" className="flex items-center font-medium">
         Recent <DownOutlined />
       </Button>
     </Dropdown>

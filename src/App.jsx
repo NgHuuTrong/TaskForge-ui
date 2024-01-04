@@ -19,6 +19,7 @@ import ProtectedRoute from './ui/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
+import Admin from './pages/Admin';
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,31 +1,30 @@
 import React from 'react';
-import { Dropdown } from 'antd';
+import { Button, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
 import ButtonImage from '../../ui/ButtonImage';
-import starred from '../../data/starred.json';
-import Button from '../../ui/Button';
-
+import { useStarredBoards } from '../../hooks/useBoard';
 const Starred = () => {
+  const { isLoading, boards } = useStarredBoards();
   return (
     <Dropdown
       getPopupContainer={(trigger) => trigger.parentElement}
       trigger={['click']}
       dropdownRender={() => (
         <div className="w-[280px]">
-          {starred.map((board) => (
+          {boards.map(({ board }) => (
             <ButtonImage
               key={board.id}
-              title={board.boardName}
+              title={board.name}
               subscription={board.workspaceName}
-              url={board.img}
+              url={board.background}
               to={'/b/' + board.id + '/board-detail'}
             />
           ))}
         </div>
       )}
     >
-      <Button type="icon" size="normal">
+      <Button loading={isLoading} type="icon" size="normal" className="font-medium items-center flex">
         Starred <DownOutlined />
       </Button>
     </Dropdown>

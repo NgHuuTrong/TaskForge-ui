@@ -9,6 +9,7 @@ import Notifications from './Notifications';
 import UserSetting from './UserSetting';
 import CreateBtn from './CreateBtn';
 import Button from '../../ui/Button';
+import MoreBtn from './MoreBtn';
 
 function Header() {
   return (
@@ -20,10 +21,21 @@ function Header() {
         <Button to="/" type="text" size="small">
           <h1 className="text-[1.8rem] font-bold">TaskForge</h1>
         </Button>
-        <Workspaces />
-        <Recent />
-        <Starred />
-        <Templates />
+        <div className="hidden md:flex">
+          <Workspaces />
+        </div>
+        <div className="hidden lg:flex">
+          <Recent />
+        </div>
+        <div className="hidden xl:flex">
+          <Starred />
+        </div>
+        <div className="hidden 2xl:flex">
+          <Templates />
+        </div>
+        <div className="2xl:hidden ">
+          <MoreBtn />
+        </div>
         <CreateBtn />
       </div>
       <div className="flex justify-end items-center gap-[0.4rem] w-full">

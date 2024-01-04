@@ -3,7 +3,15 @@ import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { createNewBoard, getMyBoards, getBoard, starredBoard, patchBoard, getBoardMembers } from '../services/apiBoard';
+import {
+  createNewBoard,
+  getMyBoards,
+  getBoard,
+  starredBoard,
+  patchBoard,
+  getRecentBoards,
+  getStarredBoards,
+} from '../services/apiBoard';
 
 export function useBoards() {
   const {
@@ -13,6 +21,32 @@ export function useBoards() {
   } = useQuery({
     queryKey: ['boards'],
     queryFn: getMyBoards,
+    useErrorBoundary: true,
+  });
+  return { isLoading, error, boards };
+}
+
+export function useStarredBoards() {
+  const {
+    isLoading,
+    data: boards,
+    error,
+  } = useQuery({
+    queryKey: ['starred-boards'],
+    queryFn: getStarredBoards,
+    useErrorBoundary: true,
+  });
+  return { isLoading, error, boards };
+}
+
+export function useRecentBoards() {
+  const {
+    isLoading,
+    data: boards,
+    error,
+  } = useQuery({
+    queryKey: ['recent-boards', 'boards'],
+    queryFn: getRecentBoards,
     useErrorBoundary: true,
   });
   return { isLoading, error, boards };
