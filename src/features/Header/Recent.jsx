@@ -25,7 +25,7 @@ const Recent = () => {
         </div>
       )}
     >
-      <Button loading={isLoading} type="icon" size="normal" className="flex items-center">
+      <Button loading={isLoading} type="icon" size="normal" className="flex items-center font-medium">
         Recent <DownOutlined />
       </Button>
     </Dropdown>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Table, Tag, Popconfirm, Modal, Input, ConfigProvider } from 'antd';
+import { Button, Table, Tag, Popconfirm, Modal, Input, ConfigProvider, Spin } from 'antd';
 import { useTemplates } from '../../hooks/useTemplate';
 import { useCreateTemplate, useDeleteTemplate, useEditTemplate } from '../../hooks/useAdmin';
 import { DeleteTwoTone, SearchOutlined } from '@ant-design/icons';
@@ -20,10 +20,9 @@ const tagColors = [
 
 function ManageTemplate() {
   const { isLoading, templates } = useTemplates('');
-  console.log(templates);
   const { isEditing, editTemplateById } = useEditTemplate();
   const { isDeleting, deleteTemplateById } = useDeleteTemplate();
-  const { iseCreating, createNewTemplate } = useCreateTemplate();
+  const { isCreating, createNewTemplate } = useCreateTemplate();
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState('');
   const [isEditTemplate, setIsEditTemplate] = useState(false);
@@ -79,7 +78,7 @@ function ManageTemplate() {
             <Button
               className="w-full bg-blue-500 text-white mb-2 hover:bg-white"
               onClick={() => setIsEditTemplate(item)}
-              disabled={isEditing}
+              disabled={isEditing || isDeleting || isCreating}
             >
               Edit
             </Button>
@@ -96,7 +95,7 @@ function ManageTemplate() {
               okText="Yes"
               cancelText="No"
             >
-              <Button danger className="w-full" disabled={isEditing}>
+              <Button danger className="w-full" disabled={isEditing || isCreating || isDeleting}>
                 Delete
               </Button>
             </Popconfirm>
@@ -123,7 +122,12 @@ function ManageTemplate() {
   }, [search, templates]);
 
   if (isLoading) {
-    return <></>;
+    return (
+      <div className="px-32 pt-32 flex-1">
+        <div className="text-5xl font-medium mb-8">Manage Template</div>
+        <Spin></Spin>
+      </div>
+    );
   }
 
   return (
@@ -140,7 +144,11 @@ function ManageTemplate() {
           />
         </div>
         <div>
-          <Button className="w-[200px] bg-blue-500 hover:bg-white text-white" onClick={() => setIsCreateTemplate(true)}>
+          <Button
+            disabled={isDeleting || isCreating || isEditing}
+            className="w-[200px] bg-blue-500 hover:bg-white text-white"
+            onClick={() => setIsCreateTemplate(true)}
+          >
             Create new template
           </Button>
         </div>

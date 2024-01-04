@@ -72,9 +72,41 @@ function ManageUser() {
       key: 'action',
       render: (_, { id, active }) => {
         if (active) {
-          return <Button onClick={() => editUserStatusById([id, false])}>Deactivate</Button>;
+          return (
+            <Popconfirm
+              title={'Deactive user id: ' + id}
+              description="Are you sure to deactive this user??"
+              onConfirm={() => {
+                try {
+                  editUserStatusById({ id, isActive: false });
+                } catch (e) {
+                  console.log("Couldn't edit user");
+                }
+              }}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button>Deactivate</Button>
+            </Popconfirm>
+          );
         } else {
-          return <Button onClick={() => editUserStatusById([id, true])}>Activate</Button>;
+          return (
+            <Popconfirm
+              title={'Active user id: ' + id}
+              description="Are you sure to active this user??"
+              onConfirm={() => {
+                try {
+                  editUserStatusById({ id, isActive: true });
+                } catch (e) {
+                  console.log("Couldn't edit user");
+                }
+              }}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button>Active</Button>;
+            </Popconfirm>
+          );
         }
       },
     },

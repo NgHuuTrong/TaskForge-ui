@@ -63,7 +63,7 @@ export async function createTemplate(data) {
   console.log('Create template');
 }
 
-export async function editUserStatus(id, isActive) {
+export async function editUserStatus({ id, isActive }) {
   const formData = new FormData();
   formData.append('active', isActive);
   await authAxios

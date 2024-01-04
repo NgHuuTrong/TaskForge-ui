@@ -11,13 +11,15 @@ import LeftSection from './LeftSection';
 import ShareBoard from './ShareBoard';
 
 function Header({ setBackground, background, board }) {
-  const creator = board.boardMembers.find((member) => member.userId === board.creatorId).user;
-  const members = board.boardMembers.filter((member) => member.userId !== board.creatorId).map((el) => el.user);
-
+  console.log(board);
+  //mat me user r
+  const creator = board.boardMembers.find((member) => member.userId === board.creatorId).userId;
+  const members = board.boardMembers.filter((member) => member.userId !== board.creatorId).map((el) => el.userId);
+  console.log(creator, members);
   return (
     <div className="backdrop-blur-[6px] bg-[#0000003d]">
       <div className="flex justify-between p-[10px]">
-        <LeftSection board={board} />
+        {/* <LeftSection board={board} /> */}
 
         <div className="flex items-center gap-[20px]">
           <Avatar.Group
@@ -29,17 +31,17 @@ function Header({ setBackground, background, board }) {
             }}
           >
             <div className="relative">
-              <UserDetail user={creator} showDetail={false} size={28} />
+              {/* <UserDetail user={creator} showDetail={false} size={28} /> */}
               <Tooltip title="This member is admin of this board" placement="bottom">
                 <RiArrowUpDoubleLine className="absolute left-0 bottom-0 text-[blue] bg-white rounded-full" />
               </Tooltip>
             </div>
-            {members.map((member) => (
+            {/* {members.map((member) => (
               <UserDetail key={member.id} showDetail={false} size={28} user={member} />
-            ))}
+            ))} */}
           </Avatar.Group>
 
-          <VisibilityBtn board={board} />
+          {/* <VisibilityBtn board={board} /> */}
 
           <Chat others={members} currentUser={users[0]} boardId={1} />
 
