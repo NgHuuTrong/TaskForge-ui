@@ -34,9 +34,9 @@ function Admin() {
   };
   return (
     <div className="w-screen h-screen flex overflow-hidden">
-      <div className="h-screen bg-[#001529] w-[256px]">
+      <div className="h-screen bg-[#001529] w-[160px]">
         <p className="text-white text-4xl py-8 ml-8">Admin</p>
-        <div className="w-[256px]">
+        <div className="w-[150px]">
           <Menu
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}

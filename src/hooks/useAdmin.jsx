@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
-import { deleteTemplate, editTemplate, getUsers } from '../services/apiAdmin';
+import { createTemplate, deleteTemplate, editTemplate, editUserStatus, getUsers } from '../services/apiAdmin';
 
 export function useUsers() {
   const {
@@ -28,7 +28,7 @@ export function useDeleteTemplate() {
     mutationFn: deleteTemplate,
     onSuccess: () => {
       toast.success('Template successfully deleted');
-      queryClient.invalidateQueries({ queryKey: ['templates'], exact: true });
+      queryClient.invalidateQueries({ queryKey: ['templates'] });
     },
     onError: (err) => toast.error(err.message),
   });
@@ -53,4 +53,42 @@ export function useEditTemplate() {
   });
 
   return { isEditing, editTemplateById, error };
+}
+
+export function useCreateTemplate() {
+  const queryClient = useQueryClient();
+
+  const {
+    mutate: createNewTemplate,
+    isLoading: isCreating,
+    error,
+  } = useMutation({
+    mutationFn: createTemplate,
+    onSuccess: () => {
+      toast.success('Template successfully created');
+      queryClient.invalidateQueries({ queryKey: ['templates'] });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isCreating, createNewTemplate, error };
+}
+
+export function useEditUserStatus() {
+  const queryClient = useQueryClient();
+
+  const {
+    mutate: editUserStatusById,
+    isLoading: isEditing,
+    error,
+  } = useMutation({
+    mutationFn: editUserStatus,
+    onSuccess: () => {
+      toast.success('User edit successfully');
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isEditing, editUserStatusById, error };
 }

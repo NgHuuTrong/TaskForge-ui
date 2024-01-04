@@ -26,7 +26,6 @@ export async function deleteTemplate(templateId) {
 }
 
 export async function editTemplate(data) {
-  console.log(data);
   const formData = new FormData();
   Object.keys(data).forEach((key) => {
     if (key === 'defaultList') {
@@ -43,4 +42,36 @@ export async function editTemplate(data) {
       throw new Error(err.response.data.message);
     });
   console.log('Edit template');
+}
+
+export async function createTemplate(data) {
+  const formData = new FormData();
+  Object.keys(data).forEach((key) => {
+    if (key === 'defaultList') {
+      formData.append(key, data[key].join('/'));
+    } else {
+      formData.append(key, data[key]);
+    }
+  });
+  await authAxios
+    .post('/templates', formData)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+  console.log('Create template');
+}
+
+export async function editUserStatus(id, isActive) {
+  const formData = new FormData();
+  formData.append('active', isActive);
+  await authAxios
+    .patch('/users/' + id, formData)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+  console.log("Edit user's status");
 }

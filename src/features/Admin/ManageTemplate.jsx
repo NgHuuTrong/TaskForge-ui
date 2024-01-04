@@ -1,9 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { Button, Space, Table, Tag, Popconfirm, Modal, Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Button, Table, Tag, Popconfirm, Modal, Input, ConfigProvider } from 'antd';
 import { useTemplates } from '../../hooks/useTemplate';
-import { useDeleteTemplate, useEditTemplate } from '../../hooks/useAdmin';
-import { DeleteTwoTone } from '@ant-design/icons';
-import { editTemplate } from '../../services/apiAdmin';
+import { useCreateTemplate, useDeleteTemplate, useEditTemplate } from '../../hooks/useAdmin';
+import { DeleteTwoTone, SearchOutlined } from '@ant-design/icons';
 import { toast } from 'react-hot-toast';
 const tagColors = [
   'magenta',
@@ -21,10 +20,14 @@ const tagColors = [
 
 function ManageTemplate() {
   const { isLoading, templates } = useTemplates('');
-  const { isDeleting, deleteTemplateById } = useDeleteTemplate();
+  console.log(templates);
   const { isEditing, editTemplateById } = useEditTemplate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const { isDeleting, deleteTemplateById } = useDeleteTemplate();
+  const { iseCreating, createNewTemplate } = useCreateTemplate();
+  const [tableData, setTableData] = useState([]);
+  const [search, setSearch] = useState('');
+  const [isEditTemplate, setIsEditTemplate] = useState(false);
+  const [isCreateTemplate, setIsCreateTemplate] = useState(false);
   const columns = [
     {
       title: 'Id',
@@ -36,6 +39,7 @@ function ManageTemplate() {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
       title: 'Type',
@@ -45,6 +49,7 @@ function ManageTemplate() {
         let color = tagColors[type.length % 11];
         return <Tag color={color}>{type.toUpperCase()}</Tag>;
       },
+      sorter: (a, b) => a.type.localeCompare(b.type),
     },
     {
       title: 'Default List',
@@ -72,8 +77,8 @@ function ManageTemplate() {
         return (
           <div>
             <Button
-              className="w-full bg-blue-500 text-white mb-2"
-              onClick={() => setIsModalOpen(item)}
+              className="w-full bg-blue-500 text-white mb-2 hover:bg-white"
+              onClick={() => setIsEditTemplate(item)}
               disabled={isEditing}
             >
               Edit
@@ -100,31 +105,79 @@ function ManageTemplate() {
       },
     },
   ];
+
+  useEffect(() => {
+    if (search === '') {
+      setTableData(templates ? templates : []);
+    } else {
+      const key = search.toLowerCase();
+      setTableData(
+        templates.filter(
+          (item) =>
+            item.id.toString().includes(key) ||
+            item.name.toLowerCase().includes(key) ||
+            item.type.toLowerCase().includes(key),
+        ),
+      );
+    }
+  }, [search, templates]);
+
   if (isLoading) {
     return <></>;
   }
 
   return (
     <div className="px-32 pt-32 flex-1 mb-4 overflow-scroll">
-      <div className="text-5xl font-medium mb-8">Template</div>
-      <Table columns={columns} dataSource={templates} className="w-full" row />
-      {isModalOpen && (
-        <ModalTemplate modal={isModalOpen} setIsModalOpen={setIsModalOpen} editTemplateById={editTemplateById} />
+      <div className="text-5xl font-medium mb-8">Manage template</div>
+      <div className="flex justify-between">
+        <div>
+          <SearchOutlined />
+          <Input
+            placeholder={'Search for template...'}
+            className="rounded-lg w-[300px] mb-4 h-12 ml-4"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div>
+          <Button className="w-[200px] bg-blue-500 hover:bg-white text-white" onClick={() => setIsCreateTemplate(true)}>
+            Create new template
+          </Button>
+        </div>
+      </div>
+      <ConfigProvider
+        theme={{
+          token: {
+            fontSize: 15,
+          },
+        }}
+      >
+        <Table columns={columns} dataSource={tableData} className="w-full" row />
+      </ConfigProvider>
+      {isEditTemplate && (
+        <ModalTemplate modal={isEditTemplate} setIsModalOpen={setIsEditTemplate} commitTemplate={editTemplateById} />
       )}
+      {isCreateTemplate && <ModalTemplate setIsModalOpen={setIsCreateTemplate} commitTemplate={createNewTemplate} />}
     </div>
   );
 }
 
-function ModalTemplate({ modal = { id: '', name: '', type: '', defaultList: [] }, setIsModalOpen, editTemplateById }) {
+function ModalTemplate({
+  modal = { id: '', name: '', type: '', description: '', defaultList: [] },
+  setIsModalOpen,
+  commitTemplate,
+}) {
   const [id, setId] = useState(modal.id);
   const [name, setName] = useState(modal.name);
   const [type, setType] = useState(modal.type);
+  const [description, setDescription] = useState(modal.description);
   const [newListItem, setNewListItem] = useState('');
-  const [defaultList, setDefaultList] = useState(modal.defaultList);
+  const [defaultList, setDefaultList] = useState(modal.defaultList || []);
   const [defaultBackground, setDefaultBackground] = useState(null);
   const [isSelectImage, setIsSelectImage] = useState(false);
 
   const handleAddNewListItem = () => {
+    console.log(modal);
     if (newListItem === '') {
       return;
     }
@@ -155,6 +208,9 @@ function ModalTemplate({ modal = { id: '', name: '', type: '', defaultList: [] }
     if (type !== modal.type) {
       data.type = type;
     }
+    if (description !== modal.description) {
+      data.description = description;
+    }
     if (defaultList.length !== modal.defaultList.length) {
       data.defaultList = defaultList;
     } else {
@@ -170,7 +226,7 @@ function ModalTemplate({ modal = { id: '', name: '', type: '', defaultList: [] }
     }
     if (Object.keys(data).length > 0) {
       data.id = id;
-      editTemplateById(data);
+      commitTemplate(data);
     }
     setIsModalOpen(false);
   };
@@ -192,6 +248,10 @@ function ModalTemplate({ modal = { id: '', name: '', type: '', defaultList: [] }
       <div className="flex items-center mb-4">
         <p className="w-52 font-bold">Type:</p>{' '}
         <Input value={type} onChange={(e) => setType(e.target.value)} className="h-12"></Input>
+      </div>
+      <div className="flex items-center mb-4">
+        <p className="w-52 font-bold">Description:</p>{' '}
+        <Input value={description} onChange={(e) => setDescription(e.target.value)} className="h-12"></Input>
       </div>
       <div className="flex mb-4">
         <p className="font-bold w-52">Default list:</p>
@@ -223,7 +283,7 @@ function ModalTemplate({ modal = { id: '', name: '', type: '', defaultList: [] }
       </div>
       <p className="font-bold mb-4">Default background:</p>
       <div
-        className="w-full max-h-[400px] overflow-hidden items-center relative"
+        className="w-full h-[400px] overflow-hidden items-center relative"
         onMouseEnter={() => {
           setIsSelectImage(true);
         }}
@@ -240,7 +300,8 @@ function ModalTemplate({ modal = { id: '', name: '', type: '', defaultList: [] }
           type="file"
           accept="image/*"
           onChange={handleSelectImage}
-          className="absolute w-full h-full top-0 left-0 z-40 opacity-0"
+          className="absolute w-full h-full top-0 left-0 z-40"
+          style={{ opacity: !defaultBackground && !modal.defaultBackground ? 100 : 0 }}
         ></Input>
 
         <img
