@@ -64,10 +64,10 @@ export async function createTemplate(data) {
 }
 
 export async function editUserStatus({ id, isActive }) {
-  const formData = new FormData();
-  formData.append('active', isActive);
   await authAxios
-    .patch('/users/' + id, formData)
+    .patch('/users/' + id, {
+      active: isActive,
+    })
     .then((response) => response.data.data)
     .catch((err) => {
       console.log(err.response.data);

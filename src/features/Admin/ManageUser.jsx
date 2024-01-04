@@ -104,7 +104,7 @@ function ManageUser() {
               okText="Yes"
               cancelText="No"
             >
-              <Button>Active</Button>;
+              <Button>Active</Button>
             </Popconfirm>
           );
         }
@@ -132,7 +132,7 @@ function ManageUser() {
 
   if (isLoading) {
     return (
-      <div className="px-32 pt-32 flex-1">
+      <div className="px-16 pt-16 flex-1">
         <div className="text-5xl font-medium mb-8">Manage User</div>
         <Spin></Spin>
       </div>
@@ -140,8 +140,8 @@ function ManageUser() {
   }
 
   return (
-    <div className="px-32 pt-32 flex-1 mb-4 overflow-scroll">
-      <div className="text-5xl font-medium mb-8">Manage User</div>
+    <div className="px-16 pt-16 flex-1 mb-4 overflow-scroll">
+      <div className="text-5xl font-medium mb-16">Manage User</div>
       <SearchOutlined></SearchOutlined>
       <Input
         placeholder={'Search for user...'}

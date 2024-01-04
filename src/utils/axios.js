@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const token = localStorage.getItem('authTokens')
   ? JSON.parse(localStorage.getItem('authTokens'))
-  : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcwMzI5NjQ5NiwiZXhwIjoxNzEzNjY0NDk2fQ.nqBgnI6jxVXAzb4W_TsRIz-WgbV5F9ravJ-rghRZH0M';
+  : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA0MzgzOTk2LCJleHAiOjE3MTQ3NTE5OTZ9.veyGCSD9bkIJmjeq2RUo3l0MiVaP8NibBSZOzMwczwU';
 
 const authAxios = axios.create({
   baseURL: 'http://localhost:3000/api',

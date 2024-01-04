@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { DesktopOutlined, PieChartOutlined } from '@ant-design/icons';
+import { LogoutOutlined, UserOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import ManageUser from '../features/Admin/ManageUser';
 import ManageTemplate from '../features/Admin/ManageTemplate';
+import Logo from '../assets/logo_red.png';
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -13,9 +14,9 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem('User', '1', <PieChartOutlined />),
-  getItem('Template', '2', <DesktopOutlined />),
-  getItem('Logout', '3', <DesktopOutlined />),
+  getItem('User', '1', <UserOutlined />),
+  getItem('Template', '2', <AppstoreOutlined />),
+  getItem('Logout', '3', <LogoutOutlined />),
 ];
 
 function Admin() {
@@ -26,7 +27,9 @@ function Admin() {
   return (
     <div className="w-screen h-screen flex overflow-hidden">
       <div className="h-screen bg-[#001529] w-[160px]">
-        <div className="h-40"></div>
+        <div className="p-8 mb-8">
+          <img src={Logo} />
+        </div>
         <div className="w-[150px]">
           <Menu
             defaultSelectedKeys={['1']}
