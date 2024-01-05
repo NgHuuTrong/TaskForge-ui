@@ -4,6 +4,9 @@ import { useBoard } from "../../../../hooks/useBoard"
 import Spinner from "../../../../ui/Spinner";
 import { useCopyCard } from "../../../../hooks/useCard";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { useQueryClient } from "@tanstack/react-query";
+import { useParams } from "react-router";
 
 function CopyCardPopover({ children, card }) {
     return (
@@ -22,11 +25,14 @@ function CopyCardPopover({ children, card }) {
 function CopyPopoverContent({ card }) {
     const { isLoading, board } = useBoard();
     const { isCopying, mutate: copyCard } = useCopyCard();
+    const queryClient = useQueryClient();
 
     const [title, setTitle] = useState('');
     const [keepMembers, setKeepMembers] = useState(false);
     const [keepAttachments, setKeepAttachments] = useState(false);
     const [listId, setListId] = useState(card?.listId);
+
+    const { boardId } = useParams();
 
     if (isLoading) return <Spinner />;
 
@@ -77,6 +83,14 @@ function CopyPopoverContent({ card }) {
                         listId,
                         title
                     }
+                }, {
+                    onSuccess: () => {
+                        toast.success('Copy card successfully');
+                        setTitle('');
+                        setKeepAttachments(false);
+                        setKeepMembers(false);
+                        queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
+                    },
                 })}
             >
                 Create card

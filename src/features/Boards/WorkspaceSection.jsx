@@ -6,8 +6,11 @@ import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Logo from '../../ui/Logo';
 import CreateBoardCard from '../../ui/CreateBoardCard';
+import { useUser } from '../Authenticate/useUser';
 
 function WorkspaceSection({ workspace }) {
+  const { user } = useUser();
+
   return (
     <div className="space-y-8 pb-[3rem]">
       <Row>
@@ -24,7 +27,7 @@ function WorkspaceSection({ workspace }) {
           </Button>
           <Button to={`/w/${workspace.id}/members`} classNames="font-semibold" size="small" type="secondary">
             <HiOutlineUsers size="1.2rem" />
-            Members (30)
+            Members ({workspace?.workspaceMembers.length})
           </Button>
           <Button classNames="font-semibold" size="small" type="secondary">
             <PiGearLight size="1.5rem" />
@@ -33,9 +36,14 @@ function WorkspaceSection({ workspace }) {
         </div>
       </Row>
       <div className="flex items-center flex-wrap gap-5">
-        {workspace.boards.map((board) => (
-          <BoardCard key={board.id} board={board} />
-        ))}
+        {
+          workspace.boards.map((board) => {
+            if (user?.id !== board.creatorId && board.closed)
+              return null;
+            return (
+              <BoardCard key={board.id} board={board} />
+            )
+          })}
         <CreateBoardCard initialValues={{ workspaceId: workspace.id, type: 'Workspace' }} />
       </div>
     </div>

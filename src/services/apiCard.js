@@ -47,7 +47,7 @@ export async function patchCard({ cardId, body }) {
             console.log(err.response.data);
             throw new Error(err.response.data.message);
         });
-    console.log('patchCard', data);
+
     return data.card;
 }
 

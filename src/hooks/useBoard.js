@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { createNewBoard, getMyBoards, getBoard, starredBoard, patchBoard, getBoardMembers } from '../services/apiBoard';
+import { createNewBoard, getMyBoards, getBoard, starredBoard, patchBoard, getBoardMembers, addUserToBoard, joinBoard, deleteBoard, leaveBoard } from '../services/apiBoard';
 
 export function useBoards() {
   const {
@@ -101,3 +101,87 @@ export function useUpdateBoard() {
 
   return { isUpdating, updateBoard, error };
 }
+
+export function useAddUserToBoard() {
+  const queryClient = useQueryClient();
+  const { boardId } = useParams();
+
+  const {
+    mutate: addUser,
+    isLoading: isAdding,
+    error,
+  } = useMutation({
+    mutationFn: addUserToBoard,
+    onSuccess: () => {
+      toast.success('Add member to board successfully');
+      queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isAdding, addUser, error };
+}
+
+export function useJoinBoard() {
+  const queryClient = useQueryClient();
+  const { boardId } = useParams();
+
+  const {
+    mutate,
+    isLoading: isJoining,
+    error,
+  } = useMutation({
+    mutationFn: joinBoard,
+    onSuccess: () => {
+      toast.success('Join board successfully');
+      queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
+      queryClient.invalidateQueries({ queryKey: ['boards'], exact: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isJoining, mutate, error };
+}
+
+export function useDeleteBoard() {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
+  const {
+    mutate: removeBoard,
+    isLoading: isDeleting,
+    error,
+  } = useMutation({
+    mutationFn: deleteBoard,
+    onSuccess: () => {
+      toast.success('Board successfully removed');
+      queryClient.invalidateQueries({ queryKey: ['workspaces'], exact: true });
+      queryClient.invalidateQueries({ queryKey: ['boards'], exact: true });
+      navigate('/boards');
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isDeleting, removeBoard, error };
+}
+
+export function useLeaveBoard() {
+  const queryClient = useQueryClient();
+
+  const {
+    mutate,
+    isLoading: isLeaving,
+    error,
+  } = useMutation({
+    mutationFn: leaveBoard,
+    onSuccess: () => {
+      toast.success('Leave from board successfully');
+      queryClient.invalidateQueries({ queryKey: ['workspaces'], exact: true });
+      queryClient.invalidateQueries({ queryKey: ['boards'], exact: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isLeaving, mutate, error };
+}
+

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { createNewWorkspace, getMyWorkspaces, getWorkspace, patchWorkspace } from '../services/apiWorkspace';
+import { createNewWorkspace, getMyWorkspaces, getWorkspace, getWorkspaceMembers, patchWorkspace } from '../services/apiWorkspace';
 
 export function useWorkspaces() {
   const {
@@ -68,4 +68,18 @@ export function useUpdateWorkspace() {
   });
 
   return { isUpdating, updateWorkspace, error };
+}
+
+export function useWorkspaceMembers(workspaceId) {
+  const {
+    isLoading,
+    data: members,
+    error,
+  } = useQuery({
+    queryKey: ['workspaceMembers', workspaceId],
+    queryFn: () => getWorkspaceMembers(workspaceId),
+    retry: false,
+    useErrorBoundary: true,
+  });
+  return { isLoading, error, members };
 }

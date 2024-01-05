@@ -28,7 +28,7 @@ function VisibilityBtn({ board }) {
   
   return (
     <Select
-      disabled={board.curMember.userId !== board.creatorId || isUpdating}
+      disabled={board?.curMember?.userId !== board.creatorId || isUpdating}
       title="Change Visibility"
       trigger="click"
       onChange={(value) => handleChange(value)}

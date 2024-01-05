@@ -2,8 +2,9 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { FaMinus } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
 import ItemRow from '../../../ui/ItemRow';
-import { useBoard } from '../../../hooks/useBoard';
+import { useBoard, useUpdateBoard } from '../../../hooks/useBoard';
 import Spinner from '../../../ui/Spinner';
+import { useUser } from '../../Authenticate/useUser';
 
 const items = [
   {
@@ -42,15 +43,21 @@ const items = [
   }
 ];
 
-function MoreList({ setMoreHistory, background }) {
+function MoreList({ setMoreHistory, background, curMember }) {
   const { isLoading, board } = useBoard();
+  const { isUpdating, updateBoard } = useUpdateBoard();
+  const { isLoading: isLoadingUser, user } = useUser();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || isLoadingUser) return <Spinner />;
 
   return items.map((item) => {
-    if (board.creatorId === 4 && item.title === 'Leave board') {
+    if ((!curMember || board.creatorId === user.id) && item.title === 'Leave board') {
       return null;
-    } 
+    } else if (board.creatorId !== user.id && item.title === 'Close board') {
+      return null;
+    } else if (!curMember && item.title === 'Change background') {
+      return null;
+    }
 
     return (
       <ItemRow
@@ -58,7 +65,11 @@ function MoreList({ setMoreHistory, background }) {
         item={item}
         img={item.img && background}
         onClick={() => {
-          setMoreHistory((prev) => [...prev, item.children]);
+          if (board.creatorId === user.id && item.title === 'Close board') {
+            updateBoard({ boardId: board.id, body: { closed: true } });
+          } else {
+            setMoreHistory((prev) => [...prev, item.children]);
+          }
         }}
       />
     )

@@ -50,3 +50,15 @@ export async function patchWorkspace({ workspaceId, body }) {
     });
   console.log('patchWorkspace', data);
 }
+
+export async function getWorkspaceMembers(workspaceId) {
+  const res = await authAxios
+    .get(`/workspaces/${workspaceId}/members`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+
+  return res.users;
+}
