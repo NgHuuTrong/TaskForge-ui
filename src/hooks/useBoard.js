@@ -108,6 +108,7 @@ export function useCreateBoard() {
 }
 
 export function useStarredBoard() {
+  const queryClient = useQueryClient();
   const {
     mutate: favorBoard,
     isLoading: isFavoring,
@@ -115,6 +116,9 @@ export function useStarredBoard() {
   } = useMutation({
     mutationFn: starredBoard,
     onError: (err) => toast.error(err.message),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['starred-boards'] });
+    },
   });
 
   return { isFavoring, favorBoard, error };

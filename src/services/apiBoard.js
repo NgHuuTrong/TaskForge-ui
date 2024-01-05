@@ -33,7 +33,7 @@ export async function getStarredBoards() {
       throw new Error(err.response.data);
     });
   console.log('getStarredBoards', data);
-  return data.boardMembers;
+  return data.boardMembers.filter(board => board.starred);
 }
 
 export async function getBoard(boardId) {

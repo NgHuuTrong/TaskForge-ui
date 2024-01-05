@@ -86,7 +86,7 @@ function ManageUser() {
               okText="Yes"
               cancelText="No"
             >
-              <Button>Deactivate</Button>
+              <Button disabled={isEditing}>Deactivate</Button>
             </Popconfirm>
           );
         } else {
@@ -104,7 +104,7 @@ function ManageUser() {
               okText="Yes"
               cancelText="No"
             >
-              <Button>Active</Button>
+              <Button disabled={isEditing}>Active</Button>
             </Popconfirm>
           );
         }
