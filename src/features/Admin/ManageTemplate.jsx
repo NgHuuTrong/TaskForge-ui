@@ -160,7 +160,7 @@ function ManageTemplate() {
           },
         }}
       >
-        <Table columns={columns} dataSource={tableData} className="w-full" row />
+        <Table columns={columns} dataSource={tableData.map(data=>{return {...data, key: data.id}})} className="w-full" row />
       </ConfigProvider>
       {isEditTemplate && (
         <ModalTemplate modal={isEditTemplate} setIsModalOpen={setIsEditTemplate} commitTemplate={editTemplateById} />

@@ -3,6 +3,7 @@ import authAxios from '../utils/axios';
 export const login = async ({ email, password }) => {
   try {
     const { data } = await authAxios.post('/auth/signin', { email, password });
+    console.log(data)
     localStorage.setItem('token', JSON.stringify(data.data.accessToken));
 
     return data.data;

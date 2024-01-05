@@ -156,7 +156,7 @@ function ManageUser() {
           },
         }}
       >
-        <Table columns={columns} dataSource={tableData} className="w-full" />
+        <Table columns={columns} dataSource={tableData.map((data) => {return {...data, key:data.id}})} className="w-full" />
       </ConfigProvider>
     </div>
   );

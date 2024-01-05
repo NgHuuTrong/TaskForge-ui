@@ -3,22 +3,11 @@ import { useLogin } from "../features/Authenticate/useLogin";
 import { Button, Input } from "antd";
 import { LockOutlined, UserAddOutlined } from '@ant-design/icons';
 import Logo from '../assets/logo_blue.png';
+import { useNavigate } from "react-router-dom";
 function AdminAuthenticate() {
   const [data, setData] = useState({});
-  const { login, isLoading } = useLogin();
-
-//   const navigate = useNavigate();
-
-//   // 1. Load the authenticated user
-//   const { isLoading: loadAuth, isAuthenticated } = useUser();
-//   // navigate(0);
-//   // 2. If there is NO authenticated user, redirect to the /login
-//   useEffect(
-//     function () {
-//       if (isAuthenticated && !loadAuth) navigate('/boards', { replace: true });
-//     },
-//     [isAuthenticated, loadAuth, navigate],
-//   );
+  const navigate = useNavigate();
+  const { login, isLoading } = useLogin({onSuccess: ()=>{navigate('/admin/user')}});
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -56,7 +45,7 @@ function AdminAuthenticate() {
             placeholder="Email"
             onChange={handleChange}
               prefix={<UserAddOutlined />}
-            className="mb-8"
+            className="mb-8 bg-[--color-grey-50]"
             />
             <Input
             name="password"
@@ -66,7 +55,7 @@ function AdminAuthenticate() {
             placeholder="Password"
             onChange={handleChange}
               prefix={<LockOutlined />}
-            className="mb-4"
+            className="mb-4 bg-[--color-grey-50]"
             />
             <Button
             classNames="rounded-none bg-[linear-gradient(225deg,_rgba(84,213,219,1)_45%,_rgba(73,148,229,1)_97%)] flex justify-center items-center h-16"
