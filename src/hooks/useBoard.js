@@ -11,6 +11,7 @@ import {
   patchBoard,
   getRecentBoards,
   getStarredBoards,
+  getBoardMembers,
 } from '../services/apiBoard';
 
 export function useBoards() {

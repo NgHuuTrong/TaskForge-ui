@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Dropdown } from 'antd';
+import { Dropdown, Empty, Spin } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import ButtonImage from '../../ui/ButtonImage';
 import { useRecentBoards } from '../../hooks/useBoard';
+import Button from '../../ui/Button';
 
 const Recent = () => {
   const { isLoading, boards } = useRecentBoards();
@@ -13,11 +14,15 @@ const Recent = () => {
       trigger={['click']}
       dropdownRender={() => (
         <div className="w-[280px]">
-          {boards.map(({ board }) => (
+        {
+          isLoading&&<Spin></Spin>
+        }
+        {!isLoading && boards.length == 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> }
+          {!isLoading && boards.map(({ board }) => (
             <ButtonImage
               key={board.id}
               title={board.name}
-              subscription={board.workspaceName}
+              subscription={board.workspace.name}
               url={board.background}
               to={'/b/' + board.id + '/board-detail'}
             />
@@ -25,7 +30,7 @@ const Recent = () => {
         </div>
       )}
     >
-      <Button loading={isLoading} type="icon" size="normal" className="flex items-center font-medium">
+      <Button type="icon" size="normal">
         Recent <DownOutlined />
       </Button>
     </Dropdown>
