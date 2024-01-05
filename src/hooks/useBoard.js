@@ -167,6 +167,7 @@ export function useDeleteBoard() {
 
 export function useLeaveBoard() {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const {
     mutate,
@@ -178,6 +179,7 @@ export function useLeaveBoard() {
       toast.success('Leave from board successfully');
       queryClient.invalidateQueries({ queryKey: ['workspaces'], exact: true });
       queryClient.invalidateQueries({ queryKey: ['boards'], exact: true });
+      navigate('/boards');
     },
     onError: (err) => toast.error(err.message),
   });

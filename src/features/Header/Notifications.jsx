@@ -40,8 +40,6 @@ function Notifications() {
     };
   }, [socket, user])
 
-  if (isLoading || isLoadingUser) return <Spinner />;
-
   const handleClick = () => {
     setUnreadOnly(!unreadOnly);
   };
@@ -57,31 +55,34 @@ function Notifications() {
           setNewNotificationSignal(false);
         }
       }}
-      dropdownRender={() => (
-        <div className="min-h-[20rem] max-h-[80vh]] overflow-y-scroll w-[40rem]">
-          <div className="flex items-center justify-between pl-[16px] pr-[10px] py-[22px] border-b border-b-[--color-grey-400]">
-            <Heading as="h3">Notifications</Heading>
-            <div className="flex items-center justify-evenly">
-              <span className="flex items-center text-[12px]">
-                Show unread only
-                <Switch checked={unreadOnly} size="small" className="mx-4" onClick={handleClick} />
-              </span>
-              <EmailFrequency
-                trigger={'click'}
-                icon={<BiDotsVerticalRounded size={16} color="var(--color-grey-600)" />}
-              />
+      dropdownRender={() => {
+        if(isLoading || isLoadingUser) return <Spinner />;
+        return (
+          <div className="min-h-[20rem] max-h-[80vh]] overflow-y-scroll w-[40rem]">
+            <div className="flex items-center justify-between pl-[16px] pr-[10px] py-[22px] border-b border-b-[--color-grey-400]">
+              <Heading as="h3">Notifications</Heading>
+              <div className="flex items-center justify-evenly">
+                <span className="flex items-center text-[12px]">
+                  Show unread only
+                  <Switch checked={unreadOnly} size="small" className="mx-4" onClick={handleClick} />
+                </span>
+                <EmailFrequency
+                  trigger={'click'}
+                  icon={<BiDotsVerticalRounded size={16} color="var(--color-grey-600)" />}
+                />
+              </div>
+            </div>
+            <div className="p-4">
+              {myNotifications.map(
+                (notification) =>
+                  ((unreadOnly && !notification.isRead) || !unreadOnly) && (
+                    <Notification key={notification.id} notification={notification} />
+                  ),
+              )}
             </div>
           </div>
-          <div className="p-4">
-            {myNotifications.map(
-              (notification) =>
-                ((unreadOnly && !notification.isRead) || !unreadOnly) && (
-                  <Notification key={notification.id} notification={notification} />
-                ),
-            )}
-          </div>
-        </div>
-      )}
+        )
+      }}
     >
       <Button
         type="icon" size="small"
