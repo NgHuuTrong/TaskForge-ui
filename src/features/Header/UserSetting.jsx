@@ -5,10 +5,11 @@ import { Dropdown } from 'antd';
 import Button from '../../ui/Button';
 import DarkModeToggle from '../../ui/DarkModeToggle';
 import UserDetail from '../../ui/UserDetail';
-import { useUser } from '../../hooks/useAuthenticate';
+import { useLogout, useUser } from '../../hooks/useAuthenticate';
 
 const UserSetting = () => {
   const { user, isLoading } = useUser();
+  const { logout, isLoading: logoutLoading } = useLogout();
   return (
     <Dropdown
       getPopupContainer={(trigger) => trigger.parentElement}
@@ -43,7 +44,12 @@ const UserSetting = () => {
               <DarkModeToggle />
             </div>
           </div>
-          <Button type="icon" classNames="text-start [box-shadow:none] py-[8px]">
+          <Button
+            disabled={logoutLoading}
+            onClick={logout}
+            type="icon"
+            classNames="text-start [box-shadow:none] py-[8px]"
+          >
             Log out
           </Button>
         </div>

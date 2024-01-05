@@ -1,9 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { createNewWorkspace, getMyWorkspaces, getWorkspace, patchWorkspace } from '../services/apiWorkspace';
+import {
+  createNewWorkspace,
+  getMyWorkspaces,
+  getWorkspace,
+  patchWorkspace,
+  deleteWorkspaceMember,
+  deleteWorkspace,
+} from '../services/apiWorkspace';
 
 export function useWorkspaces() {
   const {
@@ -68,4 +75,40 @@ export function useUpdateWorkspace() {
   });
 
   return { isUpdating, updateWorkspace, error };
+}
+
+export function useDeleteWorkspaceMember() {
+  const queryClient = useQueryClient();
+  const { workspaceId } = useParams();
+
+  const { mutate: deleteWorkspaceUser, isLoading } = useMutation({
+    mutationFn: ({ workspaceId, userId }) => deleteWorkspaceMember({ workspaceId, userId }),
+    onSuccess: (data) => {
+      toast.success('Delete user success');
+      queryClient.invalidateQueries({ queryKey: ['workspace', workspaceId] });
+      queryClient.invalidateQueries({ queryKey: ['workspaces'] });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { deleteWorkspaceUser, isLoading };
+}
+
+export function useDeleteWorkspace() {
+  const queryClient = useQueryClient();
+  const { workspaceId } = useParams();
+  const navigate = useNavigate();
+
+  const { mutate: removeWorkspace, isLoading } = useMutation({
+    mutationFn: ({ workspaceId }) => deleteWorkspace({ workspaceId }),
+    onSuccess: (data) => {
+      toast.success('Workspace deleted successfully');
+      queryClient.invalidateQueries({ queryKey: ['workspace', workspaceId] });
+      queryClient.invalidateQueries({ queryKey: ['workspaces'] });
+      navigate('/boards', { replace: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { removeWorkspace, isLoading };
 }

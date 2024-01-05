@@ -22,3 +22,12 @@ export const signup = async ({ username, email, name, password, passwordConfirm 
     throw new Error(error.message);
   }
 };
+
+export const logout = async() => {
+  try {
+    localStorage.setItem('token', JSON.stringify(''))
+  } catch(error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}

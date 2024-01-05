@@ -21,7 +21,7 @@ function SignUpForm({ setIsSignIn, isSignIn }) {
       <form className="absolute left-0 top-0 z-20 h-full w-full bg-white">
         <div className="flex h-full flex-col px-20 py-20 text-center">
           <div className="flex w-full flex-col justify-start">
-            <img src={Logo} className="w-40"></img>
+            <img src={Logo} alt='logo' className="w-40"></img>
             <p className="my-8 text-start text-4xl font-semibold">
               Hey, hello👋
             </p>

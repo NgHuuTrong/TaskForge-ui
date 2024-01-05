@@ -29,21 +29,14 @@ export function useLogout() {
     const { mutate: logout, isLoading } = useMutation({
         mutationFn: logoutApi,
         onSuccess: () => {
+            authAxios.defaults.headers.Authorization = '';
             queryClient.removeQueries();
-            navigate("/login", { replace: true });
+            navigate('/authenticate', { replace: true });
         },
     });
 
     return { logout, isLoading };
 }
-
-// export function useUser() {
-//     const { isLoading, data: user } = useQuery({
-//         queryKey: ['token'],
-//         queryFn: getCurrentUser,
-//     });
-//     return { isLoading, user, isAuthenticated: user?.role };
-// }
 
 export function useUpdateUser() {
     const queryClient = useQueryClient();
