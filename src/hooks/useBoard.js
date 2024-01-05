@@ -12,6 +12,8 @@ import {
   getRecentBoards,
   getStarredBoards,
   getBoardMembers,
+  deleteMemberFromBoard,
+  // leaveBoard,
 } from '../services/apiBoard';
 
 export function useBoards() {
@@ -135,4 +137,23 @@ export function useUpdateBoard() {
   });
 
   return { isUpdating, updateBoard, error };
+}
+
+export function useDeleteMemberFromBoard() {
+  const { boardId } = useParams();
+  const queryClient = useQueryClient();
+
+  const {
+    mutate: deleteBoardMember,
+    isLoading: isDeleting,
+    error,
+  } = useMutation({
+    mutationFn: deleteMemberFromBoard,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isDeleting, deleteBoardMember, error };
 }

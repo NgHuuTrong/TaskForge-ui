@@ -141,7 +141,7 @@ function ManageUser() {
 
   return (
     <div className="px-16 pt-16 flex-1 mb-4 overflow-scroll">
-      <div className="text-5xl font-medium mb-16">Manage User</div>
+      <div className="text-5xl font-medium mb-16 text-[--color-grey-900]">Manage User</div>
       <SearchOutlined></SearchOutlined>
       <Input
         placeholder={'Search for user...'}

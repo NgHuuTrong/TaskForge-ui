@@ -2,8 +2,9 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { FaMinus } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
 import ItemRow from '../../../ui/ItemRow';
-import { useBoard } from '../../../hooks/useBoard';
+import { useBoard, useUpdateBoard } from '../../../hooks/useBoard';
 import Spinner from '../../../ui/Spinner';
+import { Button } from 'antd';
 
 const items = [
   {
@@ -42,9 +43,13 @@ const items = [
   }
 ];
 
-function MoreList({ setMoreHistory, background }) {
+function MoreList({ setMoreHistory, background, boardId }) {
+  const {isUpdating, updateBoard} = useUpdateBoard()
   const { isLoading, board } = useBoard();
-
+  const handleCloseBoard = () => {
+    console.log(boardId)
+    updateBoard({ boardId, body: { closed: true } });
+  }
   if (isLoading) return <Spinner />;
 
   return items.map((item) => {
@@ -52,13 +57,17 @@ function MoreList({ setMoreHistory, background }) {
       return null;
     } 
 
+    if(item.id === 4) {
+      return <Button key={item.id} className="border-none flex items-center" onClick={()=>handleCloseBoard()}>{item.icon} <span className="ml-2">{item.title}</span></Button>
+    }
+
     return (
       <ItemRow
         key={item.id}
         item={item}
         img={item.img && background}
         onClick={() => {
-          setMoreHistory((prev) => [...prev, item.children]);
+          setMoreHistory((prev) => [...prev, item.title]);
         }}
       />
     )

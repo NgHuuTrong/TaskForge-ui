@@ -7,9 +7,15 @@ import Heading from '../../../ui/Heading';
 import Button from '../../../ui/Button';
 import Row from '../../../ui/Row';
 import UserDetail from '../../../ui/UserDetail';
+import { useDeleteMemberFromBoard } from '../../../hooks/useBoard';
 
-function MemberRow({ member, isAdmin = false, isCurrent = false }) {
+function MemberRow({ member, isAdmin = false, isCurrent = false, deleteBoardMember, boardId }) {
   const role = isAdmin ? 'Admin' : 'Member';
+  const handleSelect = (data) => {
+    if(data === 'Remove from board' && deleteBoardMember) {
+      deleteBoardMember({memberId: member.id, boardId})
+    }
+  }
   return (
     <Row>
       <UserDetail user={member.user} size="32" />
@@ -18,6 +24,7 @@ function MemberRow({ member, isAdmin = false, isCurrent = false }) {
         <Select
           defaultValue={role}
           dropdownStyle={{ width: '28rem' }}
+          onSelect={(data)=>handleSelect(data)}
           options={[
             {
               value: 'Admin',
@@ -38,9 +45,9 @@ function MemberRow({ member, isAdmin = false, isCurrent = false }) {
   );
 }
 
-function ShareBoard({ creator, members, curMember, isAdmin }) {
+function ShareBoard({ creator, members, curMember, isAdmin, boardId }) {
   const [openModal, setOpenModal] = useState(false);
-
+  const {isDeleting, deleteBoardMember} = useDeleteMemberFromBoard();
   return (
     <>
       <Button onClick={() => setOpenModal(true)} size="normal">
@@ -76,7 +83,7 @@ function ShareBoard({ creator, members, curMember, isAdmin }) {
           {isAdmin || <MemberRow member={curMember} isCurrent />}
           <MemberRow member={creator} isAdmin isCurrent={isAdmin} />
           {members.map((member) => (
-            <MemberRow member={member} key={member.userId} />
+            <MemberRow member={member} key={member.userId} deleteBoardMember={isAdmin ? deleteBoardMember : null} boardId={boardId}/>
           ))}
         </div>
       </Modal>

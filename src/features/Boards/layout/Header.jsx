@@ -11,9 +11,9 @@ import LeftSection from './LeftSection';
 import ShareBoard from './ShareBoard';
 
 function Header({ setBackground, background, board }) {
-  const creator = board.boardMembers.find((member) => member.userId === board.creatorId)?.user;
-  const members = board.boardMembers.filter((member) => member.userId !== board.creatorId).map((el) => el.user);
-
+  console.log(board)
+  const creator = board.creator
+  const members = board.boardMembers
   function renderMemberAvatars() {
     return board.boardMembers.map((member) => {
       if (member.userId !== board.creatorId) {
@@ -32,7 +32,7 @@ function Header({ setBackground, background, board }) {
   return (
     <div className="backdrop-blur-[6px] bg-[#0000003d]">
       <div className="flex justify-between p-[10px]">
-        {/* <LeftSection board={board} /> */}
+        <LeftSection board={board} />
 
         <div className="flex items-center gap-[20px]">
           <Avatar.Group
@@ -46,14 +46,14 @@ function Header({ setBackground, background, board }) {
             {renderMemberAvatars()}
           </Avatar.Group>
 
-          {/* <VisibilityBtn board={board} /> */}
+          <VisibilityBtn board={board} />
 
-          <Chat others={members} currentUser={users[0]} boardId={1} />
+          <Chat others={members} currentUser={users[0]} boardId={board.id} />
 
-          <MoreBtn background={background} se tBackground={setBackground} creator={creator} />
+          <MoreBtn background={background} setBackground={setBackground} creator={creator} boardId= {board.id}/>
 
           {board.curMember ? (
-            <ShareBoard creator={creator} members={members} curMember={board.curMember} />
+            <ShareBoard creator={creator} members={members} curMember={board.curMember} isAdmin={board.curMember.userId === creator.userId} boardId={board.id}/>
           ) : (
             <div className="p-[5px] rounded-[4px] hover:bg-[#8896a6] cursor-pointer">
               <span>Join board</span>

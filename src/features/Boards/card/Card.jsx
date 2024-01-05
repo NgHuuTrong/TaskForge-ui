@@ -15,7 +15,7 @@ function Card({ listId, boardId, card, setMoveCardId, provided, setOpenCardDetai
 
   return (
     card && <div
-      className="group relative mb-2 flex w-full flex-col rounded-lg bg-[--color-grey-200] border p-4 pr-8 shadow-md"
+      className="group static mb-2 flex w-full flex-col rounded-lg bg-[--color-grey-200] border p-4 pr-8 shadow-md"
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}

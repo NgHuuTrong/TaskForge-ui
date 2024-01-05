@@ -41,7 +41,7 @@ function ListHeader({ list, items }) {
         trigger={['click']}
         placement="bottomLeft"
       >
-        <Button className="flex items-center justify-center">
+        <Button className="flex items-center justify-center static">
           <MdOutlineMoreVert className="text-[--color-grey-700]" />
         </Button>
       </Dropdown>

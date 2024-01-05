@@ -31,13 +31,13 @@ function AboutBoard({ creator }) {
   );
 }
 
-function MoreBtn({ background, setBackground, creator }) {
+function MoreBtn({ background, setBackground, creator, boardId }) {
   const [moreHistory, setMoreHistory] = useState([{ title: null, component: 'MoreList' }]);
 
   const renderComponent = (component) => {
     return (
       <>
-        {component === 'MoreList' && <MoreList setMoreHistory={setMoreHistory} background={background} />}
+        {component === 'MoreList' && <MoreList setMoreHistory={setMoreHistory} background={background} boardId={boardId}/>}
         {component === 'ChangeBackground' && <ChangeBg setMoreHistory={setMoreHistory} />}
         {component === 'AboutBoard' && <AboutBoard creator={creator} />}
         {component === 'PhotoBackground' && <BgList isPhotos setBackground={setBackground} />}

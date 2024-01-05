@@ -20,6 +20,7 @@ import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
 import Admin from './pages/Admin';
+import AdminAuthenticate from './pages/AdminAuthenticate';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -75,7 +76,10 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="admin" element={<Admin />} />
+              <Route path="admin/user" element={<Admin defaultKey='1'/>} />
+              <Route path="admin/theme" element={<Admin defaultKey='2'/>}/>
+              <Route path="admin/authenticate" element={<AdminAuthenticate/>}/>
+
             </Routes>
           </BrowserRouter>
           <Toaster
