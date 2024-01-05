@@ -1,18 +1,21 @@
 import { Input } from 'antd';
 import MemberRow from './MemberRow';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function Members({ users }) {
+function Members({ users, workspace, deleteWorkspaceUser }) {
   const [search, setSearch] = useState('');
   const [userSearch, setUsersearch] = useState(users);
 
+  useEffect(() => {
+    setUsersearch(users);
+  }, [users]);
+
   function handleSearch(e) {
-    if(e.target.value.trim() === '') {
+    if (e.target.value.trim() === '') {
       setUsersearch(users);
     } else {
       setUsersearch(
         users.filter((user) => {
-          console.log(user);
           if (
             user.name.toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
             user.username.toLowerCase().includes(e.target.value.trim().toLowerCase())
@@ -22,7 +25,7 @@ function Members({ users }) {
         }),
       );
     }
-    setSearch(e.target.value)
+    setSearch(e.target.value);
   }
   return (
     <>
@@ -30,7 +33,7 @@ function Members({ users }) {
       <hr className="border-[--color-grey-300] mt-[1.6rem]" />
 
       {userSearch.map((user) => (
-        <MemberRow key={user.id} user={user} />
+        <MemberRow key={user.id} user={user} workspace={workspace} deleteWorkspaceUser={deleteWorkspaceUser} />
       ))}
     </>
   );

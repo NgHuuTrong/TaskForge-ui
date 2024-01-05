@@ -40,3 +40,24 @@ export async function updateCurrentUser({ username, bio, file }) {
     throw new Error(error.message);
   }
 }
+
+export async function getUserById({ id }) {
+  try {
+    const { data } = await authAxios.get(`/users/${id}`);
+    return data.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}
+
+export async function getAllUsers() {
+  const data = await authAxios
+    .get('/users')
+    .then((response) => response.data.data)
+    .catch((err) => {
+      throw new Error(err.response.data);
+    });
+
+  return data.users;
+}

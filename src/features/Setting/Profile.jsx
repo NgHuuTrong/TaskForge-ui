@@ -4,9 +4,9 @@ import { MdPublic } from 'react-icons/md';
 import { AiFillCamera } from 'react-icons/ai';
 import Button from '../../ui/Button';
 import FormRow from '../../ui/FormRow';
-import { useUpdateUser } from '../Authenticate/useUpdateUser';
 import UserDetail from '../../ui/UserDetail';
 import ImgCrop from 'antd-img-crop';
+import { useUpdateUser } from '../../hooks/useAuthenticate';
 const { TextArea } = Input;
 
 function Profile({ user }) {
