@@ -163,7 +163,7 @@ button {
 button:disabled,
 select:disabled,
 input:disabled {
-  @apply bg-[color:var(--color-disabled-bg)] text-[color:var(--color-disabled-text)] hover:bg-[var(--color-disabled-bg)];
+  @apply bg-[color:var(--color-disabled-bg)] hover:bg-[var(--color-disabled-bg)];
 }
 
 input:focus,

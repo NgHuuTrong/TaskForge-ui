@@ -6,13 +6,14 @@ const WebsocketContext = createContext();
 
 function WebsocketProvider({ children }) {
   const [token, setToken] = useLocalStorageState(
-    localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null,
+    localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null, 'token'
   );
   const socket = io('http://localhost:3000', {
     extraHeaders: {
       authorization: 'Bearer ' + token,
     },
   });
+  console.log('token: ' + token);
   return <WebsocketContext.Provider value={{ socket }}>{children}</WebsocketContext.Provider>;
 }
 function useWebsocket() {

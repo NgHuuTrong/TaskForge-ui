@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Input, Modal, Select } from 'antd';
+import { useEffect, useState } from 'react';
+import { Dropdown, Input, Modal, Select } from 'antd';
 import { IoMdAttach } from 'react-icons/io';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 
@@ -7,6 +7,11 @@ import Heading from '../../../ui/Heading';
 import Button from '../../../ui/Button';
 import Row from '../../../ui/Row';
 import UserDetail from '../../../ui/UserDetail';
+import { useWorkspaceMembers } from '../../../hooks/useWorkspace';
+import Spinner from '../../../ui/Spinner';
+import { useAddUserToBoard } from '../../../hooks/useBoard';
+import { useParams } from 'react-router-dom';
+import { useWebsocket } from '../../../context/WebsocketContext';
 
 function MemberRow({ member, isAdmin = false, isCurrent = false }) {
   const role = isAdmin ? 'Admin' : 'Member';
@@ -38,8 +43,38 @@ function MemberRow({ member, isAdmin = false, isCurrent = false }) {
   );
 }
 
-function ShareBoard({ creator, members, curMember, isAdmin }) {
+function ShareBoard({ creator, members, curMember, isAdmin, workspaceId }) {
   const [openModal, setOpenModal] = useState(false);
+  const [wpMembers, setWpMembers] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+
+  const { isLoading, members: workspaceMembers } = useWorkspaceMembers(workspaceId);
+  const { isAdding, addUser } = useAddUserToBoard();
+
+  const { boardId } = useParams();
+  const { socket } = useWebsocket();
+
+  useEffect(() => {
+    setWpMembers(workspaceMembers || []);
+  }, [workspaceMembers])
+
+  // if (isLoading) return <Spinner />;
+
+  function handleSearch(event) {
+    if (event.target.value.trim() === '') {
+      setWpMembers(workspaceMembers);
+    } else {
+      setWpMembers(workspaceMembers.filter(member => {
+        if (
+          member.email.toLowerCase().includes(event.target.value.trim().toLowerCase()) ||
+          member.name.toLowerCase().includes(event.target.value.trim().toLowerCase())
+        )
+          return true;
+        return false;
+      }));
+    }
+    setSearchValue(event.target.value)
+  }
 
   return (
     <>
@@ -57,7 +92,56 @@ function ShareBoard({ creator, members, curMember, isAdmin }) {
         <div className="p-[2rem] flex flex-col gap-8">
           <Heading as="h3">Share board</Heading>
           <div className="flex gap-4">
-            <Input placeholder="Email address or name" />
+            <Dropdown
+              getPopupContainer={(trigger) => trigger.parentElement}
+              trigger={['click']}
+              dropdownRender={() => {
+                return (
+                  <div className="max-h-[200px] overflow-y-scroll">
+                    {
+                      wpMembers.map(user => {
+                        const isCreator = creator.userId === user.id;
+                        const isBoardMember = members.some(member => member.userId === user.id);
+                        const isCurrentMember = curMember ? curMember.userId === user.id : false;
+
+                        return <button
+                          className='w-full rounded-xl flex items-center gap-[1rem] p-[0.5rem] my-[0.5rem] cursor-pointer hover:bg-[--color-grey-200]'
+                          key={user.id}
+                          disabled={isCreator || isBoardMember || isCurrentMember || isAdding}
+                          onClick={() => {
+                            addUser({ body: { userId: user.id, boardId: +boardId } });
+                            socket.emit('createNotification', {
+                              type: 'ADD_TO_BOARD',
+                              receiverId: user.id,
+                              boardId: +boardId,
+                            });
+                          }}
+                        >
+                          <UserDetail user={user} showDetail={false} size="32" />
+                          <div className='flex-grow'>
+                            <p className='text-left'>{user.name}</p>
+                            {
+                              isBoardMember && <p className='text-left text-[1.3rem] text-[--color-grey-400]'>Board Member</p>
+                            }
+                            {
+                              isCurrentMember ? <p className='text-left text-[1.3rem] text-[--color-grey-400]'>
+                                You • {isCreator ? 'Board Admin' : 'Board Member'}
+                              </p> : (isCreator && <p className='text-left text-[1.3rem] text-[--color-grey-400]'>Board Admin</p>)
+                            }
+                          </div>
+                        </button>
+                      })
+                    }
+                  </div>
+                );
+              }}
+            >
+              <Input
+                placeholder="Email address or name"
+                value={searchValue}
+                onChange={handleSearch}
+              />
+            </Dropdown>
             <Button size="normal">Share</Button>
           </div>
           <Row>

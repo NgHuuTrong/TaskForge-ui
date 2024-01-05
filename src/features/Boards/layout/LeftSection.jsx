@@ -6,7 +6,7 @@ import { Input } from 'antd';
 import toast from 'react-hot-toast';
 function LeftSection({ board }) {
   const [changeTitleBox, setChangeTitleBox] = useState(false);
-  const [favorite, setFavorite] = useState(board.curMember.starred);
+  const [favorite, setFavorite] = useState(board?.curMember?.starred);
   const [currTitle, setCurrTitle] = useState(board.name);
   const { favorBoard, isFavoring } = useStarredBoard();
   const { updateBoard, isUpdating } = useUpdateBoard();
@@ -40,7 +40,7 @@ function LeftSection({ board }) {
             onChange={(e) => setCurrTitle(e.target.value)}
             value={currTitle}
             autoFocus
-            disabled={isUpdating}
+            disabled={isUpdating || !board.curMember}
           />
         ) : (
           <div
@@ -52,7 +52,7 @@ function LeftSection({ board }) {
         )}
       </div>
 
-      {favorite ? (
+      {board.curMember && (favorite ? (
         <button
           disabled={isFavoring}
           onClick={() => handleStarredClick(false)}
@@ -68,7 +68,7 @@ function LeftSection({ board }) {
         >
           <AiOutlineStar color="white" />
         </button>
-      )}
+      ))}
     </div>
   );
 }

@@ -8,7 +8,7 @@ export const login = async ({ email, password }) => {
     return data.data;
   } catch (error) {
     console.log(error);
-    throw new Error(error.message);
+    throw new Error(error.response.data.message);
   }
 };
 
@@ -18,7 +18,7 @@ export const signup = async ({ username, email, name, password, passwordConfirm 
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error(error.message);
+    throw new Error(error.response.data.message);
   }
 };
 

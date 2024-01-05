@@ -1,5 +1,5 @@
 import Button from "../../../../ui/Button";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
@@ -30,12 +30,12 @@ function CardDetailDescription({ cardId, description }) {
         toolbar: toolbarOptions
     };
 
-    function isQuillEmpty(value) {
+    const isQuillEmpty =  useCallback((value) => {
         if (value.replace(/<(.|\n)*?>/g, '').trim().length === 0 && !value.includes("<img")) {
             return true;
         }
         return false;
-    }
+    }, [])
 
     function updateDescription() {
         if (!isQuillEmpty(value)) {
@@ -82,7 +82,6 @@ function CardDetailDescription({ cardId, description }) {
                         </button> : <div>
                             <ReactQuill modules={module} theme="snow" value={value} onChange={(value) => {
                                 setValue(value);
-                                console.log(value);
                             }} />
                             <div className='flex space-x-3 mt-3'>
                                 <Button

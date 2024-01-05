@@ -11,17 +11,16 @@ import MembersPopover from './MembersPopover'
 import CardDetailButton from './CardDetailButton'
 import AttachmentPopover from './AttachmentPopover'
 import MoveCard from '../MoveCard'
-import { clearCurrentCardDetail } from '../../boardSlice'
-import { useDispatch } from 'react-redux'
 import CopyCardPopover from './CopyCardPopover'
 import CardDetailDescription from './CardDetailDescription'
 import CardDetailHeader from './CardDetailHeader'
 import CardDetailActivity from './CardDetailActivity'
 import CardDetailAttachments from './CardDetailAttachments'
-import { useCard, useJoinCard } from '../../../../hooks/useCard'
+import { useCard, useDeleteCard, useJoinCard } from '../../../../hooks/useCard'
 import Spinner from '../../../../ui/Spinner'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
+import { useUser } from '../../../Authenticate/useUser'
 
 function CardDetail({
     openCardDetailModal,
@@ -30,12 +29,13 @@ function CardDetail({
 }) {
     const [moveCardId, setMoveCardId] = useState(null);
     const [assignees, setAssignees] = useState([]);
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
 
+    const { isLoading: isLoadingUser, user } = useUser();
     const { card, isLoading } = useCard();
     const { isJoining, mutate: joinCard } = useJoinCard();
+    const { isDeleting, removeCard } = useDeleteCard();
     const queryClient = useQueryClient();
 
     useEffect(function () {
@@ -44,7 +44,7 @@ function CardDetail({
         }
     }, [isLoading, card])
 
-    if (isLoading) return <Spinner />;
+    if (isLoading || isLoadingUser) return <Spinner />;
 
     return (
         <>
@@ -76,11 +76,11 @@ function CardDetail({
                         {assignees.length > 0 && <CardDetailMembers members={assignees} />}
                         <CardDetailDescription cardId={card.id} description={card.description} />
                         {(card.cardAttachments && card.cardAttachments.length > 0) && <CardDetailAttachments attachments={card.cardAttachments} />}
-                        <CardDetailActivity />
+                        {(card.comments && card.comments.length > 0) && <CardDetailActivity card={card} assignees={assignees} />}
                     </div>
                     <div className='space-y-10 mt-[5rem]'>
                         {
-                            !assignees.some(assignee => assignee.id === 4) && <div>
+                            !assignees.some(assignee => assignee.id === user.id) && <div>
                                 <h1 className='text-[1.2rem] text-[--color-grey-600] font-medium'>Suggested</h1>
                                 <CardDetailButton
                                     disabled={isJoining}
@@ -127,10 +127,15 @@ function CardDetail({
                                     }} /> Copy
                                 </CardDetailButton>
                             </CopyCardPopover>
-                            <CardDetailButton onClick={(e) => {
-                                e.stopPropagation();
-                                dispatch(clearCurrentCardDetail());
-                            }}>
+                            <CardDetailButton
+                                disabled={isDeleting}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    removeCard(card.id);
+                                    navigate(`/b/${params?.boardId}/board-detail`)
+                                    setOpenCardDetailModal(false);
+                                }}
+                            >
                                 <BsArchive /> Delete
                             </CardDetailButton>
                         </div>

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useBoardMembers } from "../../../../hooks/useBoard"
 import { useParams } from "react-router-dom"
 import { useAssignMemberToCard } from "../../../../hooks/useCard"
+import { useWebsocket } from "../../../../context/WebsocketContext"
 
 function MembersPopover({ children, assignees }) {
     return (
@@ -71,13 +72,21 @@ function MembersPopoverContent({ assignees }) {
 function MemberItem({ item, isAssignee }) {
     const { cardId } = useParams();
     const { isAssigning, assignMember } = useAssignMemberToCard();
+    const { socket } = useWebsocket();
 
     return (
         <button
             className="w-full flex items-center justify-between gap-5 p-2 rounded-lg cursor-pointer bg-[--color-grey-0] hover:bg-[--color-grey-200]"
             disabled={isAssigning}
             onClick={() => {
-                assignMember({ body: { cardId: +cardId, assigneeId: item.id } })
+                assignMember({ body: { cardId: +cardId, assigneeId: item.id } });
+                if (!isAssignee) {
+                    socket.emit('createNotification', {
+                        type: 'ASSIGNMENT',
+                        receiverId: item.id,
+                        cardId: +cardId,
+                    });
+                }
             }}
         >
             <div className="flex items-center gap-2">

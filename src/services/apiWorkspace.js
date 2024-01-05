@@ -93,3 +93,57 @@ export async function leaveWorkspace(workspaceId) {
 
   return data;
 }
+
+export async function sendInvitationWorkspace({ workspaceId, userId }) {
+  const data = await authAxios
+    .post(`/workspaces/${workspaceId}/send-invitation/${userId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
+}
+
+export async function deleteWorkspaceMember({ workspaceId, userId }) {
+  try {
+    const { data } = await authAxios.delete(`/workspaces/${workspaceId}/remove-workspace-member/${userId}`);
+    return data.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}
+
+export async function deleteWorkspace({ workspaceId }) {
+  try {
+    const { data } = await authAxios.delete(`/workspaces/${workspaceId}`);
+    return data.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function leaveWorkspace(workspaceId) {
+  const data = await authAxios
+    .delete(`/workspaces/leave-workspace/${workspaceId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
+}
+
+export async function getWorkspaceMembers(workspaceId) {
+  const res = await authAxios
+    .get(`/workspaces/${workspaceId}/members`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+
+  return res.users;
+}

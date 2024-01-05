@@ -218,19 +218,12 @@ export function useDeleteCardAttachment() {
 }
 
 export function useCopyCard() {
-    const queryClient = useQueryClient();
-    const { boardId } = useParams();
-
     const {
         mutate,
         isLoading: isCopying,
         error,
     } = useMutation({
         mutationFn: copyCard,
-        onSuccess: () => {
-            toast.success('Copy card successfully');
-            queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
-        },
         onError: (err) => toast.error(err.message),
     });
 

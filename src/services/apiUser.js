@@ -2,9 +2,7 @@ import authAxios, { getToken } from '../utils/axios';
 
 export async function getCurrentUser() {
   try {
-    console.log('hi1');
     if (getToken() === '') return null;
-    console.log('hi');
     const { data } = await authAxios.get('/users/me');
     return data.data;
   } catch (error) {

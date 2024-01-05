@@ -7,7 +7,7 @@ import {
   createNewWorkspace,
   getMyWorkspaces,
   getWorkspace,
-  patchWorkspace,
+  getWorkspaceMembers, patchWorkspace,
   deleteWorkspaceMember,
   deleteWorkspace,
   sendInvitationWorkspace,
@@ -77,6 +77,20 @@ export function useUpdateWorkspace() {
   });
 
   return { isUpdating, updateWorkspace, error };
+}
+
+export function useWorkspaceMembers(workspaceId) {
+  const {
+    isLoading,
+    data: members,
+    error,
+  } = useQuery({
+    queryKey: ['workspaceMembers', workspaceId],
+    queryFn: () => getWorkspaceMembers(workspaceId),
+    retry: false,
+    useErrorBoundary: true,
+  });
+  return { isLoading, error, members };
 }
 
 export function useDeleteWorkspaceMember() {

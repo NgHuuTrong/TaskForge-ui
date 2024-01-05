@@ -73,9 +73,8 @@ const Chat = ({ curMember, boardId }) => {
                       <div className={`flex max-w-[35rem] relative group`}>
                         <div className={`flex w-full relative ${sentByMe ? 'flex-row-reverse' : ''}`}>
                           <div
-                            className={`flex text-ellipsis rounded-3xl ${
-                              sentByMe ? 'bg-[--color-brand-600] text-white' : 'bg-[--color-grey-200]'
-                            } px-5 py-2 overflow-hidden relative z-10 max-w-[25rem]`}
+                            className={`flex text-ellipsis rounded-3xl ${sentByMe ? 'bg-[--color-brand-600] text-white' : 'bg-[--color-grey-200]'
+                              } px-5 py-2 overflow-hidden relative z-10 max-w-[25rem]`}
                           >
                             {message.content}
                           </div>
