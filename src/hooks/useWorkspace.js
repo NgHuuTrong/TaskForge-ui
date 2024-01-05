@@ -10,6 +10,7 @@ import {
   patchWorkspace,
   deleteWorkspaceMember,
   deleteWorkspace,
+  sendInvitationWorkspace,
 } from '../services/apiWorkspace';
 
 export function useWorkspaces() {
@@ -111,4 +112,21 @@ export function useDeleteWorkspace() {
   });
 
   return { removeWorkspace, isLoading };
+}
+
+export function useSendInvitation() {
+  const queryClient = useQueryClient();
+  const { workspaceId } = useParams();
+
+  const { mutate: sendInvitation, isLoading: isSending } = useMutation({
+    mutationFn: sendInvitationWorkspace,
+    onSuccess: () => {
+      toast.success('Send invitation successfully');
+      queryClient.invalidateQueries({ queryKey: ['workspace', workspaceId], exact: true });
+      queryClient.invalidateQueries({ queryKey: ['workspaces'] });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isSending, sendInvitation };
 }

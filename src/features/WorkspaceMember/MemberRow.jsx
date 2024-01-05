@@ -17,7 +17,7 @@ function MemberRow({ user, workspace, deleteWorkspaceUser }) {
         <UserDetail user={user} />
         <div className="flex items-center">
           <Button size="normal" type="icon" disabled>
-            Admin
+            {workspace.adminIds.includes(user.id) ? 'Admin' : 'Member'}
           </Button>
           <Button disabled={!isAdmin || isLoading} size="normal" type="icon" onClick={handleRemoveClick}>
             <HiXMark size={16} className="mr-2" />

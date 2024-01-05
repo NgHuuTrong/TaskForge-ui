@@ -17,9 +17,9 @@ export async function getWorkspace(workspaceId) {
   try {
     const { data } = await authAxios.get(`/workspaces/${workspaceId}`);
     const dataMem = await authAxios.get(`workspaces/${workspaceId}/members`);
-    if(dataMem)
+    if (dataMem)
       data.data.workspace.members = dataMem.data.data.users
-      return data.data.workspace;
+    return data.data.workspace;
   } catch (error) {
     console.log(error);
     throw new Error(error.message);
@@ -37,7 +37,7 @@ export async function createNewWorkspace({ name, description }) {
       console.log(err.response.data);
       throw new Error(err.response.data.message);
     });
-  console.log('createNewWorkspace', data);
+
   return data.workspace;
 }
 
@@ -50,6 +50,17 @@ export async function patchWorkspace({ workspaceId, body }) {
       throw new Error(err.response.data.message);
     });
   console.log('patchWorkspace', data);
+}
+
+export async function sendInvitationWorkspace({ workspaceId, userId }) {
+  const data = await authAxios
+    .post(`/workspaces/${workspaceId}/send-invitation/${userId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
 }
 
 export async function deleteWorkspaceMember({ workspaceId, userId }) {
@@ -67,7 +78,6 @@ export async function deleteWorkspace({ workspaceId }) {
     const { data } = await authAxios.delete(`/workspaces/${workspaceId}`);
     return data.data;
   } catch (error) {
-    console.log(error);
     throw new Error(error.message);
   }
 }
