@@ -31,7 +31,7 @@ function Notification({ notification }) {
   function renderNotificationContent() {
     switch (notification.type) {
       case 'ADD_ADMIN':
-        return <span className='text-[1.4rem]'>changed you to be Admin of workspace <Link className='cursor-pointer text-[--color-blue-700]' to='/'>
+        return <span className='text-[1.4rem]'>changed you to be Admin of workspace <Link className='cursor-pointer text-[--color-blue-700]' to={`/w/${notification?.workspace?.id}/home`}>
           {notification?.workspace?.name}
         </Link>
           <span className='text-[1.3rem] text-[--color-grey-600] ml-[0.5rem]'>{format(notification?.createdAt)}</span>

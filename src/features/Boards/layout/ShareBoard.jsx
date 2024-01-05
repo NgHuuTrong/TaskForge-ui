@@ -96,6 +96,7 @@ function ShareBoard({ creator, members, curMember, isAdmin, workspaceId }) {
               getPopupContainer={(trigger) => trigger.parentElement}
               trigger={['click']}
               dropdownRender={() => {
+                if(isLoading) return <Spinner />;
                 return (
                   <div className="max-h-[200px] overflow-y-scroll">
                     {

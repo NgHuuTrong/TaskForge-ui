@@ -3,15 +3,22 @@ import Button from '../../ui/Button';
 import UserDetail from '../../ui/UserDetail';
 import { useUser } from '../../hooks/useAuthenticate';
 import { useLeaveWorkspace } from '../../hooks/useWorkspace';
+import { useWebsocket } from '../../context/WebsocketContext';
 
 function MemberRow({ user, workspace, deleteWorkspaceUser }) {
   const { user: CurrUser, isLoading } = useUser();
   const { isLeaving, mutate: leaveWorkspace } = useLeaveWorkspace();
+  const { socket } = useWebsocket();
 
   const isAdmin = workspace.adminIds.find((admin) => admin === CurrUser.id);
 
   const handleRemoveClick = () => {
     deleteWorkspaceUser({ workspaceId: workspace.id, userId: user.id });
+    socket.emit('createNotification', {
+      type: 'REMOVE_WORKSPACE',
+      receiverId: user.id,
+      workspaceId: workspace.id,
+    });
   };
 
   return (
