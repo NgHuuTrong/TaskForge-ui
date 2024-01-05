@@ -88,5 +88,5 @@ export async function leaveBoard(boardId) {
       throw new Error(err.response.data.message);
     });
 
-  return data.board;
+  return data;
 }

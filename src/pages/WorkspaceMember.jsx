@@ -24,7 +24,7 @@ function WorkspaceMember() {
       <DetailHeader workspace={workspace} />
       <InviteMember />
       <Members users={workspace.members} workspace={workspace} deleteWorkspaceUser={deleteWorkspaceUser} />
-      <Button size="normal" type="danger" disabled={!isAdmin} onClick={handleRemove}>
+      <Button classNames='flex justify-center w-[150px]' size="normal" type="danger" disabled={!isAdmin} onClick={handleRemove}>
         Delete Workspace
       </Button>
     </Row>

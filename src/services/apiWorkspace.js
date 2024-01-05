@@ -82,3 +82,14 @@ export async function deleteWorkspace({ workspaceId }) {
   }
 }
 
+export async function leaveWorkspace(workspaceId) {
+  const data = await authAxios
+    .delete(`/workspaces/leave-workspace/${workspaceId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
+}

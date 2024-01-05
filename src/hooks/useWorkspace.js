@@ -11,6 +11,7 @@ import {
   deleteWorkspaceMember,
   deleteWorkspace,
   sendInvitationWorkspace,
+  leaveWorkspace,
 } from '../services/apiWorkspace';
 
 export function useWorkspaces() {
@@ -129,4 +130,27 @@ export function useSendInvitation() {
   });
 
   return { isSending, sendInvitation };
+}
+
+export function useLeaveWorkspace() {
+  const queryClient = useQueryClient();
+  const { workspaceId } = useParams();
+  const navigate = useNavigate();
+
+  const {
+    mutate,
+    isLoading: isLeaving,
+    error,
+  } = useMutation({
+    mutationFn: leaveWorkspace,
+    onSuccess: () => {
+      navigate('/boards');
+      toast.success('Leave from workspace successfully');
+      queryClient.invalidateQueries({ queryKey: ['workspace', workspaceId], exact: true });
+      queryClient.invalidateQueries({ queryKey: ['workspaces'] });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isLeaving, mutate, error };
 }
