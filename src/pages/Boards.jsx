@@ -26,7 +26,6 @@ function Boards() {
   if (isLoading || isLoadingUser) return <Spinner />;
 
   function renderClosedBoards() {
-    console.log('workspaces', workspaces);
     const closedBoards = [];
 
     workspaces.forEach(workspace => {

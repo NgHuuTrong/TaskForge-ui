@@ -76,7 +76,7 @@ function CardDetail({
                         {assignees.length > 0 && <CardDetailMembers members={assignees} />}
                         <CardDetailDescription cardId={card.id} description={card.description} />
                         {(card.cardAttachments && card.cardAttachments.length > 0) && <CardDetailAttachments attachments={card.cardAttachments} />}
-                        {(card.comments && card.comments.length > 0) && <CardDetailActivity card={card} assignees={assignees} />}
+                        <CardDetailActivity card={card} assignees={assignees} />
                     </div>
                     <div className='space-y-10 mt-[5rem]'>
                         {

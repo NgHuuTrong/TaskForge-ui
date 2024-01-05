@@ -10,7 +10,7 @@ function BoardCard({ board }) {
 
   useEffect(() => {
     if (user && board) {
-      setIsMember(board?.boardMembers.some(bm => bm.userId === user.id));
+      setIsMember(board?.boardMembers?.some(bm => bm.userId === user.id));
     }
   }, [user, board])
 

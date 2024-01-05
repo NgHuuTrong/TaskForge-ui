@@ -2,7 +2,7 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { FaMinus } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
 import ItemRow from '../../../ui/ItemRow';
-import { useBoard, useUpdateBoard } from '../../../hooks/useBoard';
+import { useBoard, useLeaveBoard, useUpdateBoard } from '../../../hooks/useBoard';
 import Spinner from '../../../ui/Spinner';
 import { useUser } from '../../Authenticate/useUser';
 
@@ -45,7 +45,8 @@ const items = [
 
 function MoreList({ setMoreHistory, background, curMember }) {
   const { isLoading, board } = useBoard();
-  const { isUpdating, updateBoard } = useUpdateBoard();
+  const { updateBoard } = useUpdateBoard();
+  const { mutate: leaveBoard } = useLeaveBoard()
   const { isLoading: isLoadingUser, user } = useUser();
 
   if (isLoading || isLoadingUser) return <Spinner />;
@@ -67,6 +68,8 @@ function MoreList({ setMoreHistory, background, curMember }) {
         onClick={() => {
           if (board.creatorId === user.id && item.title === 'Close board') {
             updateBoard({ boardId: board.id, body: { closed: true } });
+          } else if (board.creatorId !== user.id && item.title === 'Leave board') {
+            leaveBoard(board.id);
           } else {
             setMoreHistory((prev) => [...prev, item.children]);
           }
