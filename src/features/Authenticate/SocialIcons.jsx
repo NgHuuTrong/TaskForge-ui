@@ -1,5 +1,5 @@
 import { FacebookFilled, GoogleCircleFilled, LinkedinFilled } from '@ant-design/icons';
-import { useLoginByGoogle } from './useLogin';
+import { useLoginByGoogle } from '../../hooks/useAuthenticate';
 
 export const SocialIcons = () => {
   const { isLoading, googleLogin } = useLoginByGoogle();

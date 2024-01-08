@@ -8,6 +8,7 @@ import Workspace from '../features/Setting/Workspace';
 import UserDetail from '../ui/UserDetail';
 import Spinner from '../ui/Spinner';
 import Security from '../features/Setting/Security';
+import { useUser } from '../hooks/useAuthenticate';
 
 // const user = {
 //   fullName: 'Lâm Khánh Hòa',

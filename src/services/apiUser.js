@@ -57,3 +57,14 @@ export async function patchPassword({ currentPassword, newPassword, newPasswordC
     });
   console.log('patchPassword');
 }
+
+export async function getAllUsers() {
+  const data = await authAxios
+    .get('/users')
+    .then((response) => response.data.data)
+    .catch((err) => {
+      throw new Error(err.response.data);
+    });
+
+  return data.users;
+}

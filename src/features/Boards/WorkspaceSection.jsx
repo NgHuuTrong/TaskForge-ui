@@ -6,7 +6,7 @@ import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Logo from '../../ui/Logo';
 import CreateBoardCard from '../../ui/CreateBoardCard';
-import { useUser } from '../Authenticate/useUser';
+import { useUser } from '../../hooks/useAuthenticate';
 
 function WorkspaceSection({ workspace }) {
   const { user } = useUser();
@@ -36,14 +36,10 @@ function WorkspaceSection({ workspace }) {
         </div>
       </Row>
       <div className="flex items-center flex-wrap gap-5">
-        {
-          workspace.boards.map((board) => {
-            if (user?.id !== board.creatorId && board.closed)
-              return null;
-            return (
-              <BoardCard key={board.id} board={board} />
-            )
-          })}
+        {workspace.boards.map((board) => {
+          if (user?.id !== board.creatorId && board.closed) return null;
+          return <BoardCard key={board.id} board={board} />;
+        })}
         <CreateBoardCard initialValues={{ workspaceId: workspace.id, type: 'Workspace' }} />
       </div>
     </div>

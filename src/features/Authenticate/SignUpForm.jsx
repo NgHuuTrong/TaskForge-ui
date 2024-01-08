@@ -2,7 +2,7 @@ import { Form, Input } from 'antd';
 import Button from '../../ui/Button';
 import { SocialIcons } from './SocialIcons';
 import Logo from '../../assets/logo_blue.png';
-import { useSignup } from './useLogin';
+import { useSignup } from '../../hooks/useAuthenticate';
 
 function SignUpForm({ setIsSignIn, isSignIn }) {
   const { isLoading, signup } = useSignup();
@@ -31,10 +31,8 @@ function SignUpForm({ setIsSignIn, isSignIn }) {
       <Form className="absolute left-0 top-0 z-20 h-full w-full" onFinish={onFinish} form={form} disabled={isLoading}>
         <div className="flex h-full flex-col px-20 py-20 text-center overflow-y-scroll">
           <div className="flex w-full flex-col justify-start">
-            <img src={Logo} alt='logo' className="w-40"></img>
-            <p className="my-8 text-start text-4xl font-semibold">
-              Hey, hello👋
-            </p>
+            <img src={Logo} alt="logo" className="w-40"></img>
+            <p className="my-8 text-start text-4xl font-semibold">Hey, hello👋</p>
           </div>
 
           <Form.Item name="email" rules={[{ required: true, message: 'This field is required!' }]}>

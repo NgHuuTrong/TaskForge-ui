@@ -2,8 +2,8 @@ import { Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import FormTitle from '../features/Authenticate/FormTitle';
 import Button from '../ui/Button';
-import { useForgotPassword } from '../features/Authenticate/useLogin';
 import FormRow from '../ui/FormRow';
+import { useForgotPassword } from '../hooks/useAuthenticate';
 
 function ForgotPassword() {
   const navigate = useNavigate();

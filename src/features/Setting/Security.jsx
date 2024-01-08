@@ -1,7 +1,7 @@
 import { Form, Input } from 'antd';
 import FormRow from '../../ui/FormRow';
 import Button from '../../ui/Button';
-import { useUpdatePassword } from '../Authenticate/useUpdateUser';
+import { useUpdatePassword } from '../../hooks/useAuthenticate';
 
 function Security() {
   const { isUpdating, updatePassword } = useUpdatePassword();

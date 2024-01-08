@@ -1,10 +1,10 @@
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { FaMinus } from "react-icons/fa";
-import { IoExitOutline } from "react-icons/io5";
+import { FaMinus } from 'react-icons/fa';
+import { IoExitOutline } from 'react-icons/io5';
 import ItemRow from '../../../ui/ItemRow';
 import { useBoard, useLeaveBoard, useUpdateBoard } from '../../../hooks/useBoard';
 import Spinner from '../../../ui/Spinner';
-import { useUser } from '../../Authenticate/useUser';
+import { useUser } from '../../../hooks/useAuthenticate';
 
 const items = [
   {
@@ -32,21 +32,21 @@ const items = [
     icon: <IoExitOutline />,
     title: 'Leave board',
     des: null,
-    children: null
+    children: null,
   },
   {
     id: 4,
     icon: <FaMinus />,
     title: 'Close board',
     des: null,
-    children: null
-  }
+    children: null,
+  },
 ];
 
 function MoreList({ setMoreHistory, background, curMember }) {
   const { isLoading, board } = useBoard();
   const { updateBoard } = useUpdateBoard();
-  const { mutate: leaveBoard } = useLeaveBoard()
+  const { mutate: leaveBoard } = useLeaveBoard();
   const { isLoading: isLoadingUser, user } = useUser();
 
   if (isLoading || isLoadingUser) return <Spinner />;
@@ -75,7 +75,7 @@ function MoreList({ setMoreHistory, background, curMember }) {
           }
         }}
       />
-    )
+    );
   });
 }
 

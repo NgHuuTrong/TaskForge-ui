@@ -10,7 +10,7 @@ import Button from '../../ui/Button';
 import { useNotifications } from '../../hooks/useNotification';
 import Spinner from '../../ui/Spinner';
 import { useWebsocket } from '../../context/WebsocketContext';
-import { useUser } from '../Authenticate/useUser';
+import { useUser } from '../../hooks/useAuthenticate';
 
 function Notifications() {
   const [unreadOnly, setUnreadOnly] = useState(false);
@@ -23,14 +23,14 @@ function Notifications() {
 
   useEffect(() => {
     setMyNotifications(notifications || []);
-  }, [notifications])
+  }, [notifications]);
 
   useEffect(() => {
     socket.on('connect', () => {
       console.log('Connected!');
     });
     socket.on(`notification-${user.id}`, (notification) => {
-      setMyNotifications(myNotifications => [notification, ...myNotifications]);
+      setMyNotifications((myNotifications) => [notification, ...myNotifications]);
       setNewNotificationSignal(true);
     });
     return () => {
@@ -38,7 +38,7 @@ function Notifications() {
       socket.off('connect');
       socket.off('notification-' + user?.id);
     };
-  }, [socket, user])
+  }, [socket, user]);
 
   const handleClick = () => {
     setUnreadOnly(!unreadOnly);
@@ -56,7 +56,7 @@ function Notifications() {
         }
       }}
       dropdownRender={() => {
-        if(isLoading || isLoadingUser) return <Spinner />;
+        if (isLoading || isLoadingUser) return <Spinner />;
         return (
           <div className="min-h-[20rem] max-h-[80vh]] overflow-y-scroll w-[40rem]">
             <div className="flex items-center justify-between pl-[16px] pr-[10px] py-[22px] border-b border-b-[--color-grey-400]">
@@ -81,17 +81,14 @@ function Notifications() {
               )}
             </div>
           </div>
-        )
+        );
       }}
     >
-      <Button
-        type="icon" size="small"
-        classNames="rounded-full relative"
-      >
+      <Button type="icon" size="small" classNames="rounded-full relative">
         <AiOutlineBell color="var(--color-grey-500)" className="rotate-45 cursor-pointer text-[2.4rem]" />
-        {
-          newNotificationSignal && <div className='bg-[--color-blue-700] w-[10px] h-[10px] rounded-full absolute top-[2px] right-[2px]' />
-        }
+        {newNotificationSignal && (
+          <div className="bg-[--color-blue-700] w-[10px] h-[10px] rounded-full absolute top-[2px] right-[2px]" />
+        )}
       </Button>
     </Dropdown>
   );

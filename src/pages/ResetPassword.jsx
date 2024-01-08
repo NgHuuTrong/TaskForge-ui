@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FormRow from '../ui/FormRow';
 import Button from '../ui/Button';
 import FormTitle from '../features/Authenticate/FormTitle';
-import { useResetPassword } from '../features/Authenticate/useLogin';
+import { useResetPassword } from '../hooks/useAuthenticate';
 
 function ResetPassword() {
   const navigate = useNavigate();
