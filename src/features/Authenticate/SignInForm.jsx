@@ -1,4 +1,4 @@
-import { LockOutlined } from '@ant-design/icons';
+import { LockOutlined, UserAddOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import Button from '../../ui/Button';
 import { SocialIcons } from './SocialIcons';
@@ -59,18 +59,17 @@ function SignInForm({ setIsSignIn, isSignIn }) {
           size="large size"
           placeholder="Email"
           onChange={handleChange}
-          // prefix={<UserAddOutlined />}
-          className="mb-8"
+          prefix={<UserAddOutlined />}
+          className="px-[1.2rem] py-[0.8rem] focus-within:border-[2px] focus-within:border-[var(--color-border-focus)] mb-4"
         />
-        <Input
+        <Input.Password
           name="password"
-          type="password"
           disabled={isLoading}
           size="large size"
           placeholder="Password"
           onChange={handleChange}
           prefix={<LockOutlined />}
-          className="mb-4"
+          className="px-[1.2rem] py-[0.8rem] focus-within:border-[2px] focus-within:border-[var(--color-border-focus)] mb-4"
         />
         <Link to="/forgot-password" className="mb-8 text-end text-[1.2rem] text-[--color-brand-500]">
           Forgot password?

@@ -41,7 +41,11 @@ const renderItems = (workspaces, isLoading) => {
               '/w/' + workspace.id + '/members',
               <UsergroupAddOutlined />,
             ),
-            getItem('Settings', '/w/' + workspace.id + '/settings', <SettingOutlined />),
+            getItem(
+              <NavLink to={'/w/' + workspace.id + '/settings'}>Settings</NavLink>,
+              '/w/' + workspace.id + '/settings',
+              <SettingOutlined />,
+            ),
           ],
         ),
       );

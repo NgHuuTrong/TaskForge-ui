@@ -19,6 +19,7 @@ import ProtectedRoute from './ui/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
+import WorkspaceSettings from './pages/WorkspaceSettings';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -52,6 +53,7 @@ function App() {
                 <Route path="home" element={<Home />} />
                 <Route path="w/:workspaceId/home" element={<WorkspaceHome />} />
                 <Route path="w/:workspaceId/members" element={<WorkspaceMember />} />
+                <Route path="w/:workspaceId/settings" element={<WorkspaceSettings />} />
               </Route>
               <Route
                 element={
