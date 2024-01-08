@@ -7,14 +7,20 @@ import Heading from '../../../ui/Heading';
 import Button from '../../../ui/Button';
 import Row from '../../../ui/Row';
 import UserDetail from '../../../ui/UserDetail';
+import { useDeleteMemberFromBoard } from '../../../hooks/useBoard';
 import { useWorkspaceMembers } from '../../../hooks/useWorkspace';
 import Spinner from '../../../ui/Spinner';
 import { useAddUserToBoard } from '../../../hooks/useBoard';
 import { useParams } from 'react-router-dom';
 import { useWebsocket } from '../../../context/WebsocketContext';
 
-function MemberRow({ member, isAdmin = false, isCurrent = false }) {
+function MemberRow({ member, isAdmin = false, isCurrent = false, deleteBoardMember, boardId }) {
   const role = isAdmin ? 'Admin' : 'Member';
+  const handleSelect = (data) => {
+    if(data === 'Remove from board' && deleteBoardMember) {
+      deleteBoardMember({memberId: member.id, boardId})
+    }
+  }
   return (
     <Row>
       <UserDetail user={member.user} size="32" />
@@ -23,6 +29,7 @@ function MemberRow({ member, isAdmin = false, isCurrent = false }) {
         <Select
           defaultValue={role}
           dropdownStyle={{ width: '28rem' }}
+          onSelect={(data)=>handleSelect(data)}
           options={[
             {
               value: 'Admin',
@@ -43,8 +50,10 @@ function MemberRow({ member, isAdmin = false, isCurrent = false }) {
   );
 }
 
+function ShareBoard({ creator, members, curMember, isAdmin, boardId }) {
 function ShareBoard({ creator, members, curMember, isAdmin, workspaceId }) {
   const [openModal, setOpenModal] = useState(false);
+  const {isDeleting, deleteBoardMember} = useDeleteMemberFromBoard();
   const [wpMembers, setWpMembers] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -161,7 +170,7 @@ function ShareBoard({ creator, members, curMember, isAdmin, workspaceId }) {
           {isAdmin || <MemberRow member={curMember} isCurrent />}
           <MemberRow member={creator} isAdmin isCurrent={isAdmin} />
           {members.map((member) => (
-            <MemberRow member={member} key={member.userId} />
+            <MemberRow member={member} key={member.userId} deleteBoardMember={isAdmin ? deleteBoardMember : null} boardId={boardId}/>
           ))}
         </div>
       </Modal>

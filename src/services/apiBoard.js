@@ -12,6 +12,30 @@ export async function getMyBoards() {
   return data.boards;
 }
 
+export async function getRecentBoards() {
+  const data = await authAxios
+    .get('/boards/recent-boards')
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+  console.log('getRecentBoards', data);
+  return data.boardMembers.filter((item) => item.starred);
+}
+
+export async function getStarredBoards() {
+  const data = await authAxios
+    .get('/boards/joined-boards')
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+  console.log('getStarredBoards', data);
+  return data.boardMembers.filter((board) => board.starred);
+}
+
 export async function getBoard(boardId) {
   const data = await authAxios
     .get(`/boards/${boardId}`)
@@ -78,9 +102,9 @@ export async function patchBoard({ boardId, body }) {
   return data.board;
 }
 
-export async function leaveBoard(boardId) {
+export async function deleteBoard({ boardId }) {
   const data = await authAxios
-    .delete(`/boards/leave-board/${boardId}`)
+    .delete(`boards/${boardId}`)
     .then((response) => response.data.data)
     .catch((err) => {
       console.log(err.response.data);
@@ -124,4 +148,3 @@ export async function deleteBoard(boardId) {
 
   return data;
 }
-

@@ -57,7 +57,7 @@ function AddCardSection({ isAddCard, setIsAddCard, listId, boardId }) {
 
   return (
     <Button
-      className="mt-2 flex w-full items-center justify-center border-none bg-transparent shadow-sm hover:bg-[--color-grey-400]"
+      className="mt-2 flex w-full items-center justify-center border-none bg-transparent shadow-sm hover:bg-[--color-grey-400] static"
       onClick={() => setIsAddCard((prev) => !prev)}
       type="text"
     >

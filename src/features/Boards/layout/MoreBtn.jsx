@@ -9,7 +9,7 @@ import Button from '../../../ui/Button';
 import UserDetail from '../../../ui/UserDetail';
 
 function AboutBoard({ creator }) {
-  console.log('creator', creator)
+  console.log('creator', creator);
   return (
     <div className="flex flex-col gap-[1rem] min-w-[20rem] max-w-[30rem]">
       <div className="flex items-center gap-[0.8rem]">
@@ -38,7 +38,9 @@ function MoreBtn({ background, setBackground, creator, curMember }) {
   const renderComponent = (component) => {
     return (
       <>
-        {component === 'MoreList' && <MoreList curMember={curMember} setMoreHistory={setMoreHistory} background={background} />}
+        {component === 'MoreList' && (
+          <MoreList curMember={curMember} setMoreHistory={setMoreHistory} background={background} />
+        )}
         {component === 'ChangeBackground' && <ChangeBg setMoreHistory={setMoreHistory} />}
         {component === 'AboutBoard' && <AboutBoard creator={creator.user} />}
         {component === 'PhotoBackground' && <BgList isPhotos setBackground={setBackground} />}

@@ -54,8 +54,9 @@ const Workspaces = () => {
         );
       }}
     >
-      <Button type="icon" size="normal">
-        Workspaces <DownOutlined />
+      <Button type="icon" size="normal" classNames="w-full flex justify-between">
+        Workspaces
+        <DownOutlined />
       </Button>
     </Dropdown>
   );

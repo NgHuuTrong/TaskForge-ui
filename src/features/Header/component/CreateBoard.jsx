@@ -33,7 +33,6 @@ function CreateBoard({ template, onAddHistory, initialValues }) {
       initialValues={initialValues || { type: 'Workspace' }}
     >
       {template ? <BoardTemplate template={template} /> : <BoardBackground />}
-
       <div className="mt-[16px]">
         <FormRow label="Board name" type="ver" note="This is the name of your board.">
           <Form.Item name="name" rules={[{ required: true, message: 'This field is required!' }]}>

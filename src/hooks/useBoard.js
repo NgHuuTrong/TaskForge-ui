@@ -3,7 +3,30 @@ import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { createNewBoard, getMyBoards, getBoard, starredBoard, patchBoard, getBoardMembers, addUserToBoard, joinBoard, deleteBoard, leaveBoard } from '../services/apiBoard';
+import {
+  createNewBoard,
+  getMyBoards,
+  getBoard,
+  starredBoard,
+  patchBoard,
+  getRecentBoards,
+  getStarredBoards,
+  getBoardMembers,
+  deleteMemberFromBoard,
+  // leaveBoard,
+} from '../services/apiBoard';
+import {
+  createNewBoard,
+  getMyBoards,
+  getBoard,
+  starredBoard,
+  patchBoard,
+  getBoardMembers,
+  addUserToBoard,
+  joinBoard,
+  deleteBoard,
+  leaveBoard,
+} from '../services/apiBoard';
 
 export function useBoards() {
   const {
@@ -13,6 +36,32 @@ export function useBoards() {
   } = useQuery({
     queryKey: ['boards'],
     queryFn: getMyBoards,
+    useErrorBoundary: true,
+  });
+  return { isLoading, error, boards };
+}
+
+export function useStarredBoards() {
+  const {
+    isLoading,
+    data: boards,
+    error,
+  } = useQuery({
+    queryKey: ['starred-boards'],
+    queryFn: getStarredBoards,
+    useErrorBoundary: true,
+  });
+  return { isLoading, error, boards };
+}
+
+export function useRecentBoards() {
+  const {
+    isLoading,
+    data: boards,
+    error,
+  } = useQuery({
+    queryKey: ['recent-boards', 'boards'],
+    queryFn: getRecentBoards,
     useErrorBoundary: true,
   });
   return { isLoading, error, boards };
@@ -71,6 +120,7 @@ export function useCreateBoard() {
 }
 
 export function useStarredBoard() {
+  const queryClient = useQueryClient();
   const {
     mutate: favorBoard,
     isLoading: isFavoring,
@@ -78,6 +128,9 @@ export function useStarredBoard() {
   } = useMutation({
     mutationFn: starredBoard,
     onError: (err) => toast.error(err.message),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['starred-boards'] });
+    },
   });
 
   return { isFavoring, favorBoard, error };
@@ -187,3 +240,21 @@ export function useLeaveBoard() {
   return { isLeaving, mutate, error };
 }
 
+export function useDeleteMemberFromBoard() {
+  const { boardId } = useParams();
+  const queryClient = useQueryClient();
+
+  const {
+    mutate: deleteBoardMember,
+    isLoading: isDeleting,
+    error,
+  } = useMutation({
+    mutationFn: deleteMemberFromBoard,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isDeleting, deleteBoardMember, error };
+}

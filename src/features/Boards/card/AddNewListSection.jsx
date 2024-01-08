@@ -55,7 +55,7 @@ function AddNewListSection({ boardId }) {
 
   return (
     <Button
-      className="ml-4 flex h-fit w-[270px] items-center justify-start rounded-lg transition-all duration-300 bg-white bg-opacity-40"
+      className="ml-4 flex h-fit w-[270px] items-center justify-start rounded-lg transition-all duration-300 bg-white bg-opacity-40 static"
       type="text"
       style={{
         backgroundOpacity: 0.5
