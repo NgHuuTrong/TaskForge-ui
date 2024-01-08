@@ -27,7 +27,7 @@ export function useLogin() {
 }
 
 export function useLoginByGoogle() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     mutate: googleLogin,
@@ -36,7 +36,7 @@ export function useLoginByGoogle() {
   } = useMutation({
     mutationFn: loginByGoogle,
     onSuccess: () => {
-      // navigate('/boards', { replace: true });
+      navigate('/boards', { replace: true });
       toast.success('Sign in successfully!');
     },
     onError: (err) => {
