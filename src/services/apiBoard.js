@@ -8,7 +8,7 @@ export async function getMyBoards() {
       console.log(err.response);
       throw new Error(err.response.data);
     });
-  console.log('getMyBoards', data);
+
   return data.boards;
 }
 
@@ -20,8 +20,20 @@ export async function getBoard(boardId) {
       console.log(err.response.data);
       throw new Error(err.response.data.message);
     });
-  console.log('getBoard', data);
+
   return data.board;
+}
+
+export async function getBoardMembers(boardId, search) {
+  const data = await authAxios
+    .get(`/boards/${boardId}/members?search=${search}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data.users;
 }
 
 export async function createNewBoard({ name, workspaceId, templateId = 1, visibility = 'false' }) {
@@ -37,7 +49,7 @@ export async function createNewBoard({ name, workspaceId, templateId = 1, visibi
       console.log(err.response.data);
       throw new Error(err.response.data.message);
     });
-  console.log('createNewBoard', data);
+
   return data.board;
 }
 
@@ -51,7 +63,6 @@ export async function starredBoard({ boardId, starred }) {
       console.log(err.response.data);
       throw new Error(err.response.data.message);
     });
-  console.log('starredBoard', data);
   return data.boardMember;
 }
 
@@ -63,5 +74,54 @@ export async function patchBoard({ boardId, body }) {
       console.log(err.response.data);
       throw new Error(err.response.data.message);
     });
-  console.log('patchBoard', data);
+
+  return data.board;
 }
+
+export async function leaveBoard(boardId) {
+  const data = await authAxios
+    .delete(`/boards/leave-board/${boardId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+  return data;
+}
+
+export async function addUserToBoard({ body }) {
+  const data = await authAxios
+    .post('/boards/share-board', body)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data.board;
+}
+
+export async function joinBoard(boardId) {
+  const data = await authAxios
+    .post(`/boards/join-board/${boardId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
+}
+
+export async function deleteBoard(boardId) {
+  const data = await authAxios
+    .delete(`/boards/${boardId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
+}
+

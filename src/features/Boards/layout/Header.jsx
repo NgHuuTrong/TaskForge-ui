@@ -8,9 +8,12 @@ import VisibilityBtn from './VisibilityBtn';
 import UserDetail from '../../../ui/UserDetail';
 import LeftSection from './LeftSection';
 import ShareBoard from './ShareBoard';
+import Button from '../../../ui/Button';
+import { useJoinBoard } from '../../../hooks/useBoard';
 
 function Header({ setBackground, background, board }) {
-  const isAdmin = board.creatorId === board.curMember.userId;
+  const isAdmin = board.creatorId === board?.curMember?.userId;
+  const { isJoining, mutate: joinBoard } = useJoinBoard();
 
   return (
     <div className="sticky top-0 left-0 backdrop-blur-[6px] bg-[#0000003d]">
@@ -26,7 +29,7 @@ function Header({ setBackground, background, board }) {
               backgroundColor: '#fde3cf',
             }}
           >
-            {isAdmin || <UserDetail user={board.curMember.user} showDetail={false} size={28} />}
+            {isAdmin || (board.curMember && <UserDetail user={board.curMember.user} showDetail={false} size={28} />)}
             <div className="relative">
               <UserDetail user={board.creator.user} showDetail={false} size={28} />
               <Tooltip title="This member is admin of this board" placement="bottom">
@@ -42,7 +45,7 @@ function Header({ setBackground, background, board }) {
 
           {board.curMember && <Chat curMember={board.curMember} boardId={board.id} />}
 
-          <MoreBtn background={background} setBackground={setBackground} creator={board.creator} />
+          <MoreBtn curMember={board.curMember} background={background} setBackground={setBackground} creator={board.creator} />
 
           {board.curMember ? (
             <ShareBoard
@@ -50,11 +53,16 @@ function Header({ setBackground, background, board }) {
               members={board.boardMembers}
               curMember={board.curMember}
               isAdmin={isAdmin}
+              workspaceId={board.workspaceId}
             />
           ) : (
-            <div className="p-[5px] rounded-[4px] hover:bg-[#8896a6] cursor-pointer">
-              <span>Join board</span>
-            </div>
+            <Button
+              size='normal' type='secondary'
+              onClick={() => joinBoard(board.id)}
+              disabled={isJoining}
+            >
+              Join Board
+            </Button>
           )}
         </div>
       </div>

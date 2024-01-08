@@ -14,6 +14,7 @@ function WebsocketProvider({ children }) {
       authorization: 'Bearer ' + token,
     },
   });
+  console.log('token: ' + token);
   return <WebsocketContext.Provider value={{ socket }}>{children}</WebsocketContext.Provider>;
 }
 function useWebsocket() {

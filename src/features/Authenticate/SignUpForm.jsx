@@ -31,8 +31,10 @@ function SignUpForm({ setIsSignIn, isSignIn }) {
       <Form className="absolute left-0 top-0 z-20 h-full w-full" onFinish={onFinish} form={form} disabled={isLoading}>
         <div className="flex h-full flex-col px-20 py-20 text-center overflow-y-scroll">
           <div className="flex w-full flex-col justify-start">
-            <img src={Logo} className="w-40" alt="" />
-            <p className="my-8 text-start text-4xl font-semibold">Hey, hello👋</p>
+            <img src={Logo} alt='logo' className="w-40"></img>
+            <p className="my-8 text-start text-4xl font-semibold">
+              Hey, hello👋
+            </p>
           </div>
 
           <Form.Item name="email" rules={[{ required: true, message: 'This field is required!' }]}>

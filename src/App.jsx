@@ -61,6 +61,7 @@ function App() {
                 }
               >
                 <Route path="b/:boardId/board-detail" element={<BoardDetailLayout />} />
+                <Route path="/b/:boardId/c/:cardId/card-detail" element={<BoardDetailLayout />} />
               </Route>
               <Route path="authenticate" element={<Authenticate />} />
               <Route path="forgot-password" element={<ForgotPassword />} />

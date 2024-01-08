@@ -20,14 +20,15 @@ const options = [
 ];
 function VisibilityBtn({ board }) {
   const { updateBoard, isUpdating } = useUpdateBoard();
-  const [visibility, setVisibility] = useState(board.visibility ? 'Workspace' : 'Private');
+  const [visibility, setVisibility] = useState(board.visibility ? 'Workspace visible' : 'Private');
   const handleChange = (value) => {
     updateBoard({ boardId: board.id, body: { visibility: value === 'Workspace' } });
     setVisibility(value);
   };
+  
   return (
     <Select
-      disabled={board.curMember.userId !== board.creatorId || isUpdating}
+      disabled={board?.curMember?.userId !== board.creatorId || isUpdating}
       title="Change Visibility"
       trigger="click"
       onChange={(value) => handleChange(value)}

@@ -1,19 +1,26 @@
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addCard } from '../boardSlice';
+import { useCreateCard } from '../../../hooks/useCard';
+import toast from 'react-hot-toast';
+import { useQueryClient } from '@tanstack/react-query';
 
 const { TextArea } = Input;
 
-function AddCardSection({ isAddCard, setIsAddCard, listId }) {
-  const dispatch = useDispatch();
-  const [cardDescription, setCardDescription] = useState('');
+function AddCardSection({ isAddCard, setIsAddCard, listId, boardId }) {
+  const [cardTitle, setCardTitle] = useState('');
+  const { isCreating, createCard } = useCreateCard();
+  const queryClient = useQueryClient();
 
   const handleAddCard = () => {
-    setCardDescription('');
-    setIsAddCard(false);
-    dispatch(addCard({ listId, cardDescription }));
+    createCard({ title: cardTitle, listId }, {
+      onSuccess: () => {
+        toast.success('New card successfully created');
+        queryClient.invalidateQueries({ queryKey: ['board', boardId.toString()], exact: true });
+        setCardTitle('');
+        setIsAddCard(false);
+      }
+    })
   };
 
   if (isAddCard) {
@@ -21,8 +28,8 @@ function AddCardSection({ isAddCard, setIsAddCard, listId }) {
       <div>
         <TextArea
           className='bg-[--color-grey-300] text-[--color-grey-600]'
-          value={cardDescription}
-          onChange={(e) => setCardDescription(e.target.value)}
+          value={cardTitle}
+          onChange={(e) => setCardTitle(e.target.value)}
           placeholder="Enter a title for this card..."
           autoSize={{ minRows: 3, maxRows: 5 }}
         />
@@ -31,6 +38,7 @@ function AddCardSection({ isAddCard, setIsAddCard, listId }) {
             className="mr-2 flex items-center justify-center bg-blue-500 text-white"
             type="primary"
             onClick={handleAddCard}
+            disabled={isCreating}
           >
             Add card
           </Button>
@@ -38,6 +46,7 @@ function AddCardSection({ isAddCard, setIsAddCard, listId }) {
             className="flex items-center justify-center border-none text-[--color-grey-800]"
             type="text"
             onClick={() => setIsAddCard((prev) => !prev)}
+            disabled={isCreating}
           >
             <CloseOutlined className='text-[--color-grey-800]' />
           </Button>
