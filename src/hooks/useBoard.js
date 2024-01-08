@@ -9,23 +9,14 @@ import {
   getBoard,
   starredBoard,
   patchBoard,
-  getRecentBoards,
-  getStarredBoards,
-  getBoardMembers,
-  deleteMemberFromBoard,
-  // leaveBoard,
-} from '../services/apiBoard';
-import {
-  createNewBoard,
-  getMyBoards,
-  getBoard,
-  starredBoard,
-  patchBoard,
   getBoardMembers,
   addUserToBoard,
   joinBoard,
   deleteBoard,
   leaveBoard,
+  getStarredBoards,
+  getRecentBoards,
+  deleteMemberFromBoard,
 } from '../services/apiBoard';
 
 export function useBoards() {

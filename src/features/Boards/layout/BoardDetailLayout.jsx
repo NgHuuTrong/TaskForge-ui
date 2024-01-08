@@ -28,18 +28,6 @@ function BoardDetailLayout() {
   }, [board, isLoading]);
   if (isLoading) return <Spinner />;
 
-  if (board.closed) {
-    return (
-      <div
-        className="bg-cover h-full flex flex-col"
-        style={{ backgroundImage: `${background.startsWith('linear') ? background : 'url(' + background + ')'}` }}
-      >
-        {/* can biet isAdmin */}
-        <ClosedBoardContent boardTitle={board.name} boardId={board.id} isAdmin={true}></ClosedBoardContent>
-      </div>
-    );
-  }
-
   return (
     <div
       className="bg-cover h-full flex flex-col"

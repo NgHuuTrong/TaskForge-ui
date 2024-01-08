@@ -29,7 +29,7 @@ function WorkspaceSection({ workspace }) {
             <HiOutlineUsers size="1.2rem" />
             Members ({workspace?.workspaceMembers.length})
           </Button>
-          <Button classNames="font-semibold" size="small" type="secondary">
+          <Button to={`/w/${workspace.id}/settings`} classNames="font-semibold" size="small" type="secondary">
             <PiGearLight size="1.5rem" />
             Settings
           </Button>

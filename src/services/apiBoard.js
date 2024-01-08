@@ -102,7 +102,7 @@ export async function patchBoard({ boardId, body }) {
   return data.board;
 }
 
-export async function deleteBoard({ boardId }) {
+export async function deleteBoard(boardId) {
   const data = await authAxios
     .delete(`boards/${boardId}`)
     .then((response) => response.data.data)
@@ -137,14 +137,23 @@ export async function joinBoard(boardId) {
   return data;
 }
 
-export async function deleteBoard(boardId) {
-  const data = await authAxios
-    .delete(`/boards/${boardId}`)
+export async function deleteMemberFromBoard({ boardId, memberId }) {
+  await authAxios
+    .delete(`boards/${boardId}/remove-board-member/${memberId}`)
     .then((response) => response.data.data)
     .catch((err) => {
       console.log(err.response.data);
       throw new Error(err.response.data.message);
     });
+}
 
+export async function leaveBoard(boardId) {
+  const data = await authAxios
+    .delete(`/boards/leave-board/${boardId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
   return data;
 }

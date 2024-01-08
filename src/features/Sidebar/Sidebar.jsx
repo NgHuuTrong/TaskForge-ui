@@ -71,8 +71,7 @@ const Sidebar = () => {
   const { pathname } = useLocation();
   return (
     <Menu
-      className="sticky top-[40px] max-h-[80%] hidden w-[27.6rem] flex-col px-[1rem] md:block overflow-y-auto overflow-x-hidden"
-      defaultOpenKeys={['Templates']}
+      className="sticky top-[4rem] max-h-[85vh] hidden w-[27.6rem] flex-col px-[1rem] md:block  overflow-hidden"
       items={renderItems(workspaces, isLoading)}
       mode={'inline'}
       selectedKeys={[pathname]}
