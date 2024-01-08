@@ -3,7 +3,19 @@ import { useQuery } from '@tanstack/react-query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
-import { createNewBoard, getMyBoards, getBoard, starredBoard, patchBoard, getBoardMembers, addUserToBoard, joinBoard, deleteBoard, leaveBoard } from '../services/apiBoard';
+import {
+  createNewBoard,
+  getMyBoards,
+  getBoard,
+  starredBoard,
+  patchBoard,
+  getBoardMembers,
+  addUserToBoard,
+  joinBoard,
+  deleteBoard,
+  leaveBoard,
+  deleteMemberFromBoard,
+} from '../services/apiBoard';
 
 export function useBoards() {
   const {
@@ -187,3 +199,22 @@ export function useLeaveBoard() {
   return { isLeaving, mutate, error };
 }
 
+export function useDeleteMemberFromBoard() {
+  const { boardId } = useParams();
+  const queryClient = useQueryClient();
+
+  const {
+    mutate: deleteBoardMember,
+    isLoading: isDeleting,
+    error,
+  } = useMutation({
+    mutationFn: deleteMemberFromBoard,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
+      toast.success('Delete user successfully');
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isDeleting, deleteBoardMember, error };
+}

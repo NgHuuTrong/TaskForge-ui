@@ -125,3 +125,12 @@ export async function deleteBoard(boardId) {
   return data;
 }
 
+export async function deleteMemberFromBoard({ boardId, memberId }) {
+  await authAxios
+    .delete(`boards/${boardId}/remove-board-member/${memberId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+}

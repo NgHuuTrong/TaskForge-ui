@@ -45,7 +45,12 @@ function Header({ setBackground, background, board }) {
 
           {board.curMember && <Chat curMember={board.curMember} boardId={board.id} />}
 
-          <MoreBtn curMember={board.curMember} background={background} setBackground={setBackground} creator={board.creator} />
+          <MoreBtn
+            curMember={board.curMember}
+            background={background}
+            setBackground={setBackground}
+            creator={board.creator}
+          />
 
           {board.curMember ? (
             <ShareBoard
@@ -54,13 +59,10 @@ function Header({ setBackground, background, board }) {
               curMember={board.curMember}
               isAdmin={isAdmin}
               workspaceId={board.workspaceId}
+              inviteToken={board.inviteToken}
             />
           ) : (
-            <Button
-              size='normal' type='secondary'
-              onClick={() => joinBoard(board.id)}
-              disabled={isJoining}
-            >
+            <Button size="normal" type="secondary" onClick={() => joinBoard(board.id)} disabled={isJoining}>
               Join Board
             </Button>
           )}

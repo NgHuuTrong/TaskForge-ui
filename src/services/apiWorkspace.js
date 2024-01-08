@@ -17,8 +17,7 @@ export async function getWorkspace(workspaceId) {
   try {
     const { data } = await authAxios.get(`/workspaces/${workspaceId}`);
     const dataMem = await authAxios.get(`workspaces/${workspaceId}/members`);
-    if (dataMem)
-      data.data.workspace.members = dataMem.data.data.users
+    if (dataMem) data.data.workspace.members = dataMem.data.data.users;
     return data.data.workspace;
   } catch (error) {
     console.log(error);

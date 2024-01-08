@@ -19,12 +19,13 @@ import ProtectedRoute from './ui/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
+import InviteWorkSpacePage from './pages/Invite/InvteWorkSpacePage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      staleTime: 5 * 1000
+      staleTime: 5 * 1000,
     },
   },
 });
@@ -62,7 +63,7 @@ function App() {
               >
                 <Route path="b/:boardId/board-detail" element={<BoardDetailLayout />} />
                 <Route path="/b/:boardId/c/:cardId/card-detail" element={<BoardDetailLayout />} />
-            </Route>
+              </Route>
               <Route path="authenticate" element={<Authenticate />} />
               <Route path="forgot-password" element={<ForgotPassword />} />
               <Route path="reset-password" element={<ResetPassword />} />
@@ -74,6 +75,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="w/invite/:token" element={<InviteWorkSpacePage />} />
             </Routes>
           </BrowserRouter>
           <Toaster
