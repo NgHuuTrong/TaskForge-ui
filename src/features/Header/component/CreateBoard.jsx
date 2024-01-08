@@ -40,11 +40,6 @@ function CreateBoard({ template, onAddHistory, initialValues }) {
             <Input placeholder="Your board" />
           </Form.Item>
         </FormRow>
-        <FormRow label="Board name" type="ver" note="This is the name of your board.">
-          <Form.Item name="name" rules={[{ required: true, message: 'This field is required!' }]}>
-            <Input placeholder="Your board" />
-          </Form.Item>
-        </FormRow>
       </div>
       <BoardDetail />
       <div className="flex flex-col gap-[8px] mt-[16px]">

@@ -1,4 +1,4 @@
-import { LockOutlined, UserAddOutlined } from '@ant-design/icons';
+import { LockOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import Button from '../../ui/Button';
 import { SocialIcons } from './SocialIcons';
@@ -15,14 +15,14 @@ function SignInForm({ setIsSignIn, isSignIn }) {
   const navigate = useNavigate();
 
   // 1. Load the authenticated user
-  const { isLoading: loadAuth, isAuthenticated } = useUser();
+  const { isLoading: loadAuth, user } = useUser();
   // navigate(0);
   // 2. If there is NO authenticated user, redirect to the /login
   useEffect(
     function () {
-      if (isAuthenticated && !loadAuth) navigate('/boards', { replace: true });
+      if (user && !loadAuth) navigate('/boards', { replace: true });
     },
-    [isAuthenticated, loadAuth, navigate],
+    [user, loadAuth, navigate],
   );
 
   const handleChange = (e) => {
@@ -60,7 +60,7 @@ function SignInForm({ setIsSignIn, isSignIn }) {
           size="large size"
           placeholder="Email"
           onChange={handleChange}
-          prefix={<UserAddOutlined />}
+          // prefix={<UserAddOutlined />}
           className="mb-8"
         />
         <Input
@@ -82,7 +82,7 @@ function SignInForm({ setIsSignIn, isSignIn }) {
         >
           Sign in
         </Button>
-        <SocialIcons></SocialIcons>
+        <SocialIcons />
         <span className="mt-12 text-center text-[1.2rem]">
           {'Do you have an account? '}
           <button type="button" className="text-[--color-brand-500]" onClick={() => setIsSignIn((prev) => !prev)}>

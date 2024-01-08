@@ -5,8 +5,9 @@ import { useLocalStorageState } from '../hooks/useLocalStorageState';
 const WebsocketContext = createContext();
 
 function WebsocketProvider({ children }) {
-  const [token, setToken] = useLocalStorageState(
+  const [token] = useLocalStorageState(
     localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null,
+    'token',
   );
   const socket = io('http://localhost:3000', {
     extraHeaders: {

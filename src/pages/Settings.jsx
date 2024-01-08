@@ -8,6 +8,7 @@ import Workspace from '../features/Setting/Workspace';
 import UserDetail from '../ui/UserDetail';
 import { useUser } from '../features/Authenticate/useUser';
 import Spinner from '../ui/Spinner';
+import Security from '../features/Setting/Security';
 
 // const user = {
 //   fullName: 'Lâm Khánh Hòa',
@@ -47,8 +48,8 @@ import Spinner from '../ui/Spinner';
 // };
 
 function Settings() {
-  const {user, isLoading} = useUser()
-  if (isLoading) return <Spinner />
+  const { user, isLoading } = useUser();
+  if (isLoading) return <Spinner />;
   return (
     <div className="bg-[--color-grey-0] min-h-screen">
       <Header />
@@ -62,7 +63,10 @@ function Settings() {
             <Tabs.TabPane tab="Profile and Visibility" key={0}>
               <Profile user={user} />
             </Tabs.TabPane>
-            <Tabs.TabPane tab="Workspace" key={1}>
+            <Tabs.TabPane tab="Security" key={1}>
+              <Security />
+            </Tabs.TabPane>
+            <Tabs.TabPane tab="Workspace" key={2}>
               <Workspace user={user} />
             </Tabs.TabPane>
           </Tabs>

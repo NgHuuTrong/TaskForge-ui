@@ -2,9 +2,7 @@ import authAxios, { getToken } from '../utils/axios';
 
 export async function getCurrentUser() {
   try {
-    console.log('hi1');
-    if (getToken() === '') return null;
-    console.log('hi');
+    if (!getToken()) return null;
     const { data } = await authAxios.get('/users/me');
     return data.data;
   } catch (error) {
@@ -39,4 +37,23 @@ export async function updateCurrentUser({ username, bio, file }) {
     console.log(error);
     throw new Error(error.message);
   }
+}
+
+export async function patchPassword({ currentPassword, newPassword, newPasswordConfirm }) {
+  await authAxios
+    .patch('/auth/update-password', {
+      currentPassword,
+      newPassword,
+      newPasswordConfirm,
+    })
+    .then((response) => response.data.data)
+    .then((data) => {
+      console.log(data);
+      localStorage.setItem('token', JSON.stringify(data.accessToken));
+    })
+    .catch((err) => {
+      console.log(err);
+      throw new Error(err.response.data.message);
+    });
+  console.log('patchPassword');
 }

@@ -25,8 +25,6 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       staleTime: 5 * 1000,
-      refetchOnWindowFocus: false,
-      staleTime: 5 * 1000,
     },
   },
 });
@@ -66,7 +64,7 @@ function App() {
               </Route>
               <Route path="authenticate" element={<Authenticate />} />
               <Route path="forgot-password" element={<ForgotPassword />} />
-              <Route path="reset-password" element={<ResetPassword />} />
+              <Route path="reset-password/:token" element={<ResetPassword />} />
               <Route
                 path="u/settings"
                 element={

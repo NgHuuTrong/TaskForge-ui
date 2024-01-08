@@ -1,7 +1,7 @@
 function FormRow({ label, note, error, children, isCompulsory = false, type = 'hor' }) {
   const types = {
     ver: 'flex flex-col gap-[0.4rem] py-[0.8rem]',
-    hor: 'grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] py-[1.2rem]',
+    hor: 'flex items-center justify-center gap-[2.4rem] py-[1.2rem]',
   };
   return (
     <div className={types[type]}>

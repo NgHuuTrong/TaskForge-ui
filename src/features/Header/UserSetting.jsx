@@ -7,15 +7,17 @@ import DarkModeToggle from '../../ui/DarkModeToggle';
 import UserDetail from '../../ui/UserDetail';
 
 import { useUser } from '../Authenticate/useUser';
+import { useLogout } from '../Authenticate/useLogout';
 
 const UserSetting = () => {
   const { user, isLoading } = useUser();
+  const { logout, isLoading: isLogout } = useLogout();
   return (
     <Dropdown
       getPopupContainer={(trigger) => trigger.parentElement}
       placement="bottomRight"
       trigger={['click']}
-      disabled={isLoading}
+      disabled={isLoading || isLogout}
       dropdownRender={() => (
         <div>
           <div className="flex flex-col border-b border-b-[--color-grey-400]">
@@ -44,7 +46,7 @@ const UserSetting = () => {
               <DarkModeToggle />
             </div>
           </div>
-          <Button type="icon" classNames="text-start [box-shadow:none] py-[8px]">
+          <Button type="icon" classNames="text-start [box-shadow:none] py-[8px]" onClick={() => logout()}>
             Log out
           </Button>
         </div>

@@ -19,8 +19,15 @@ authAxios.interceptors.request.use((config) => {
   return config;
 });
 
-authAxios.interceptors.response.use((response) => {
-  return response;
-});
+authAxios.interceptors.response.use(
+  (response) => response,
+  function (error) {
+    if (error?.response?.status === 401) {
+      localStorage.setItem('token', null);
+      authAxios.defaults.headers.Authorization = null;
+    }
+    return Promise.reject(error);
+  },
+);
 
 export default authAxios;

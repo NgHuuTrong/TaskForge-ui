@@ -199,6 +199,11 @@ h6 {
 img {
   @apply max-w-full opacity-[var(--image-opacity)] grayscale-[var(--image-grayscale)];
 }
+
+a:hover {
+  @apply text-[var(--color-border-focus)];
+}
+
 .ant-form {
   color: var(--color-text) !important;
 }
@@ -290,7 +295,7 @@ img {
 }
 
 .ant-input {
-  @apply px-[1.2rem] py-[0.8rem] bg-[var(--color-grey-0)] text-[var(--color-grey-600)] border-[var(--color-grey-300)] rounded placeholder:text-[var(--color-grey-600)];
+  @apply px-[1.2rem] py-[0.8rem] bg-[var(--color-grey-0)] text-[var(--color-text)] border-[var(--color-grey-300)] rounded placeholder:text-[var(--color-subtext)];
 }
 
 .ant-input:hover {
