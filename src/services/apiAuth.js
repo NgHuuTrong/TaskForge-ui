@@ -4,7 +4,6 @@ export const login = async ({ email, password }) => {
   const data = await authAxios
     .post('/auth/signin', { email, password })
     .then((response) => {
-      console.log(response);
       return response.data.data;
     })
     .then((data) => {
@@ -18,15 +17,21 @@ export const login = async ({ email, password }) => {
   return data;
 };
 
-export const loginByGoogle = async () => {
-  await authAxios
-    .get('/auth/google')
-    .then((res) => console.log('loginByGoogle', res))
+export const loginByGoogle = async (body) => {
+  const data = await authAxios
+    .post('/auth/google/signin', body)
+    .then((response) => {
+      return response.data.data;
+    })
+    .then((data) => {
+      localStorage.setItem('token', JSON.stringify(data.accessToken));
+    })
     .catch((err) => {
       console.log(err);
       throw new Error(err);
     });
-  console.log('loginByGoogle');
+
+  return data;
 };
 
 export const signup = async ({ username, email, name, password, passwordConfirm }) => {
