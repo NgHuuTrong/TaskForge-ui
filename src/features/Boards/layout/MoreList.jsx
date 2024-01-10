@@ -1,10 +1,12 @@
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { FaMinus } from 'react-icons/fa';
 import { IoExitOutline } from 'react-icons/io5';
+import { LuCreditCard } from "react-icons/lu";
 import ItemRow from '../../../ui/ItemRow';
 import { useBoard, useLeaveBoard, useUpdateBoard } from '../../../hooks/useBoard';
 import Spinner from '../../../ui/Spinner';
 import { useUser } from '../../../hooks/useAuthenticate';
+import { useState } from 'react';
 
 const items = [
   {
@@ -29,13 +31,20 @@ const items = [
   },
   {
     id: 3,
+    icon: <LuCreditCard />,
+    title: 'My card',
+    des: null,
+    children: null,
+  },
+  {
+    id: 4,
     icon: <IoExitOutline />,
     title: 'Leave board',
     des: null,
     children: null,
   },
   {
-    id: 4,
+    id: 5,
     icon: <FaMinus />,
     title: 'Close board',
     des: null,
@@ -43,7 +52,7 @@ const items = [
   },
 ];
 
-function MoreList({ setMoreHistory, background, curMember }) {
+function MoreList({ setMoreHistory, background, curMember, isMyCard, setIsMyCard }) {
   const { isLoading, board } = useBoard();
   const { updateBoard } = useUpdateBoard();
   const { mutate: leaveBoard } = useLeaveBoard();
@@ -70,10 +79,13 @@ function MoreList({ setMoreHistory, background, curMember }) {
             updateBoard({ boardId: board.id, body: { closed: true } });
           } else if (board.creatorId !== user.id && item.title === 'Leave board') {
             leaveBoard(board.id);
+          } else if (item.title === "My card") {
+            setIsMyCard(isMyCard => !isMyCard);
           } else {
             setMoreHistory((prev) => [...prev, item.children]);
           }
         }}
+        isMyCard={isMyCard}
       />
     );
   });

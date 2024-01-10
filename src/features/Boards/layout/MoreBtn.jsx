@@ -9,7 +9,6 @@ import Button from '../../../ui/Button';
 import UserDetail from '../../../ui/UserDetail';
 
 function AboutBoard({ creator }) {
-  console.log('creator', creator);
   return (
     <div className="flex flex-col gap-[1rem] min-w-[20rem] max-w-[30rem]">
       <div className="flex items-center gap-[0.8rem]">
@@ -32,14 +31,15 @@ function AboutBoard({ creator }) {
   );
 }
 
-function MoreBtn({ background, setBackground, creator, curMember }) {
+function MoreBtn({ background, setBackground, creator, curMember, isMyCard, setIsMyCard }) {
   const [moreHistory, setMoreHistory] = useState([{ title: null, component: 'MoreList' }]);
 
   const renderComponent = (component) => {
     return (
       <>
         {component === 'MoreList' && (
-          <MoreList curMember={curMember} setMoreHistory={setMoreHistory} background={background} />
+          <MoreList curMember={curMember} setMoreHistory={setMoreHistory} background={background} isMyCard={isMyCard}
+            setIsMyCard={setIsMyCard} />
         )}
         {component === 'ChangeBackground' && <ChangeBg setMoreHistory={setMoreHistory} />}
         {component === 'AboutBoard' && <AboutBoard creator={creator.user} />}

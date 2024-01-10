@@ -4,18 +4,23 @@ import { MdAttachFile } from 'react-icons/md';
 import UserDetail from '../../../ui/UserDetail';
 import { useDeleteCard } from '../../../hooks/useCard';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../../hooks/useAuthenticate';
+import Spinner from '../../../ui/Spinner';
 
-function Card({ listId, boardId, card, setMoveCardId, provided, setOpenCardDetailModal }) {
+function Card({ listId, boardId, card, setMoveCardId, provided, setOpenCardDetailModal, isMyCard }) {
   const { id, title, cardAttachments, comments, cardAssignees } = card;
   const assignees = cardAssignees?.map((cardAssignee) => {
     return cardAssignee.assignee;
   });
   const { isDeleting, removeCard } = useDeleteCard();
+  const { isLoading, user } = useUser();
   const navigate = useNavigate();
+
+  if(isLoading) return <Spinner />;
 
   return (
     card && <div
-      className="group static mb-2 flex w-full flex-col rounded-lg bg-[--color-grey-200] border p-4 pr-8 shadow-md"
+      className={`group static mb-2 flex w-full flex-col rounded-lg bg-[--color-grey-200] border-2 border-[--color-grey-700] p-4 pr-8 shadow-md ${(isMyCard && !card?.cardAssignees?.some(c => c.assigneeId === user.id)) && 'opacity-40'}`}
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}

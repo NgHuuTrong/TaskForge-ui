@@ -17,7 +17,7 @@ function BoardDetailLayout() {
   const [background, setBackground] = useState(defaultBg);
   const [listsOrder, setListsOrder] = useState([]);
   const [lists, setLists] = useState([]);
-  console.log(board);
+  const [isMyCard, setIsMyCard] = useState(false);
 
   useEffect(() => {
     if (!isLoading) {
@@ -25,7 +25,7 @@ function BoardDetailLayout() {
       setLists(board.lists);
       setListsOrder(board.listsOrder);
     }
-  }, [board, isLoading]);
+  }, [board, isLoading, isMyCard]);
   if (isLoading) return <Spinner />;
 
   return (
@@ -35,7 +35,7 @@ function BoardDetailLayout() {
     >
       {!board?.closed ? (
         <>
-          <Header setBackground={setBackground} background={background} board={board} />
+          <Header setBackground={setBackground} background={background} board={board} isMyCard={isMyCard} setIsMyCard={setIsMyCard} />
           <div className="flex-grow overflow-x-scroll">
             <BoardContent
               id={board.id}
@@ -43,6 +43,7 @@ function BoardDetailLayout() {
               listsOrder={listsOrder}
               setLists={setLists}
               setListsOrder={setListsOrder}
+              isMyCard={isMyCard}
             />
           </div>
         </>
