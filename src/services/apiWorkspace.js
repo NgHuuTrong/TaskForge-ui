@@ -104,3 +104,28 @@ export async function getWorkspaceMembers(workspaceId) {
 
   return res.users;
 }
+
+export async function getWorkspaceByToken(token) {
+  console.log(token)
+  const res = await authAxios
+    .get(`/workspaces/by-token/${token}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+
+  return res.workspace
+}
+
+export async function joinWorkspace(workspaceId) {
+  const data = await authAxios
+    .post(`/workspaces/join-workspace/${workspaceId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
+}

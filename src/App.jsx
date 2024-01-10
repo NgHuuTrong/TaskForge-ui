@@ -20,6 +20,7 @@ import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
 import InviteWorkSpacePage from './pages/Invite/InvteWorkSpacePage';
+import InviteBoardPage from './pages/Invite/InviteBoardPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -75,7 +76,9 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="w/invite/:token" element={<InviteWorkSpacePage />} />
+              <Route path="w/invite/:token" element={<ProtectedRoute><InviteWorkSpacePage /></ProtectedRoute>}/>
+              <Route path="b/invite/:token" element={<ProtectedRoute><InviteBoardPage /></ProtectedRoute>}/>
+              
             </Routes>
           </BrowserRouter>
           <Toaster

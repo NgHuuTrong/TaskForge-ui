@@ -15,14 +15,13 @@ function WorkspaceMember() {
   const handleRemove = () => {
     removeWorkspace(workspace.id)
   }
-  
   if (isLoading || isLoadingUser || isLoadingDelete) return <Spinner />;
   const isAdmin = workspace.adminIds.find((admin) => admin === CurrUser.id);
   
   return (
     <Row type="ver" classNames="pt-[2rem] px-[2rem]">
       <DetailHeader workspace={workspace} />
-      <InviteMember />
+      <InviteMember inviteToken = {workspace.inviteToken} />
       <Members users={workspace.members} workspace={workspace} deleteWorkspaceUser={deleteWorkspaceUser} />
       <Button classNames='flex justify-center w-[150px]' size="normal" type="danger" disabled={!isAdmin} onClick={handleRemove}>
         Delete Workspace

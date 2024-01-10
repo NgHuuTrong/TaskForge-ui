@@ -14,7 +14,6 @@ import { useJoinBoard } from '../../../hooks/useBoard';
 function Header({ setBackground, background, board }) {
   const isAdmin = board.creatorId === board?.curMember?.userId;
   const { isJoining, mutate: joinBoard } = useJoinBoard();
-
   return (
     <div className="sticky top-0 left-0 backdrop-blur-[6px] bg-[#0000003d]">
       <div className="flex justify-between p-[10px]">

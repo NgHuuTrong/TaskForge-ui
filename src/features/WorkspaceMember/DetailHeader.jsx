@@ -5,10 +5,12 @@ import Heading from '../../ui/Heading';
 import { Dropdown, Input, Modal } from 'antd';
 import { useEffect, useState } from 'react';
 import Row from '../../ui/Row';
+import copy from 'clipboard-copy';
 import { IoMdAttach } from 'react-icons/io';
 import { useUsers } from '../../hooks/useUser';
 import UserDetail from '../../ui/UserDetail';
 import { useSendInvitation } from '../../hooks/useWorkspace';
+import toast from 'react-hot-toast';
 
 function DetailHeader({ workspace }) {
   const [openModal, setOpenModal] = useState(false);
@@ -17,6 +19,18 @@ function DetailHeader({ workspace }) {
 
   const { isLoading, users } = useUsers();
   const { isSending, sendInvitation } = useSendInvitation();
+
+  const domain = window.location.host;
+
+  const handleCopyLink = async () => {
+    try {
+      await copy(domain + '/w/invite/' + workspace.inviteToken);
+      toast.success('Copy to clipboard successfully');
+    } catch (err) {
+      console.error('Failed to copy to clipboard', err);
+      toast.error('Cannot copy invite link');
+    }
+  };
 
   useEffect(() => {
     if (users && users.length > 0) {
@@ -99,7 +113,7 @@ function DetailHeader({ workspace }) {
                   Disable Link
                 </Button>
               </div>
-              <Button type="icon" size="normal">
+              <Button type="icon" size="normal" onClick={()=>handleCopyLink()}>
                 <IoMdAttach className="rotate-45" />
                 <span className="ml-[0.6rem]">Copy link</span>
               </Button>
@@ -108,7 +122,7 @@ function DetailHeader({ workspace }) {
         </Modal>
       </div>
       <hr className="border-[--color-grey-300] my-[1.6rem]" />
-      <Heading as="h3">Workspace members (30)</Heading>
+      <Heading as="h3">Workspace members ({workspace.members.length})</Heading>
       <Heading as="h5" classNames="font-normal">
         Workspace members can view and join all Workspace visible boards and create new boards in the Workspace.
       </Heading>

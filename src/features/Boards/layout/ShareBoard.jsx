@@ -67,13 +67,12 @@ function ShareBoard({ creator, members, curMember, isAdmin, workspaceId, inviteT
   const domain = window.location.host;
 
   const handleDeleteBoardMember = (memberId) => {
-    console.log(memberId);
     deleteBoardMember({ boardId, memberId });
   };
 
   const handleCopyLink = async () => {
     try {
-      await copy(domain + '/w/invite/' + inviteToken);
+      await copy(domain + '/b/invite/' + inviteToken);
       toast.success('Copy to clipboard successfully');
     } catch (err) {
       console.error('Failed to copy to clipboard', err);

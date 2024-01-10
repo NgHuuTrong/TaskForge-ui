@@ -8,6 +8,7 @@ import Spinner from '../ui/Spinner';
 
 function WorkspaceHome() {
   const { isLoading, workspace } = useWorkspace();
+  console.log(workspace);
   if (isLoading) return <Spinner />;
   return (
     <Row type="ver" classNames="pt-[2rem] px-[2rem]">

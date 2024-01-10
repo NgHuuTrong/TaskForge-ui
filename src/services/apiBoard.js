@@ -9,7 +9,19 @@ export async function getMyBoards() {
       throw new Error(err.response.data);
     });
 
-  return data.boards;
+  return data.boardMembers;
+}
+
+export async function getRecentBoards() {
+  const data = await authAxios
+    .get('/boards/recent-boards')
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+  console.log(data.boardMembers)
+  return data.boardMembers;
 }
 
 export async function getBoard(boardId) {
@@ -133,4 +145,16 @@ export async function deleteMemberFromBoard({ boardId, memberId }) {
       console.log(err.response.data);
       throw new Error(err.response.data.message);
     });
+}
+
+export async function getBoardByToken(token) {
+  const res = await authAxios
+    .get(`/boards/by-token/${token}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+  
+  return res.board
 }
