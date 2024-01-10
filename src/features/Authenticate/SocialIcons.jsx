@@ -1,10 +1,10 @@
-import { FacebookFilled, GoogleCircleFilled, LinkedinFilled } from '@ant-design/icons';
-import { useLoginByGoogle } from './useLogin';
-import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { FacebookFilled, GoogleCircleFilled, LinkedinFilled } from '@ant-design/icons';
+import { useGoogleLogin } from '@react-oauth/google';
+import { useLoginByGoogle } from '../../hooks/useAuthenticate';
 
 export const SocialIcons = () => {
-  const { isLoading, googleLogin } = useLoginByGoogle();
+  const { googleLogin } = useLoginByGoogle();
 
   const login = useGoogleLogin({
     onSuccess: async (codeResponse) => {
