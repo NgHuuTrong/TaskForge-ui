@@ -4,53 +4,58 @@ import { Tabs } from 'antd';
 import Header from '../features/Header/Header';
 import Profile from '../features/Setting/Profile';
 import Workspace from '../features/Setting/Workspace';
-import users from '../data/users.json';
+// import users from '../data/users.json';
 import UserDetail from '../ui/UserDetail';
+import Spinner from '../ui/Spinner';
+import Security from '../features/Setting/Security';
+import { useUser } from '../hooks/useAuthenticate';
 
-const user = {
-  fullName: 'Lâm Khánh Hòa',
-  username: 'hoalamkhanh',
-  avatarPath:
-    'https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0',
-  workspace: [
-    {
-      title: 'Workspace 1',
-      key: '1',
-      children: [
-        {
-          title: 'Board 1-1',
-          key: '1-1',
-        },
-        {
-          title: 'Board 1-2',
-          key: '1-2',
-        },
-      ],
-    },
-    {
-      title: 'Workspace 2',
-      key: '2',
-      children: [
-        {
-          title: 'Board 2-1',
-          key: '2-1',
-        },
-        {
-          title: 'Board 2-2',
-          key: '2-2',
-        },
-      ],
-    },
-  ],
-};
+// const user = {
+//   fullName: 'Lâm Khánh Hòa',
+//   username: 'hoalamkhanh',
+//   avatarPath:
+//     'https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0',
+//   workspace: [
+//     {
+//       title: 'Workspace 1',
+//       key: '1',
+//       children: [
+//         {
+//           title: 'Board 1-1',
+//           key: '1-1',
+//         },
+//         {
+//           title: 'Board 1-2',
+//           key: '1-2',
+//         },
+//       ],
+//     },
+//     {
+//       title: 'Workspace 2',
+//       key: '2',
+//       children: [
+//         {
+//           title: 'Board 2-1',
+//           key: '2-1',
+//         },
+//         {
+//           title: 'Board 2-2',
+//           key: '2-2',
+//         },
+//       ],
+//     },
+//   ],
+// };
 
 function Settings() {
+  const { user, isLoading } = useUser();
+  if (isLoading) return <Spinner />;
   return (
     <div className="bg-[--color-grey-0] min-h-screen">
       <Header />
       <div className="pl-[48px] pr-[48px]">
         <div className="pt-[100px] pb-[26px]">
-          <UserDetail user={users[0]} size={40} />
+          <UserDetail user={user} size={40} />
         </div>
 
         <div>
@@ -58,7 +63,10 @@ function Settings() {
             <Tabs.TabPane tab="Profile and Visibility" key={0}>
               <Profile user={user} />
             </Tabs.TabPane>
-            <Tabs.TabPane tab="Workspace" key={1}>
+            <Tabs.TabPane tab="Security" key={1}>
+              <Security />
+            </Tabs.TabPane>
+            <Tabs.TabPane tab="Workspace" key={2}>
               <Workspace user={user} />
             </Tabs.TabPane>
           </Tabs>

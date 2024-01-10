@@ -11,7 +11,7 @@ function CardModal({
         title={title}
         open={open}
         onOk={onOk}
-        okButtonProps={{ type: 'primary', className: 'bg-sky-500' }}
+        okButtonProps={{ type: 'primary', className: 'bg-sky-500 text-white' }}
         onCancel={onCancel}
     >
         {children}

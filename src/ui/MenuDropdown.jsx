@@ -17,12 +17,12 @@ function Header({ title, onBack, onHide }) {
   );
 }
 
-function MenuDropdown({ onBack, onReset, history, renderComponent, children }) {
+function MenuDropdown({ onBack, onReset, history, renderComponent, children, placement = 'bottomLeft' }) {
   const [open, setOpen] = useState(false);
   const current = history[history.length - 1];
 
   const handleBackMenu = () => {
-    onBack();
+    if (history.length > 1) onBack();
   };
 
   const handleResetMenu = () => {
@@ -32,14 +32,15 @@ function MenuDropdown({ onBack, onReset, history, renderComponent, children }) {
 
   return (
     <Dropdown
+      placement={placement}
       open={open}
       onOpenChange={handleResetMenu}
-      //getPopupContainer={(trigger) => trigger.parentElement}
+      getPopupContainer={(trigger) => trigger.parentElement}
       trigger={['click']}
       dropdownRender={() => (
         <div className="w-[304px]">
           {current.title && <Header title={current.title} onBack={handleBackMenu} onHide={handleResetMenu} />}
-          <div style={{ marginTop: current.title && '4.5rem', overflow: 'hidden auto', maxHeight: '70vh' }}>
+          <div style={{ marginTop: current.title && '4.5rem', overflow: 'hidden auto', maxHeight: '75vh' }}>
             {renderComponent(current.component)}
           </div>
         </div>

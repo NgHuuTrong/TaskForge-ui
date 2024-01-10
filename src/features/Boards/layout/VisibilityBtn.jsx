@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select } from 'antd';
 import { AiOutlineLock } from 'react-icons/ai';
 import { BsPeople } from 'react-icons/bs';
 
 import OptionRow from '../../../ui/OptionRow';
+import { useUpdateBoard } from '../../../hooks/useBoard';
 
 const options = [
   {
@@ -17,13 +18,21 @@ const options = [
     des: 'All members of this workspace can see and edit this board.',
   },
 ];
-function VisibilityBtn({ visibility, setVisibility }) {
+function VisibilityBtn({ board }) {
+  const { updateBoard, isUpdating } = useUpdateBoard();
+  const [visibility, setVisibility] = useState(board.visibility ? 'Workspace visible' : 'Private');
+  const handleChange = (value) => {
+    updateBoard({ boardId: board.id, body: { visibility: value === 'Workspace' } });
+    setVisibility(value);
+  };
+  
   return (
     <Select
+      disabled={board?.curMember?.userId !== board.creatorId || isUpdating}
       title="Change Visibility"
       trigger="click"
-      onSelect={(value) => setVisibility(value)}
-      defaultValue={visibility}
+      onChange={(value) => handleChange(value)}
+      value={visibility}
       optionLabelProp="value"
       dropdownStyle={{ width: '26rem' }}
       suffixIcon={null}

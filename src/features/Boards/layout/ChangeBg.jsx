@@ -5,15 +5,25 @@ import { PiSelectionBackground } from 'react-icons/pi';
 import bgColor from '../../../data/bgColor.json';
 import bgImage from '../../../data/bgImage.json';
 import Button from '../../../ui/Button';
+import { useUpdateBoard } from '../../../hooks/useBoard';
+import { useParams } from 'react-router-dom';
 
 export function BgList({ isPhotos, setBackground }) {
+  const { boardId } = useParams();
+  const { updateBoard, isUpdating } = useUpdateBoard();
   const listBackground = isPhotos ? bgImage : bgColor;
+  const handleBackground = (background) => {
+    console.log(background);
+    updateBoard({ boardId, body: { background: background } });
+    setBackground(background);
+  };
   return (
     <div className="flex flex-col gap-[10px] w-full">
       <div className="flex flex-wrap justify-between gap-[10px] w-full">
         {listBackground.map((background) => (
-          <div
-            onClick={() => setBackground(background.backgroundPath)}
+          <button
+            disabled={isUpdating}
+            onClick={() => handleBackground(background.backgroundPath)}
             key={background.key}
             className="flex h-[9rem] w-[48%] rounded-[8px] hover:opacity-70 cursor-pointer"
             style={{

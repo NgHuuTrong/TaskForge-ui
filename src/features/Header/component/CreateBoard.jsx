@@ -1,42 +1,48 @@
-import React, { useState } from 'react';
-import { BsHandIndex } from 'react-icons/bs';
-import { Input } from 'antd';
+import React from 'react';
+import { Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
 import FormRow from '../../../ui/FormRow';
 import Button from '../../../ui/Button';
 import BoardDetail from './BoardDetail';
 import BoardBackground from './BoardBackground';
 import BoardTemplate from './BoardTemplate';
+import { useCreateBoard } from '../../../hooks/useBoard';
 
-function CreateBoard({ template, onAddHistory }) {
-  const [titleBoard, setTitleBoard] = useState(template ? template.name : '');
-  const handleChangeTextInput = (e) => {
-    setTitleBoard(e.target.value);
+function CreateBoard({ template, onAddHistory, initialValues }) {
+  const navigate = useNavigate();
+  const { isCreating, createBoard } = useCreateBoard();
+  const [form] = Form.useForm();
+  const onFinish = (data) => {
+    createBoard(
+      { ...data, visibility: data?.type === 'Private' ? false : true, templateId: template && template.id },
+      {
+        onSuccess: (data) => {
+          form.resetFields();
+          navigate('/b/' + data.id + '/board-detail');
+        },
+      },
+    );
   };
   return (
-    <div className="p-[12px]">
+    <Form
+      className="p-[12px]"
+      onFinish={onFinish}
+      form={form}
+      disabled={isCreating}
+      initialValues={initialValues || { type: 'Workspace' }}
+    >
       {template ? <BoardTemplate template={template} /> : <BoardBackground />}
       <div className="mt-[16px]">
-        <FormRow
-          type="ver"
-          label="Board title"
-          isCompulsory
-          error={
-            titleBoard?.length === 0 && (
-              <>
-                <BsHandIndex />
-                <p className="text-[14px]">Board title is required</p>
-              </>
-            )
-          }
-        >
-          <Input status={titleBoard?.length === 0 && 'error'} value={titleBoard} onChange={handleChangeTextInput} />
+        <FormRow label="Board name" type="ver" note="This is the name of your board.">
+          <Form.Item name="name" rules={[{ required: true, message: 'This field is required!' }]}>
+            <Input placeholder="Your board" />
+          </Form.Item>
         </FormRow>
       </div>
-
       <BoardDetail />
-
       <div className="flex flex-col gap-[8px] mt-[16px]">
-        <Button size="normal" disabled={titleBoard === ''} classNames="justify-center">
+        <Button size="normal" classNames="justify-center">
           Create
         </Button>
         {!template && (
@@ -52,7 +58,7 @@ function CreateBoard({ template, onAddHistory }) {
           </Button>
         )}
       </div>
-    </div>
+    </Form>
   );
 }
 

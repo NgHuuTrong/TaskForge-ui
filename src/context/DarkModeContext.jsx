@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorageState';
+import { ConfigProvider, theme } from 'antd';
 
 const DarkModeContext = createContext();
 
@@ -27,16 +28,15 @@ function DarkModeProvider({ children }) {
   }
 
   return (
-    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
-      {children}
-    </DarkModeContext.Provider>
+    <ConfigProvider theme={{ algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm }}>
+      <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>{children}</DarkModeContext.Provider>
+    </ConfigProvider>
   );
 }
 
 function useDarkMode() {
   const context = useContext(DarkModeContext);
-  if (context === undefined)
-    throw new Error('DarkModeContext was used outside of DarkModeProvider');
+  if (context === undefined) throw new Error('DarkModeContext was used outside of DarkModeProvider');
   return context;
 }
 

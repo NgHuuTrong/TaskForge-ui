@@ -1,19 +1,16 @@
 import { HiUser, HiUsers } from 'react-icons/hi';
-import { useParams } from 'react-router-dom';
 
 import Row from '../ui/Row';
-import recents from '../data/recent.json';
-import starreds from '../data/starred.json';
 import BoardSection from '../features/WorkspaceHome/BoardSection';
 import EditWorkspace from '../ui/EditWorkspace';
-import workspaces from '../data/workspaces.json';
+import { useWorkspace } from '../hooks/useWorkspace';
+import Spinner from '../ui/Spinner';
 
 function WorkspaceHome() {
-  const { workspaceId } = useParams();
-  const workspace = workspaces[workspaceId];
-
+  const { isLoading, workspace } = useWorkspace();
+  if (isLoading) return <Spinner />;
   return (
-    <Row type="ver">
+    <Row type="ver" classNames="pt-[2rem] px-[2rem]">
       <EditWorkspace workspace={workspace} />
       <hr className="border-[--color-grey-300] m-[1.6rem]" />
       <BoardSection
@@ -23,7 +20,7 @@ function WorkspaceHome() {
             <span>Starred boards</span>
           </>
         }
-        items={starreds}
+        items={workspace.boards.filter((board) => board.starred)}
       />
       <BoardSection
         title={
@@ -32,7 +29,7 @@ function WorkspaceHome() {
             <span>Your boards</span>
           </>
         }
-        items={recents}
+        items={workspace.boards}
       />
       <BoardSection
         title={
@@ -41,7 +38,7 @@ function WorkspaceHome() {
             <span>All boards in this Workspace</span>
           </>
         }
-        items={recents}
+        items={workspace.boards}
       />
     </Row>
   );

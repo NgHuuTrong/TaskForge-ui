@@ -87,9 +87,9 @@ function BoardBackground() {
   };
   return (
     <>
-      <div className="flex justify-center mt-[8px]">
+      <div className="flex justify-center">
         <div
-          className="flex justify-center w-[200px] h-[120px] bg-cover rounded-[3px] mt-[8px]"
+          className="flex justify-center w-[200px] h-[120px] bg-cover rounded-[3px]"
           style={{
             backgroundImage:
               backgroundType === 'image'

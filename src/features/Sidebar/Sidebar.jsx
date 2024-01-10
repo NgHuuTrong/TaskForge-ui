@@ -1,61 +1,81 @@
-import React, { useState } from 'react';
-import { Modal } from 'antd';
-import { HiOutlineViewBoards, HiOutlineTemplate } from 'react-icons/hi';
-import { AiOutlineHome } from 'react-icons/ai';
-
-import SidebarTab from '../../ui/SidebarTab';
-import WorkspaceTab from '../../ui/WorkspaceTab';
-import Row from '../../ui/Row';
-import Button from '../../ui/Button';
-import CreateWorkspace from '../../ui/CreateWorkspace';
-import workspaces from '../../data/workspaces.json';
-
-const tabs = [
-  {
-    icon: <HiOutlineViewBoards size="1.6rem" />,
-    title: 'Boards',
-    key: 'boards',
-  },
-  {
-    icon: <HiOutlineTemplate size="1.6rem" />,
-    title: 'Templates',
-    key: 'templates',
-  },
-  {
-    icon: <AiOutlineHome size="1.6rem" />,
-    title: 'Home',
-    key: 'home',
-  },
-];
-
-function Sidebar() {
-  const [openModal, setOpenModal] = useState(false);
-
-  return (
-    <aside className="sticky top-[40px] max-h-[90vh] mt-[40px] hidden w-[27.6rem] flex-col bg-[--color-grey-50] px-[1rem] md:block overflow-y-auto overflow-x-hidden">
-      <ul className="border-b py-[1rem]">
-        {tabs.map((tab) => (
-          <li className="mb-[0.25rem]" key={tab.key}>
-            <SidebarTab to={'/' + tab.key} icon={tab.icon} title={tab.title} type="main" />
-          </li>
-        ))}
-      </ul>
-      <div className="flex grow flex-col gap-2">
-        <Row classNames="p-[1rem]">
-          <span className="text-[1.4rem] font-semibold">Workspaces</span>
-          <Button type="icon" size="small" onClick={() => setOpenModal(true)}>
-            <span className="text-[2.0rem] font-bold">+</span>
-          </Button>
-          <Modal centered open={openModal} width={1200} footer={false} onCancel={() => setOpenModal(false)}>
-            <CreateWorkspace />
-          </Modal>
-        </Row>
-        {workspaces.map((workspace) => (
-          <WorkspaceTab key={workspace.id} workspace={workspace} />
-        ))}
-      </div>
-    </aside>
-  );
+import React from 'react';
+import {
+  AppstoreOutlined,
+  HomeOutlined,
+  LayoutOutlined,
+  SettingOutlined,
+  UsergroupAddOutlined,
+  HighlightOutlined,
+} from '@ant-design/icons';
+import { Menu } from 'antd';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useWorkspaces } from '../../hooks/useWorkspace';
+import Logo from '../../ui/Logo';
+function getItem(label, key, icon, children) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+  };
 }
-
+const renderItems = (workspaces, isLoading) => {
+  const workspaceTabs = isLoading
+    ? []
+    : workspaces.map((workspace) =>
+        getItem(
+          <strong className="ml-4">{workspace.name}</strong>,
+          'workspace' + workspace.id,
+          <Logo size="small" bgImage="linear-gradient(#4bce97, #216e4e)">
+            {workspace.name[0]}
+          </Logo>,
+          [
+            getItem(
+              <NavLink to={'/w/' + workspace.id + '/home'}>Boards</NavLink>,
+              '/w/' + workspace.id + '/home',
+              <AppstoreOutlined />,
+            ),
+            getItem('Highlights', '/w/' + workspace.id + '/highlights', <HighlightOutlined />),
+            getItem(
+              <NavLink to={'/w/' + workspace.id + '/members'}>Member</NavLink>,
+              '/w/' + workspace.id + '/members',
+              <UsergroupAddOutlined />,
+            ),
+            getItem(
+              <NavLink to={'/w/' + workspace.id + '/settings'}>Settings</NavLink>,
+              '/w/' + workspace.id + '/settings',
+              <SettingOutlined />,
+            ),
+          ],
+        ),
+      );
+  return [
+    getItem(<NavLink to="/boards">Boards</NavLink>, '/boards', <AppstoreOutlined />),
+    getItem('Templates', 'Templates', <LayoutOutlined />, [
+      getItem(<NavLink to="/templates">Overview</NavLink>, '/templates'),
+      getItem(<NavLink to="/templates/design">Design</NavLink>, '/templates/design'),
+      getItem(<NavLink to="/templates/business">Business</NavLink>, '/templates/business'),
+      getItem(<NavLink to="/templates/education">Education</NavLink>, '/templates/education'),
+      getItem(<NavLink to="/templates/engineering">Engineering</NavLink>, '/templates/engineering'),
+    ]),
+    getItem(<NavLink to="/home">Home</NavLink>, '2', <HomeOutlined />),
+    {
+      type: 'divider',
+    },
+    getItem(<strong>Workspace</strong>, 'Workspace'),
+    ...workspaceTabs,
+  ];
+};
+const Sidebar = () => {
+  const { workspaces, isLoading } = useWorkspaces();
+  const { pathname } = useLocation();
+  return (
+    <Menu
+      className="sticky top-[4rem] max-h-[85vh] hidden w-[27.6rem] flex-col px-[1rem] md:block  overflow-hidden"
+      items={renderItems(workspaces, isLoading)}
+      mode={'inline'}
+      selectedKeys={[pathname]}
+    />
+  );
+};
 export default Sidebar;

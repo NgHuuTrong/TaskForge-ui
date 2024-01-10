@@ -1,21 +1,21 @@
-import { useParams } from 'react-router-dom';
-
-import workspaces from '../data/workspaces.json';
-import users from '../data/users.json';
 import Row from '../ui/Row';
 import DetailHeader from '../features/WorkspaceMember/DetailHeader';
 import InviteMember from '../features/WorkspaceMember/InviteMember';
 import Members from '../features/WorkspaceMember/Members';
+import { useWorkspace, useDeleteWorkspaceMember } from '../hooks/useWorkspace';
+import Spinner from '../ui/Spinner';
 
 function WorkspaceMember() {
-  const { workspaceId } = useParams();
-  const workspace = workspaces[workspaceId];
+  const { workspace, isLoading } = useWorkspace();
+  const { deleteWorkspaceUser } = useDeleteWorkspaceMember();
+
+  if (isLoading) return <Spinner />;
 
   return (
-    <Row type="ver">
+    <Row type="ver" classNames="pt-[2rem] px-[2rem]">
       <DetailHeader workspace={workspace} />
       <InviteMember />
-      <Members users={users} />
+      <Members users={workspace.members} workspace={workspace} deleteWorkspaceUser={deleteWorkspaceUser} />
     </Row>
   );
 }

@@ -5,15 +5,18 @@ import CreateList from './component/CreateList';
 import CreateBoard from './component/CreateBoard';
 import MenuDropdown from '../../ui/MenuDropdown';
 import { TemplatesList } from './Templates';
-import templates from '../../data/templates.json';
 import CreateWorkspace from '../../ui/CreateWorkspace';
 import Button from '../../ui/Button';
+import { useTemplates } from '../../hooks/useTemplate';
+import Spinner from '../../ui/Spinner';
 
 function CreateBtn() {
   const [openModal, setOpenModal] = useState(false);
   const [createHistory, setCreateHistory] = useState([{ title: null, component: 'CreateList' }]);
+  const { templates, isLoading } = useTemplates('sort=name&limit=10');
 
   const renderComponent = (component) => {
+    if (isLoading) return <Spinner />;
     if (component.startsWith('CreateWithTemplate')) {
       const id = Number(component.split([' '])[1]);
       const template = templates.find((el) => el.id === id);
@@ -23,7 +26,7 @@ function CreateBtn() {
       <>
         {component === 'CreateList' && <CreateList setCreateHistory={setCreateHistory} setOpenModal={setOpenModal} />}
         {component === 'CreateBoard' && <CreateBoard onAddHistory={setCreateHistory} />}
-        {component === 'TemplatesList' && <TemplatesList onAddHistory={setCreateHistory} />}
+        {component === 'TemplatesList' && <TemplatesList onAddHistory={setCreateHistory} templates={templates} />}
       </>
     );
   };
@@ -36,10 +39,12 @@ function CreateBtn() {
         history={createHistory}
         renderComponent={renderComponent}
       >
-        <Button size="normal">Create</Button>
+        <Button size="normal" classNames="h-full">
+          Create
+        </Button>
       </MenuDropdown>
       <Modal centered open={openModal} width={1200} footer={false} title="" onCancel={() => setOpenModal(false)}>
-        <CreateWorkspace />
+        <CreateWorkspace closeModal={() => setOpenModal(false)} />
       </Modal>
     </>
   );
