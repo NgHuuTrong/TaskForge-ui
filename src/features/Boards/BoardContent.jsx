@@ -7,7 +7,7 @@ import CardDetail from './card/CardDetail/CardDetail';
 import { useMoveList } from '../../hooks/useList';
 import { useMoveCardInList, useMoveCardToAnotherList } from '../../hooks/useCard';
 
-function BoardContent({ id, lists, listsOrder, setLists, setListsOrder }) {
+function BoardContent({ id, lists, listsOrder, setLists, setListsOrder, isMyCard }) {
   const { isMoving: isMovingList, mutate: moveList } = useMoveList();
   const { isMoving: isMovingCardInList, mutate: moveCardInList } = useMoveCardInList();
   const { isMoving: isMovingCardAnotherList, mutate: moveCardAnotherList } = useMoveCardToAnotherList();
@@ -136,6 +136,7 @@ function BoardContent({ id, lists, listsOrder, setLists, setListsOrder }) {
                           lists={lists}
                           setLists={setLists}
                           key={list?.id}
+                          isMyCard={isMyCard}
                           setOpenCardDetailModal={setOpenCardDetailModal}
                         />
                       </div>

@@ -13,7 +13,8 @@ function List({
   list,
   lists,
   setLists,
-  setOpenCardDetailModal
+  setOpenCardDetailModal,
+  isMyCard
 }) {
   const [isCopyListOpen, setIsCopyListOpen] = useState(false);
   const [isMoveListOpen, setIsMoveListOpen] = useState(false);
@@ -118,6 +119,7 @@ function List({
                           setMoveCardId={setMoveCardId}
                           provided={provided}
                           setOpenCardDetailModal={setOpenCardDetailModal}
+                          isMyCard={isMyCard}
                         />
                       )
                     }

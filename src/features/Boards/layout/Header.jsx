@@ -11,7 +11,7 @@ import ShareBoard from './ShareBoard';
 import Button from '../../../ui/Button';
 import { useJoinBoard } from '../../../hooks/useBoard';
 
-function Header({ setBackground, background, board }) {
+function Header({ setBackground, background, board, isMyCard, setIsMyCard }) {
   const isAdmin = board.creatorId === board?.curMember?.userId;
   const { isJoining, mutate: joinBoard } = useJoinBoard();
 
@@ -50,6 +50,8 @@ function Header({ setBackground, background, board }) {
             background={background}
             setBackground={setBackground}
             creator={board.creator}
+            isMyCard={isMyCard}
+            setIsMyCard={setIsMyCard}
           />
 
           {board.curMember ? (
