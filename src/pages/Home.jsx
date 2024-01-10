@@ -9,7 +9,7 @@ function Home() {
         <EmptyActivity />
       </div>
 
-      <div className="sticky top-[40px] mt-[40px] h-[90vh] w-full min-w-0 max-w-[342px] overflow-y-auto pl-[50px]">
+      <div className="hidden lg:flex sticky top-[40px] mt-[40px] h-[90vh] w-full min-w-0 max-w-[342px] overflow-y-auto pl-[50px]">
         <Starred />
 
         <Links />
