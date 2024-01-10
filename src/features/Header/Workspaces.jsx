@@ -41,10 +41,6 @@ const Workspaces = () => {
         return (
           <div className="w-[296px]">
             <Heading as="h5" classNames="p-4">
-              Current Workspace
-            </Heading>
-            <WorkspaceItem workspace={workspaces[0]} />
-            <Heading as="h5" classNames="p-4">
               Your Workspaces
             </Heading>
             {workspaces.map((workspace) => (

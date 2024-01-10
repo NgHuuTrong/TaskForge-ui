@@ -14,11 +14,10 @@ import { useAddUserToBoard } from '../../../hooks/useBoard';
 import { useParams } from 'react-router-dom';
 import { useWebsocket } from '../../../context/WebsocketContext';
 
-function MemberRow({ member, isAdmin = false, isCurrent = false, deleteBoardMember, boardId }) {
-  const role = isAdmin ? 'Admin' : 'Member';
+function MemberRow({ role, member, isAdmin = false, isCurrent = false, deleteBoardMember, boardId }) {
   const handleSelect = (data) => {
     if (data === 'Remove from board' && isAdmin) {
-      deleteBoardMember({ memberId: member.id, boardId });
+      deleteBoardMember({ memberId: member.userId, boardId });
     }
   };
   return (
@@ -30,20 +29,22 @@ function MemberRow({ member, isAdmin = false, isCurrent = false, deleteBoardMemb
           defaultValue={role}
           dropdownStyle={{ width: '28rem' }}
           onSelect={(data) => handleSelect(data)}
-          options={[
+          options={role === "Admin" ? [
             {
               value: 'Admin',
-              disabled: !isAdmin,
-            },
+              disabled: true,
+            }
+          ] : [
             {
               value: 'Member',
-              disabled: !isAdmin,
+              disabled: true,
             },
             {
               value: 'Remove from board',
-              disabled: !isAdmin,
-            },
-          ]}
+              disabled: !isAdmin || isCurrent,
+            }
+          ]
+          }
         />
       </div>
     </Row>
@@ -151,7 +152,6 @@ function ShareBoard({ creator, members, curMember, isAdmin, workspaceId }) {
             >
               <Input placeholder="Email address or name" value={searchValue} onChange={handleSearch} />
             </Dropdown>
-            <Button size="normal">Share</Button>
           </div>
           <Row>
             <div className="flex flex-col">
@@ -166,10 +166,12 @@ function ShareBoard({ creator, members, curMember, isAdmin, workspaceId }) {
             </Button>
           </Row>
 
-          {isAdmin || <MemberRow member={curMember} isCurrent />}
-          <MemberRow member={creator} isAdmin isCurrent={isAdmin} />
+          {isAdmin || <MemberRow role='Member' member={curMember} isCurrent />}
+          <MemberRow role="Admin" member={creator} isAdmin={isAdmin} isCurrent={isAdmin} />
           {members.map((member) => (
             <MemberRow
+              role="Member"
+              isAdmin={isAdmin}
               member={member}
               key={member.userId}
               deleteBoardMember={isAdmin ? deleteBoardMember : null}

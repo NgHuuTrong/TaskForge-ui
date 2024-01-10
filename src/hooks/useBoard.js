@@ -51,7 +51,7 @@ export function useRecentBoards() {
     data: boards,
     error,
   } = useQuery({
-    queryKey: ['recent-boards', 'boards'],
+    queryKey: ['recent-boards'],
     queryFn: getRecentBoards,
     useErrorBoundary: true,
   });
@@ -121,6 +121,7 @@ export function useStarredBoard() {
     onError: (err) => toast.error(err.message),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['starred-boards'] });
+      queryClient.invalidateQueries({ queryKey: ['recent-boards'] });
     },
   });
 
@@ -242,6 +243,7 @@ export function useDeleteMemberFromBoard() {
   } = useMutation({
     mutationFn: deleteMemberFromBoard,
     onSuccess: () => {
+      toast.success('Delete member successfully');
       queryClient.invalidateQueries({ queryKey: ['board', boardId], exact: true });
     },
     onError: (err) => toast.error(err.message),

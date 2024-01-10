@@ -10,9 +10,10 @@ import { useState } from 'react';
 import { GoArchive } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
-import { useDeleteBoard, useLeaveBoard, useUpdateBoard } from '../hooks/useBoard';
+import { useDeleteBoard, useLeaveBoard, useRecentBoards, useUpdateBoard } from '../hooks/useBoard';
 import { useQueryClient } from '@tanstack/react-query';
 import { useUser } from '../hooks/useAuthenticate';
+import BoardCard from '../features/Boards/BoardCard';
 
 function Boards() {
   const { workspaces, isLoading } = useWorkspaces();
@@ -20,10 +21,11 @@ function Boards() {
   const { isUpdating, updateBoard } = useUpdateBoard();
   const { isDeleting, removeBoard } = useDeleteBoard();
   const { isLeaving, mutate: leaveBoard } = useLeaveBoard();
+  const { isLoading: isLoadingRecent, boards } = useRecentBoards();
   const queryClient = useQueryClient();
 
   const [openModal, setOpenModal] = useState(false);
-  if (isLoading || isLoadingUser) return <Spinner />;
+  if (isLoading || isLoadingUser || isLoadingRecent) return <Spinner />;
 
   function renderClosedBoards() {
     const closedBoards = [];
@@ -95,6 +97,11 @@ function Boards() {
           <AiOutlineClockCircle size="2.5rem" />
           Recently viewed
         </Heading>
+        <div className='flex mt-[1.5rem]'>
+          {
+            boards.map(board => <BoardCard key={board.id} board={board?.board} />)
+          }
+        </div>
       </div>
       <div className="space-y-10">
         <Heading classNames="uppercase flex items-center gap-4" as="h4">

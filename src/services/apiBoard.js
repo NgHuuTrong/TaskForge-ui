@@ -20,8 +20,8 @@ export async function getRecentBoards() {
       console.log(err.response);
       throw new Error(err.response.data);
     });
-  console.log('getRecentBoards', data);
-  return data.boardMembers.filter((item) => item.starred);
+
+  return data.boardMembers;
 }
 
 export async function getStarredBoards() {

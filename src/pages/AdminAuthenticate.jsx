@@ -7,11 +7,7 @@ import { useLogin } from '../hooks/useAuthenticate';
 function AdminAuthenticate() {
   const [data, setData] = useState({});
   const navigate = useNavigate();
-  const { login, isLoading } = useLogin({
-    onSuccess: () => {
-      navigate('/admin/user');
-    },
-  });
+  const { login, isLoading } = useLogin();
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -23,6 +19,7 @@ function AdminAuthenticate() {
     login(data, {
       onSuccess: () => {
         setData({});
+        navigate('/admin/user');
       },
     });
   }

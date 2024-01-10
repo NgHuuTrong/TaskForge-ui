@@ -1,5 +1,5 @@
 import { useUser } from '../hooks/useAuthenticate';
-import { useDeleteWorkspaceMember, useWorkspace } from '../hooks/useWorkspace';
+import { useDeleteWorkspace, useWorkspace } from '../hooks/useWorkspace';
 import Button from '../ui/Button';
 import EditWorkspace from '../ui/EditWorkspace';
 import Row from '../ui/Row';
@@ -7,12 +7,12 @@ import Spinner from '../ui/Spinner';
 
 function WorkspaceSettings() {
   const { workspace, isLoading } = useWorkspace();
-  const { removeWorkspace, isLoadingDelete } = useDeleteWorkspaceMember();
+  const { removeWorkspace, isLoading: isDeleting } = useDeleteWorkspace();
   const { user: CurrUser, isLoadingUser } = useUser();
-  if (isLoadingDelete || isLoadingUser || isLoading) return <Spinner />;
+  if (isDeleting || isLoadingUser || isLoading) return <Spinner />;
 
   const handleRemove = () => {
-    removeWorkspace(workspace.id);
+    removeWorkspace({ workspaceId: workspace.id });
   };
   const isAdmin = workspace.adminIds.find((admin) => admin === CurrUser.id);
   return (

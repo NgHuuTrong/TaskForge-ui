@@ -39,7 +39,7 @@ function Header() {
         <CreateBtn />
       </div>
       <div className="flex justify-end items-center gap-[0.4rem] w-full">
-        <Input className="w-[15rem] text-xl [transition:width_.5s_ease-in-out] focus:w-[88%]" placeholder="Search" />
+        <Input className="hidden md:flex w-[15rem] text-xl [transition:width_.5s_ease-in-out] focus:w-[88%]" placeholder="Search" />
         <Notifications />
         <UserSetting />
       </div>

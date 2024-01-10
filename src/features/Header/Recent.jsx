@@ -7,6 +7,7 @@ import Button from '../../ui/Button';
 
 const Recent = () => {
   const { isLoading, boards } = useRecentBoards();
+  console.log('boards', boards)
   return (
     <Dropdown
       load
@@ -14,12 +15,13 @@ const Recent = () => {
       trigger={['click']}
       dropdownRender={() => (
         <div className="w-[280px]">
-        {
-          isLoading&&<Spin></Spin>
-        }
-        {!isLoading && boards.length == 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> }
-          {!isLoading && boards.map(({ board }) => (
+          {
+            isLoading && <Spin></Spin>
+          }
+          {!isLoading && boards.length === 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
+          {!isLoading && boards.map(({ board, starred }) => (
             <ButtonImage
+              hasStarred={starred}
               key={board.id}
               title={board.name}
               subscription={board.workspace.name}
