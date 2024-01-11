@@ -17,6 +17,8 @@ import {
   getStarredBoards,
   getRecentBoards,
   deleteMemberFromBoard,
+  acceptBoardLink,
+  getBoardByToken,
 } from '../services/apiBoard';
 
 export function useBoards() {
@@ -68,6 +70,22 @@ export function useBoard() {
   } = useQuery({
     queryKey: ['board', boardId],
     queryFn: () => getBoard(boardId),
+    retry: false,
+    useErrorBoundary: true,
+  });
+  return { isLoading, error, board };
+}
+
+export function useBoardByToken() {
+  const { token } = useParams();
+
+  const {
+    isLoading,
+    data: board,
+    error,
+  } = useQuery({
+    queryKey: ['board', token],
+    queryFn: () => getBoardByToken(token),
     retry: false,
     useErrorBoundary: true,
   });
@@ -250,4 +268,24 @@ export function useDeleteMemberFromBoard() {
   });
 
   return { isDeleting, deleteBoardMember, error };
+}
+
+export function useAcceptBoardLink() {
+  const queryClient = useQueryClient();
+  const { token } = useParams();
+
+  const {
+    mutate,
+    isLoading: isAccepting,
+    error,
+  } = useMutation({
+    mutationFn: acceptBoardLink,
+    onSuccess: () => {
+      toast.success('Accept board link invitation successfully');      
+      queryClient.invalidateQueries({ queryKey: ['board', token], exact: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isAccepting, mutate, error };
 }

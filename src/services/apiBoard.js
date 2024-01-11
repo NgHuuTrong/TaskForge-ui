@@ -20,42 +20,6 @@ export async function getRecentBoards() {
       console.log(err.response);
       throw new Error(err.response.data);
     });
-  console.log(data.boardMembers)
-  return data.boardMembers;
-}
-
-export async function getRecentBoards() {
-  const data = await authAxios
-    .get('/boards/recent-boards')
-    .then((response) => response.data.data)
-    .catch((err) => {
-      console.log(err.response);
-      throw new Error(err.response.data);
-    });
-
-  return data.boardMembers;
-}
-
-export async function getStarredBoards() {
-  const data = await authAxios
-    .get('/boards/joined-boards')
-    .then((response) => response.data.data)
-    .catch((err) => {
-      console.log(err.response);
-      throw new Error(err.response.data);
-    });
-  console.log('getStarredBoards', data);
-  return data.boardMembers.filter((board) => board.starred);
-}
-
-export async function getRecentBoards() {
-  const data = await authAxios
-    .get('/boards/recent-boards')
-    .then((response) => response.data.data)
-    .catch((err) => {
-      console.log(err.response);
-      throw new Error(err.response.data);
-    });
 
   return data.boardMembers;
 }
@@ -193,24 +157,25 @@ export async function leaveBoard(boardId) {
     });
   return data;
 }
-export async function deleteMemberFromBoard({ boardId, memberId }) {
-  await authAxios
-    .delete(`boards/${boardId}/remove-board-member/${memberId}`)
-    .then((response) => response.data.data)
-    .catch((err) => {
-      console.log(err.response.data);
-      throw new Error(err.response.data.message);
-    });
-}
 
 export async function getBoardByToken(token) {
   const res = await authAxios
     .get(`/boards/by-token/${token}`)
     .then((response) => response.data.data)
     .catch((err) => {
-      console.log(err.response);
-      throw new Error(err.response.data);
+      throw new Error(err.response.data.message);
     });
   
   return res.board
+}
+
+export async function acceptBoardLink(token) {
+  const data = await authAxios
+    .post(`/boards/accept-invitation-link/${token}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      throw new Error(err.response.data.message);
+    });
+
+  return data.board;
 }

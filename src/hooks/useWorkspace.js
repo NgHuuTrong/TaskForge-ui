@@ -12,6 +12,8 @@ import {
   deleteWorkspace,
   sendInvitationWorkspace,
   leaveWorkspace,
+  getWorkspaceByToken,
+  acceptWorkspaceLink,
 } from '../services/apiWorkspace';
 
 export function useWorkspaces() {
@@ -167,4 +169,41 @@ export function useLeaveWorkspace() {
   });
 
   return { isLeaving, mutate, error };
+}
+
+export function useWorkspaceByToken() {
+  const { token } = useParams();
+
+  const {
+    isLoading,
+    data: workspace,
+    error,
+  } = useQuery({
+    queryKey: ['workspace', token],
+    queryFn: () => getWorkspaceByToken(token),
+    retry: false,
+    useErrorBoundary: true,
+  });
+
+  return { isLoading, error, workspace };
+}
+
+export function useAcceptWorkspaceLink() {
+  const queryClient = useQueryClient();
+  const { token } = useParams();
+
+  const {
+    mutate,
+    isLoading: isAccepting,
+    error,
+  } = useMutation({
+    mutationFn: acceptWorkspaceLink,
+    onSuccess: () => {
+      toast.success('Accept workspace link invitation successfully');
+      queryClient.invalidateQueries({ queryKey: ['workspace', token], exact: true });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { isAccepting, mutate, error };
 }

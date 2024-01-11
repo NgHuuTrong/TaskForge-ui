@@ -19,8 +19,9 @@ import ProtectedRoute from './ui/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
-import InviteWorkSpacePage from './pages/Invite/InvteWorkSpacePage';
+import InviteWorkSpacePage from './pages/Invite/InviteWorkSpacePage';
 import InviteBoardPage from './pages/Invite/InviteBoardPage';
+import WorkspaceSettings from './pages/WorkspaceSettings';
 
 const queryClient = new QueryClient({
   defaultOptions: {
