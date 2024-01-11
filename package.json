@@ -17,6 +17,7 @@
     "antd": "^5.10.1",
     "antd-img-crop": "^4.21.0",
     "axios": "^1.6.2",
+    "clipboard-copy": "^4.0.1",
     "npm": "^10.2.5",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",

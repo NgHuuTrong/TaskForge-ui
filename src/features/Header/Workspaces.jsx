@@ -15,7 +15,7 @@ const WorkspaceItem = ({ workspace }) => {
       <ButtonImage
         height="48px"
         title={workspace.name}
-        to="/"
+        to={`/w/${workspace.id}/home`}
         hasStarred={false}
         type="custom"
         custom={

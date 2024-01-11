@@ -19,9 +19,8 @@ import ProtectedRoute from './ui/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 import TemplatesType from './pages/TemplatesType';
 import WebsocketProvider from './context/WebsocketContext';
-import Admin from './pages/Admin';
-import AdminAuthenticate from './pages/AdminAuthenticate';
-import WorkspaceSettings from './pages/WorkspaceSettings';
+import InviteWorkSpacePage from './pages/Invite/InvteWorkSpacePage';
+import InviteBoardPage from './pages/Invite/InviteBoardPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -78,9 +77,9 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="admin/user" element={<Admin defaultKey="1" />} />
-              <Route path="admin/theme" element={<Admin defaultKey="2" />} />
-              <Route path="admin/authenticate" element={<AdminAuthenticate />} />
+              <Route path="w/invite/:token" element={<ProtectedRoute><InviteWorkSpacePage /></ProtectedRoute>}/>
+              <Route path="b/invite/:token" element={<ProtectedRoute><InviteBoardPage /></ProtectedRoute>}/>
+              
             </Routes>
           </BrowserRouter>
           <Toaster

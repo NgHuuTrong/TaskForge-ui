@@ -17,8 +17,7 @@ export async function getWorkspace(workspaceId) {
   try {
     const { data } = await authAxios.get(`/workspaces/${workspaceId}`);
     const dataMem = await authAxios.get(`workspaces/${workspaceId}/members`);
-    if (dataMem)
-      data.data.workspace.members = dataMem.data.data.users
+    if (dataMem) data.data.workspace.members = dataMem.data.data.users;
     return data.data.workspace;
   } catch (error) {
     console.log(error);
@@ -104,4 +103,29 @@ export async function getWorkspaceMembers(workspaceId) {
     });
 
   return res.users;
+}
+
+export async function getWorkspaceByToken(token) {
+  console.log(token)
+  const res = await authAxios
+    .get(`/workspaces/by-token/${token}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response);
+      throw new Error(err.response.data);
+    });
+
+  return res.workspace
+}
+
+export async function joinWorkspace(workspaceId) {
+  const data = await authAxios
+    .post(`/workspaces/join-workspace/${workspaceId}`)
+    .then((response) => response.data.data)
+    .catch((err) => {
+      console.log(err.response.data);
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
 }

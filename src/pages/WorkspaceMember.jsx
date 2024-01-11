@@ -14,7 +14,7 @@ function WorkspaceMember() {
   return (
     <Row type="ver" classNames="pt-[2rem] px-[2rem]">
       <DetailHeader workspace={workspace} />
-      <InviteMember />
+      <InviteMember inviteToken = {workspace.inviteToken} />
       <Members users={workspace.members} workspace={workspace} deleteWorkspaceUser={deleteWorkspaceUser} />
     </Row>
   );
