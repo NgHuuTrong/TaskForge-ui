@@ -22,6 +22,10 @@ import WebsocketProvider from './context/WebsocketContext';
 import InviteWorkSpacePage from './pages/Invite/InviteWorkSpacePage';
 import InviteBoardPage from './pages/Invite/InviteBoardPage';
 import WorkspaceSettings from './pages/WorkspaceSettings';
+import AdminAuthenticate from './pages/AdminAuthenticate';
+import ManageUser from './features/Admin/ManageUser';
+import ManageTemplate from './features/Admin/ManageTemplate';
+import Admin from './pages/Admin';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -78,9 +82,20 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="w/invite/:token" element={<ProtectedRoute><InviteWorkSpacePage /></ProtectedRoute>}/>
-              <Route path="b/invite/:token" element={<ProtectedRoute><InviteBoardPage /></ProtectedRoute>}/>
-              
+              <Route path="w/invite/:token" element={<ProtectedRoute><InviteWorkSpacePage /></ProtectedRoute>} />
+              <Route path="b/invite/:token" element={<ProtectedRoute><InviteBoardPage /></ProtectedRoute>} />
+              <Route path="admin/authenticate" element={<AdminAuthenticate />} />
+              <Route
+                path="admin"
+                element={
+                  <ProtectedRoute>
+                    <Admin />
+                  </ProtectedRoute>
+                }
+              >
+                <Route path="users" element={<ManageUser />} />
+                <Route path="templates" element={<ManageTemplate />} />
+              </Route>
             </Routes>
           </BrowserRouter>
           <Toaster

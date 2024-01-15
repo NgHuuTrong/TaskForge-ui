@@ -4,6 +4,7 @@ import { LockOutlined, UserAddOutlined } from '@ant-design/icons';
 import Logo from '../assets/logo_blue.png';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useAuthenticate';
+
 function AdminAuthenticate() {
   const [data, setData] = useState({});
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function AdminAuthenticate() {
     login(data, {
       onSuccess: () => {
         setData({});
-        navigate('/admin/user');
+        navigate('/admin/users');
       },
     });
   }

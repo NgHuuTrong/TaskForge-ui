@@ -4,16 +4,13 @@ export const login = async ({ email, password }) => {
   const data = await authAxios
     .post('/auth/signin', { email, password })
     .then((response) => {
-      return response.data.data;
+      localStorage.setItem('token', JSON.stringify(response.data.data.accessToken));
     })
     .then((data) => {
-      localStorage.setItem('token', JSON.stringify(data.accessToken));
     })
     .catch((err) => {
-      console.log(err.response);
       throw new Error(err.response.data.message);
     });
-  console.log('login', data);
   return data;
 };
 
@@ -27,8 +24,7 @@ export const loginByGoogle = async (body) => {
       localStorage.setItem('token', JSON.stringify(data.accessToken));
     })
     .catch((err) => {
-      console.log(err);
-      throw new Error(err);
+      throw new Error(err.response.data.message);
     });
 
   return data;
@@ -43,13 +39,17 @@ export const signup = async ({ username, email, name, password, passwordConfirm 
 };
 
 export const logout = async () => {
-  try {
-    localStorage.setItem('token', null);
-    authAxios.defaults.headers.Authorization = null;
-  } catch (error) {
-    console.log(error);
-    throw new Error(error.response.data);
-  }
+  const data = await authAxios
+    .delete('/auth/logout')
+    .then((response) => {
+      localStorage.setItem('token', null);
+      authAxios.defaults.headers.Authorization = null;
+    })
+    .catch((err) => {
+      throw new Error(err.response.data.message);
+    });
+
+  return data;
 };
 
 export const forgotPassword = async ({ email }) => {
@@ -67,3 +67,4 @@ export const resetPassword = async ({ password, passwordConfirm, token }) => {
   });
   console.log('resetPassword');
 };
+

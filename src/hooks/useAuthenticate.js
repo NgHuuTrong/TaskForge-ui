@@ -17,7 +17,7 @@ export function useLogin() {
   const { mutate: login, isLoading } = useMutation({
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: () => {
-      navigate('/boards', { replace: true });
+      navigate('/boards');
       toast.success('Sign in successfully!');
     },
     onError: (err) => {
@@ -105,7 +105,7 @@ export function useLogout() {
     mutationFn: logoutApi,
     onSuccess: () => {
       queryClient.removeQueries();
-      navigate('/authenticate', { replace: true });
+      navigate('authenticate', { replace: true });
       toast.success('Logged out successfully!');
     },
     onError: (err) => toast.error(err),

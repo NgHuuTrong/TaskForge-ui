@@ -6,8 +6,7 @@ export async function getCurrentUser() {
     const { data } = await authAxios.get('/users/me');
     return data.data;
   } catch (error) {
-    console.log(error);
-    throw new Error(error.message);
+    throw new Error(error.response.data.message);
   }
 }
 
@@ -34,8 +33,7 @@ export async function updateCurrentUser({ username, bio, file }) {
 
     return updateData.data;
   } catch (error) {
-    console.log(error);
-    throw new Error(error.message);
+    throw new Error(error.response.data.message);
   }
 }
 
@@ -63,7 +61,7 @@ export async function getAllUsers() {
     .get('/users')
     .then((response) => response.data.data)
     .catch((err) => {
-      throw new Error(err.response.data);
+      throw new Error(err.response.data.message);
     });
 
   return data.users;

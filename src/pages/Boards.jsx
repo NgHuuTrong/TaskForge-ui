@@ -99,7 +99,7 @@ function Boards() {
         </Heading>
         <div className='flex mt-[1.5rem]'>
           {
-            boards.map(board => <BoardCard key={board.id} board={board?.board} />)
+            boards.map((board, index) => <BoardCard key={index} board={board?.board} />)
           }
         </div>
       </div>

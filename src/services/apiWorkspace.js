@@ -5,10 +5,8 @@ export async function getMyWorkspaces() {
     .get('/workspaces/my-workspaces')
     .then((response) => response.data.data)
     .catch((err) => {
-      console.log(err.response);
-      throw new Error(err.response.data);
+      throw new Error(err.response.data.message);
     });
-  console.log('getMyWorkspaces', res);
   const data = res.workspaceMembers.map((el) => el.workspace);
   return data;
 }
@@ -20,7 +18,6 @@ export async function getWorkspace(workspaceId) {
     if (dataMem) data.data.workspace.members = dataMem.data.data.users;
     return data.data.workspace;
   } catch (error) {
-    console.log(error);
     throw new Error(error.message);
   }
 }
@@ -67,7 +64,6 @@ export async function deleteWorkspaceMember({ workspaceId, userId }) {
     const { data } = await authAxios.delete(`/workspaces/${workspaceId}/remove-workspace-member/${userId}`);
     return data.data;
   } catch (error) {
-    console.log(error);
     throw new Error(error.message);
   }
 }

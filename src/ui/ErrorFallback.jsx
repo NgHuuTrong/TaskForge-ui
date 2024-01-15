@@ -1,6 +1,7 @@
 import Button from './Button';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
+  console.log(error);
   return (
     <div className="h-screen flex items-center justify-center p-[4.8rem] bg-[--color-grey-50]">
       <div className="flex flex-col border border-[--color-grey-800] rounded-[-border-radius-md] p-[4.8rem] flex-[0_1_96rem] items-center">
